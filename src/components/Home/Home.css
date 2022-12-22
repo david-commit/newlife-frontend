@@ -1,0 +1,34 @@
+/* ==== HOME COMPONENT ==== */
+.home-container {
+  width: 100%;
+}
+/* == HOME BANNER == */
+.home-banner-container {
+  height: 700px;
+  background-image: url('../../img/banner-img-full.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.home-banner-container-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+  margin: auto 0 auto 8%;
+  height: 700px;
+}
+.home-banner-container-text h1 {
+ font-size: 60px;
+}
+.home-banner-container-text p {
+ font-size: 20px;
+ line-height: 30px;
+}
+.home-banner-container-text button {
+ background-color: #1d3e68;
+ border: #1d3e68 1px solid;
+ 
+}
+/* == HOME BANNER == */
+/* ==== HOME COMPONENT ==== */

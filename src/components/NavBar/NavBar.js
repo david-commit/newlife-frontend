@@ -51,6 +51,9 @@ function NavBar() {
             {user ? (
               <>
                 <NavLink to='/appointments'>Appointments</NavLink>
+                <NavLink to='/book-appointment'>
+                  <button>Book Appointment</button>
+                </NavLink>
               </>
             ) : (
               <>
