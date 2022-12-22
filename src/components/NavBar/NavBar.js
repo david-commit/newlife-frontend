@@ -1,12 +1,10 @@
 import React from 'react';
 import './NavBar.css';
 import { NavLink } from 'react-router-dom';
-import logo from "../../img/logo.png" //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
-import SignUp from '../SignUp/SignUp';
-import Login from '../Login/Login';
+import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
 function NavBar() {
-  const user = false
+  const user = false;
   return (
     <>
       <div className='top-bar-container'>
@@ -36,36 +34,36 @@ function NavBar() {
           </div>
         </div>
       </div>
-      <div className='menubar-container'>
-        <div className='logo'>
-          <img src={logo} alt='Logo' />
-          <div className='logo-txt'>
-            <p id='logo-txt1'>NewLife Hospital</p>
-            <p id='logo-txt2'>Dedication beyond measure.</p>
-          </div>
-        </div>
-        <nav className='menubar-nav'>
-          <NavLink to='/'>Home</NavLink>
-          <NavLink to='/aboutus'>About Us</NavLink>
-          {user ? (
-            <>
-              <NavLink to='/appointments'>Appointments</NavLink>
-            </>
-          ) : (
-            <>
-              <button>
+      <div className='menubar-main-container'>
+        <div className='menubar-container'>
+          <NavLink to='/'>
+            <div className='logo'>
+              <img src={logo} alt='Logo' />
+              <div className='logo-txt'>
+                <p id='logo-txt1'>NewLife Hospital</p>
+                <p id='logo-txt2'>Dedication beyond measure.</p>
+              </div>
+            </div>
+          </NavLink>
+          <nav className='menubar-nav'>
+            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/aboutus'>About Us</NavLink>
+            {user ? (
+              <>
+                <NavLink to='/appointments'>Appointments</NavLink>
+              </>
+            ) : (
+              <>
                 <NavLink to='/login'>
-                  <Login />
+                  <button>Login</button>
                 </NavLink>
-              </button>
-              <button>
                 <NavLink to='/signup'>
-                  <SignUp />
+                  <button>Sign Up</button>
                 </NavLink>
-              </button>
-            </>
-          )}
-        </nav>
+              </>
+            )}
+          </nav>
+        </div>
       </div>
     </>
   );

@@ -1,3 +1,5 @@
+/* ==== NAVBAR COMPONENT ==== */
+/* == TOP BAR == */
 .top-bar-container {
   background-color: #1d3e68;
   width: 100%;
@@ -12,9 +14,14 @@
   margin: auto;
 }
 .topbar2 i {
- padding: 0 6px;
- cursor: pointer;
- color: white;
+  padding: 0 6px;
+  cursor: pointer;
+  color: white;
+}
+/* == TOP BAR == */
+/* == NAV BAR == */
+.menubar-main-container {
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .menubar-container {
   width: 85%;
@@ -23,6 +30,10 @@
   align-items: center;
   margin: auto;
   color: #1d3e68;
+}
+.menubar-container a {
+  color: #1d3e68;
+  text-decoration: none;
 }
 .logo {
   display: flex;
@@ -41,18 +52,34 @@
   font-style: italic;
 }
 
-
 .menubar-nav {
   display: flex;
   align-items: center;
 }
 .menubar-nav button {
-  width: 100px;
-  height: fit-content;
+  color: white;
+  width: 120px;
+  height: 55px;
+  border: 1px solid #1d3e68;
+  border-radius: 5px;
+  background-color: #1d3e68;
+  font-size: 24px;
 }
-.menubar-nav a{
+.menubar-nav button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
+}
+.menubar-nav a {
   font-size: 24px;
   color: #1d3e68;
   text-decoration: none;
   padding: 16px;
 }
+.menubar-nav a:hover {
+  color: #00a3c8;
+  transition: all 0.35s ease-in-out;
+}
+/* == NAV BAR == */
+/* ==NAVBAR COMPONENT== */
