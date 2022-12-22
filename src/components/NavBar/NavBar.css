@@ -22,9 +22,37 @@
   justify-content: space-between;
   align-items: center;
   margin: auto;
+  color: #1d3e68;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 100px;
+  padding-right: 10px;
+}
+#logo-txt1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+#logo-txt2 {
+  font-size: 23.5px;
+  font-style: italic;
 }
 
 
+.menubar-nav {
+  display: flex;
+  align-items: center;
+}
+.menubar-nav button {
+  width: 100px;
+  height: fit-content;
+}
 .menubar-nav a{
-  font-size: 40px;
+  font-size: 24px;
+  color: #1d3e68;
+  text-decoration: none;
+  padding: 16px;
 }

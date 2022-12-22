@@ -40,8 +40,8 @@ function NavBar() {
         <div className='logo'>
           <img src={logo} alt='Logo' />
           <div className='logo-txt'>
-            <p>NewLife Hospital</p>
-            <p>Dedication beyond measure</p>
+            <p id='logo-txt1'>NewLife Hospital</p>
+            <p id='logo-txt2'>Dedication beyond measure.</p>
           </div>
         </div>
         <nav className='menubar-nav'>
@@ -49,20 +49,20 @@ function NavBar() {
           <NavLink to='/aboutus'>About Us</NavLink>
           {user ? (
             <>
-            <NavLink to='/appointments'>Appointments</NavLink>
+              <NavLink to='/appointments'>Appointments</NavLink>
             </>
           ) : (
             <>
-            <button>
-              <NavLink to='/login'>
-                <Login />
-              </NavLink>
+              <button>
+                <NavLink to='/login'>
+                  <Login />
+                </NavLink>
               </button>
               <button>
-              <NavLink to='/signup'>
-                <SignUp />
-              </NavLink>
-            </button>
+                <NavLink to='/signup'>
+                  <SignUp />
+                </NavLink>
+              </button>
             </>
           )}
         </nav>
