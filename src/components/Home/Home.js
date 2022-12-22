@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import welcomeImg from '../../img/dark-female-doctor.png';
 import signature from '../../img/signature.png';
-import testImg1 from '../../img/rev-img-1.jpeg';
-import testImg2 from '../../img/rev-img-2.jpeg';
+import testImg1 from '../../img/rev-img-1.jpg';
+import testImg2 from '../../img/rev-img-2.jpg';
 import testImg3 from '../../img/rev-img-3.jpg';
 
 function Home() {
@@ -149,7 +149,7 @@ function Home() {
           </Link>
         </div>
       </div>
-      <div className='home-testimnials-container'>
+      <div className='home-testimonials-container'>
         <div className='home-testimonials'>
           <h1>What Our Patients Say</h1>
           <br />
@@ -161,16 +161,16 @@ function Home() {
         </div>
         <div className='home-testimonial-cards'>
           <div className='home-testimonial-card'>
-            <img src={testImg1} alt='Test' />
+            <img src={testImg1} alt='Test' /><br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.
             </p>
-            <h4>OSCAR BARAKA</h4>
+            <h4>KENDRIC MAINA</h4>
             <h5>PHOTOGRAPHER</h5>
           </div>
           <div className='home-testimonial-card'>
-            <img src={testImg3} alt='Test' />
+            <img src={testImg3} alt='Test' /><br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.
@@ -179,12 +179,12 @@ function Home() {
             <h5>GRAPHIC DESIGNER</h5>
           </div>
           <div className='home-testimonial-card'>
-            <img src={testImg2} alt='Test' />
+            <img src={testImg2} alt='Test' /><br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.
             </p>
-            <h4>WALTER YONGO</h4>
+            <h4>SHINSKI</h4>
             <h5>AI EXPERT</h5>
           </div>
         </div>
