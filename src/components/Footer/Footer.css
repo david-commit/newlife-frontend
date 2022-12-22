@@ -1,0 +1,68 @@
+.footercontainer {
+  width: 100%;
+  background-color: #1d3e68;
+  margin-top: 80px;
+}
+.footer1 {
+  width: 85%;
+  height: 150px;
+  background-color: #1d3e68;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+.footer1 p {
+  color: white;
+  margin: auto 0;
+}
+#email {
+  background-color: white;
+  padding: 8px 30px;
+  border: 1px solid white;
+}
+#sub {
+  padding: 6px 24px;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  font-size: 15px;
+  cursor: pointer;
+}
+.footer2 {
+  height: 250px;
+  width: 100% fixed;
+  background-color: black;
+  color: white;
+  padding-top: 58px;
+  padding-left: 58px;
+  padding-bottom: 58px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+#section1 {
+  width: 35%;
+}
+#section1 p {
+  color: white;
+  margin: 18px 0 32px 0;
+}
+#section1 h1,
+h3 {
+  color: #1d3e68;
+}
+
+#section2 {
+  width: 20%;
+}
+#section2 h2 {
+  margin-bottom: 18px;
+}
+#section2 p a {
+  text-decoration: none;
+  color: white;
+  padding-top: 8px;
+}
