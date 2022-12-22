@@ -151,7 +151,7 @@ function Home() {
       </div>
       <div className='home-testimonials-container'>
         <div className='home-testimonials'>
-          <h1>What Our Patients Say</h1>
+          <h1>What Our Patients Say...</h1>
           <br />
           <p>
             Every month, NewLife Hospital receives masses of kind comments,

@@ -8,6 +8,7 @@ import Login from './Login/Login'
 import Patient from './Patient/Patient'
 import Practitioner from './Practitioner/Practitioner'
 import Shop from './Shop/Shop'
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Footer />
     </div>
   );
 }
