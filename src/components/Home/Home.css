@@ -19,16 +19,53 @@
   height: 700px;
 }
 .home-banner-container-text h1 {
- font-size: 60px;
+  font-size: 60px;
 }
 .home-banner-container-text p {
- font-size: 20px;
- line-height: 30px;
+  font-size: 20px;
+  line-height: 30px;
 }
 .home-banner-container-text button {
- background-color: #1d3e68;
- border: #1d3e68 1px solid;
- 
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  padding: 6px 10px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+.home-banner-container-text button:hover {
+  background-color: white;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
 }
 /* == HOME BANNER == */
+/* == HOME WELCOME BANNER == */
+.home-welcome-banner {
+  width: 85%;
+  margin: 60px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.home-welcome-banner-text {
+ width: 50%;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+.home-welcome-banner-text img {
+ width: 150px;
+ color: #1d3e68;
+}
+.home-welcome-banner-text h3 {
+  color: #1d3e68;
+}
+.home-welcome-banner-text h1 {
+  font-size: 40px;
+}
+.home-welcome-banner-text p {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+}
+/* == HOME WELCOME BANNER == */
 /* ==== HOME COMPONENT ==== */
