@@ -46,7 +46,7 @@ function Home() {
       </div>
       <div className='home-solutions-container'>
         <div className='home-solution'>
-          <h1>Total Health Care Solutions</h1>
+          <h1>Total Health Care Solutions</h1><br />
           <p>
             Newlife Hospital App simplifies medical processes, but it also holds
             the potential to improve the patient experience significantly.
@@ -55,14 +55,14 @@ function Home() {
             delivery is increased, medical errors are minimized, expenses are
             reduced, communication is enhanced – and the list goes on and on.
             Healthcare app development is now a critical component toward
-            increased patient satisfaction and profits.
+            increased patient satisfaction.
           </p>
           <div className='home-solution-cards'>
             <div className='home-solution-card'>
               <div className='home-solution-card-img'>
                 <i class='fa-solid fa-hands-holding-child'></i>
-              </div>
-              <h3>PEDIATRICS</h3>
+              </div><br />
+              <h3>PEDIATRICS</h3><br />
               <p>
                 Schedule an appointment with the best Pediatrician doctors,
                 specialized in Pediatrics, New Born, Natural Breast Feeding and
@@ -72,8 +72,8 @@ function Home() {
             <div className='home-solution-card'>
               <div className='home-solution-card-img'>
                 <i class='fa-solid fa-hand-holding-droplet'></i>
-              </div>
-              <h3>HAEMATOLOGY</h3>
+              </div><br />
+              <h3>HAEMATOLOGY</h3><br />
               <p>
                 Schedule an appointment with the best Pediatrician doctors,
                 specialized in Pediatrics, New Born, Natural Breast Feeding and
@@ -83,8 +83,8 @@ function Home() {
             <div className='home-solution-card'>
               <div className='home-solution-card-img'>
                 <i class='fa-solid fa-heart-pulse'></i>
-              </div>
-              <h3>CARDIOGRAM</h3>
+              </div><br />
+              <h3>CARDIOGRAM</h3><br />
               <p>
                 Schedule an appointment with the best Pediatrician doctors,
                 specialized in Pediatrics, New Born, Natural Breast Feeding and
@@ -94,8 +94,8 @@ function Home() {
             <div className='home-solution-card'>
               <div className='home-solution-card-img'>
                 <i class='fa-solid fa-truck-medical'></i>
-              </div>
-              <h3>EMERGENCY HELP</h3>
+              </div><br />
+              <h3>EMERGENCY HELP</h3><br />
               <p>
                 Schedule an appointment with the best Pediatrician doctors,
                 specialized in Pediatrics, New Born, Natural Breast Feeding and
