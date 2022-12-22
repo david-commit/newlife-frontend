@@ -1,6 +1,7 @@
 .top-bar-container {
   background-color: #1d3e68;
   width: 100%;
+  color: white;
 }
 .topbar {
   display: flex;
@@ -14,4 +15,16 @@
  padding: 0 6px;
  cursor: pointer;
  color: white;
+}
+.menubar-container {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+
+
+.menubar-nav a{
+  font-size: 40px;
 }
