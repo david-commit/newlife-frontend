@@ -1,5 +1,7 @@
-import React from 'react'
-import "./Footer.css"
+import React from 'react';
+import './Footer.css';
+import { NavLink } from 'react-router-dom';
+import logo from '../../img/logo.png';
 
 function Footer() {
   return (
@@ -18,61 +20,53 @@ function Footer() {
             <button id='sub'>Subscribe</button>
           </div>
         </div>
-
-        <div class='footer2'>
-          <div id='section1'>
-            <h1>PataBoda</h1>
-            <p>
-              PataBoda is one of the leading asset financing <br /> companies in
-              Kenya, providing boda boda <br />
-              loans to thousands of aspiring business <br /> owners every day!
-            </p>
-            <h3>© PataBoda 2022</h3>
-          </div>
-          <div id='section2'>
-            <h2>Counties</h2>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Nairobi</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Mombasa</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Kisumu</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Kiambu</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Taita Taveta</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Kajiado</a>
-            </p>
-          </div>
-          <div id='section2'>
-            <h2>Company</h2>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Home</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Products</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Contact Us</a>
-            </p>
-          </div>
-          <div id='section2'>
-            <h2>Others</h2>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>FAQs</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Terms of Service</a>
-            </p>
-            <p>
-              <a href='https://newlife-frontend.vercel.app/'>Privacy and Policy</a>
-            </p>
+        <div className='footer-2-container'>
+          <div class='footer2'>
+            <div id='section1'>
+              <NavLink to='/'>
+                <div className='logo'>
+                  <img src={logo} alt='Logo' />
+                  <div className='logo-txt'>
+                    <p id='logo-txt1'>NewLife Hospital</p>
+                    <p id='logo-txt2'>Dedication beyond measure.</p>
+                  </div>
+                </div>
+              </NavLink>
+              <br />
+              <p style={{ width: '75%' }}>
+                A community in which all people achieve their full potential for
+                health and well-being across the lifespan. We work to be trusted
+                by patients, a valued partner in the community, and creators of
+                positive change.
+              </p><br />
+              <h3>© NewLife Hospital 2022</h3>
+              <br />
+              <br />
+            </div>
+            <div id='section2'>
+              <h1>Our Location</h1>
+              <p>
+                3rd floor, Nextlane Plaza <br /> - Ngong Road Nairobi, <br />{' '}
+                Kenya
+              </p>
+              <br />
+              <p>
+                Email: <br /> admin@newlife.org
+              </p>
+            </div>
+            <div id='section2'>
+              <h1>Working Time</h1>
+              <p>Mon - Wed: 9:00 AM - 7:00 PM</p>
+              <p>Thur: 9:00 AM - 6:30 PM</p>
+              <p> Fri: 9:00 AM - 6:00 PM </p>
+              <p>Sat - Sun: Closed</p>
+            </div>
+            <div id='section2'>
+              <h1>Emergency Cases</h1>
+              <p>Toll Free: 0812 345 678</p>
+              <p>Saf: +254 712 345 678</p>
+              <p>Air: +254 733 123 456</p>
+            </div>
           </div>
         </div>
       </div>
@@ -80,4 +74,4 @@ function Footer() {
   );
 }
 
-export default Footer
+export default Footer;

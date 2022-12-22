@@ -1,5 +1,7 @@
-.footercontainer {
+footer {
   width: 100%;
+}
+.footercontainer {
   background-color: #1d3e68;
   margin-top: 80px;
 }
@@ -24,44 +26,68 @@
   border: 1px solid white;
 }
 #sub {
-  padding: 6px 24px;
+  padding: 8px 24px;
   color: white;
   border: 1px solid white;
   background-color: transparent;
-  font-size: 15px;
   cursor: pointer;
 }
-.footer2 {
-  height: 250px;
-  width: 100% fixed;
+.footer-2-container {
+  width: 100%;
   background-color: black;
+}
+.footer2 {
+  height: 350px auto;
+  width: 85%;
   color: white;
-  padding-top: 58px;
-  padding-left: 58px;
-  padding-bottom: 58px;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  padding-top: 50px;
 }
+/*  */
+.logo {
+  display: flex;
+  align-items: center;
+  color: #1d3e68;
+}
+.logo img {
+  width: 100px;
+  padding-right: 10px;
+}
+.logo-txt {
+  color: #1d3e68;
+}
+#logo-txt1 {
+  color: #1d3e68;
+  font-size: 36px;
+  font-weight: 600;
+}
+#logo-txt2 {
+  font-size: 23.5px;
+  font-style: italic;
+  color: #1d3e68;
+}
+/*  */
 #section1 {
-  width: 35%;
+  width: 45%;
 }
-#section1 p {
-  color: white;
-  margin: 18px 0 32px 0;
+#section1 a {
+  text-decoration: none;
+  color: #1d3e68;
 }
 #section1 h1,
 h3 {
   color: #1d3e68;
 }
-
 #section2 {
+  line-height: 30px;
   width: 20%;
 }
-#section2 h2 {
+#section2 h1 {
   margin-bottom: 18px;
 }
 #section2 p a {
+  line-height: 30px;
   text-decoration: none;
   color: white;
   padding-top: 8px;
