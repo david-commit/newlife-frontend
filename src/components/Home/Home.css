@@ -47,14 +47,14 @@
   justify-content: space-between;
 }
 .home-welcome-banner-text {
- width: 45%;
- display: flex;
- flex-direction: column;
- justify-content: center;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .home-welcome-banner-text img {
- width: 150px;
- color: #1d3e68;
+  width: 150px;
+  color: #1d3e68;
 }
 .home-welcome-banner-text h3 {
   color: #1d3e68;
@@ -70,47 +70,91 @@
 /* == HOME WELCOME BANNER == */
 /* == HOME SOLUTION == */
 .home-solutions-container {
- width: 100%;
- background-color: #F8F9FB;
+  width: 100%;
+  background-color: #f8f9fb;
 }
 .home-solution {
- width: 80%;
- display: flex;
- flex-direction: column;
- margin: 100px auto;
- padding: 80px 0;
- text-align: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 100px auto;
+  padding: 80px 0;
+  text-align: center;
 }
 .home-solution h1 {
- font-size: 36px;
+  font-size: 36px;
 }
 .home-solution-cards {
- display: flex;
- justify-content: space-evenly;
- margin-top: 60px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
 }
 .home-solution-card {
- width: 20%;
- background-color: white;
- padding: 40px;
- border-radius: 15px;
- box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  width: 20%;
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .home-solution-card h3 {
- color: #1d3e68;
+  color: #1d3e68;
 }
 .home-solution-card-img {
- background-color: #F8F9FB;
- width: 100px;
- height: 100px;
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- margin: auto;
+  background-color: #f8f9fb;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 .home-solution-card-img i {
- font-size: 40px;
- color: #1d3e68;
+  font-size: 40px;
+  color: #1d3e68;
 }
+/* == HOME PRACTICES == */
+.home-practices-container {
+  width: 85%;
+  height: 600px;
+  display: flex;
+  margin: 0 auto 100px auto;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('../../img/black-female-doctor-focused.png');
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: right;
+  overflow: hidden;
+  background-size: 75%;
+}
+.home-practices {
+  width: 45%;
+}
+.home-practices p {
+   font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+.home-practices h1 {
+  font-size: 40px;
+}
+.home-practices button {
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  color: white;
+  padding: 6px 12px;
+  font-size: 20px;
+}
+.home-practices button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
+}
+
+
+/* == HOME PRACTICES == */
 /* ==== HOME COMPONENT ==== */

@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import welcomeImg from '../../img/dark-female-doctor.png';
 import signature from '../../img/signature.png';
+import testImg1 from '../../img/rev-img-1.jpeg';
+import testImg2 from '../../img/rev-img-2.jpeg';
+import testImg3 from '../../img/rev-img-3.jpg';
 
 function Home() {
   return (
@@ -128,25 +131,62 @@ function Home() {
             delivery is increased, medical errors are minimized.
           </p>
           <br />
+
+          <h3>Highest Quality Care</h3>
           <p>
-            <h3>Highest Quality Care</h3>
-            <p>
-              <span style={{ color: '#1d3e68' }}>&#12299;</span>Patients have
-              the opportunity to book appointments with a practitioner of their
-              choice
-            </p>
-            <p>
-              <span style={{ color: '#1d3e68' }}>&#12299;</span>E-commerce
-              platform that provides basic medical supplies
-            </p>
-            <p>
-              <span style={{ color: '#1d3e68' }}>&#12299;</span>We guarantee
-              patient confidentiality by keeping all records private
-            </p>
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>Patients have the
+            opportunity to book appointments with a practitioner of their choice
+            <br />
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>E-commerce
+            platform that provides basic medical supplies
+            <br />
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>We guarantee
+            patient confidentiality by keeping all records private
           </p>
-          <Link to="/appointments">
+          <br />
+          <Link to='/appointments'>
             <button type='button'>Book Appointment</button>
           </Link>
+        </div>
+      </div>
+      <div className='home-testimnials-container'>
+        <div className='home-testimonials'>
+          <h1>What Our Patients Say</h1>
+          <br />
+          <p>
+            Every month, NewLife Hospital receives masses of kind comments,
+            letters and e-mails from patients about the positive experience they
+            have: Below is a selection of these comments:
+          </p>
+        </div>
+        <div className='home-testimonial-cards'>
+          <div className='home-testimonial-card'>
+            <img src={testImg1} alt='Test' />
+            <p>
+              Kind, friendly staff from the minute we walked in, felt very safe
+              in their hands as nurses were always on hand and checking on me.
+            </p>
+            <h4>OSCAR BARAKA</h4>
+            <h5>PHOTOGRAPHER</h5>
+          </div>
+          <div className='home-testimonial-card'>
+            <img src={testImg3} alt='Test' />
+            <p>
+              Kind, friendly staff from the minute we walked in, felt very safe
+              in their hands as nurses were always on hand and checking on me.
+            </p>
+            <h4>MARGARET WAKESHO</h4>
+            <h5>GRAPHIC DESIGNER</h5>
+          </div>
+          <div className='home-testimonial-card'>
+            <img src={testImg2} alt='Test' />
+            <p>
+              Kind, friendly staff from the minute we walked in, felt very safe
+              in their hands as nurses were always on hand and checking on me.
+            </p>
+            <h4>WALTER YONGO</h4>
+            <h5>AI EXPERT</h5>
+          </div>
         </div>
       </div>
     </div>
