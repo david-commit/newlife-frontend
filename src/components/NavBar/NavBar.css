@@ -1,0 +1,17 @@
+.top-bar-container {
+  background-color: #1d3e68;
+  width: 100%;
+}
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  height: 35px;
+  align-items: center;
+  margin: auto;
+}
+.topbar2 i {
+ padding: 0 6px;
+ cursor: pointer;
+ color: white;
+}
