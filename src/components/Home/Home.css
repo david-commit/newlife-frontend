@@ -7,7 +7,7 @@
   height: 700px;
   background-image: url('../../img/banner-img-full.jpg');
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right center;
   background-size: cover;
 }
 .home-banner-container-text {
@@ -68,4 +68,13 @@
   font-weight: 500;
 }
 /* == HOME WELCOME BANNER == */
+/* == HOME SOLUTION == */
+.home-solution {
+ display: flex;
+ flex-direction: column;
+ margin: 100px auto;
+}
+.home-solution-card {
+ width: 30%;
+}
 /* ==== HOME COMPONENT ==== */
