@@ -18,6 +18,9 @@
   cursor: pointer;
   color: white;
 }
+.topbar2 i:hover {
+  color: #00a3c8;
+}
 /* == TOP BAR == */
 /* == NAV BAR == */
 .menubar-main-container {
