@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './AboutUs.css';
 
 function AboutUs() {
   return (
-    <div>AboutUs</div>
-  )
+    <div className='about-main-container'>
+      <div className='about-title-banner'>About Us</div>
+    </div>
+  );
 }
 
-export default AboutUs
+export default AboutUs;
