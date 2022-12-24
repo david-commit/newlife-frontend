@@ -1,3 +1,5 @@
+/* ==== ABOUT COMPONENT ==== */
+/* == TITLE BANNER == */
 .about-main-container {
   width: 100%;
 }
@@ -16,6 +18,8 @@
   font-weight: 700;
   padding-left: 400px;
 }
+/* == TITLE BANNER == */
+/* == FLOATING BANNER == */
 .about-floating-banner {
   width: 85%;
   height: 200px;
@@ -50,3 +54,28 @@
   color: #6b6b6b;
   font-weight: 300;
 }
+/* == FLOATING BANNER == */
+/* == DEPARTMENTS == */
+.about-departments-main-container {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
+}
+.about-departments-container {
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  border: 1px blue dashed;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-department-card {
+  display: flex;
+  width: 40%;
+  border: 1px red dashed;
+}
+/* == DEPARTMENTS == */
+/* ==== ABOUT COMPONENT ==== */

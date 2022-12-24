@@ -33,6 +33,92 @@ function AboutUs() {
           </p>
         </div>
       </div>
+      <h1>Our Departments</h1>
+      <div className='about-departments-main-container'>
+        <div className='about-departments-container'>
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>{' '}
+          <div className='about-department-card'>
+            <i class='fa-solid fa-hands-holding-child'></i>
+            <section className='about-department-card-txt'>
+              <h4>Pediatrics</h4>
+              <p>
+                Do you know of a doctor who can provide you with care? NewLife
+                Hospital will offer you the best.
+              </p>
+            </section>
+          </div>
+        </div>
+        <div className='working'>WORKING</div>
+      </div>
     </div>
   );
 }
