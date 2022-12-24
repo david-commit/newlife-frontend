@@ -1,10 +1,10 @@
 /* LIGHT BLUE COLOR > #00a3c8 */
 .signup-main-container {
-  width: 70%;
+  width: 75%;
   display: flex;
   margin: 100px auto;
   justify-content: space-evenly;
-  height: 850px;
+  height: 900px;
   overflow: hidden;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
@@ -13,7 +13,7 @@
   width: 50%;
   background-color: #1d3e68;
   color: white;
-  height: 850px;
+  height: 900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@
   background-image: url('../../img/Pexels-Photo-by-Karolina-Grabowska.png');
   background-repeat: no-repeat;
   background-position: center;
-  zoom: 0.9;
+  /* zoom: 0.9; */
 }
 .signup-form {
   height: fit-content;
@@ -59,4 +59,10 @@
   border: 1px solid white;
   color: white;
   transition: all 0.35s ease-in-out;
+}
+.signup-error-display {
+ width: 75%;
+ background-color: rgba(52, 52, 52, 0.8);
+ border-radius: 10px;
+ padding: 10px;
 }
