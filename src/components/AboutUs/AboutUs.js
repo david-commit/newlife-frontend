@@ -33,13 +33,14 @@ function AboutUs() {
           </p>
         </div>
       </div>
-      <h1>Our Departments</h1>
+          <h1 id='department-title'>Our Departments</h1>
       <div className='about-departments-main-container'>
+        
         <div className='about-departments-container'>
           <div className='about-department-card'>
             <i class='fa-solid fa-hands-holding-child'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Pediatrics</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -49,7 +50,7 @@ function AboutUs() {
           <div className='about-department-card'>
             <i class='fa-solid fa-hands-holding-child'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Neurology</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -57,9 +58,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-hand-holding-droplet'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Haematology</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -67,9 +68,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-heart-pulse'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Cardiology</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -77,9 +78,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-lungs'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>X-Ray Diagnostic</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -87,9 +88,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-user-doctor'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Consultation</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -97,9 +98,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-microscope'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Laboratory Services</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -107,9 +108,9 @@ function AboutUs() {
             </section>
           </div>{' '}
           <div className='about-department-card'>
-            <i class='fa-solid fa-hands-holding-child'></i>
+            <i class='fa-solid fa-truck-medical'></i>
             <section className='about-department-card-txt'>
-              <h4>Pediatrics</h4>
+              <h3>Emergency Services</h3>
               <p>
                 Do you know of a doctor who can provide you with care? NewLife
                 Hospital will offer you the best.
@@ -117,7 +118,34 @@ function AboutUs() {
             </section>
           </div>
         </div>
-        <div className='working'>WORKING</div>
+        <div className='about-working'>
+          <h2>Opening Hours:</h2>
+          <p>
+            Do you know of a doctor who can provide you with care? NewLife
+            Hospital will offer you the best.
+          </p>
+          <br />
+          <p className='weekdays'>
+            <span>Mon – Wed:</span> 9:00 AM - 7:00 PM{' '}
+          </p>
+          <p className='weekdays'>
+            <span>Thursday:</span> 9:00 AM - 6:30 PM{' '}
+          </p>
+          <p className='weekdays'>
+            <span>Friday:</span> 9:00 AM - 6:00 PM{' '}
+          </p>
+          <p className='weekdays'>
+            <span>Sun - Sun:</span> CLOSED{' '}
+          </p>
+          <br />
+          <h4>Need a personal health plan?</h4>
+          <p>
+            We offer you the best. <br />
+            Give us a call: <br />
+            Toll Free: 0812 345 678 <br /> Saf: +254 712 345 678 <br /> Air:
+            +254 733 123 456
+          </p>
+        </div>
       </div>
     </div>
   );

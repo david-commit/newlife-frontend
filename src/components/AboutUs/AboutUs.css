@@ -56,8 +56,14 @@
 }
 /* == FLOATING BANNER == */
 /* == DEPARTMENTS == */
+#department-title {
+  color: #1d3e68;
+  text-align: center;
+  margin: 120px auto 50px;
+  font-size: 36px;
+}
 .about-departments-main-container {
-  width: 85%;
+  width: 78%;
   display: flex;
   align-items: center;
   margin: auto;
@@ -66,16 +72,49 @@
 .about-departments-container {
   display: flex;
   flex-direction: row;
-  width: 60%;
-  border: 1px blue dashed;
+  width: 70%;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 .about-department-card {
   display: flex;
-  width: 40%;
-  border: 1px red dashed;
+  width: 48%;
+  height: 130px;
+  align-items: center;
+  background-color: #f8f9fb;
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.about-department-card i {
+  zoom: 3;
+  padding: 0 10px;
+  color: #00a3c8;
+}
+.about-department-card-txt {
+  padding: 10px;
+}
+.about-department-card-txt h3 {
+  color: #1d3e68;
+  padding-bottom: 4px;
+}
+.about-department-card-txt p {
+  color: #6b6b6b;
+  font-size: 14px;
+}
+.about-working {
+  background-color: #00a3c8;
+  color: white;
+  width: 25%;
+  padding: 40px;
+  border-radius: 10px;
+}
+.weekdays {
+  font-weight: 600;
+}
+.about-working > p > span {
+  font-weight: 300;
 }
 /* == DEPARTMENTS == */
 /* ==== ABOUT COMPONENT ==== */
