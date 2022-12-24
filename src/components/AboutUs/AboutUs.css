@@ -1,3 +1,5 @@
+/* ==== ABOUT COMPONENT ==== */
+/* == TITLE BANNER == */
 .about-main-container {
   width: 100%;
 }
@@ -12,10 +14,191 @@
   color: white;
   display: flex;
   align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   text-shadow: 1px 1px 2px black;
   font-weight: 700;
   padding-left: 400px;
 }
+/* == TITLE BANNER == */
+/* == FLOATING BANNER == */
+.about-floating-banner {
+  width: 85%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  margin: -30px auto 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  justify-content: space-evenly;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.about-floating-banner-cell {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+}
+.about-hr {
+  border: none;
+  border-left: 1px dashed lightgray;
+  height: 150px;
+  width: 1px;
+}
+.about-floating-banner-cell h4 {
+  color: #00a3c8;
+  padding-bottom: 10px;
+}
+.about-floating-banner-cell h2 {
+  color: #1d3e68;
+  padding-bottom: 10px;
+}
+.about-floating-banner-cell p {
+  color: #6b6b6b;
+  font-weight: 300;
+}
+/* == FLOATING BANNER == */
+/* == DEPARTMENTS == */
+#department-title {
+  color: #1d3e68;
+  text-align: center;
+  margin: 120px auto 50px;
+  font-size: 36px;
+}
+.about-departments-main-container {
+  width: 78%;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
+}
+.about-departments-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-department-card {
+  display: flex;
+  width: 48%;
+  height: 130px;
+  align-items: center;
+  background-color: #f8f9fb;
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.about-department-card i {
+  zoom: 3;
+  padding: 0 10px;
+  color: #00a3c8;
+}
+.about-department-card-txt {
+  padding: 10px;
+}
+.about-department-card-txt h3 {
+  color: #1d3e68;
+  padding-bottom: 4px;
+}
+.about-department-card-txt p {
+  color: #6b6b6b;
+  font-size: 14px;
+}
+.about-working {
+  background-color: #00a3c8;
+  color: white;
+  width: 25%;
+  padding: 40px;
+  border-radius: 10px;
+}
+.weekdays {
+  font-weight: 600;
+}
+.about-working > p > span {
+  font-weight: 300;
+}
+/* == DEPARTMENTS == */
+/* == ABOUT BEST PRACTICES == */
+.about-practices-container {
+  width: 80%;
+  height: 600px;
+  display: flex;
+  margin: 130px auto 150px auto;
+  justify-content: space-between;
+  align-items: center;
+  height: 700px;
+}
+.about-practices {
+  width: 45%;
+}
+.about-practices p {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+.about-practices h1 {
+  font-size: 40px;
+}
+.about-practices button {
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  color: white;
+  padding: 6px 12px;
+  font-size: 20px;
+}
+.about-practices button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
+}
+.about-practices-container img {
+  width: 600px;
+  margin-right: 100px;
+}
+/* == ABOUT BEST PRACTICES == */
+/* == OUR TEAM == */
+.team-main-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+.team-main-container h1 {
+  font-size: 40px;
+  color: #1d3e68;
+}
+.team-container {
+padding: 35px 0;
+width: 90%;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.team-card {
+  width: 26%;
+  background-color: #f8f9fb ;
+  margin: 30px 0 50px;
+  padding: 60px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.team-card img {
+width: 100%;
+padding-bottom: 20px;
+border-radius: 50%;
+}
+.team-card h2 {
+  color: #1d3e68;
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+.team-card p {
+  font-size: 20px;
+}
+/* == OUR TEAM == */
+/* ==== ABOUT COMPONENT ==== */

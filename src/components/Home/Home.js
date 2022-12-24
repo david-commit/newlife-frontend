@@ -23,7 +23,7 @@ function Home() {
             positive change.
           </p>
           <br />
-          <Link to='/aboutus'>
+          <Link to='/about'>
             <button type='button'>About Us</button>
           </Link>
         </div>
@@ -161,7 +161,8 @@ function Home() {
         </div>
         <div className='home-testimonial-cards'>
           <div className='home-testimonial-card'>
-            <img src={testImg1} alt='Test' /><br />
+            <img src={testImg1} alt='Test' />
+            <br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.
@@ -170,7 +171,8 @@ function Home() {
             <h5>PHOTOGRAPHER</h5>
           </div>
           <div className='home-testimonial-card'>
-            <img src={testImg3} alt='Test' /><br />
+            <img src={testImg3} alt='Test' />
+            <br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.
@@ -179,7 +181,8 @@ function Home() {
             <h5>GRAPHIC DESIGNER</h5>
           </div>
           <div className='home-testimonial-card'>
-            <img src={testImg2} alt='Test' /><br />
+            <img src={testImg2} alt='Test' />
+            <br />
             <p>
               Kind, friendly staff from the minute we walked in, felt very safe
               in their hands as nurses were always on hand and checking on me.

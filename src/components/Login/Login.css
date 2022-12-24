@@ -1,0 +1,53 @@
+.login-main-container {
+  width: 70%;
+  display: flex;
+  margin: 100px auto;
+  justify-content: space-evenly;
+  height: 750px;
+  overflow: hidden;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.login-form-container {
+  width: 50%;
+  background-color: #1d3e68;
+  color: white;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* text-align: left; */
+}
+.login-img {
+  width: 50%;
+  background-image: url('../../img/Pexels-Photo-by-Karolina-Grabowska.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  zoom: 0.9;
+}
+.login-form {
+  border: 1px dashed red;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.login-form input,
+button {
+  border-radius: 150px;
+  padding: 10px;
+  border: 1px white solid;
+  margin: 10px 0;
+  color: #1d3e68;
+  font-size: 16px;
+}
+.login-form button {
+  cursor: pointer;
+}
+.login-form button:hover {
+  cursor: pointer;
+  background-color: #1d3e68;
+  border: 1px solid white;
+  color: white;
+}

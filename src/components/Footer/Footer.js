@@ -15,10 +15,10 @@ function Footer() {
               NewLife Hospital.
             </p>
           </div>
-          <div class='newsletter'>
+          <form class='newsletter'>
             <input id='email' placeholder='Enter your email address'></input>
-            <button id='sub'>Subscribe</button>
-          </div>
+            <button type='submit' id='sub'>Subscribe</button>
+          </form>
         </div>
         <div className='footer-2-container'>
           <div class='footer2'>
