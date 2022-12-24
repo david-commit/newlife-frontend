@@ -32,10 +32,9 @@
   width: 50%;
 }
 .login-form p {
-padding-bottom: 10px;
+  padding-bottom: 10px;
 }
-.login-form input,
-button {
+.login-form input {
   border-radius: 150px;
   padding: 10px;
   border: 1px white solid;
@@ -45,6 +44,14 @@ button {
 }
 .login-form button {
   cursor: pointer;
+  border-radius: 150px;
+  padding: 10px;
+  border: 1px white solid;
+  margin: 10px 0;
+  color: white;
+  font-size: 16px;
+    background-color: #00a3c8;
+
 }
 .login-form button:hover {
   cursor: pointer;
