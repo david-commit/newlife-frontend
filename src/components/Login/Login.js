@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 function Login() {
@@ -24,7 +25,16 @@ function Login() {
             &nbsp; Log in as practitioner
           </span>
           <button type='submit'>Log In</button>
-        </form>
+        </form><br />
+        <div className='already'>
+          <hr />
+          <p>
+            Don't have an account? &nbsp;
+            <Link to={`/signup`}>
+              <button type='button'>Sign Up</button>
+            </Link>
+          </p>
+        </div>
       </div>
       <div className='login-img'></div>
     </div>

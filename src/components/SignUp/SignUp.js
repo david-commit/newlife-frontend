@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SignUp.css';
+import { Link } from 'react-router-dom';
 
 function SignUp() {
   const [firstName, setFirstName] = useState('');
@@ -12,9 +13,11 @@ function SignUp() {
   const [weight, setWeight] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
+  const [errors, setErrors] = useState("")
 
   function handleSignupSubmit(e) {
     e.preventDefault();
+    setErrors([])
     fetch(`/`, {
       method: 'POST',
       mode: 'cors',
@@ -39,7 +42,7 @@ function SignUp() {
   return (
     <div className='signup-main-container'>
       <div className='signup-form-container'>
-        <form className='signup-form'>
+        <form className='signup-form' onSubmit={handleSignupSubmit}>
           <h1>Signup</h1>
           <p>Register as a patient</p>
           <input
@@ -102,7 +105,16 @@ function SignUp() {
             onChange={(e) => setCPassword(e.target.value)}
           />
           <button type='submit'>Log In</button>
-        </form>
+        </form><br />
+        <div className='already'>
+          <hr />
+          <p>
+            Already have an account? &nbsp;
+            <Link to={`/login`}>
+              <button type='button'>Log In</button>
+            </Link>
+          </p>
+        </div>
       </div>
       <div className='signup-img'></div>
     </div>
