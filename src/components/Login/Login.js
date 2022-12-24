@@ -15,7 +15,14 @@ function Login() {
             id='password'
             placeholder='Password'
           />
-          <input type="radio" name="" id="" />
+          <span id='practitioner-check'>
+            <input
+              type='checkbox'
+              name='practitioner-checkbox'
+              id='practitioner-checkbox'
+            />
+            &nbsp; Log in as practitioner
+          </span>
           <button type='submit'>Log In</button>
         </form>
       </div>
