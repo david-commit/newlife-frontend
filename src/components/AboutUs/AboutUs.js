@@ -2,6 +2,7 @@ import React from 'react';
 import './AboutUs.css';
 import { Link } from 'react-router-dom';
 import AboutPracImg from '../../img/black-male-doc-with-tab.png'
+import teamImg1 from '../../img/black-female-nurse-smiling-face.png';
 
 function AboutUs() {
   return (
@@ -180,8 +181,44 @@ function AboutUs() {
             <button type='button'>Book Appointment</button>
           </Link>
         </div>
-        <img src={AboutPracImg} alt="" />
+        <img src={AboutPracImg} alt='' />
       </div>
+
+      {/* OUR TEAM */}
+      <div className='team-main-container'>
+        <h1>Meet The Team</h1>
+        <div className='team-container'>
+          {/*  */}
+          <div className='team-card'>
+            <img src={teamImg1} alt='' />
+            <h2>Dr. Grace Laura</h2>
+            <p>Chief Medical Officer</p>
+          </div>
+          <div className='team-card'>
+            <img src={teamImg1} alt='' />
+            <h2>Dr. Grace Laura</h2>
+            <p>Chief Medical Officer</p>
+          </div>
+          <div className='team-card'>
+            <img src={teamImg1} alt='' />
+            <h2>Dr. Grace Laura</h2>
+            <p>Chief Medical Officer</p>
+          </div>
+          <div className='team-card'>
+            <img src={teamImg1} alt='' />
+            <h2>Dr. Grace Laura</h2>
+            <p>Chief Medical Officer</p>
+          </div>{' '}
+          <div className='team-card'>
+            <img src={teamImg1} alt='' />
+            <h2>Dr. Grace Laura</h2>
+            <p>Chief Medical Officer</p>
+          </div>
+          {/*  */}
+        </div>
+      </div>
+
+      {/* OUR TEAM */}
     </div>
   );
 }

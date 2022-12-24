@@ -122,15 +122,10 @@
   width: 80%;
   height: 600px;
   display: flex;
-  margin: 130px auto 100px auto;
+  margin: 130px auto 150px auto;
   justify-content: space-between;
   align-items: center;
-  /* background-image: url('../../img/black-male-doc-with-tab.png'); */
   height: 700px;
-  background-repeat: no-repeat;
-  background-position: right;
-  overflow: hidden;
-  background-size: 35%;
 }
 .about-practices {
   width: 45%;
@@ -162,4 +157,48 @@
   margin-right: 100px;
 }
 /* == ABOUT BEST PRACTICES == */
+/* == OUR TEAM == */
+.team-main-container {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+}
+.team-main-container h1 {
+  font-size: 40px;
+  color: #1d3e68;
+}
+.team-container {
+padding: 35px 0;
+width: 90%;
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: space-around;
+}
+.team-card {
+  width: 26%;
+  background-color: #f8f9fb ;
+  margin: 30px 0 50px;
+  padding: 60px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.team-card img {
+width: 100%;
+padding-bottom: 20px;
+border-radius: 50%;
+}
+.team-card h2 {
+  color: #1d3e68;
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+.team-card p {
+  font-size: 20px;
+}
+/* == OUR TEAM == */
 /* ==== ABOUT COMPONENT ==== */
