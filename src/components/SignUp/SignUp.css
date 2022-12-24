@@ -60,3 +60,9 @@
   color: white;
   transition: all 0.35s ease-in-out;
 }
+.signup-error-display {
+ width: 75%;
+ background-color: rgba(52, 52, 52, 0.8);
+ border-radius: 10px;
+ padding: 10px;
+}

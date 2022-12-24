@@ -13,11 +13,12 @@ function SignUp() {
   const [weight, setWeight] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
-  const [errors, setErrors] = useState("")
+  const [errors, setErrors] = useState('');
+  // const errors = [1]
 
   function handleSignupSubmit(e) {
     e.preventDefault();
-    setErrors([])
+    setErrors([]);
     fetch(`/`, {
       method: 'POST',
       mode: 'cors',
@@ -34,7 +35,7 @@ function SignUp() {
         height,
         weight,
         password,
-        password_confirmation: cPassword
+        password_confirmation: cPassword,
       }),
     });
   }
@@ -105,16 +106,32 @@ function SignUp() {
             onChange={(e) => setCPassword(e.target.value)}
           />
           <button type='submit'>Log In</button>
-        </form><br />
-        <div className='already'>
-          <hr />
-          <p>
-            Already have an account? &nbsp;
-            <Link to={`/login`}>
-              <button type='button'>Log In</button>
-            </Link>
-          </p>
-        </div>
+        </form>
+        <br />
+        {errors ? (
+          <div className="signup-error-display">
+
+          {errors.map((error) => {
+            console.log(error);
+            return (
+              <li key={error} style={{ color: 'red' }}>
+                {error}
+              </li>
+              
+              )
+            })}
+            </div>
+        ) : (
+          <div className='already'>
+            <hr />
+            <p>
+              Already have an account? &nbsp;
+              <Link to={`/login`}>
+                <button type='button'>Log In</button>
+              </Link>
+            </p>
+          </div>
+        )}
       </div>
       <div className='signup-img'></div>
     </div>
