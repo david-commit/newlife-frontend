@@ -47,7 +47,7 @@ function NavBar() {
           </NavLink>
           <nav className='menubar-nav'>
             <NavLink to='/'>Home</NavLink>
-            <NavLink to='/aboutus'>About Us</NavLink>
+            <NavLink to='/about'>About Us</NavLink>
             {user ? (
               <>
                 <NavLink to='/appointments'>Appointments</NavLink>

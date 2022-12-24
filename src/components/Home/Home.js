@@ -23,7 +23,7 @@ function Home() {
             positive change.
           </p>
           <br />
-          <Link to='/aboutus'>
+          <Link to='/about'>
             <button type='button'>About Us</button>
           </Link>
         </div>
