@@ -1,5 +1,7 @@
 import React from 'react';
 import './AboutUs.css';
+import { Link } from 'react-router-dom';
+import AboutPracImg from '../../img/black-male-doc-with-tab.png'
 
 function AboutUs() {
   return (
@@ -33,9 +35,8 @@ function AboutUs() {
           </p>
         </div>
       </div>
-          <h1 id='department-title'>Our Departments</h1>
+      <h1 id='department-title'>Our Departments</h1>
       <div className='about-departments-main-container'>
-        
         <div className='about-departments-container'>
           <div className='about-department-card'>
             <i class='fa-solid fa-hands-holding-child'></i>
@@ -146,6 +147,40 @@ function AboutUs() {
             +254 733 123 456
           </p>
         </div>
+      </div>
+      {/* BEST PRACTICES */}
+      <div className='about-practices-container'>
+        <div className='about-practices'>
+          <h3>BEST PRACTICES</h3>
+          <br />
+          <h1>Facility with Innovative Approach to Treatment</h1>
+          <br />
+          <p>
+            NewLife Hospital App simplifies medical processes, but it also holds
+            the potential to improve the patient experience significantly.
+            Health care app development brings a myriad of advantages to the
+            forefront. Health data accessibility is improved, remote health
+            delivery is increased, medical errors are minimized.
+          </p>
+          <br />
+
+          <h3>Highest Quality Care</h3>
+          <p>
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>Patients have the
+            opportunity to book appointments with a practitioner of their choice
+            <br />
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>E-commerce
+            platform that provides basic medical supplies
+            <br />
+            <span style={{ color: '#1d3e68' }}>&#12299;</span>We guarantee
+            patient confidentiality by keeping all records private
+          </p>
+          <br />
+          <Link to='/appointments'>
+            <button type='button'>Book Appointment</button>
+          </Link>
+        </div>
+        <img src={AboutPracImg} alt="" />
       </div>
     </div>
   );

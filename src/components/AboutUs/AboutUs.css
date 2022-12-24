@@ -117,4 +117,49 @@
   font-weight: 300;
 }
 /* == DEPARTMENTS == */
+/* == ABOUT BEST PRACTICES == */
+.about-practices-container {
+  width: 80%;
+  height: 600px;
+  display: flex;
+  margin: 130px auto 100px auto;
+  justify-content: space-between;
+  align-items: center;
+  /* background-image: url('../../img/black-male-doc-with-tab.png'); */
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: right;
+  overflow: hidden;
+  background-size: 35%;
+}
+.about-practices {
+  width: 45%;
+}
+.about-practices p {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+.about-practices h1 {
+  font-size: 40px;
+}
+.about-practices button {
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  color: white;
+  padding: 6px 12px;
+  font-size: 20px;
+}
+.about-practices button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
+}
+.about-practices-container img {
+  width: 600px;
+  margin-right: 100px;
+}
+/* == ABOUT BEST PRACTICES == */
 /* ==== ABOUT COMPONENT ==== */
