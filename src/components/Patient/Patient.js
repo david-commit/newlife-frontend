@@ -7,7 +7,7 @@ function Patient() {
     <div className='patient-main-container'>
       <PatientSidebar />
       <div className='patient-details-dash-section'>
-        <h1>Hi name,</h1>
+        <h1>Hi Marcy,</h1>
         <p>See your personal details below</p>
         <br />
         <div className='patient-details-section'>
@@ -49,6 +49,11 @@ function Patient() {
         <div className='patient-details-notification'>
           <h4>Upcomming appointment (in 2hrs)</h4>
           <p>Dr. Grace Laura (Psychologist)</p>
+          <hr />
+        </div>
+        <div className='patient-details-notification'>
+          <h4>Upcomming appointment (in 3hrs)</h4>
+          <p>Dr. Faith Ondiege (Nutritionist)</p>
           <hr />
         </div>
         <div className='patient-details-notification'>

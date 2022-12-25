@@ -8,7 +8,6 @@
   height: 70vh;
 }
 .patient-details-dash-section {
- border: 1px dashed red;
  width: 55%;
  padding: 35px;
 }
@@ -29,7 +28,6 @@ margin-bottom: 10px;
  font-weight: 700;
 }
 .patient-details-notification-section {
- border: 1px dashed blue;
  width: 24%;
  height: fit-content;
  padding: 35px 30px;
