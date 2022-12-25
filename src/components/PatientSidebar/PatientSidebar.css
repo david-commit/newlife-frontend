@@ -1,0 +1,33 @@
+.patient-sidebar-nav-container {
+  width: 21%;
+  background-color: #00a3c8;
+}
+.patient-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px;
+}
+.patient-sidebar-nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.patient-sidebar-nav a.active {
+  background-color: #1d3e68;
+}
+.patient-sidebar-nav i {
+ width: 30px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+}
+.patient-details-dash-section {
+ border: 1px dashed red;
+ width: 59%;
+ padding: 35px;
+}
+.patient-details-dash-section:first-child {
+ color: #1d3e68;
+}

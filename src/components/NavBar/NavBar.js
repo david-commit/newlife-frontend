@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
 function NavBar() {
-  const user = false;
+  const user = true;
   return (
     <>
       <div className='top-bar-container'>
@@ -50,9 +50,9 @@ function NavBar() {
             <NavLink to='/about'>About Us</NavLink>
             {user ? (
               <>
-                <NavLink to='/appointments'>Appointments</NavLink>
-                <NavLink to='/book-appointment'>
-                  <button>Book Appointment</button>
+                <NavLink to='/patients/me'>Appointments</NavLink>
+                <NavLink to='/'>
+                  <button>Logout</button>
                 </NavLink>
               </>
             ) : (

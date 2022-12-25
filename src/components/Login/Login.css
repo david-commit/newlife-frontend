@@ -1,5 +1,5 @@
 .login-main-container {
-  width: 70%;
+  width: 75%;
   display: flex;
   margin: 100px auto;
   justify-content: space-evenly;
@@ -23,7 +23,7 @@
   background-image: url('../../img/Pexels-Photo-by-Karolina-Grabowska.png');
   background-repeat: no-repeat;
   background-position: center;
-  zoom: 0.9;
+  /* zoom: 0.9; */
 }
 .login-form {
   height: fit-content;
@@ -83,9 +83,10 @@
   transition: all 0.35s ease-in-out;
 }
 .login-error-display {
- width: 75%;
- background-color: rgba(52, 52, 52, 0.8);
- border-radius: 10px;
- padding: 15px;
- text-align: center;
+  width: 50%;
+  background-color: rgba(52, 52, 52, 0.8);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid red;
 }

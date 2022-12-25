@@ -1,0 +1,10 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.patient-main-container {
+  width: 85%;
+  display: flex;
+  margin: auto;
+  height: 70vh;
+}
+
