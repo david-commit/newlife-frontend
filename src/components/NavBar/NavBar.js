@@ -36,7 +36,7 @@ function NavBar() {
       </div>
       <div className='menubar-main-container'>
         <div className='menubar-container'>
-          <NavLink to='/'>
+          <NavLink exact to='/'>
             <div className='logo'>
               <img src={logo} alt='Logo' />
               <div className='logo-txt'>
@@ -46,21 +46,22 @@ function NavBar() {
             </div>
           </NavLink>
           <nav className='menubar-nav'>
-            <NavLink to='/'>Home</NavLink>
-            <NavLink to='/about'>About Us</NavLink>
+            <NavLink exact to='/'>Home</NavLink>
+            <NavLink exact to='/about'>About Us</NavLink>
             {user ? (
               <>
-                <NavLink to='/patients/me'>Appointments</NavLink>
-                <NavLink to='/'>
+                <NavLink exact to='/patients/me'>Appointments</NavLink>
+                <NavLink exact to="/shop">Shop</NavLink>
+                <NavLink exact to='/'>
                   <button>Logout</button>
                 </NavLink>
               </>
             ) : (
               <>
-                <NavLink to='/login'>
+                <NavLink exact to='/login'>
                   <button>Login</button>
                 </NavLink>
-                <NavLink to='/signup'>
+                <NavLink exact to='/signup'>
                   <button>Sign Up</button>
                 </NavLink>
               </>
