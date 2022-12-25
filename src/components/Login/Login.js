@@ -74,21 +74,23 @@ function Login() {
                   <p key={error} style={{ color: 'red' }}>
                     {error}
                   </p>
-                )
+                );
               })}
             </div>
             <br />
           </>
-        ) : ""}
+        ) : (
+          ''
+        )}
         <div className='already'>
-            <hr />
-            <p>
-              Don't have an account? &nbsp;
-              <Link to={`/signup`}>
-                <button type='button'>Sign Up</button>
-              </Link>
-            </p>
-          </div>
+          <hr />
+          <p>
+            Don't have an account? &nbsp;
+            <Link to={`/signup`}>
+              <button type='button'>Sign Up</button>
+            </Link>
+          </p>
+        </div>
       </div>
       <div className='login-img'></div>
     </div>

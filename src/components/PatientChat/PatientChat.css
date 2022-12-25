@@ -1,0 +1,15 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.patient-chat-container {
+ width: 85%;
+ height: 70vh;
+ display: flex;
+ margin: 0 auto -80px auto;
+}
+.patient-chat {
+ padding: 40px;
+}
+.patient-chat h1 {
+ color: #1d3e68;
+}

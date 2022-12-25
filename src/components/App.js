@@ -1,14 +1,18 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
-import Home from './Home/Home'
-import AboutUs from './AboutUs/AboutUs'
+import Home from './Home/Home';
+import AboutUs from './AboutUs/AboutUs';
 import SignUp from './SignUp/SignUp';
-import Login from './Login/Login'
-import Patient from './Patient/Patient'
-import Practitioner from './Practitioner/Practitioner'
-import Shop from './Shop/Shop'
+import Login from './Login/Login';
+import Patient from './Patient/Patient';
+import Practitioner from './Practitioner/Practitioner';
+import Shop from './Shop/Shop';
 import Footer from './Footer/Footer';
+import PatientCreateAppointment from './PatientCreateAppointment/PatientCreateAppointment';
+import PatientAppointments from './PatientAppointments/PatientAppointments';
+import PatientChat from './PatientChat/PatientChat';
+import PatientReviews from './PatientReviews/PatientReviews';
 
 function App() {
   return (
@@ -23,6 +27,18 @@ function App() {
         </Route>
         <Route exact path='/patients/me'>
           <Patient />
+        </Route>
+        <Route exact path='/patients/me/create-appointment'>
+          <PatientCreateAppointment />
+        </Route>
+        <Route exact path='/patients/me/appointments'>
+          <PatientAppointments />
+        </Route>
+        <Route exact path='/patients/me/chat'>
+          <PatientChat />
+        </Route>
+        <Route exact path='/patients/me/reviews'>
+<PatientReviews />
         </Route>
         <Route exact path='/practitioners/me'>
           <Practitioner />

@@ -1,0 +1,22 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.shop-main-container {
+ width: 85%;
+ display: flex;
+ margin: auto;
+ flex-direction: column;
+ /* height: 70vh; */
+}
+.shop-cards {
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.shop-card {
+ border: 1px solid #00a3c8;
+ width: 23%;
+ margin: 30px 0;
+ height: 300px;
+ border-radius: 10px;
+}

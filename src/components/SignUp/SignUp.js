@@ -14,7 +14,12 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
   const [errors, setErrors] = useState('');
-  // const errors = [1]
+  // const errors = [
+  //   'Password does not match',
+  //   'Password does not match',
+  //   'Password does not match',
+  //   'Password does not match',
+  // ];
 
   function handleSignupSubmit(e) {
     e.preventDefault();
