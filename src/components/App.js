@@ -9,6 +9,8 @@ import Patient from './Patient/Patient'
 import Practitioner from './Practitioner/Practitioner'
 import Shop from './Shop/Shop'
 import Footer from './Footer/Footer';
+import PatientCreateAppointment from './PatientCreateAppointment/PatientCreateAppointment';
+import PatientAppointments from './PatientAppointments/PatientAppointments';
 
 function App() {
   return (
@@ -23,6 +25,12 @@ function App() {
         </Route>
         <Route exact path='/patients/me'>
           <Patient />
+        </Route>
+        <Route exact path='/patients/me/create-appointment'>
+          <PatientCreateAppointment />
+        </Route>
+        <Route exact path='/patients/me/appointments'>
+          <PatientAppointments />
         </Route>
         <Route exact path='/practitioners/me'>
           <Practitioner />
