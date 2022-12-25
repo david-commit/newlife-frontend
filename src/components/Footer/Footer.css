@@ -80,8 +80,10 @@ footer {
   text-decoration: none;
   color: #1d3e68;
 }
-#section1 h1,
-h3 {
+#section1 h1 {
+  color: #1d3e68;
+}
+#section1 h3 {
   color: #1d3e68;
 }
 #section2 {

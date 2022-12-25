@@ -23,11 +23,3 @@
  align-items: center;
  justify-content: center;
 }
-.patient-details-dash-section {
- border: 1px dashed red;
- width: 59%;
- padding: 35px;
-}
-.patient-details-dash-section:first-child {
- color: #1d3e68;
-}
