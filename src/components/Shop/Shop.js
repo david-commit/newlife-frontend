@@ -3,17 +3,34 @@ import './Shop.css';
 
 function Shop() {
   const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
       .then((response) => response.json())
-      .then((data) => setProducts(data));
+      .then((data) => {
+        setProducts(data);
+        setSearchQuery(data);
+      });
   }, []);
-  console.log(products);
+
+  const handleSearch = (e) => {
+    setProducts(
+      searchQuery.filter((product) => {
+        return product.title
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      })
+    );
+    return products;
+  };
+
   return (
     <div className='shop-main-container'>
       <h1>Shop</h1>
       <div className='shop-search-filter-container'>
         <input
+          onChange={handleSearch}
           type='search'
           id='search-input'
           placeholder='Search'
