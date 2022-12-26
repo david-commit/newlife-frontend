@@ -29,9 +29,12 @@
   border-radius: 5px;
 }
 .shop-cards {
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: 23% 23% 23% 23%;
   justify-content: space-between;
+  border: #00a3c8 dashed red;
 }
 .shop-card:hover {
   border: 1px solid lightgrey;
@@ -39,7 +42,7 @@
 }
 .shop-card {
   border: 1px solid #00a3c8;
-  width: 23%;
+  /* width: 23%; */
   margin: 30px 0;
   height: 400px;
   border-radius: 10px;
