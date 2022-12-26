@@ -79,3 +79,7 @@
 .shop-card-text h4 {
   font-size: 20px;
 }
+.shop-card-nav {
+ text-decoration: none;
+ color: #1d3e68;
+}

@@ -13,8 +13,10 @@ import PatientCreateAppointment from './PatientCreateAppointment/PatientCreateAp
 import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
+import ProductPage from './ProductPage/ProductPage';
 
 function App() {
+  
   return (
     <div className='App'>
       <NavBar />
@@ -38,7 +40,7 @@ function App() {
           <PatientChat />
         </Route>
         <Route exact path='/patients/me/reviews'>
-<PatientReviews />
+          <PatientReviews />
         </Route>
         <Route exact path='/practitioners/me'>
           <Practitioner />
@@ -46,8 +48,11 @@ function App() {
         <Route exact path='/about'>
           <AboutUs />
         </Route>
-        <Route exact path='/shop'>
+        <Route exact path='/products'>
           <Shop />
+        </Route>
+        <Route path={`/products/:productID`}>
+          <ProductPage />
         </Route>
         <Route exact path='/'>
           <Home />

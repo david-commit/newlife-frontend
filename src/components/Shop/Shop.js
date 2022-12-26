@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Shop.css';
 
 function Shop() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortProducts, setSortProducts] = useState('');
+  // const [productID, setProductID] = useState('');
   console.log(sortProducts);
 
   useEffect(() => {
@@ -27,24 +29,33 @@ function Shop() {
     return products;
   };
 
-  const renderedProducts =
-    // if (sortProducts === "price-asc"){
-    //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
-    // }
+  // if (sortProducts === "price-asc") {
+  //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
+  // }
+  // if (sortProducts === "price-desc") {
+  //   products && products.sort((a, b) => a.price < b.price ? 1 : -1)
+  // }
 
+  const renderedProducts =
     products &&
     products.map((product) => {
       return (
-        <div className='shop-card' key={product.id}>
-          <img src={product.image} alt='Product' />
-          <div className='shop-card-text'>
-            <p>{product.category}</p>
-            <div className='product-title'>
-              <h3>{product.title}</h3>
+        <Link
+          to={`/products/${product.id}`}
+          className='shop-card-nav'
+          key={product.id}
+        >
+          <div className='shop-card'>
+            <img src={product.image} alt='Product' />
+            <div className='shop-card-text'>
+              <p>{product.category}</p>
+              <div className='product-title'>
+                <h3>{product.title}</h3>
+              </div>
+              <h4>Ksh {product.price}</h4>
             </div>
-            <h4>Ksh {product.price}</h4>
           </div>
-        </div>
+        </Link>
       );
     });
 
