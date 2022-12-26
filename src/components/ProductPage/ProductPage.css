@@ -1,0 +1,25 @@
+.product-page-main-container {
+ display: flex;
+ width: 85%;
+ margin: 50px auto 0 auto;
+}
+.product-details-container {
+ display: flex;
+ width: 100%;
+}
+.product-details-container img {
+ width: 50%;
+ height: 550px;
+ border: 1px dashed blue;
+}
+.product-details-section {
+ width: 50%;
+ border: 1px dashed red;
+ padding: 40px;
+}
+.product-details-section h1 {
+font-size: 36px;
+}
+.product-price > span{
+ font-size: 36px;
+}

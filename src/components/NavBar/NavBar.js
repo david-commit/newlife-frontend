@@ -51,7 +51,7 @@ function NavBar() {
             {user ? (
               <>
                 <NavLink exact to='/patients/me'>Appointments</NavLink>
-                <NavLink exact to="/shop">Shop</NavLink>
+                <NavLink exact to="/products">Shop</NavLink>
                 <NavLink exact to='/'>
                   <button>Logout</button>
                 </NavLink>
