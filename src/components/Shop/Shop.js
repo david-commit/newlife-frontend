@@ -32,9 +32,18 @@ function Shop() {
       </div>
       <div className='shop-cards'>
         {products.map((product) => {
-          return <div className='shop-card'>
-            <img src={product.image} alt="Product" />
-          </div>;
+          return (
+            <div className='shop-card' key={product.id}>
+              <img src={product.image} alt='Product' />
+              <div className='shop-card-text'>
+                <p>{product.category}</p>
+                <div className='product-title'>
+                  <h3>{product.title}</h3>
+                </div>
+                <h4>Ksh {product.price}</h4>
+              </div>
+            </div>
+          );
         })}
       </div>
     </div>
