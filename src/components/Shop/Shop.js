@@ -84,7 +84,7 @@ function Shop({ products, handleSearch, loading }) {
         </select>
       </div>
       <div className='shop-cards'>{renderedProducts}</div>
-      <Pagination productsPerPage={productsPerPage} products={products} paginate={paginate} />
+      <Pagination productsPerPage={productsPerPage} products={products} paginate={paginate} currentPage={currentPage} />
     </div>
   );
 }

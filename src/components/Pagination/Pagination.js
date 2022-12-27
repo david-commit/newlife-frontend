@@ -2,8 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Pagination.css';
 
-function Pagination({ productsPerPage, products, paginate }) {
+function Pagination({ productsPerPage, products, paginate, currentPage }) {
   const pageNumbers = [];
+  console.log(currentPage)
 
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
@@ -27,7 +28,12 @@ function Pagination({ productsPerPage, products, paginate }) {
       </NavLink>
       {pageNumbers.map((number) => {
         return (
-          <NavLink to='#' key={number} onClick={() => paginate(number)}>
+          <NavLink
+            to='#'
+            key={number}
+            onClick={() => paginate(number)}
+            id={currentPage === number ? 'active-page' : ''}
+          >
             {number}
           </NavLink>
         );
