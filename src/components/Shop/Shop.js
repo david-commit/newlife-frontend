@@ -1,10 +1,25 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
+import Pagination from '../Pagination/Pagination';
 
 function Shop({ products, handleSearch, loading }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
+
+  // Get current products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  // Change Paginate Page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
 
   if (loading) {
-    return <h1>Loading...</h1>
+    return <h1>Loading...</h1>;
   }
 
   // const [sortProducts, setSortProducts] = useState('');
@@ -18,8 +33,8 @@ function Shop({ products, handleSearch, loading }) {
   // }
 
   const renderedProducts =
-    products &&
-    products.map((product) => {
+    currentProducts &&
+    currentProducts.map((product) => {
       return (
         <Link
           to={`/products/${product.id}`}
@@ -66,6 +81,7 @@ function Shop({ products, handleSearch, loading }) {
         </select>
       </div>
       <div className='shop-cards'>{renderedProducts}</div>
+      <Pagination productsPerPage={productsPerPage} products={products} paginate={paginate} />
     </div>
   );
 }

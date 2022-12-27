@@ -15,14 +15,14 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
+// import Pagination from './Pagination/Pagination';
 
 function App() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage, setProductsPerPage] = useState(15);
 
+  // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -37,6 +37,7 @@ function App() {
     fetchProducts();
   }, []);
 
+  // Handle search feature
   const handleSearch = (e) => {
     setProducts(
       searchQuery.filter((product) => {
@@ -47,6 +48,7 @@ function App() {
     );
     return products;
   };
+
 
   return (
     <div className='App'>
@@ -80,7 +82,11 @@ function App() {
           <AboutUs />
         </Route>
         <Route exact path='/products'>
-          <Shop products={products} handleSearch={handleSearch} loading={loading}/>
+          <Shop
+            products={products}
+            handleSearch={handleSearch}
+            loading={loading}
+          />
         </Route>
         <Route path={`/products/:productID`}>
           <ProductPage />
