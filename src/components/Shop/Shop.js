@@ -1,15 +1,26 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
+import Pagination from '../Pagination/Pagination';
+import loadingGif from '../../img/loading.gif';
 
 function Shop({ products, handleSearch, loading }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(12);
 
-  if (loading) {
-    return <h1>Loading...</h1>
-  }
+  // Get current products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
 
+  // Change Paginate Pages
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Sort Products Logic
   // const [sortProducts, setSortProducts] = useState('');
-  // console.log(sortProducts);
-
   // if (sortProducts === "price-asc") {
   //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
   // }
@@ -18,8 +29,8 @@ function Shop({ products, handleSearch, loading }) {
   // }
 
   const renderedProducts =
-    products &&
-    products.map((product) => {
+    currentProducts &&
+    currentProducts.map((product) => {
       return (
         <Link
           to={`/products/${product.id}`}
@@ -33,12 +44,23 @@ function Shop({ products, handleSearch, loading }) {
               <div className='product-title'>
                 <h3>{product.title}</h3>
               </div>
-              <h4>Ksh {product.price}</h4>
+              <section className='card-price-button'>
+                <h4>Ksh {product.price}</h4>
+                <button type='button' onClick={() => alert('Hello')}>
+                  Add to Cart
+                </button>
+              </section>
             </div>
           </div>
         </Link>
       );
     });
+
+  if (loading) {
+    return (
+      <img src={loadingGif} alt='Loading animation' className='loading-gif' />
+    );
+  }
 
   return (
     <div className='shop-main-container'>
@@ -66,6 +88,12 @@ function Shop({ products, handleSearch, loading }) {
         </select>
       </div>
       <div className='shop-cards'>{renderedProducts}</div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        products={products}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
