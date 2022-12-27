@@ -80,6 +80,24 @@
   font-size: 20px;
 }
 .shop-card-nav {
- text-decoration: none;
- color: #1d3e68;
+  text-decoration: none;
+  color: #1d3e68;
+}
+.card-price-button {
+  display: flex;
+  justify-content: space-between;
+}
+.card-price-button button {
+  background-color: white;
+  border: 1px solid #00a3c8;
+  font-size: 16px;
+  padding: 4px 6px;
+  color: #1d3e68;
+  border-radius: 5px;
+  margin-top: -4px;
+}
+.card-price-button button:hover {
+  background-color: #00a3c8;
+  color: white;
+  cursor: pointer;
 }

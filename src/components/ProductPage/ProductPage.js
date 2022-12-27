@@ -7,6 +7,7 @@ function ProductPage() {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
+  const [productQuantity, setProductQuantity] = useState("")
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -33,13 +34,19 @@ function ProductPage() {
           <h3 className='product-price'>
             Ksh <span>{product.price}</span>
           </h3>
-          <input type='number' id='product-quantity' defaultValue='1' />
+          <input type='number' id='product-quantity' defaultValue='1' value={productQuantity} onChange={(e) => setProductQuantity(e.target.type)} />
+          <br />
+          <br />
+          <button id='product-page-cart-button' onClick={() => alert("Add to Cart!")}>
+            <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
+          </button>
           <br />
           <br />
           <h3>Desctiption</h3>
           <p>{product.description}</p>
           <br />
           <h3>Rating</h3>
+          {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
         </section>
       </div>

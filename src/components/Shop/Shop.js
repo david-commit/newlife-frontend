@@ -16,12 +16,11 @@ function Shop({ products, handleSearch, loading }) {
     indexOfLastProduct
   );
 
-  // Change Paginate Page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  // Change Paginate Pages
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
+  // Sort Products Logic
   // const [sortProducts, setSortProducts] = useState('');
-  // console.log(sortProducts);
-
   // if (sortProducts === "price-asc") {
   //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
   // }
@@ -45,7 +44,12 @@ function Shop({ products, handleSearch, loading }) {
               <div className='product-title'>
                 <h3>{product.title}</h3>
               </div>
-              <h4>Ksh {product.price}</h4>
+              <section className='card-price-button'>
+                <h4>Ksh {product.price}</h4>
+                <button type='button' onClick={() => alert('Hello')}>
+                  Add to Cart
+                </button>
+              </section>
             </div>
           </div>
         </Link>
@@ -84,7 +88,12 @@ function Shop({ products, handleSearch, loading }) {
         </select>
       </div>
       <div className='shop-cards'>{renderedProducts}</div>
-      <Pagination productsPerPage={productsPerPage} products={products} paginate={paginate} currentPage={currentPage} />
+      <Pagination
+        productsPerPage={productsPerPage}
+        products={products}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 }

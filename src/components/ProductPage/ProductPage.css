@@ -1,31 +1,48 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
 .product-page-main-container {
- display: flex;
- width: 85%;
- margin: 50px auto 0 auto;
+  display: flex;
+  width: 85%;
+  margin: 50px auto 0 auto;
 }
 .product-details-container {
- display: flex;
- width: 100%;
+  display: flex;
+  width: 100%;
 }
 .product-details-container img {
- width: 50%;
- height: 550px;
- border: 1px dashed blue;
+  width: 50%;
+  height: 550px;
+  border: 1px dashed blue;
 }
 .product-details-section {
- width: 50%;
- border: 1px dashed red;
- padding: 40px;
+  width: 50%;
+  border: 1px dashed red;
+  padding: 40px;
 }
 .product-details-section h1 {
-font-size: 36px;
+  font-size: 36px;
 }
-.product-price > span{
- font-size: 36px;
+.product-price > span {
+  font-size: 36px;
+}
+#product-page-cart-button {
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+  font-size: 18px;
+  padding: 6px 40px;
+  border-radius: 100px;
+}
+#product-page-cart-button:hover {
+  cursor: pointer;
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  transition: all 0.35s ease-in-out;
 }
 .loading-gif {
- display: flex;
- margin: 200px auto;
- justify-content: center;
- align-items: center;
+  display: flex;
+  margin: 200px auto;
+  justify-content: center;
+  align-items: center;
 }

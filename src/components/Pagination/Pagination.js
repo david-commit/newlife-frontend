@@ -18,10 +18,7 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
 
   return (
     <nav className='pagination-container'>
-      <NavLink
-        to='#'
-        onClick={() => paginate(renderFirstPage())}
-      >
+      <NavLink to='#' onClick={() => paginate(renderFirstPage())}>
         «
       </NavLink>
       {pageNumbers.map((number) => {
@@ -36,10 +33,7 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
           </NavLink>
         );
       })}
-      <NavLink
-        to='#'
-        onClick={() => paginate(renderLastPage())}
-      >
+      <NavLink to='#' onClick={() => paginate(renderLastPage())}>
         »
       </NavLink>
     </nav>
