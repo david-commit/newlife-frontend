@@ -1,33 +1,14 @@
-import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
 
-function Shop() {
-  const [products, setProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [sortProducts, setSortProducts] = useState('');
-  // const [productID, setProductID] = useState('');
-  console.log(sortProducts);
+function Shop({ products, handleSearch, loading }) {
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((response) => response.json())
-      .then((data) => {
-        setProducts(data);
-        setSearchQuery(data);
-      });
-  }, []);
+  if (loading) {
+    return <h1>Loading...</h1>
+  }
 
-  const handleSearch = (e) => {
-    setProducts(
-      searchQuery.filter((product) => {
-        return product.title
-          .toLowerCase()
-          .includes(e.target.value.toLowerCase());
-      })
-    );
-    return products;
-  };
+  // const [sortProducts, setSortProducts] = useState('');
+  // console.log(sortProducts);
 
   // if (sortProducts === "price-asc") {
   //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
@@ -77,7 +58,7 @@ function Shop() {
         />
         <select
           id='shop-sort'
-          onChange={(e) => setSortProducts(e.target.value)}
+          // onChange={(e) => setSortProducts(e.target.value)}
         >
           <option hidden>Sort</option>
           <option value='price-asc'>Price: Low to High</option>

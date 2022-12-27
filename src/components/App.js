@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
@@ -16,7 +17,37 @@ import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
 
 function App() {
-  
+  const [products, setProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage, setProductsPerPage] = useState(15);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      setLoading(true);
+      const response = await fetch('https://fakestoreapi.com/products');
+      const results = await response.json();
+
+      setProducts(results);
+      setSearchQuery(results);
+
+      setLoading(false);
+    };
+    fetchProducts();
+  }, []);
+
+  const handleSearch = (e) => {
+    setProducts(
+      searchQuery.filter((product) => {
+        return product.title
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      })
+    );
+    return products;
+  };
+
   return (
     <div className='App'>
       <NavBar />
@@ -49,7 +80,7 @@ function App() {
           <AboutUs />
         </Route>
         <Route exact path='/products'>
-          <Shop />
+          <Shop products={products} handleSearch={handleSearch} loading={loading}/>
         </Route>
         <Route path={`/products/:productID`}>
           <ProductPage />
