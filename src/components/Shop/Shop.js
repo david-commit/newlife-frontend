@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
 import Pagination from '../Pagination/Pagination';
+import loadingGif from '../../img/loading.gif';
 
 function Shop({ products, handleSearch, loading }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,10 +18,6 @@ function Shop({ products, handleSearch, loading }) {
 
   // Change Paginate Page
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
 
   // const [sortProducts, setSortProducts] = useState('');
   // console.log(sortProducts);
@@ -54,6 +51,12 @@ function Shop({ products, handleSearch, loading }) {
         </Link>
       );
     });
+
+  if (loading) {
+    return (
+      <img src={loadingGif} alt='Loading animation' className='loading-gif' />
+    );
+  }
 
   return (
     <div className='shop-main-container'>

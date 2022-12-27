@@ -15,7 +15,6 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
-// import Pagination from './Pagination/Pagination';
 
 function App() {
   const [products, setProducts] = useState([]);

@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ProductPage.css';
+import loadingGif from "../../img/loading.gif"
 
 function ProductPage() {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
-  console.log(product);
+  const [productLoading, setProductLoading] = useState(false);
 
   useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${productID}`)
-      .then((response) => response.json())
-      .then((data) => setProduct(data));
-  }, []);
+    const fetchProduct = async () => {
+      setProductLoading(true);
+      const response = await fetch(`https://fakestoreapi.com/products/${productID}`);
+      const results = await response.json();
+      setProduct(results);
+      setProductLoading(false);
+    };
+    fetchProduct();
+  }, [productID]);
+
+  if (productLoading) {
+    return <img src={loadingGif} alt="Loading animation" className='loading-gif'/>
+  }
 
   return (
     <div className='product-page-main-container'>
@@ -24,7 +34,8 @@ function ProductPage() {
             Ksh <span>{product.price}</span>
           </h3>
           <input type='number' id='product-quantity' defaultValue='1' />
-          <br /><br />
+          <br />
+          <br />
           <h3>Desctiption</h3>
           <p>{product.description}</p>
           <br />

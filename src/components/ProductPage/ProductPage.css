@@ -23,3 +23,9 @@ font-size: 36px;
 .product-price > span{
  font-size: 36px;
 }
+.loading-gif {
+ display: flex;
+ margin: 200px auto;
+ justify-content: center;
+ align-items: center;
+}
