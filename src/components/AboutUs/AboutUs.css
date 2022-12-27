@@ -171,16 +171,15 @@
   color: #1d3e68;
 }
 .team-container {
-padding: 35px 0;
-width: 90%;
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-justify-content: space-around;
+  padding: 35px 0;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  justify-content: space-around;
 }
 .team-card {
-  width: 26%;
-  background-color: #f8f9fb ;
+  width: 100%;
+  background-color: #f8f9fb;
   margin: 30px 0 50px;
   padding: 60px;
   text-align: center;
@@ -188,9 +187,9 @@ justify-content: space-around;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .team-card img {
-width: 100%;
-padding-bottom: 20px;
-border-radius: 50%;
+  width: 100%;
+  padding-bottom: 20px;
+  border-radius: 50%;
 }
 .team-card h2 {
   color: #1d3e68;

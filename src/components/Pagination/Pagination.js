@@ -4,7 +4,6 @@ import './Pagination.css';
 
 function Pagination({ productsPerPage, products, paginate, currentPage }) {
   const pageNumbers = [];
-  console.log(currentPage)
 
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
@@ -21,7 +20,6 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
     <nav className='pagination-container'>
       <NavLink
         to='#'
-        key={renderFirstPage()}
         onClick={() => paginate(renderFirstPage())}
       >
         «
@@ -40,7 +38,6 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
       })}
       <NavLink
         to='#'
-        key={renderLastPage()}
         onClick={() => paginate(renderLastPage())}
       >
         »

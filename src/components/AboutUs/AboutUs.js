@@ -177,7 +177,7 @@ function AboutUs() {
             patient confidentiality by keeping all records private
           </p>
           <br />
-          <Link to='/appointments'>
+          <Link to='/patients/me'>
             <button type='button'>Book Appointment</button>
           </Link>
         </div>
