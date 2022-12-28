@@ -5,7 +5,10 @@ import './PractitionerAppointments.css';
 function PractitionerAppointments() {
   return (
     <div className='practitioner-main-container'>
-      <PractitionerSideBar /> PractitionerAppointments
+      <PractitionerSideBar />{' '}
+      <div className='practitioner-existing-appointments'>
+        <h1>Existing Appointments</h1>
+      </div>
     </div>
   );
 }

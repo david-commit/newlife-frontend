@@ -23,22 +23,38 @@ function Patient() {
           </textarea>
           <br />
 
-          <p className='patient-details-title'>
+          <p className='practitioner-details-title'>
+            <span>Date of Birth:&nbsp;</span>
+            12/12/1998
+          </p>
+          <p className='practitioner-details-title'>
+            <span>Phone:&nbsp;</span>
+            +25412345678
+          </p>
+          <p className='practitioner-details-title'>
+            <span>Email:&nbsp;</span>
+            patient@newlife.com
+          </p>
+          <p className='practitioner-details-title'>
+            <span>Location:&nbsp;</span>
+            Doonholm
+          </p>
+          <p className='practitioner-details-title'>
             <span>Age:&nbsp;</span>
             34
           </p>
-          <p className='patient-details-title'>
+          <p className='practitioner-details-title'>
             <span>Height:&nbsp;</span>2 meters
           </p>
-          <p className='patient-details-title'>
+          <p className='practitioner-details-title'>
             <span>Weight:&nbsp;</span>
             68kg
           </p>
-          <p className='patient-details-title'>
+          <p className='practitioner-details-title'>
             <span>BMI:&nbsp;</span>
             18
           </p>
-          <p className='patient-details-title'>
+          <p className='practitioner-details-title'>
             <span>Blood Group:&nbsp;</span>
             O-
           </p>

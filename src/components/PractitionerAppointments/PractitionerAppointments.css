@@ -1,0 +1,15 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.practitioner-appointments-main-container {
+ width: 85%;
+ height: 70vh;
+ display: flex;
+ margin: 0 auto -80px auto;
+}
+.practitioner-existing-appointments {
+ padding: 40px;
+}
+.practitioner-existing-appointments h1 {
+ color: #1d3e68;
+}
