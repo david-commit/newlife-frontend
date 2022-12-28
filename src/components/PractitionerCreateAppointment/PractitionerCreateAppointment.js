@@ -4,7 +4,7 @@ import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 
 function PractitionerCreateAppointment() {
   return (
-    <div className='patient-main-container'>
+    <div className='practitioner-main-container'>
       <PractitionerSideBar />
       PractitionerCreateAppointment
     </div>

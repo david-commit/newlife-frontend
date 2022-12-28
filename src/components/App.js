@@ -17,7 +17,7 @@ import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
 import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment"
 import PageNotFound from './PageNotFound/PageNotFound';
-import PractitionerAppointments from "./PatientAppointments/PatientAppointments"
+import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments"
 import PractitionerChat from "./PractitionerChat/PractitionerChat"
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 

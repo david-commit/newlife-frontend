@@ -60,6 +60,7 @@ function NavBar({
             </div>
           </NavLink>
           <nav className='menubar-nav'>
+          {userPatient ? "Logged as Patient!" : userPractitioner ? "Logged as Practitioner!" : "Not logged In!"}
             <NavLink exact to='/'>
               Home
             </NavLink>
