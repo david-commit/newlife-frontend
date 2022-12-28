@@ -17,9 +17,30 @@ import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
 
 function App() {
+  const [userPatient, setUserPatient] = useState(false);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // auto-login for both user and practitioner
+    userPatient ? (
+      fetch(`patients/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserPatient(user));
+        }
+      })
+    ) : userPractitioner ? (
+      fetch(`practitioners/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserPractitioner(user));
+        }
+      })
+    ) : (
+      <Home />
+    );
+  }, [userPatient, userPractitioner]);
 
   // Fetch all products
   useEffect(() => {
@@ -48,10 +69,14 @@ function App() {
     return products;
   };
 
-
   return (
     <div className='App'>
-      <NavBar />
+      <NavBar
+        userPatient={userPatient}
+        userPractitioner={userPractitioner}
+        setUserPatient={setUserPatient}
+        setUserPractitioner={setUserPractitioner}
+      />
       <Switch>
         <Route exact path='/signup'>
           <SignUp />
@@ -59,24 +84,24 @@ function App() {
         <Route exact path='/login'>
           <Login />
         </Route>
+        {/* == PATIENT ROUTES */}
         <Route exact path='/patients/me'>
-          <Patient />
+          {userPatient ? <Patient /> : <Login />}
         </Route>
         <Route exact path='/patients/me/create-appointment'>
-          <PatientCreateAppointment />
+          {userPatient ? <PatientCreateAppointment /> : <Login />}
         </Route>
         <Route exact path='/patients/me/appointments'>
-          <PatientAppointments />
+          {userPatient ? <PatientAppointments /> : <Login />}
         </Route>
         <Route exact path='/patients/me/chat'>
-          <PatientChat />
+          {userPatient ? <PatientChat /> : <Login />}
         </Route>
         <Route exact path='/patients/me/reviews'>
-          <PatientReviews />
+          {userPatient ? <PatientReviews /> : <Login />}
         </Route>
-        <Route exact path='/practitioners/me'>
-          <Practitioner />
-        </Route>
+        {/* == PATIENT ROUTES */}
+
         <Route exact path='/about'>
           <AboutUs />
         </Route>

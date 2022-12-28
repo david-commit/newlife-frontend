@@ -3,8 +3,22 @@ import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
-function NavBar() {
-  const user = true;
+function NavBar({
+  userPatient,
+  userPractitioner,
+  setUserPatient,
+  setUserPractitioner,
+}) {
+  function handleLogoutClick() {
+    fetch(`/logout`, { method: 'DELETE' }).then((r) => {
+      if (r.ok) {
+        setUserPatient(null);
+        setUserPractitioner(null);
+        alert('Logged out!');
+      }
+    });
+  }
+
   return (
     <>
       <div className='top-bar-container'>
@@ -46,14 +60,34 @@ function NavBar() {
             </div>
           </NavLink>
           <nav className='menubar-nav'>
-            <NavLink exact to='/'>Home</NavLink>
-            <NavLink exact to='/about'>About Us</NavLink>
-            {user ? (
+            <NavLink exact to='/'>
+              Home
+            </NavLink>
+            <NavLink exact to='/about'>
+              About Us
+            </NavLink>
+            {userPatient ? (
               <>
-                <NavLink exact to='/patients/me'>Appointments</NavLink>
-                <NavLink exact to="/products">Shop</NavLink>
+                <NavLink exact to='/patients/me'>
+                  Appointments
+                </NavLink>
+                <NavLink exact to='/products'>
+                  Shop
+                </NavLink>
                 <NavLink exact to='/'>
                   <button>Logout</button>
+                </NavLink>
+              </>
+            ) : userPractitioner ? (
+              <>
+                <NavLink exact to='/practitioners/me'>
+                  Appointments
+                </NavLink>
+                <NavLink exact to='/products'>
+                  Shop
+                </NavLink>
+                <NavLink exact to='/'>
+                  <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
             ) : (
