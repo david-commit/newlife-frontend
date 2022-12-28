@@ -1,13 +1,12 @@
 import React from 'react'
-import './PractitionerChat.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 
-function PractitionerChat() {
+function PractitionerReviews() {
   return (
     <div className='practitioner-main-container'>
-      <PractitionerSideBar /> Practitioner Chat
+      <PractitionerSideBar /> PractitionerReviews
     </div>
   );
 }
 
-export default PractitionerChat
+export default PractitionerReviews

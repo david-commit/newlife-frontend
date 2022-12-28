@@ -19,10 +19,11 @@ import PractitionerCreateAppointment from "./PractitionerCreateAppointment/Pract
 import PageNotFound from './PageNotFound/PageNotFound';
 import PractitionerAppointments from "./PatientAppointments/PatientAppointments"
 import PractitionerChat from "./PractitionerChat/PractitionerChat"
+import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 
 function App() {
   const [userPatient, setUserPatient] = useState(false);
-  const [userPractitioner, setUserPractitioner] = useState(false);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -114,9 +115,12 @@ function App() {
         </Route>
         <Route exact path='/practitioners/me/appointments'>
           {userPractitioner ? <PractitionerAppointments /> : <Login />}
-        </Route>{' '}
+        </Route>
         <Route exact path='/practitioners/me/chat'>
           {userPractitioner ? <PractitionerChat /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/reviews'>
+          {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>

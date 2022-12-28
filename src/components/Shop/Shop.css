@@ -38,6 +38,8 @@
 .shop-card:hover {
   border: 1px solid lightgrey;
   transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.2s ease-in;
+  transform: scale(1.015);
 }
 .shop-card {
   border: 1px solid #00a3c8;
