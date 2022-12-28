@@ -15,10 +15,14 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
+import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment"
+import PageNotFound from './PageNotFound/PageNotFound';
+import PractitionerAppointments from "./PatientAppointments/PatientAppointments"
+import PractitionerChat from "./PractitionerChat/PractitionerChat"
 
 function App() {
   const [userPatient, setUserPatient] = useState(false);
-  const [userPractitioner, setUserPractitioner] = useState(true);
+  const [userPractitioner, setUserPractitioner] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
@@ -101,7 +105,20 @@ function App() {
           {userPatient ? <PatientReviews /> : <Login />}
         </Route>
         {/* == PATIENT ROUTES */}
-
+        {/* == PRACTITIONER ROUTES */}
+        <Route exact path='/practitioners/me'>
+          {userPractitioner ? <Practitioner /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/create-appointment'>
+          {userPractitioner ? <PractitionerCreateAppointment /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/appointments'>
+          {userPractitioner ? <PractitionerAppointments /> : <Login />}
+        </Route>{' '}
+        <Route exact path='/practitioners/me/chat'>
+          {userPractitioner ? <PractitionerChat /> : <Login />}
+        </Route>
+        {/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
           <AboutUs />
         </Route>
@@ -117,6 +134,9 @@ function App() {
         </Route>
         <Route exact path='/'>
           <Home />
+        </Route>
+        <Route exact path='*'>
+          <PageNotFound />
         </Route>
       </Switch>
       <Footer />
