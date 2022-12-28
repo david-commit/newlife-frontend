@@ -15,11 +15,37 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
+import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment"
+import PageNotFound from './PageNotFound/PageNotFound';
+import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments"
+import PractitionerChat from "./PractitionerChat/PractitionerChat"
+import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 
 function App() {
+  const [userPatient, setUserPatient] = useState(false);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    // auto-login for both user and practitioner
+    userPatient ? (
+      fetch(`patients/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserPatient(user));
+        }
+      })
+    ) : userPractitioner ? (
+      fetch(`practitioners/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserPractitioner(user));
+        }
+      })
+    ) : (
+      <Home />
+    );
+  }, [userPatient, userPractitioner]);
 
   // Fetch all products
   useEffect(() => {
@@ -48,10 +74,14 @@ function App() {
     return products;
   };
 
-
   return (
     <div className='App'>
-      <NavBar />
+      <NavBar
+        userPatient={userPatient}
+        userPractitioner={userPractitioner}
+        setUserPatient={setUserPatient}
+        setUserPractitioner={setUserPractitioner}
+      />
       <Switch>
         <Route exact path='/signup'>
           <SignUp />
@@ -59,24 +89,40 @@ function App() {
         <Route exact path='/login'>
           <Login />
         </Route>
+        {/* == PATIENT ROUTES */}
         <Route exact path='/patients/me'>
-          <Patient />
+          {userPatient ? <Patient /> : <Login />}
         </Route>
         <Route exact path='/patients/me/create-appointment'>
-          <PatientCreateAppointment />
+          {userPatient ? <PatientCreateAppointment /> : <Login />}
         </Route>
         <Route exact path='/patients/me/appointments'>
-          <PatientAppointments />
+          {userPatient ? <PatientAppointments /> : <Login />}
         </Route>
         <Route exact path='/patients/me/chat'>
-          <PatientChat />
+          {userPatient ? <PatientChat /> : <Login />}
         </Route>
         <Route exact path='/patients/me/reviews'>
-          <PatientReviews />
+          {userPatient ? <PatientReviews /> : <Login />}
         </Route>
+        {/* == PATIENT ROUTES */}
+        {/* == PRACTITIONER ROUTES */}
         <Route exact path='/practitioners/me'>
-          <Practitioner />
+          {userPractitioner ? <Practitioner /> : <Login />}
         </Route>
+        <Route exact path='/practitioners/me/create-appointment'>
+          {userPractitioner ? <PractitionerCreateAppointment /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/appointments'>
+          {userPractitioner ? <PractitionerAppointments /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/chat'>
+          {userPractitioner ? <PractitionerChat /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/reviews'>
+          {userPractitioner ? <PractitionerReviews /> : <Login />}
+        </Route>
+        {/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
           <AboutUs />
         </Route>
@@ -92,6 +138,9 @@ function App() {
         </Route>
         <Route exact path='/'>
           <Home />
+        </Route>
+        <Route exact path='*'>
+          <PageNotFound />
         </Route>
       </Switch>
       <Footer />

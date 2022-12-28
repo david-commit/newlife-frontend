@@ -8,10 +8,10 @@ function Login() {
   const [pracCheckbox, setPracCheckbox] = useState(false);
   const [errors, setErrors] = useState('');
   // const errors = ["Invalid Username or Password"]
-
+  
   function handleLoginSubmit(e) {
     e.preventDefault();
-    setPracCheckbox(false);
+    // setPracCheckbox(false);
     setErrors([]);
     fetch(`/`, {
       method: 'POST',
@@ -58,7 +58,7 @@ function Login() {
             <input
               type='checkbox'
               value={pracCheckbox}
-              onChange={(e) => setPracCheckbox(e.target.value)}
+              onChange={() => setPracCheckbox(!pracCheckbox)}     
             />
             &nbsp; Log in as practitioner
           </span>

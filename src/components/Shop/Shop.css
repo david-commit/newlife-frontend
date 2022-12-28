@@ -34,17 +34,18 @@
   display: grid;
   grid-template-columns: 23% 23% 23% 23%;
   justify-content: space-between;
-  border: #00a3c8 dashed red;
 }
 .shop-card:hover {
   border: 1px solid lightgrey;
   transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.2s ease-in;
+  transform: scale(1.015);
 }
 .shop-card {
   border: 1px solid #00a3c8;
   /* width: 23%; */
   margin: 30px 0;
-  height: 420px;
+  height: 430px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -86,6 +87,7 @@
 .card-price-button {
   display: flex;
   justify-content: space-between;
+  margin-top: 8px;
 }
 .card-price-button button {
   background-color: white;

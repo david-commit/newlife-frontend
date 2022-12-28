@@ -175,7 +175,7 @@
   width: 90%;
   display: grid;
   grid-template-columns: 30% 30% 30%;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .team-card {
   width: 100%;
