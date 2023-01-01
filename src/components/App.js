@@ -27,7 +27,7 @@ function App() {
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -76,10 +76,13 @@ function App() {
     return products;
   };
 
-  const handleAddToCart = (product) => {
-    console.log(product)
-    alert(product)
-  }
+  const handleAddToCart = (product, cart) => {
+    cart.push(product)
+    cart.filter(
+      (currentValue, index, arr) => arr.indexOf(currentValue) === index
+    );
+    console.log(cart)
+  };
 
   return (
     <div className='App'>
@@ -144,7 +147,11 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userPatient || userPractitioner ? <ProductPage handleAddToCart={handleAddToCart} /> : <Login />}
+          {userPatient || userPractitioner ? (
+            <ProductPage handleAddToCart={handleAddToCart} />
+          ) : (
+            <Login />
+          )}
         </Route>
         <Route exact path='/cart'>
           {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}

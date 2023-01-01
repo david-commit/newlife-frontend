@@ -47,11 +47,11 @@ function ProductPage({ handleAddToCart }) {
           />
           <br />
           <br />
-          <Link path to='/cart'>
-            <button id='product-page-cart-button' onClick={handleAddToCart}>
+          {/* <Link path to='/cart'> */}
+            <button id='product-page-cart-button' onClick={handleAddToCart(product)}>
               <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
             </button>
-          </Link>
+          {/* </Link> */}
           <br />
           <br />
           <h3>Desctiption</h3>
