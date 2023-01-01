@@ -83,6 +83,7 @@ function App() {
         userPractitioner={userPractitioner}
         setUserPatient={setUserPatient}
         setUserPractitioner={setUserPractitioner}
+        cart={cart}
       />
       <Switch>
         <Route exact path='/signup'>
@@ -133,6 +134,7 @@ function App() {
             products={products}
             handleSearch={handleSearch}
             loading={loading}
+            setCart={setCart}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
@@ -140,7 +142,7 @@ function App() {
           {userPatient || userPractitioner ? <ProductPage setCart={setCart}/> : <Login />}
         </Route>
         <Route exact path='/cart'>
-          {userPatient || userPractitioner ? <Cart /> : <Login />}
+          {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route exact path='/'>
