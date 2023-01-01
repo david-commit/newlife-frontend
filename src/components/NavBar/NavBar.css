@@ -86,5 +86,23 @@
   color: #00a3c8;
   transition: all 0.35s ease-in-out;
 }
+#cart-length {
+  background-color: red;
+  border-radius: 50%;
+  height: fit-content;
+  width: fit-content;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 0 6px;
+  color: white;
+  position: relative;
+  top: -15px;
+}
+.menubar-nav i {
+  font-size: 30px;
+}
+.cart-icon {
+  display: flex;
+}
 /* == NAV BAR == */
 /* ==NAVBAR COMPONENT== */

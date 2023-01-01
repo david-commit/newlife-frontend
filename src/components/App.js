@@ -15,17 +15,19 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
-import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment"
+import PractitionerCreateAppointment from './PractitionerCreateAppointment/PractitionerCreateAppointment';
 import PageNotFound from './PageNotFound/PageNotFound';
-import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments"
-import PractitionerChat from "./PractitionerChat/PractitionerChat"
+import PractitionerAppointments from './PractitionerAppointments/PractitionerAppointments';
+import PractitionerChat from './PractitionerChat/PractitionerChat';
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
+import Cart from './Cart/Cart';
 
 function App() {
   const [userPatient, setUserPatient] = useState(false);
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -74,6 +76,14 @@ function App() {
     return products;
   };
 
+  const handleAddToCart = (product) => {
+    cart.push(product)
+    // cart.filter(
+    //   (currentValue, index, arr) => arr.indexOf(currentValue) === index
+    // );
+    console.log(cart)
+  };
+
   return (
     <div className='App'>
       <NavBar
@@ -81,6 +91,7 @@ function App() {
         userPractitioner={userPractitioner}
         setUserPatient={setUserPatient}
         setUserPractitioner={setUserPractitioner}
+        cart={cart}
       />
       <Switch>
         <Route exact path='/signup'>
@@ -131,11 +142,21 @@ function App() {
             products={products}
             handleSearch={handleSearch}
             loading={loading}
+            setCart={setCart}
           />
         </Route>
+        {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          <ProductPage />
+          {userPatient || userPractitioner ? (
+            <ProductPage handleAddToCart={handleAddToCart} />
+          ) : (
+            <Login />
+          )}
         </Route>
+        <Route exact path='/cart'>
+          {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
+        </Route>
+        {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route exact path='/'>
           <Home />
         </Route>

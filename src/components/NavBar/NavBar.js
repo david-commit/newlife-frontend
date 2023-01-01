@@ -8,6 +8,7 @@ function NavBar({
   userPractitioner,
   setUserPatient,
   setUserPractitioner,
+  cart,
 }) {
   function handleLogoutClick() {
     fetch(`/logout`, { method: 'DELETE' }).then((r) => {
@@ -60,7 +61,11 @@ function NavBar({
             </div>
           </NavLink>
           <nav className='menubar-nav'>
-          {userPatient ? "Logged as Patient!" : userPractitioner ? "Logged as Practitioner!" : "Not logged In!"}
+            {userPatient
+              ? 'Logged as Patient!'
+              : userPractitioner
+              ? 'Logged as Practitioner!'
+              : 'Not logged In!'}
             <NavLink exact to='/'>
               Home
             </NavLink>
@@ -86,6 +91,12 @@ function NavBar({
                 </NavLink>
                 <NavLink exact to='/products'>
                   Shop
+                </NavLink>
+                <NavLink exact to='/cart'>
+                  <div className='cart-icon'>
+                    <i class='fa-solid fa-cart-plus'></i>
+                    <span id='cart-length'>{cart.length}</span>
+                  </div>
                 </NavLink>
                 <NavLink exact to='/'>
                   <button onClick={handleLogoutClick}>Logout</button>

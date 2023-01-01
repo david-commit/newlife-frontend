@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './PractitionerCreateAppointment.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 
@@ -28,7 +28,9 @@ function PractitionerCreateAppointment() {
             <option>Nutrition</option>
             <option>Pediatrics</option>
           </select>
-          <textarea readOnly id='speciality-diaplay' rows="1">Pediatrics</textarea>
+          <textarea readOnly id='speciality-diaplay'>
+            Pediatrics
+          </textarea>
           <input type='date' />
           <textarea placeholder='Provide information on the apppointment'></textarea>
           <br />
@@ -70,4 +72,4 @@ function PractitionerCreateAppointment() {
   );
 }
 
-export default PractitionerCreateAppointment
+export default PractitionerCreateAppointment;

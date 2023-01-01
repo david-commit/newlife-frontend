@@ -15,6 +15,7 @@
 #speciality-diaplay {
   height: 32px;
   background-color: #f8f9fb;
+  resize: none;
 }
 .working-hours {
   background-color: #00a3c8;

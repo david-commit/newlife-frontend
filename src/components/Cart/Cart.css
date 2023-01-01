@@ -1,0 +1,6 @@
+.cart-main-container {
+ width: 75%;
+ display: flex;
+ flex-direction: column;
+ margin: 50px auto;
+}
