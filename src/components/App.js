@@ -15,17 +15,19 @@ import PatientAppointments from './PatientAppointments/PatientAppointments';
 import PatientChat from './PatientChat/PatientChat';
 import PatientReviews from './PatientReviews/PatientReviews';
 import ProductPage from './ProductPage/ProductPage';
-import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment"
+import PractitionerCreateAppointment from './PractitionerCreateAppointment/PractitionerCreateAppointment';
 import PageNotFound from './PageNotFound/PageNotFound';
-import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments"
-import PractitionerChat from "./PractitionerChat/PractitionerChat"
+import PractitionerAppointments from './PractitionerAppointments/PractitionerAppointments';
+import PractitionerChat from './PractitionerChat/PractitionerChat';
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
+import Cart from './Cart/Cart';
 
 function App() {
-  const [userPatient, setUserPatient] = useState(true);
-  const [userPractitioner, setUserPractitioner] = useState(false);
+  const [userPatient, setUserPatient] = useState(false);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [cart, setCart] = useState([])
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -133,9 +135,14 @@ function App() {
             loading={loading}
           />
         </Route>
+        {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          <ProductPage />
+          {userPatient || userPractitioner ? <ProductPage setCart={setCart}/> : <Login />}
         </Route>
+        <Route exact path='/cart'>
+          {userPatient || userPractitioner ? <Cart /> : <Login />}
+        </Route>
+        {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route exact path='/'>
           <Home />
         </Route>
