@@ -22,8 +22,8 @@ import PractitionerChat from "./PractitionerChat/PractitionerChat"
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 
 function App() {
-  const [userPatient, setUserPatient] = useState(false);
-  const [userPractitioner, setUserPractitioner] = useState(true);
+  const [userPatient, setUserPatient] = useState(true);
+  const [userPractitioner, setUserPractitioner] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(false);

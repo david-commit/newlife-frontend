@@ -23,6 +23,10 @@ function Practitioner() {
           </textarea>
           <br />
           <p className='practitioner-details-title'>
+            <span>Job title:&nbsp;</span>
+            Pediatric Doctor
+          </p>
+          <p className='practitioner-details-title'>
             <span>Department:&nbsp;</span>
             Pediatrics
           </p>
