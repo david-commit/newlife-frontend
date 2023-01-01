@@ -1,12 +1,17 @@
 import React from 'react';
 import './Cart.css';
 
-function Cart() {
+function Cart({ cart }) {
   return (
     <div className='cart-main-container'>
       <h1>Cart</h1>
       <section className='cart-cards'>
-        <div className='cart-card'></div>
+       {cart.map((card) => {
+        <div className='cart-card'>
+         {card.title}lkjmn
+        </div>
+
+       })}
       </section>
     </div>
   );

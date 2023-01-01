@@ -76,11 +76,11 @@ function App() {
     return products;
   };
 
-  const handleAddToCart = (product, cart) => {
+  const handleAddToCart = (product) => {
     cart.push(product)
-    cart.filter(
-      (currentValue, index, arr) => arr.indexOf(currentValue) === index
-    );
+    // cart.filter(
+    //   (currentValue, index, arr) => arr.indexOf(currentValue) === index
+    // );
     console.log(cart)
   };
 
