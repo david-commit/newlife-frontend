@@ -28,6 +28,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -78,9 +79,10 @@ function App() {
 
   const handleAddToCart = (product) => {
     cart.push(product)
-    // cart.filter(
-    //   (currentValue, index, arr) => arr.indexOf(currentValue) === index
-    // );
+    setCartCount(cart.length)
+    cart.filter(
+      (currentValue, index, arr) => arr.indexOf(currentValue) === index
+    );
     console.log(cart)
   };
 
@@ -91,7 +93,7 @@ function App() {
         userPractitioner={userPractitioner}
         setUserPatient={setUserPatient}
         setUserPractitioner={setUserPractitioner}
-        cart={cart}
+        cartCount={cartCount}
       />
       <Switch>
         <Route exact path='/signup'>

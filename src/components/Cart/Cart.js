@@ -6,9 +6,9 @@ function Cart({ cart }) {
     <div className='cart-main-container'>
       <h1>Cart</h1>
       <section className='cart-cards'>
-       {cart.map((card) => {
+       {cart.map((product) => {
         <div className='cart-card'>
-         {card.title}lkjmn
+         {product}lkjmn
         </div>
 
        })}
