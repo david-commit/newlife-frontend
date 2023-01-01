@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import './ProductPage.css';
 import loadingGif from '../../img/loading.gif';
 
-function ProductPage() {
+function ProductPage({ handleAddToCart }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
@@ -41,17 +41,14 @@ function ProductPage() {
           <input
             type='number'
             id='product-quantity'
-            defaultValue='1'
+            // defaultValue='1'
             value={productQuantity}
             onChange={(e) => setProductQuantity(e.target.type)}
           />
           <br />
           <br />
-          <Link path to="/cart">
-            <button
-              id='product-page-cart-button'
-              onClick={() => alert('Add to Cart Logic!')}
-            >
+          <Link path to='/cart'>
+            <button id='product-page-cart-button' onClick={handleAddToCart}>
               <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
             </button>
           </Link>

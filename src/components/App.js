@@ -76,6 +76,11 @@ function App() {
     return products;
   };
 
+  const handleAddToCart = (product) => {
+    console.log(product)
+    alert(product)
+  }
+
   return (
     <div className='App'>
       <NavBar
@@ -139,7 +144,7 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userPatient || userPractitioner ? <ProductPage setCart={setCart}/> : <Login />}
+          {userPatient || userPractitioner ? <ProductPage handleAddToCart={handleAddToCart} /> : <Login />}
         </Route>
         <Route exact path='/cart'>
           {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
