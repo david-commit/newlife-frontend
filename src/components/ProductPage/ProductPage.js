@@ -7,7 +7,7 @@ function ProductPage({ handleAddToCart }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState('');
+  let [productQuantity, setProductQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -28,29 +28,49 @@ function ProductPage({ handleAddToCart }) {
     );
   }
 
+  function handleAddQty() {
+    setProductQuantity((productQuantity) => productQuantity + 1);
+  }
+
+  function handleReduceQty() {
+    {
+      productQuantity < 2
+        ? alert('Quantity cannot be less than 1')
+        : setProductQuantity((productQuantity) => productQuantity - 1);
+    }
+  }
+  console.log(productQuantity);
+
   return (
     <div className='product-page-main-container'>
       <div className='product-details-container'>
         <img src={product.image} alt='Product appearance' />
         <section className='product-details-section'>
-          <p>{product.category}</p>
+          <span>
+            Product ID: {product.id} | Category: {product.category}
+          </span>
           <h1>{product.title}</h1>
           <h3 className='product-price'>
             Ksh <span>{product.price}</span>
           </h3>
-          <input
-            type='number'
-            id='product-quantity'
-            // defaultValue='1'
-            value={productQuantity}
-            onChange={(e) => setProductQuantity(e.target.type)}
-          />
+          <span className='product-quantity'>
+            <button onClick={() => handleReduceQty()}>-</button>
+            <input
+              type='number'
+              value={productQuantity}
+              onChange={(e) => setProductQuantity(e.target.type)}
+            />
+            <button onClick={() => handleAddQty()}>+</button>
+          </span>
           <br />
           <br />
           {/* <Link path to='/cart'> */}
-            <button id='product-page-cart-button' onClick={() => handleAddToCart(product)}>
-              <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
-            </button>
+          <button
+            id='product-page-cart-button'
+            onClick={() => handleAddToCart(product)}
+          >
+            <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
+          </button>
           {/* </Link> */}
           <br />
           <br />

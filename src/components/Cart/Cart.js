@@ -6,13 +6,14 @@ function Cart({ cart }) {
     <div className='cart-main-container'>
       <h1>Cart</h1>
       <section className='cart-cards'>
-       {cart.map((product) => {
-        <div className='cart-card'>
-         {product}lkjmn
-        </div>
-
-       })}
+        ;l,
+        {cart
+          ? cart.map((product) => {
+              <div className='cart-card'>{product.title}</div>;
+            })
+          : 'No Items in Cart'}
       </section>
+      ;lkml'lk
     </div>
   );
 }
