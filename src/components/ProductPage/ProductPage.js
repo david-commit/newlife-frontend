@@ -11,15 +11,13 @@ function ProductPage({ handleAddToCart }) {
   const [productLoading, setProductLoading] = useState(false);
   let [productQuantity, setProductQuantity] = useState(1);
   const [newRating, setNewRating] = useState(0);
-  const [prevRating, setPrevRating] = useState(4.5);
-  console.log(product);
+  const [prevRating] = useState(4.5);
 
-  // ===
+  // Setting new product rating from user
   const ratingChanged = (newRating) => {
     setNewRating(newRating);
     console.log(newRating);
   };
-  // ===
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -130,31 +128,45 @@ function ProductPage({ handleAddToCart }) {
         <ul>
           <li>Constipation</li>
           <li>Skin rash or dermatisis</li>
-          <li>Diziness</li> {/* == */}
-          <ReactStars
-            count={5}
-            onChange={ratingChanged}
-            size={24}
-            color2={'#ffd700'}
-            half={false}
-          />
-          {/* == */}
+          <li>Diziness</li>
           <li>Drowsiness</li>
           <li>Dry mouth</li>
         </ul>
       </section>
-      <section>
+      <form id='review-form'>
         <h2>Add Review</h2>
-        {/* == */}
         <ReactStars
           count={5}
           onChange={ratingChanged}
-          size={24}
+          size={30}
           color2={'#ffd700'}
           half={true}
         />
-        {/* == */}
-      </section>
+        {newRating < 2
+          ? 'Poor'
+          : newRating < 3
+          ? 'Below Average'
+          : newRating < 4
+          ? 'Average'
+          : newRating < 5
+          ? 'Above Average'
+          : newRating < 6
+          ? 'Excellent'
+          : 'Select Rate'}
+        <br />
+        <br />
+        <textarea id='review-textarea' placeholder='Type review..'></textarea>
+        <br />
+        <br />
+        <button type='submit'>Submit Review</button>{' '}
+        <button
+          type='reset'
+          style={{ width: 'fit-content' }}
+          onClick={() => setNewRating(0)}
+        >
+          Clear
+        </button>
+      </form>
     </div>
   );
 }
