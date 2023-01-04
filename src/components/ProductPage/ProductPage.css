@@ -59,8 +59,18 @@
   line-height: 24px;
 }
 #product-rating {
-  padding-top: 10px;
   font-size: 36px;
+}
+.prevRating {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+.prevRating > p {
+  align-items: center;
+}
+.prevRating > div {
+  margin-left: -150px;
 }
 .loading-gif {
   display: flex;

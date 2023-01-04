@@ -1,13 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ProductPage.css';
 import loadingGif from '../../img/loading.gif';
+// https://github.com/n49/react-stars
+import ReactStars from 'react-stars';
 
 function ProductPage({ handleAddToCart }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
   let [productQuantity, setProductQuantity] = useState(1);
+  const [newRating, setNewRating] = useState(0);
+  const [prevRating, setPrevRating] = useState(4.5);
+  console.log(product);
+
+  // ===
+  const ratingChanged = (newRating) => {
+    setNewRating(newRating);
+    console.log(newRating);
+  };
+  // ===
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -80,7 +92,22 @@ function ProductPage({ handleAddToCart }) {
           <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
-          <p id='product-rating'>4/5</p>
+          <section className='prevRating'>
+            <p id='product-rating'>
+              <strong>{prevRating}</strong>/5
+            </p>
+            <div>
+              <ReactStars
+                count={5}
+                value={prevRating}
+                size={24}
+                color2={'#ffd700'}
+                half={false}
+                edit={false}
+              />
+              <p>200 verified ratings</p>
+            </div>
+          </section>
         </section>
       </div>
       <section className='product-details-bottom-section'>
@@ -103,10 +130,30 @@ function ProductPage({ handleAddToCart }) {
         <ul>
           <li>Constipation</li>
           <li>Skin rash or dermatisis</li>
-          <li>Diziness</li>
+          <li>Diziness</li> {/* == */}
+          <ReactStars
+            count={5}
+            onChange={ratingChanged}
+            size={24}
+            color2={'#ffd700'}
+            half={false}
+          />
+          {/* == */}
           <li>Drowsiness</li>
           <li>Dry mouth</li>
         </ul>
+      </section>
+      <section>
+        <h2>Add Review</h2>
+        {/* == */}
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          color2={'#ffd700'}
+          half={true}
+        />
+        {/* == */}
       </section>
     </div>
   );
