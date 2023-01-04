@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import './SignUp.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./SignUp.css";
+import { Link } from "react-router-dom";
 
 function SignUp() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [dob, setDOB] = useState('');
-  const [bloodGroup, setBloodGroup] = useState('');
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
-  const [password, setPassword] = useState('');
-  const [cPassword, setCPassword] = useState('');
-  const [errors, setErrors] = useState('');
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [dob, setDOB] = useState("");
+  // const [bloodGroup, setBloodGroup] = useState("");
+  // const [height, setHeight] = useState("");
+  // const [weight, setWeight] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [cPassword, setCPassword] = useState("");
+  const [errors, setErrors] = useState("");
   // const errors = [
   //   'Password does not match',
   //   'Password does not match',
@@ -25,20 +25,20 @@ function SignUp() {
     e.preventDefault();
     setErrors([]);
     fetch(`/`, {
-      method: 'POST',
-      mode: 'cors',
+      method: "POST",
+      mode: "cors",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        first_name: firstName,
-        last_name: lastName,
-        phone,
+        // first_name: firstName,
+        // last_name: lastName,
+        // phone,
+        // dob,
+        // blood_group: bloodGroup,
+        // height,
+        // weight,
         email,
-        dob,
-        blood_group: bloodGroup,
-        height,
-        weight,
         password,
         password_confirmation: cPassword,
       }),
@@ -46,9 +46,9 @@ function SignUp() {
   }
 
   return (
-    <div className='signup-main-container'>
-      <div className='signup-form-container'>
-        <form className='signup-form' onSubmit={handleSignupSubmit}>
+    <div className="signup-main-container">
+      <div className="signup-form-container">
+        <form className="signup-form" onSubmit={handleSignupSubmit}>
           <h1>Signup</h1>
           <p>Register as a patient</p>
           {/* <input
@@ -70,8 +70,8 @@ function SignUp() {
             onChange={(e) => setPhone(e.target.value)}
           /> */}
           <input
-            type='email'
-            placeholder='Email'
+            type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -99,46 +99,44 @@ function SignUp() {
             onChange={(e) => setWeight(e.target.value)}
           /> */}
           <input
-            type='password'
-            placeholder='Password'
+            type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
-            type='password'
-            placeholder='Confirm Password'
+            type="password"
+            placeholder="Confirm Password"
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
-          <button type='submit'>Log In</button>
+          <button type="submit">Log In</button>
         </form>
         <br />
         {errors ? (
           <div className="signup-error-display">
-
-          {errors.map((error) => {
-            console.log(error);
-            return (
-              <li key={error} style={{ color: 'red' }}>
-                {error}
-              </li>
-
-              )
+            {errors.map((error) => {
+              console.log(error);
+              return (
+                <li key={error} style={{ color: "red" }}>
+                  {error}
+                </li>
+              );
             })}
-            </div>
+          </div>
         ) : (
-          <div className='already'>
+          <div className="already">
             <hr />
             <p>
               Already have an account? &nbsp;
               <Link to={`/login`}>
-                <button type='button'>Log In</button>
+                <button type="button">Log In</button>
               </Link>
             </p>
           </div>
         )}
       </div>
-      <div className='signup-img'></div>
+      <div className="signup-img"></div>
     </div>
   );
 }
