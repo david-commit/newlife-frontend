@@ -51,7 +51,7 @@ function SignUp() {
         <form className='signup-form' onSubmit={handleSignupSubmit}>
           <h1>Signup</h1>
           <p>Register as a patient</p>
-          <input
+          {/* <input
             type='text'
             placeholder='First name'
             value={firstName}
@@ -68,14 +68,14 @@ function SignUp() {
             placeholder='Phone'
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-          />
+          /> */}
           <input
             type='email'
             placeholder='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          {/* <input
             type='date'
             value={dob}
             onChange={(e) => setDOB(e.target.value)}
@@ -97,7 +97,7 @@ function SignUp() {
             placeholder='Weight'
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
-          />
+          /> */}
           <input
             type='password'
             placeholder='Password'
@@ -122,7 +122,7 @@ function SignUp() {
               <li key={error} style={{ color: 'red' }}>
                 {error}
               </li>
-              
+
               )
             })}
             </div>
