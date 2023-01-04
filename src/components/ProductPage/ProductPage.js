@@ -58,7 +58,7 @@ function ProductPage({ handleAddToCart }) {
             <input
               type='number'
               value={productQuantity}
-              onChange={(e) => setProductQuantity(e.target.type)}
+              onChange={(e) => setProductQuantity(parseInt(e.target.value))}
             />
             <button onClick={() => handleAddQty()}>+</button>
           </span>

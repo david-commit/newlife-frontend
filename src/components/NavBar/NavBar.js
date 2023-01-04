@@ -19,7 +19,7 @@ function NavBar({
       }
     });
   }
-console.log(cartCount)
+// console.log(cartCount)
   return (
     <>
       <div className='top-bar-container'>

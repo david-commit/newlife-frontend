@@ -78,12 +78,13 @@ function App() {
   };
 
   const handleAddToCart = (product) => {
-    cart.push(product)
+    // cart.push(product)
+    setCart([...cart, product])
     setCartCount(cart.length)
     cart.filter(
       (currentValue, index, arr) => arr.indexOf(currentValue) === index
     );
-    console.log(cart)
+    // console.log(cart)
   };
 
   return (
