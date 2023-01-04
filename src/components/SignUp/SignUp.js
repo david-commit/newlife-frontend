@@ -3,7 +3,7 @@ import "./SignUp.css";
 import { Link } from "react-router-dom";
 
 function SignUp() {
-  // const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
   // const [phone, setPhone] = useState("");
   // const [dob, setDOB] = useState("");
@@ -24,13 +24,13 @@ function SignUp() {
   function handleSignupSubmit(e) {
     e.preventDefault();
     setErrors([]);
-    fetch(`/`, {
+    fetch(`http://localhost:3000/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // first_name: firstName,
+        username: firstName,
         // last_name: lastName,
         // phone,
         // dob,
@@ -50,13 +50,13 @@ function SignUp() {
         <form className="signup-form" onSubmit={handleSignupSubmit}>
           <h1>Signup</h1>
           <p>Register as a patient</p>
-          {/* <input
+          <input
             type='text'
-            placeholder='First name'
+            placeholder='User Name'
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          <input
+          {/* <input
             type='text'
             placeholder='Last name'
             value={lastName}
