@@ -2,17 +2,19 @@ import React from 'react';
 import './Cart.css';
 
 function Cart({ cart }) {
+ console.log(cart)
   return (
     <div className='cart-main-container'>
       <h1>Cart</h1>
       <section className='cart-cards'>
-       {cart.map((card) => {
-        <div className='cart-card'>
-         {card.title}lkjmn
-        </div>
-
-       })}
+        ;l,
+        {/* {cart ?  */}
+        {cart && cart.map((product) => {
+              <div className='cart-card'>{product.title}</div>;
+            })}
+          {/* : 'No Items in Cart'} */}
       </section>
+      ;lkml'lk
     </div>
   );
 }

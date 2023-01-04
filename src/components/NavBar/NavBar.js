@@ -8,7 +8,7 @@ function NavBar({
   userPractitioner,
   setUserPatient,
   setUserPractitioner,
-  cart,
+  cartCount,
 }) {
   function handleLogoutClick() {
     fetch(`/logout`, { method: 'DELETE' }).then((r) => {
@@ -19,7 +19,7 @@ function NavBar({
       }
     });
   }
-
+// console.log(cartCount)
   return (
     <>
       <div className='top-bar-container'>
@@ -95,7 +95,7 @@ function NavBar({
                 <NavLink exact to='/cart'>
                   <div className='cart-icon'>
                     <i class='fa-solid fa-cart-plus'></i>
-                    <span id='cart-length'>{cart.length}</span>
+                    <span id='cart-length'>{cartCount}</span>
                   </div>
                 </NavLink>
                 <NavLink exact to='/'>
