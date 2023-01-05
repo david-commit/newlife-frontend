@@ -38,47 +38,12 @@ function SignUp() {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
-          {/* <input
-            type='text'
-            placeholder='Last name'
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <input
-            type='tel'
-            placeholder='Phone'
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          /> */}
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {/* <input
-            type='date'
-            value={dob}
-            onChange={(e) => setDOB(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Blood group eg O-'
-            value={bloodGroup}
-            onChange={(e) => setBloodGroup(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Height'
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-          <input
-            type='text'
-            placeholder='Weight'
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-          /> */}
           <input
             type="password"
             placeholder="Password"
@@ -91,8 +56,9 @@ function SignUp() {
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
-          <button type="submit">Log In</button>
+          <button type="submit">Sign Up</button>
         </form>
+
         <br />
         {errors ? (
           <div className="signup-error-display">
