@@ -33,8 +33,8 @@ function SignUp() {
           <h1>Signup</h1>
           <p>Register as a patient</p>
           <input
-            type='text'
-            placeholder='User Name'
+            type="text"
+            placeholder="User Name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
@@ -60,7 +60,7 @@ function SignUp() {
         </form>
 
         <br />
-        {errors ? (
+        {/* {errors ? (
           <div className="signup-error-display">
             {errors.map((error) => {
               console.log(error);
@@ -72,16 +72,18 @@ function SignUp() {
             })}
           </div>
         ) : (
-          <div className="already">
-            <hr />
-            <p>
-              Already have an account? &nbsp;
-              <Link to={`/login`}>
-                <button type="button">Log In</button>
-              </Link>
-            </p>
-          </div>
-        )}
+
+        )} */}
+
+        <div className="already">
+          <hr />
+          <p>
+            Already have an account? &nbsp;
+            <Link to={`/login`}>
+              <button type="button">Log In</button>
+            </Link>
+          </p>
+        </div>
       </div>
       <div className="signup-img"></div>
     </div>
