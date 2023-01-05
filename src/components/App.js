@@ -21,10 +21,14 @@ import PractitionerAppointments from './PractitionerAppointments/PractitionerApp
 import PractitionerChat from './PractitionerChat/PractitionerChat';
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 import Cart from './Cart/Cart';
+import PatientCalendar from './PatientCalendar/PatientCalendar';
+import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
+import Admin from './Admin/Admin';
+import AdminLogin from './AdminLogin/AdminLogin';
 
 function App() {
-  const [userPatient, setUserPatient] = useState(false);
-  const [userPractitioner, setUserPractitioner] = useState(true);
+  const [userPatient, setUserPatient] = useState(true);
+  const [userPractitioner, setUserPractitioner] = useState(false);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
@@ -119,6 +123,9 @@ function App() {
         <Route exact path='/patients/me/reviews'>
           {userPatient ? <PatientReviews /> : <Login />}
         </Route>
+        <Route exact path='/patients/me/calendar'>
+          {userPatient ? <PatientCalendar /> : <Login />}
+        </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/practitioners/me'>
@@ -135,6 +142,9 @@ function App() {
         </Route>
         <Route exact path='/practitioners/me/reviews'>
           {userPractitioner ? <PractitionerReviews /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/calendar'>
+          {userPractitioner ? <PractitionerCalendar /> : <Login />}
         </Route>
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
@@ -160,6 +170,14 @@ function App() {
           {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
+        {/* == ADMIN ROUTES == */}
+        <Route exact path='/admin/login'>
+          <AdminLogin />
+        </Route>
+        <Route exact path='/admin'>
+          <Admin />
+        </Route>
+        {/* == ADMIN ROUTES == */}
         <Route exact path='/'>
           <Home />
         </Route>
