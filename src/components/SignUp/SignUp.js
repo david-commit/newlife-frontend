@@ -4,22 +4,10 @@ import { Link } from "react-router-dom";
 
 function SignUp() {
   const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [dob, setDOB] = useState("");
-  // const [bloodGroup, setBloodGroup] = useState("");
-  // const [height, setHeight] = useState("");
-  // const [weight, setWeight] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cPassword, setCPassword] = useState("");
   const [errors, setErrors] = useState("");
-  // const errors = [
-  //   'Password does not match',
-  //   'Password does not match',
-  //   'Password does not match',
-  //   'Password does not match',
-  // ];
 
   function handleSignupSubmit(e) {
     e.preventDefault();
@@ -31,12 +19,6 @@ function SignUp() {
       },
       body: JSON.stringify({
         username: firstName,
-        // last_name: lastName,
-        // phone,
-        // dob,
-        // blood_group: bloodGroup,
-        // height,
-        // weight,
         email,
         password,
         password_confirmation: cPassword,
