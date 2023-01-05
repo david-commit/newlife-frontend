@@ -14,33 +14,4 @@
 .patient-details-dash-section h1 {
  color: #1d3e68;
 }
-.patient-details-dash-section textarea {
-width: 80%;
-height: 100px;
-border: 1px solid lightgray;
-padding: 6px;border-radius: 5px;
-}
-.patient-details-title {
-margin-bottom: 10px;
-}
-.patient-details-title > span {
- color: #1d3e68;
- font-weight: 700;
-}
-.patient-details-notification-section {
- width: 24%;
- height: fit-content;
- padding: 35px 30px;
- background-color: #00a3c8;
- color: white;
-}
-.patient-details-notification-section h2 {
-text-align: center;
-padding-bottom: 20px;
-}
-.patient-details-notification hr {
- margin: 10px 0;
- border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, white, white, rgba(0, 0, 0, 0));
-}
+
