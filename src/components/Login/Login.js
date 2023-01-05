@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Login.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [pracCheckbox, setPracCheckbox] = useState(false);
-  const [errors, setErrors] = useState('');
+  const [errors, setErrors] = useState("");
   // const errors = ["Invalid Username or Password"]
-  
+
   function handleLoginSubmit(e) {
     e.preventDefault();
     // setPracCheckbox(false);
     setErrors([]);
-    fetch(`/`, {
-      method: 'POST',
-      mode: 'cors',
+    fetch(`http://localhost:3000/login`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email,
@@ -29,49 +28,51 @@ function Login() {
           // onLogin(user);
           // setSuccess(user);
           // SET USER
+          console.log(user);
         });
       } else {
         // response.json().then((err) => setErrors(err.errors));
+        console.log(response);
       }
     });
   }
 
   return (
-    <div className='login-main-container'>
-      <div className='login-form-container'>
-        <form className='login-form' onSubmit={handleLoginSubmit}>
+    <div className="login-main-container">
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleLoginSubmit}>
           <h1>Login</h1>
           <p>Schedule an appointment now</p>
           <input
-            type='email'
-            placeholder='Email'
+            type="email"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            type='password'
-            placeholder='Password'
+            type="password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span id='practitioner-check'>
+          <span id="practitioner-check">
             <input
-              type='checkbox'
+              type="checkbox"
               value={pracCheckbox}
-              onChange={() => setPracCheckbox(!pracCheckbox)}     
+              onChange={() => setPracCheckbox(!pracCheckbox)}
             />
             &nbsp; Log in as practitioner
           </span>
-          <button type='submit'>Log In</button>
+          <button type="submit">Log In</button>
         </form>
         <br />
         {errors ? (
           <>
-            <div className='login-error-display'>
+            <div className="login-error-display">
               {errors.map((error) => {
                 console.log(error);
                 return (
-                  <p key={error} style={{ color: 'red' }}>
+                  <p key={error} style={{ color: "red" }}>
                     {error}
                   </p>
                 );
@@ -80,19 +81,19 @@ function Login() {
             <br />
           </>
         ) : (
-          ''
+          ""
         )}
-        <div className='already'>
+        <div className="already">
           <hr />
           <p>
             Don't have an account? &nbsp;
             <Link to={`/signup`}>
-              <button type='button'>Sign Up</button>
+              <button type="button">Sign Up</button>
             </Link>
           </p>
         </div>
       </div>
-      <div className='login-img'></div>
+      <div className="login-img"></div>
     </div>
   );
 }

@@ -56,7 +56,9 @@ function SignUp() {
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
-          <button type="submit">Sign Up</button>
+          <button to="/login" type="submit">
+            Sign Up
+          </button>
         </form>
 
         <br />
