@@ -27,8 +27,9 @@ import Admin from './Admin/Admin';
 import AdminLogin from './AdminLogin/AdminLogin';
 
 function App() {
+  const [userAdmin, setUserAdmin] = useState(true)
   const [userPatient, setUserPatient] = useState(true);
-  const [userPractitioner, setUserPractitioner] = useState(false);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
@@ -172,10 +173,14 @@ function App() {
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
         <Route exact path='/admin/login'>
-          <AdminLogin />
+          <AdminLogin setUserAdmin={setUserAdmin} />
         </Route>
         <Route exact path='/admin'>
-          <Admin />
+          {userAdmin ? (
+            <Admin userAdmin={userAdmin} />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
         </Route>
         {/* == ADMIN ROUTES == */}
         <Route exact path='/'>
