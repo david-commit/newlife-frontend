@@ -4,9 +4,11 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function AddProduct() {
   return (
-    <div>
+    <div className='add-product-main-container'>
       <AdminSidebar />
-      AddProduct
+      <div className='add-product-container'>
+        <h1>Add Product</h1>
+      </div>
     </div>
   );
 }

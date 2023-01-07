@@ -1,13 +1,16 @@
-import React from 'react'
+import React from 'react';
 import './AllProducts.css';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function AllProducts() {
   return (
-    <div>
+    <div className='all-products-main-container'>
       <AdminSidebar />
-      AllProducts</div>
-  )
+      <div className='all-products-container'>
+        <h1>All Products</h1>
+      </div>
+    </div>
+  );
 }
 
-export default AllProducts
+export default AllProducts;

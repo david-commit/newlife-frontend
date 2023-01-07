@@ -4,9 +4,11 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function AddPractitioner() {
   return (
-    <div>
+    <div className='add-practitioners-main-container'>
       <AdminSidebar />
-      AddPractitioner
+      <div className='add-practitioners-container'>
+        <h1>Add Practitioner</h1>
+      </div>
     </div>
   );
 }

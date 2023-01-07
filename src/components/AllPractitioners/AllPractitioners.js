@@ -4,8 +4,11 @@ import './AllPractitioners.css';
 
 function AllPractitioners() {
   return (
-    <div>
-      <AdminSidebar /> AllPractitioners
+    <div className='all-practitioners-main-container'>
+      <AdminSidebar />
+      <div className='all-practitioners-container'>
+        <h1>All Practitioners</h1>
+      </div>
     </div>
   );
 }
