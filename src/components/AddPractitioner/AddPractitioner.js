@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
 import './AddPractitioner.css';
+import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function AddPractitioner() {
   return (
-    <div>AddPractitioner</div>
-  )
+    <div>
+      <AdminSidebar />
+      AddPractitioner
+    </div>
+  );
 }
 
-export default AddPractitioner
+export default AddPractitioner;

@@ -28,7 +28,7 @@ import AdminLogin from './AdminLogin/AdminLogin';
 import AddPractitioner from "./AddPractitioner/AddPractitioner"
 import AddProduct from "./AddProduct/AddProduct"
 import AllProducts from './AllProducts/AllProducts';
-import AllProducts from './A';
+
 function App() {
   const [userAdmin, setUserAdmin] = useState(true)
   const [userPatient, setUserPatient] = useState(true);
@@ -166,7 +166,10 @@ function App() {
         <Route exact path='/practitioners/me/chat'>
           {userPractitioner ? <PractitionerChat /> : <Login />}
         </Route>
-        <Route exact path='/practitioners/me/reviews'>
+        <Route
+          exact
+          path='/import AllProducts from "./A"practitioners/me/reviews'
+        >
           {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>
         <Route exact path='/practitioners/me/calendar'>

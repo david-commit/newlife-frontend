@@ -1,10 +1,14 @@
-import React from 'react'
+import React from 'react';
 import './AddProduct.css';
+import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function AddProduct() {
   return (
-    <div>AddProduct</div>
-  )
+    <div>
+      <AdminSidebar />
+      AddProduct
+    </div>
+  );
 }
 
-export default AddProduct
+export default AddProduct;
