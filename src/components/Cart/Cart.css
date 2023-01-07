@@ -14,15 +14,15 @@
 .cart-cards {
  overflow: scroll;
  height: 70vh;
- width: 75%;
+ width: 78%;
 }
 .cart-card {
   display: flex;
-  width: 95%;
+  width: 105%;
   height: 150px;
   margin: 25px 0;
   justify-content: space-between;
-  padding: 90px 30px;
+  padding: 90px 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   align-items: center;
   width: 90%;
@@ -33,9 +33,10 @@
 }
 .cart-card-detail-section {
   width: 65%;
+  border: 1px dashed red;
 }
 .cart-card-detail-section > p {
-  font-size: 24px;
+  font-size: 20px;
   text-align: left;
   align-items: flex-start;
  }
@@ -52,7 +53,6 @@
   transform: rotate(90deg);
 }
 .cart-calculation-section {
-  margin: 25px 0;
   width: 20%;
   border: 1px solid #1d3e68;
   display: flex;
@@ -76,4 +76,14 @@
   cursor: pointer;
   color: white;
   transition: all 0.35s ease-in-out;
+}
+.quantity-change-buttons > button,
+.quantity-change-buttons > input {
+  background-color: white;
+  border: 1px solid #1d3e68;
+  cursor: pointer;
+}
+.quantity-change-buttons > input {
+  width: 30px;
+  text-align: center;
 }

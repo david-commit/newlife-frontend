@@ -202,6 +202,7 @@ function App() {
           {userPatient || userPractitioner ? (
             <Cart
               cart={cart}
+              setCart={setCart}
               cartCount={cartCount}
               productQuantity={productQuantity}
             />

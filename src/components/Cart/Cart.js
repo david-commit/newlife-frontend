@@ -1,11 +1,31 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 
-function Cart({ cart, cartCount, productQuantity }) {
-  const totalPrice = cart.reduce((total, product) => {
-    return total + product.price * productQuantity;
-  }, 0);
+function Cart({ cart, setCart, cartCount, productQuantity }) {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // Adds Prices to get Total price
+  const handlePrice = () => {
+    let total = 0;
+    cart.map((item) => {
+      total += item.price * productQuantity;
+    });
+    setTotalPrice(total);
+  };
+
+  // Call the function on render
+  useEffect(() => {
+    handlePrice();
+  });
+
+  // Fiters out Products from Cart
+  const handleRemove = (id) => {
+    const arr = cart.filter((item) => item.id !== id)
+    setCart(arr)
+  }
 
   return (
     <div className='cart-main-container'>
@@ -22,12 +42,16 @@ function Cart({ cart, cartCount, productQuantity }) {
                   <img src={product.image} alt='Product' />
                   <section className='cart-card-detail-section'>
                     <p>{product.title}</p>
-                    <p>
-                      Quantity: {productQuantity} | Ksh. {product.price}
-                    </p>
+
+                    <div className='quantity-change-buttons'>
+                      Quantity: <button>-</button>
+                      <input value={productQuantity} />
+                      <button>+</button> | Ksh. {product.price}
+                    </div>
+
                     <p>Total: Ksh. {product.price * productQuantity}</p>
                   </section>
-                  <i class='fa-regular fa-circle-xmark'></i>
+                  <i class='fa-regular fa-circle-xmark' onClick={() => handleRemove(product.id)}></i>
                 </div>
               );
             })
