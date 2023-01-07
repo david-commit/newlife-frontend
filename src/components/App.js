@@ -32,9 +32,24 @@ function App() {
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+      price: 109.95,
+      description:
+        'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+      category: "men's clothing",
+      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      rating: {
+        rate: 3.9,
+        count: 120,
+      },
+    }
+  ]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  console.log(cart)
 
   useEffect(() => {
     // auto-login for both user and practitioner
@@ -84,11 +99,18 @@ function App() {
 
   const handleAddToCart = (product) => {
     // cart.push(product)
-    setCart([...cart, product])
+    setCart((cart) => [...cart, product])
     setCartCount(cart.length)
-    cart.filter(
-      (currentValue, index, arr) => arr.indexOf(currentValue) === index
-    );
+
+    // CHECKS IF PRODUCT EXISTS IN CART
+    // const exist = cart.find((x) => x.id === product.id);
+    // if (exist) {
+    //   return cart.map((x) =>
+    //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
+    //   );
+    // } else {
+    //   return {...cart}
+    // }
     // console.log(cart)
   };
 
@@ -157,18 +179,23 @@ function App() {
             handleSearch={handleSearch}
             loading={loading}
             setCart={setCart}
+            handleAddToCart={handleAddToCart}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userPatient || userPractitioner ? (
+          {userPatient || userPractitioner || userAdmin ? (
             <ProductPage handleAddToCart={handleAddToCart} />
           ) : (
             <Login />
           )}
         </Route>
         <Route exact path='/cart'>
-          {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
+          {userPatient || userPractitioner ? (
+            <Cart cart={cart} cartCount={cartCount} />
+          ) : (
+            <Login />
+          )}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
