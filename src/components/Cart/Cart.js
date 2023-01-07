@@ -9,11 +9,11 @@ function Cart({ cart, cartCount }) {
 
   return (
     <div className='cart-main-container'>
-      <h1>Cart</h1><br />
+      <h1>Cart</h1>
+      <br />
       <div className='cart-container'>
         <section className='cart-cards'>
-          {/* {cart ?  */}
-          {cart &&
+          {cart ? (
             cart.map((product) => {
               return (
                 <div className='cart-card' key={product.id}>
@@ -26,14 +26,23 @@ function Cart({ cart, cartCount }) {
                   <i class='fa-regular fa-circle-xmark'></i>
                 </div>
               );
-            })}
-          {/* : 'No Items in Cart'} */}
+            })
+          ) : (
+            <h1>No Items in Cart</h1>
+          )}
         </section>
         <section className='cart-calculation-section'>
-          <h2>Total Price: <br />Ksh. {totalPrice}</h2><br />
-          <h2>Total Items: {cartCount}</h2><br />
+          <h2>
+            Total Price: <br />
+            Ksh. {totalPrice}
+          </h2>
+          <br />
+          <h2>Total Items: {cartCount}</h2>
+          <br />
           <Link to='/checkout'>
-            <button type='button' id='proceed-to-checkout'>Proceed to Checkout</button>
+            <button type='button' id='proceed-to-checkout'>
+              Proceed to Checkout
+            </button>
           </Link>
         </section>
       </div>

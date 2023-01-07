@@ -25,54 +25,46 @@ import PatientCalendar from './PatientCalendar/PatientCalendar';
 import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
 import Admin from './Admin/Admin';
 import AdminLogin from './AdminLogin/AdminLogin';
-import AddPractitioner from "./AddPractitioner/AddPractitioner"
-import AddProduct from "./AddProduct/AddProduct"
+import AddPractitioner from './AddPractitioner/AddPractitioner';
+import AddProduct from './AddProduct/AddProduct';
 import AllProducts from './AllProducts/AllProducts';
-import AllPractitioners from "./AllPractitioners/AllPractitioners"
+import AllPractitioners from './AllPractitioners/AllPractitioners';
 
 function App() {
-  const [userAdmin, setUserAdmin] = useState(true)
+  const [userAdmin, setUserAdmin] = useState(true);
   const [userPatient, setUserPatient] = useState(true);
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      price: 109.95,
-      description:
-        'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-      category: "men's clothing",
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      rating: {
-        rate: 3.9,
-        count: 120,
-      },
-    }
-  ]);
+  const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  console.log(cart)
+  console.log(cart);
 
   useEffect(() => {
-    // auto-login for both user and practitioner
+    // auto-login for patient, practitioner & Admin
     userPatient ? (
-      fetch(`patients/me`).then((r) => {
+      fetch(`/api/patients/me`).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPatient(user));
         }
       })
     ) : userPractitioner ? (
-      fetch(`practitioners/me`).then((r) => {
+      fetch(`/api/practitioners/me`).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPractitioner(user));
+        }
+      })
+    ) : userAdmin ? (
+      fetch(`/api/admin/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserAdmin(user));
         }
       })
     ) : (
       <Home />
     );
-  }, [userPatient, userPractitioner]);
+  }, [userPatient, userPractitioner, userAdmin]);
 
   // Fetch all products
   useEffect(() => {
@@ -102,9 +94,9 @@ function App() {
   };
 
   const handleAddToCart = (product) => {
-    // cart.push(product)
-    setCart((cart) => [...cart, product])
-    setCartCount(cart.length)
+    cart.push(product)
+    // setCart((cart) => [...cart, product]);
+    setCartCount(cart.length);
 
     // CHECKS IF PRODUCT EXISTS IN CART
     // const exist = cart.find((x) => x.id === product.id);
@@ -208,6 +200,9 @@ function App() {
         {/* == ADMIN ROUTES == */}
         <Route exact path='/admin/login'>
           <AdminLogin setUserAdmin={setUserAdmin} />
+        </Route>
+        <Route exacrt path="/admin/me">
+          {userAdmin ? <Admin userAdmin={userAdmin} /> : <AdminLogin setUserAdmin={setUserAdmin} />}
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (
