@@ -28,6 +28,7 @@ import AdminLogin from './AdminLogin/AdminLogin';
 import AddPractitioner from "./AddPractitioner/AddPractitioner"
 import AddProduct from "./AddProduct/AddProduct"
 import AllProducts from './AllProducts/AllProducts';
+import AllPractitioners from "./AllPractitioners/AllPractitioners"
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true)
@@ -210,7 +211,7 @@ function App() {
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (
-            <Admin userAdmin={userAdmin} />
+            <AllPractitioners />
           ) : (
             <AdminLogin setUserAdmin={setUserAdmin} />
           )}
