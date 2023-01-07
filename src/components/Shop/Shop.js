@@ -4,7 +4,7 @@ import './Shop.css';
 import ShopPagination from '../ShopPagination/ShopPagination';
 import loadingGif from '../../img/loading.gif';
 
-function Shop({ products, handleSearch, loading, handleAddToCart }) {
+function Shop({ products, handleSearch, loading, handleAddToCart, cartWarning }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
@@ -84,7 +84,8 @@ function Shop({ products, handleSearch, loading, handleAddToCart }) {
             borderRadius: '5px',
             border: '1px solid grey',
           }}
-        />
+          />
+          {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ""}
         <select
           id='shop-sort'
           // onChange={(e) => setSortProducts(e.target.value)}

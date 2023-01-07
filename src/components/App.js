@@ -39,7 +39,8 @@ function App() {
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  console.log(cart);
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [cartWarning, setCartWarming] = useState(false);
 
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
@@ -93,22 +94,24 @@ function App() {
     return products;
   };
 
-  const handleAddToCart = (product) => {
-    cart.push(product)
-    // setCart((cart) => [...cart, product]);
-    setCartCount(cart.length);
-
-    // CHECKS IF PRODUCT EXISTS IN CART
-    // const exist = cart.find((x) => x.id === product.id);
-    // if (exist) {
-    //   return cart.map((x) =>
-    //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
-    //   );
-    // } else {
-    //   return {...cart}
-    // }
-    // console.log(cart)
+  const handleAddToCart = (item) => {
+    // CHECK IF ITEM EXISTS IN CART
+    let exist = false;
+    cart.forEach((product) => {
+      if (product.id === item.id) {
+        exist = true;
+        setCartWarming(true);
+        setTimeout(() => {
+          setCartWarming(false);
+        }, 5000);
+      }
+    });
+    if (!exist) {
+      cart.push(item);
+      setCartCount(cart.length);
+    }
   };
+  console.log(cart);
 
   return (
     <div className='App'>
@@ -179,19 +182,29 @@ function App() {
             loading={loading}
             setCart={setCart}
             handleAddToCart={handleAddToCart}
+            cartWarning={cartWarning}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
           {userPatient || userPractitioner || userAdmin ? (
-            <ProductPage handleAddToCart={handleAddToCart} />
+            <ProductPage
+              handleAddToCart={handleAddToCart}
+              productQuantity={productQuantity}
+              setProductQuantity={setProductQuantity}
+              cartWarning={cartWarning}
+            />
           ) : (
             <Login />
           )}
         </Route>
         <Route exact path='/cart'>
           {userPatient || userPractitioner ? (
-            <Cart cart={cart} cartCount={cartCount} />
+            <Cart
+              cart={cart}
+              cartCount={cartCount}
+              productQuantity={productQuantity}
+            />
           ) : (
             <Login />
           )}
@@ -201,8 +214,12 @@ function App() {
         <Route exact path='/admin/login'>
           <AdminLogin setUserAdmin={setUserAdmin} />
         </Route>
-        <Route exacrt path="/admin/me">
-          {userAdmin ? <Admin userAdmin={userAdmin} /> : <AdminLogin setUserAdmin={setUserAdmin} />}
+        <Route exacrt path='/admin/me'>
+          {userAdmin ? (
+            <Admin userAdmin={userAdmin} />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (

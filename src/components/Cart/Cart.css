@@ -49,6 +49,7 @@
   cursor: pointer;
   color: #1d3e68;
   transition: all 0.35s ease-in-out;
+  transform: rotate(90deg);
 }
 .cart-calculation-section {
   margin: 25px 0;

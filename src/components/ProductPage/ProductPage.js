@@ -5,11 +5,10 @@ import loadingGif from '../../img/loading.gif';
 // https://github.com/n49/react-stars
 import ReactStars from 'react-stars';
 
-function ProductPage({ handleAddToCart }) {
+function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, cartWarning }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState(1);
   const [newRating, setNewRating] = useState(0);
   const [prevRating] = useState(4.5);
 
@@ -167,6 +166,7 @@ function ProductPage({ handleAddToCart }) {
           Clear
         </button>
       </form>
+      {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
     </div>
   );
 }
