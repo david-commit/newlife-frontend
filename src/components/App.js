@@ -113,6 +113,35 @@ function App() {
   };
   console.log(cart);
 
+  // // Quantity Add Button on Product Page
+  // function handleAddQty() {
+  //   setProductQuantity((productQuantity) => productQuantity + 1);
+  // }
+
+  // // Quantity Reduce Button on Product Page
+  // function handleReduceQty() {
+  //   {
+  //     productQuantity < 2
+  //       ? alert('Quantity cannot be less than 1')
+  //       : setProductQuantity((productQuantity) => productQuantity - 1);
+  //   }
+  // }
+
+  const handleAddorRemoveQuantity = (item, operator) => {
+    let ind = -1
+    cart.forEach((data, index) => {
+      if (data.id === item.id) {
+        ind = index
+      }
+    })
+    const tempArray = cart
+    tempArray[ind] += operator
+    if (tempArray[ind].productQuantity === 0) {
+      tempArray[ind].productQuantity = 1
+    }
+    setCart([...tempArray])
+  }
+
   return (
     <div className='App'>
       <NavBar
@@ -193,6 +222,7 @@ function App() {
               productQuantity={productQuantity}
               setProductQuantity={setProductQuantity}
               cartWarning={cartWarning}
+              handleAddorRemoveQuantity={handleAddorRemoveQuantity}
             />
           ) : (
             <Login />
@@ -204,7 +234,9 @@ function App() {
               cart={cart}
               setCart={setCart}
               cartCount={cartCount}
+              setCartCount={setCartCount}
               productQuantity={productQuantity}
+              handleAddorRemoveQuantity={handleAddorRemoveQuantity}
             />
           ) : (
             <Login />

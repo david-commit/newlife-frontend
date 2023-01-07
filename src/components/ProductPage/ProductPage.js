@@ -5,7 +5,7 @@ import loadingGif from '../../img/loading.gif';
 // https://github.com/n49/react-stars
 import ReactStars from 'react-stars';
 
-function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, cartWarning }) {
+function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, cartWarning, handleAddorRemoveQuantity }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
@@ -18,6 +18,7 @@ function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, car
     console.log(newRating);
   };
 
+  // Fetches a single product
   useEffect(() => {
     const fetchProduct = async () => {
       setProductLoading(true);
@@ -31,24 +32,14 @@ function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, car
     fetchProduct();
   }, [productID]);
 
+  // Loading Animation
   if (productLoading) {
     return (
       <img src={loadingGif} alt='Loading animation' className='loading-gif' />
     );
   }
 
-  function handleAddQty() {
-    setProductQuantity((productQuantity) => productQuantity + 1);
-  }
 
-  function handleReduceQty() {
-    {
-      productQuantity < 2
-        ? alert('Quantity cannot be less than 1')
-        : setProductQuantity((productQuantity) => productQuantity - 1);
-    }
-  }
-  console.log(productQuantity);
 
   return (
     <div className='product-page-main-container'>
@@ -63,13 +54,15 @@ function ProductPage({ handleAddToCart, productQuantity, setProductQuantity, car
             Ksh <span>{product.price}</span>
           </h3>
           <span className='product-quantity'>
-            <button onClick={() => handleReduceQty()}>-</button>
+            <button onClick={() => handleAddorRemoveQuantity(product, -1)}>-</button>
             <input
               type='number'
               value={productQuantity}
               onChange={(e) => setProductQuantity(parseInt(e.target.value))}
             />
-            <button onClick={() => handleAddQty()}>+</button>
+            <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
+              +
+            </button>
           </span>
           <br />
           <br />

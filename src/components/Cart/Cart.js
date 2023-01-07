@@ -4,7 +4,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 
-function Cart({ cart, setCart, cartCount, productQuantity }) {
+function Cart({
+  cart,
+  setCart,
+  cartCount,
+  productQuantity,
+  setCartCount,
+  handleAddorRemoveQuantity,
+}) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   // Adds Prices to get Total price
@@ -23,9 +30,10 @@ function Cart({ cart, setCart, cartCount, productQuantity }) {
 
   // Fiters out Products from Cart
   const handleRemove = (id) => {
-    const arr = cart.filter((item) => item.id !== id)
-    setCart(arr)
-  }
+    const arr = cart.filter((item) => item.id !== id);
+    setCart(arr);
+    setCartCount(arr.length);
+  };
 
   return (
     <div className='cart-main-container'>
@@ -42,16 +50,29 @@ function Cart({ cart, setCart, cartCount, productQuantity }) {
                   <img src={product.image} alt='Product' />
                   <section className='cart-card-detail-section'>
                     <p>{product.title}</p>
-
+                    <br />
                     <div className='quantity-change-buttons'>
-                      Quantity: <button>-</button>
+                      Quantity:{' '}
+                      <button
+                        onClick={() => handleAddorRemoveQuantity(product, -1)}
+                      >
+                        -
+                      </button>
                       <input value={productQuantity} />
-                      <button>+</button> | Ksh. {product.price}
+                      <button
+                        onClick={() => handleAddorRemoveQuantity(product, +1)}
+                      >
+                        +
+                      </button>{' '}
+                      | Ksh. {product.price}
                     </div>
 
                     <p>Total: Ksh. {product.price * productQuantity}</p>
                   </section>
-                  <i class='fa-regular fa-circle-xmark' onClick={() => handleRemove(product.id)}></i>
+                  <i
+                    class='fa-regular fa-circle-xmark'
+                    onClick={() => handleRemove(product.id)}
+                  ></i>
                 </div>
               );
             })

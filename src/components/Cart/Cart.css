@@ -33,7 +33,7 @@
 }
 .cart-card-detail-section {
   width: 65%;
-  border: 1px dashed red;
+  /* border: 1px dashed red; */
 }
 .cart-card-detail-section > p {
   font-size: 20px;
