@@ -25,7 +25,10 @@ import PatientCalendar from './PatientCalendar/PatientCalendar';
 import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
 import Admin from './Admin/Admin';
 import AdminLogin from './AdminLogin/AdminLogin';
-
+import AddPractitioner from "./AddPractitioner/AddPractitioner"
+import AddProduct from "./AddProduct/AddProduct"
+import AllProducts from './AllProducts/AllProducts';
+import AllProducts from './A';
 function App() {
   const [userAdmin, setUserAdmin] = useState(true)
   const [userPatient, setUserPatient] = useState(true);
@@ -205,6 +208,27 @@ function App() {
         <Route exact path='/admin'>
           {userAdmin ? (
             <Admin userAdmin={userAdmin} />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/add-practitioner'>
+          {userAdmin ? (
+            <AddPractitioner />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/products'>
+          {userAdmin ? (
+            <AllProducts />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/add-product'>
+          {userAdmin ? (
+            <AddProduct />
           ) : (
             <AdminLogin setUserAdmin={setUserAdmin} />
           )}

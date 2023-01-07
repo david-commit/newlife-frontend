@@ -9,7 +9,7 @@ function Cart({ cart, cartCount }) {
 
   return (
     <div className='cart-main-container'>
-      <h1>Cart</h1>
+      <h1>Cart</h1><br />
       <div className='cart-container'>
         <section className='cart-cards'>
           {/* {cart ?  */}
@@ -20,6 +20,7 @@ function Cart({ cart, cartCount }) {
                   <img src={product.image} alt='Product' />
                   <section className='cart-card-detail-section'>
                     <p>{product.title}</p>
+                    <p>Quantity: </p>
                     <p>Ksh. {product.price}</p>
                   </section>
                   <i class='fa-regular fa-circle-xmark'></i>
@@ -29,7 +30,7 @@ function Cart({ cart, cartCount }) {
           {/* : 'No Items in Cart'} */}
         </section>
         <section className='cart-calculation-section'>
-          <h2>Total Price: {totalPrice}</h2><br />
+          <h2>Total Price: <br />Ksh. {totalPrice}</h2><br />
           <h2>Total Items: {cartCount}</h2><br />
           <Link to='/checkout'>
             <button type='button' id='proceed-to-checkout'>Proceed to Checkout</button>
