@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Pagination.css';
+import './ShopPagination.css';
 
 function Pagination({ productsPerPage, products, paginate, currentPage }) {
   const pageNumbers = [];

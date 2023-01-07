@@ -9,7 +9,7 @@ function ProductPage({ handleAddToCart }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  let [productQuantity, setProductQuantity] = useState(1);
+  const [productQuantity, setProductQuantity] = useState(1);
   const [newRating, setNewRating] = useState(0);
   const [prevRating] = useState(4.5);
 

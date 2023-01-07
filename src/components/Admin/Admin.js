@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import AdminSidebar from '../AdminSidebar/AdminSidebar';
 
 function Admin() {
   return (
-    <div>Admin</div>
-  )
+    <div>
+      <AdminSidebar />
+      Admin
+    </div>
+  );
 }
 
-export default Admin
+export default Admin;
