@@ -41,6 +41,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState(1);
   const [cartWarning, setCartWarming] = useState(false);
+  const [cartAddSuccess, setCartSuccess] = useState(false);
 
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
@@ -71,7 +72,8 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const response = await fetch('https://fakestoreapi.com/products');
+      // const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
       setProducts(results);
@@ -103,44 +105,48 @@ function App() {
         setCartWarming(true);
         setTimeout(() => {
           setCartWarming(false);
-        }, 5000);
+        }, 3500);
       }
     });
     if (!exist) {
       cart.push(item);
       setCartCount(cart.length);
+      setCartSuccess(true)
+      setTimeout(() => {
+        setCartSuccess(false);
+      }, 3500);
     }
   };
   console.log(cart);
 
   // // Quantity Add Button on Product Page
-  // function handleAddQty() {
-  //   setProductQuantity((productQuantity) => productQuantity + 1);
-  // }
-
-  // // Quantity Reduce Button on Product Page
-  // function handleReduceQty() {
-  //   {
-  //     productQuantity < 2
-  //       ? alert('Quantity cannot be less than 1')
-  //       : setProductQuantity((productQuantity) => productQuantity - 1);
-  //   }
-  // }
-
-  const handleAddorRemoveQuantity = (item, operator) => {
-    let ind = -1
-    cart.forEach((data, index) => {
-      if (data.id === item.id) {
-        ind = index
-      }
-    })
-    const tempArray = cart
-    tempArray[ind] += operator
-    if (tempArray[ind].productQuantity === 0) {
-      tempArray[ind].productQuantity = 1
-    }
-    setCart([...tempArray])
+  function handleAddQty() {
+    setProductQuantity((productQuantity) => productQuantity + 1);
   }
+
+  // Quantity Reduce Button on Product Page
+  function handleReduceQty() {
+    {
+      productQuantity < 2
+        ? alert('Quantity cannot be less than 1')
+        : setProductQuantity((productQuantity) => productQuantity - 1);
+    }
+  }
+
+  // const handleAddorRemoveQuantity = (item, operator) => {
+  //   let ind = -1
+  //   cart.forEach((data, index) => {
+  //     if (data.id === item.id) {
+  //       ind = index
+  //     }
+  //   })
+  //   const tempArray = cart
+  //   tempArray[ind] += operator
+  //   if (tempArray[ind].productQuantity === 0) {
+  //     tempArray[ind].productQuantity = 1
+  //   }
+  //   setCart([...tempArray])
+  // }
 
   return (
     <div className='App'>
@@ -212,6 +218,7 @@ function App() {
             setCart={setCart}
             handleAddToCart={handleAddToCart}
             cartWarning={cartWarning}
+            cartAddSuccess={cartAddSuccess}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
@@ -222,7 +229,8 @@ function App() {
               productQuantity={productQuantity}
               setProductQuantity={setProductQuantity}
               cartWarning={cartWarning}
-              handleAddorRemoveQuantity={handleAddorRemoveQuantity}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
             />
           ) : (
             <Login />
@@ -236,7 +244,8 @@ function App() {
               cartCount={cartCount}
               setCartCount={setCartCount}
               productQuantity={productQuantity}
-              handleAddorRemoveQuantity={handleAddorRemoveQuantity}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
             />
           ) : (
             <Login />

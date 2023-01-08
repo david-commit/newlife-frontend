@@ -10,7 +10,9 @@ function Cart({
   cartCount,
   productQuantity,
   setCartCount,
-  handleAddorRemoveQuantity,
+  // handleAddorRemoveQuantity,
+  handleReduceQty,
+  handleAddQty,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -54,20 +56,25 @@ function Cart({
                     <div className='quantity-change-buttons'>
                       Quantity:{' '}
                       <button
-                        onClick={() => handleAddorRemoveQuantity(product, -1)}
+                        // onClick={() => handleAddorRemoveQuantity(product, -1)}
+                        onClick={() => handleReduceQty()}
                       >
                         -
                       </button>
                       <input value={productQuantity} />
                       <button
-                        onClick={() => handleAddorRemoveQuantity(product, +1)}
+                        // onClick={() => handleAddorRemoveQuantity(product, +1)}
+                        onClick={() => handleAddQty()}
                       >
                         +
                       </button>{' '}
-                      | Ksh. {product.price}
+                      | Ksh. {parseFloat(product.price).toFixed(2)}
                     </div>
-
-                    <p>Total: Ksh. {product.price * productQuantity}</p>
+                    <p>
+                      Total: Ksh.{' '}
+                      {parseFloat(product.price * productQuantity).toFixed(2)}
+                    </p>
+                    product.price * productQuantity
                   </section>
                   <i
                     class='fa-regular fa-circle-xmark'
@@ -83,7 +90,7 @@ function Cart({
         <section className='cart-calculation-section'>
           <h2>
             Total Price: <br />
-            Ksh. {totalPrice}
+            Ksh. {parseFloat(totalPrice).toFixed(2)}
           </h2>
           <br />
           <h2>Total Items: {cartCount}</h2>

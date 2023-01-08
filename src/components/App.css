@@ -8,9 +8,9 @@
 }
 
 #cart-warning {
-  height: 40px;
-  width: 250px;
-  position: absolute;
+  height: 35px;
+  width: 200px;
+  position: fixed;
   right: 0;
   top: 20%;
   background-color: rgb(210, 91, 91);
@@ -18,4 +18,18 @@
   color: white;
   padding: 5px;
   border-radius: 5px;
+  z-index: 100;
+}
+#cart-success {
+  height: 35px;
+  width: 200px;
+  position: fixed;
+  right: 0;
+  top: 20%;
+  background-color: #5cb85c;
+  font-size: 1.1rem;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 100;
 }
