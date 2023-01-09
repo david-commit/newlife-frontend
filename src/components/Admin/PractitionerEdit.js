@@ -15,4 +15,4 @@ const PractitionerEdit = (props) => {
     )
 }
 
-export default PostEdit
+export default PractitionerEdit 
