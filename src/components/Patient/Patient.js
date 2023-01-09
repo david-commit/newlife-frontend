@@ -1,21 +1,20 @@
 import React from 'react';
 import './Patient.css';
-import PatientSidebar from '../PatientSidebar/PatientSidebar';
 
 function Patient() {
   return (
     <div className='patient-main-container'>
-      <PatientSidebar />
+      
       <div className='patient-details-dash-section'>
-        <h1>Hi Marcy,</h1>
-        <p>See your personal details below</p>
+        <h1>Hi John,</h1>
+        
         <br />
         <div className='patient-details-section'>
           <p className='patient-details-title'>
-            <span>Bio:&nbsp;</span>
+            <span>Bio:</span>
           </p>
 
-          <textarea readOnly id='bio'>
+          <textarea >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
             alias, voluptatum vero eaque veniam inventore nihil possimus
             repellendus nemo commodi cupiditate eum praesentium incidunt odit
@@ -24,58 +23,40 @@ function Patient() {
           <br />
 
           <p className='practitioner-details-title'>
-            <span>Date of Birth:&nbsp;</span>
-            12/12/1998
+            <span>Date of Birth:</span>
+           
           </p>
           <p className='practitioner-details-title'>
-            <span>Phone:&nbsp;</span>
-            +25412345678
+            <span>Phone:</span>
+            +254798765432
           </p>
           <p className='practitioner-details-title'>
-            <span>Email:&nbsp;</span>
-            patient@newlife.com
+            <span>Email:</span>
+           john@newlife.com
           </p>
           <p className='practitioner-details-title'>
-            <span>Location:&nbsp;</span>
-            Doonholm
+            <span>Location:</span>
+           Nairobi
           </p>
           <p className='practitioner-details-title'>
-            <span>Age:&nbsp;</span>
+            <span>Age:</span>
             34
           </p>
           <p className='practitioner-details-title'>
-            <span>Height:&nbsp;</span>2 meters
+            <span>Height:</span>2 meters
           </p>
           <p className='practitioner-details-title'>
-            <span>Weight:&nbsp;</span>
-            68kg
+            <span>Weight:</span>
+            76kg
           </p>
           <p className='practitioner-details-title'>
-            <span>BMI:&nbsp;</span>
-            18
+            <span>BMI:</span>
+           
           </p>
           <p className='practitioner-details-title'>
-            <span>Blood Group:&nbsp;</span>
+            <span>Blood Group:</span>
             O-
           </p>
-        </div>
-      </div>
-      <div className='patient-details-notification-section'>
-        <h2>Notifications</h2>
-        <div className='patient-details-notification'>
-          <h4>Upcomming appointment (in 2hrs)</h4>
-          <p>Dr. Grace Laura (Psychologist)</p>
-          <hr />
-        </div>
-        <div className='patient-details-notification'>
-          <h4>Upcomming appointment (in 3hrs)</h4>
-          <p>Dr. Faith Ondiege (Nutritionist)</p>
-          <hr />
-        </div>
-        <div className='patient-details-notification'>
-          <h4>Upcomming appointment (in 3hrs)</h4>
-          <p>Dr. Faith Ondiege (Nutritionist)</p>
-          <hr />
         </div>
       </div>
     </div>
