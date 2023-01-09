@@ -27,7 +27,7 @@ function PatientDetailsPopup() {
     e.preventDefault();
     fetch('', {
       method: 'POST',
-      header: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         phone_number: phone,
         dob,

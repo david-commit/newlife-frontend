@@ -30,6 +30,7 @@ import AddProduct from './AddProduct/AddProduct';
 import AllProducts from './AllProducts/AllProducts';
 import AllPractitioners from './AllPractitioners/AllPractitioners';
 import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
+import ResetPassword from './ResetPassword/ResetPassword';
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
@@ -164,6 +165,9 @@ function App() {
         </Route>
         <Route exact path='/login'>
           <Login />
+        </Route>
+        <Route exact path="/reset-password">
+          <ResetPassword />
         </Route>
         {/* == PATIENT ROUTES */}
         <Route exact path='/patients/me'>
