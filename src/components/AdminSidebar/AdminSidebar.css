@@ -1,0 +1,28 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.admin-sidebar-nav-container {
+  width: 21%;
+  background-color: #00a3c8;
+}
+.admin-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 30px;
+}
+.admin-sidebar-nav a {
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.admin-sidebar-nav a.active {
+  background-color: #1d3e68;
+}
+.admin-sidebar-nav i {
+ width: 30px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+}

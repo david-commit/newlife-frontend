@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Shop.css';
-import Pagination from '../Pagination/Pagination';
+import ShopPagination from '../ShopPagination/ShopPagination';
 import loadingGif from '../../img/loading.gif';
 
-function Shop({ products, handleSearch, loading }) {
+function Shop({ products, handleSearch, loading, handleAddToCart }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
@@ -16,7 +16,7 @@ function Shop({ products, handleSearch, loading }) {
     indexOfLastProduct
   );
 
-  // Change Paginate Pages
+  // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Sort Products Logic
@@ -46,7 +46,14 @@ function Shop({ products, handleSearch, loading }) {
               </div>
               <section className='card-price-button'>
                 <h4>Ksh {product.price}</h4>
-                <button type='button' onClick={() => alert('Hello')}>
+                <button
+                  type='button'
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // alert('Added to Cart!');
+                    handleAddToCart(product)
+                  }}
+                >
                   Add to Cart
                 </button>
               </section>
@@ -88,7 +95,7 @@ function Shop({ products, handleSearch, loading }) {
         </select>
       </div>
       <div className='shop-cards'>{renderedProducts}</div>
-      <Pagination
+      <ShopPagination
         productsPerPage={productsPerPage}
         products={products}
         paginate={paginate}
