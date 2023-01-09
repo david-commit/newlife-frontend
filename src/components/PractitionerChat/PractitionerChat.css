@@ -1,0 +1,15 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.practitioner-chat-main-container {
+  width: 85%;
+  height: 70vh;
+  display: flex;
+  margin: 0 auto -80px auto;
+}
+.practitioner-chat-container {
+ padding: 40px;
+}
+.practitioner-chat-container h1 {
+ color: #1d3e68;
+}

@@ -45,13 +45,13 @@ function Shop({ products, handleSearch, loading, handleAddToCart, cartWarning, c
                 <h3>{product.name}</h3>
               </div>
               <section className='card-price-button'>
-                <h4>Ksh {product.price}</h4>
+                <h4>Ksh {parseFloat(product.price).toFixed(2)}</h4>
                 <button
                   type='button'
                   onClick={(e) => {
                     e.preventDefault();
                     // alert('Added to Cart!');
-                    handleAddToCart(product)
+                    handleAddToCart(product);
                   }}
                 >
                   Add to Cart

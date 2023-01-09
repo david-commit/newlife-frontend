@@ -111,7 +111,7 @@ function App() {
       }
     });
     if (!exist) {
-      cart.push(item);
+      cart.unshift(item);
       setCartCount(cart.length);
       setCartSuccess(true);
       setTimeout(() => {
@@ -207,7 +207,7 @@ function App() {
         </Route>
         <Route
           exact
-          path='/import AllProducts from "./A"practitioners/me/reviews'
+          path='/practitioners/me/reviews'
         >
           {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>

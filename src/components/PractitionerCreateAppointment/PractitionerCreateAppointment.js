@@ -1,8 +1,21 @@
 import React from 'react';
 import './PractitionerCreateAppointment.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 
 function PractitionerCreateAppointment() {
+
+  const [patients, setPatients] = useState([])
+  const [patient, setPatient] = useState("");
+  
+  useEffect(() => {
+    fetch('http://localhost:3000/patient_profiles')
+    .then((response) => response.json())
+    .then((data) => setPatients(data))
+  }, [])
+
   return (
     <div className='practitioner-main-container'>
       <PractitionerSideBar />
@@ -15,11 +28,15 @@ function PractitionerCreateAppointment() {
           minus eveniet! Consequuntur!
         </p>
         <form className='appointment-form'>
-          <select>
+          <select onChange={(e) => setPatient(e.target.value)}>
             <option hidden>Select Patient</option>
-            <option>Grace Laura</option>
-            <option>Faith Ondiege</option>
-            <option>Ivy Sifuma</option>
+            {patients?.map((patient) => {
+              return (
+                <option value={patient.id} key={patient.id}>
+                  {patient.first_name} {patient.last_name}
+                </option>
+              );
+            })}
           </select>
           <select>
             <option hidden>Select type of appointment</option>
