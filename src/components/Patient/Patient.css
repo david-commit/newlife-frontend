@@ -38,9 +38,4 @@ margin-bottom: 10px;
 text-align: center;
 padding-bottom: 20px;
 }
-.patient-details-notification hr {
- margin: 10px 0;
- border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, white, white, rgba(0, 0, 0, 0));
-}
+
