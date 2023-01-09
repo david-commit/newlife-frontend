@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ProductPage.css';
 import loadingGif from '../../img/loading.gif';
+// https://github.com/n49/react-stars
+import ReactStars from 'react-stars';
 
 function ProductPage({ handleAddToCart }) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState('');
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [newRating, setNewRating] = useState(0);
+  const [prevRating] = useState(4.5);
+
+  // Setting new product rating from user
+  const ratingChanged = (newRating) => {
+    setNewRating(newRating);
+    console.log(newRating);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -28,29 +38,49 @@ function ProductPage({ handleAddToCart }) {
     );
   }
 
+  function handleAddQty() {
+    setProductQuantity((productQuantity) => productQuantity + 1);
+  }
+
+  function handleReduceQty() {
+    {
+      productQuantity < 2
+        ? alert('Quantity cannot be less than 1')
+        : setProductQuantity((productQuantity) => productQuantity - 1);
+    }
+  }
+  console.log(productQuantity);
+
   return (
     <div className='product-page-main-container'>
       <div className='product-details-container'>
         <img src={product.image} alt='Product appearance' />
         <section className='product-details-section'>
-          <p>{product.category}</p>
+          <span>
+            Product ID: {product.id} | Category: {product.category}
+          </span>
           <h1>{product.title}</h1>
           <h3 className='product-price'>
             Ksh <span>{product.price}</span>
           </h3>
-          <input
-            type='number'
-            id='product-quantity'
-            // defaultValue='1'
-            value={productQuantity}
-            onChange={(e) => setProductQuantity(e.target.type)}
-          />
+          <span className='product-quantity'>
+            <button onClick={() => handleReduceQty()}>-</button>
+            <input
+              type='number'
+              value={productQuantity}
+              onChange={(e) => setProductQuantity(parseInt(e.target.value))}
+            />
+            <button onClick={() => handleAddQty()}>+</button>
+          </span>
           <br />
           <br />
           {/* <Link path to='/cart'> */}
-            <button id='product-page-cart-button' onClick={handleAddToCart(product)}>
-              <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
-            </button>
+          <button
+            id='product-page-cart-button'
+            onClick={() => handleAddToCart(product)}
+          >
+            <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
+          </button>
           {/* </Link> */}
           <br />
           <br />
@@ -60,7 +90,22 @@ function ProductPage({ handleAddToCart }) {
           <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
-          <p id='product-rating'>4/5</p>
+          <section className='prevRating'>
+            <p id='product-rating'>
+              <strong>{prevRating}</strong>/5
+            </p>
+            <div>
+              <ReactStars
+                count={5}
+                value={prevRating}
+                size={24}
+                color2={'#ffd700'}
+                half={false}
+                edit={false}
+              />
+              <p>200 verified ratings</p>
+            </div>
+          </section>
         </section>
       </div>
       <section className='product-details-bottom-section'>
@@ -88,6 +133,40 @@ function ProductPage({ handleAddToCart }) {
           <li>Dry mouth</li>
         </ul>
       </section>
+      <form id='review-form'>
+        <h2>Add Review</h2>
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={30}
+          color2={'#ffd700'}
+          half={true}
+        />
+        {newRating < 2
+          ? 'Poor'
+          : newRating < 3
+          ? 'Below Average'
+          : newRating < 4
+          ? 'Average'
+          : newRating < 5
+          ? 'Above Average'
+          : newRating < 6
+          ? 'Excellent'
+          : 'Select Rate'}
+        <br />
+        <br />
+        <textarea id='review-textarea' placeholder='Type review..'></textarea>
+        <br />
+        <br />
+        <button type='submit'>Submit Review</button>{' '}
+        <button
+          type='reset'
+          style={{ width: 'fit-content' }}
+          onClick={() => setNewRating(0)}
+        >
+          Clear
+        </button>
+      </form>
     </div>
   );
 }

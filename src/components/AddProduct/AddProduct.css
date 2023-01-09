@@ -1,17 +1,17 @@
 /* LIGHT BLUE > #00a3c8 */
 /* DARK BLUE > #1d3e68 */
 /* LIGHT GREY > #f8f9fb */
-.patient-main-container {
+.add-product-main-container {
   width: 85%;
   display: flex;
   margin: 0 auto -80px auto;
   height: 70vh;
 }
-.patient-details-dash-section {
- width: 55%;
+.add-product-container {
+ width: 70%;
  padding: 35px;
+ border: 1px dashed red;
 }
-.patient-details-dash-section h1 {
+.add-product-container h1 {
  color: #1d3e68;
 }
-

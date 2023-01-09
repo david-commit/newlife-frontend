@@ -21,14 +21,39 @@ import PractitionerAppointments from './PractitionerAppointments/PractitionerApp
 import PractitionerChat from './PractitionerChat/PractitionerChat';
 import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
 import Cart from './Cart/Cart';
+import PatientCalendar from './PatientCalendar/PatientCalendar';
+import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
+import Admin from './Admin/Admin';
+import AdminLogin from './AdminLogin/AdminLogin';
+import AddPractitioner from "./AddPractitioner/AddPractitioner"
+import AddProduct from "./AddProduct/AddProduct"
+import AllProducts from './AllProducts/AllProducts';
+import AllPractitioners from "./AllPractitioners/AllPractitioners"
 
 function App() {
-  const [userPatient, setUserPatient] = useState(false);
+  const [userAdmin, setUserAdmin] = useState(true)
+  const [userPatient, setUserPatient] = useState(true);
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
+      price: 109.95,
+      description:
+        'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
+      category: "men's clothing",
+      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
+      rating: {
+        rate: 3.9,
+        count: 120,
+      },
+    }
+  ]);
+  const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
+  console.log(cart)
 
   useEffect(() => {
     // auto-login for both user and practitioner
@@ -77,11 +102,20 @@ function App() {
   };
 
   const handleAddToCart = (product) => {
-    cart.push(product)
-    // cart.filter(
-    //   (currentValue, index, arr) => arr.indexOf(currentValue) === index
-    // );
-    console.log(cart)
+    // cart.push(product)
+    setCart((cart) => [...cart, product])
+    setCartCount(cart.length)
+
+    // CHECKS IF PRODUCT EXISTS IN CART
+    // const exist = cart.find((x) => x.id === product.id);
+    // if (exist) {
+    //   return cart.map((x) =>
+    //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
+    //   );
+    // } else {
+    //   return {...cart}
+    // }
+    // console.log(cart)
   };
 
   return (
@@ -91,7 +125,7 @@ function App() {
         userPractitioner={userPractitioner}
         setUserPatient={setUserPatient}
         setUserPractitioner={setUserPractitioner}
-        cart={cart}
+        cartCount={cartCount}
       />
       <Switch>
         <Route exact path='/signup'>
@@ -116,6 +150,9 @@ function App() {
         <Route exact path='/patients/me/reviews'>
           {userPatient ? <PatientReviews /> : <Login />}
         </Route>
+        <Route exact path='/patients/me/calendar'>
+          {userPatient ? <PatientCalendar /> : <Login />}
+        </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/practitioners/me'>
@@ -130,8 +167,14 @@ function App() {
         <Route exact path='/practitioners/me/chat'>
           {userPractitioner ? <PractitionerChat /> : <Login />}
         </Route>
-        <Route exact path='/practitioners/me/reviews'>
+        <Route
+          exact
+          path='/import AllProducts from "./A"practitioners/me/reviews'
+        >
           {userPractitioner ? <PractitionerReviews /> : <Login />}
+        </Route>
+        <Route exact path='/practitioners/me/calendar'>
+          {userPractitioner ? <PractitionerCalendar /> : <Login />}
         </Route>
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
@@ -143,20 +186,58 @@ function App() {
             handleSearch={handleSearch}
             loading={loading}
             setCart={setCart}
+            handleAddToCart={handleAddToCart}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userPatient || userPractitioner ? (
+          {userPatient || userPractitioner || userAdmin ? (
             <ProductPage handleAddToCart={handleAddToCart} />
           ) : (
             <Login />
           )}
         </Route>
         <Route exact path='/cart'>
-          {userPatient || userPractitioner ? <Cart cart={cart} /> : <Login />}
+          {userPatient || userPractitioner ? (
+            <Cart cart={cart} cartCount={cartCount} />
+          ) : (
+            <Login />
+          )}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
+        {/* == ADMIN ROUTES == */}
+        <Route exact path='/admin/login'>
+          <AdminLogin setUserAdmin={setUserAdmin} />
+        </Route>
+        <Route exact path='/admin'>
+          {userAdmin ? (
+            <AllPractitioners />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/add-practitioner'>
+          {userAdmin ? (
+            <AddPractitioner />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/products'>
+          {userAdmin ? (
+            <AllProducts />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        <Route exact path='/admin/add-product'>
+          {userAdmin ? (
+            <AddProduct />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
+        </Route>
+        {/* == ADMIN ROUTES == */}
         <Route exact path='/'>
           <Home />
         </Route>
