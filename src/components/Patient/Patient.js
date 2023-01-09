@@ -23,7 +23,7 @@ function Patient() {
           <br />
 
           <p className='practitioner-details-title'>
-            <span>Date of Birth:</span>
+            <span>Date of Birth:</span> 01/01/1986
            
           </p>
           <p className='practitioner-details-title'>
@@ -50,7 +50,7 @@ function Patient() {
             76kg
           </p>
           <p className='practitioner-details-title'>
-            <span>BMI:</span>
+            <span>BMI:</span>19
            
           </p>
           <p className='practitioner-details-title'>
