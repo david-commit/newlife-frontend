@@ -1,12 +1,12 @@
 import React from 'react'
 import { Admin, Resource } from 'react-admin'
 import restProvider from 'ra-data-simple-rest'
-// import PostList from './PractitionerList'
-import PostCreate from './PractitionerCreate'
-import PostEdit from './ProductEdit'
+import PractitionerList from './PractitionerList'
+import PractitionerCreate from './PractitionerCreate'
+import ProductEdit from './ProductEdit'
 import ProductList from './ProductList'
 import ProductCreate from './ProductCreate'
-import ProductEdit from './ProductEdit'
+import ProductCreate from './ProductCreate'
 
 
 function Admn() {
@@ -15,9 +15,9 @@ function Admn() {
   >
     <Resource
     name='posts'
-    list={PostList}
-    create={PostCreate}
-    edit={PostEdit}
+    list={PractitionerList}
+    create={PractitionerCreate}
+    edit={PractitionerEdit}
     />
         <Resource
     name='Products'
