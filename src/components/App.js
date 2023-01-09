@@ -113,7 +113,7 @@ function App() {
     if (!exist) {
       cart.push(item);
       setCartCount(cart.length);
-      setCartSuccess(true)
+      setCartSuccess(true);
       setTimeout(() => {
         setCartSuccess(false);
       }, 3500);
@@ -166,7 +166,7 @@ function App() {
         <Route exact path='/login'>
           <Login />
         </Route>
-        <Route exact path="/reset-password">
+        <Route exact path='/reset-password'>
           <ResetPassword />
         </Route>
         {/* == PATIENT ROUTES */}
@@ -188,7 +188,7 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
-        <Route exact path="/patients/details-popup">
+        <Route exact path='/patients/details-popup'>
           {userPatient ? <PatientDetailsPopup /> : <Login />}
         </Route>
         {/* == PATIENT ROUTES */}
