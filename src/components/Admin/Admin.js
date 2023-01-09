@@ -1,13 +1,29 @@
-import React from 'react';
-import AdminSidebar from '../AdminSidebar/AdminSidebar';
+import React from 'react'
+import { Admin, Resource } from 'react-admin'
+import restProvider from 'ra-data-simple-rest'
+import PostList from './PostList'
+import PostCreate from './PostCreate'
+import PostEdit from './ProductEdit'
+import ProductList from './ProductList'
+import ProductCreate from './ProductCreate'
+import ProductEdit from './ProductEdit'
 
-function Admin() {
-  return (
-    <div>
-      <AdminSidebar />
-      Admin
-    </div>
-  );
+
+function Admn() {
+  return <Admin dataProvider={restProvider('http://localhost:3000')}>
+    <Resource
+    name='posts'
+    list={PostList}
+    create={PostCreate}
+    edit={PostEdit}
+    />
+        <Resource
+    name='Products'
+    list={ProductList}
+    create={ProductCreate}
+    edit={ProductEdit}
+    />
+  </Admin>
 }
 
-export default Admin;
+export default Admn;
