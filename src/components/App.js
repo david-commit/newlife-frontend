@@ -25,60 +25,57 @@ import PatientCalendar from './PatientCalendar/PatientCalendar';
 import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
 import Admin from './Admin/Admin';
 import AdminLogin from './AdminLogin/AdminLogin';
-import AddPractitioner from "./AddPractitioner/AddPractitioner"
-import AddProduct from "./AddProduct/AddProduct"
+import AddPractitioner from './AddPractitioner/AddPractitioner';
+import AddProduct from './AddProduct/AddProduct';
 import AllProducts from './AllProducts/AllProducts';
-import AllPractitioners from "./AllPractitioners/AllPractitioners"
+import AllPractitioners from './AllPractitioners/AllPractitioners';
+import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
+import ResetPassword from './ResetPassword/ResetPassword';
 
 function App() {
-  const [userAdmin, setUserAdmin] = useState(true)
+  const [userAdmin, setUserAdmin] = useState(true);
   const [userPatient, setUserPatient] = useState(true);
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      price: 109.95,
-      description:
-        'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-      category: "men's clothing",
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      rating: {
-        rate: 3.9,
-        count: 120,
-      },
-    }
-  ]);
+  const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
-  console.log(cart)
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [cartWarning, setCartWarming] = useState(false);
+  const [cartAddSuccess, setCartSuccess] = useState(false);
 
   useEffect(() => {
-    // auto-login for both user and practitioner
+    // auto-login for patient, practitioner & Admin
     userPatient ? (
-      fetch(`patients/me`).then((r) => {
+      fetch(`/api/patients/me`).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPatient(user));
         }
       })
     ) : userPractitioner ? (
-      fetch(`practitioners/me`).then((r) => {
+      fetch(`/api/practitioners/me`).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPractitioner(user));
+        }
+      })
+    ) : userAdmin ? (
+      fetch(`/api/admin/me`).then((r) => {
+        if (r.ok) {
+          r.json().then((user) => setUserAdmin(user));
         }
       })
     ) : (
       <Home />
     );
-  }, [userPatient, userPractitioner]);
+  }, [userPatient, userPractitioner, userAdmin]);
 
   // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const response = await fetch('https://fakestoreapi.com/products');
+      // const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
       setProducts(results);
@@ -101,22 +98,57 @@ function App() {
     return products;
   };
 
-  const handleAddToCart = (product) => {
-    // cart.push(product)
-    setCart((cart) => [...cart, product])
-    setCartCount(cart.length)
-
-    // CHECKS IF PRODUCT EXISTS IN CART
-    // const exist = cart.find((x) => x.id === product.id);
-    // if (exist) {
-    //   return cart.map((x) =>
-    //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
-    //   );
-    // } else {
-    //   return {...cart}
-    // }
-    // console.log(cart)
+  const handleAddToCart = (item) => {
+    // CHECK IF ITEM EXISTS IN CART
+    let exist = false;
+    cart.forEach((product) => {
+      if (product.id === item.id) {
+        exist = true;
+        setCartWarming(true);
+        setTimeout(() => {
+          setCartWarming(false);
+        }, 3500);
+      }
+    });
+    if (!exist) {
+      cart.unshift(item);
+      setCartCount(cart.length);
+      setCartSuccess(true);
+      setTimeout(() => {
+        setCartSuccess(false);
+      }, 3500);
+    }
   };
+  console.log(cart);
+
+  // // Quantity Add Button on Product Page
+  function handleAddQty() {
+    setProductQuantity((productQuantity) => productQuantity + 1);
+  }
+
+  // Quantity Reduce Button on Product Page
+  function handleReduceQty() {
+    {
+      productQuantity < 2
+        ? alert('Quantity cannot be less than 1')
+        : setProductQuantity((productQuantity) => productQuantity - 1);
+    }
+  }
+
+  // const handleAddorRemoveQuantity = (item, operator) => {
+  //   let ind = -1
+  //   cart.forEach((data, index) => {
+  //     if (data.id === item.id) {
+  //       ind = index
+  //     }
+  //   })
+  //   const tempArray = cart
+  //   tempArray[ind] += operator
+  //   if (tempArray[ind].productQuantity === 0) {
+  //     tempArray[ind].productQuantity = 1
+  //   }
+  //   setCart([...tempArray])
+  // }
 
   return (
     <div className='App'>
@@ -133,6 +165,9 @@ function App() {
         </Route>
         <Route exact path='/login'>
           <Login />
+        </Route>
+        <Route exact path='/reset-password'>
+          <ResetPassword />
         </Route>
         {/* == PATIENT ROUTES */}
         <Route exact path='/patients/me'>
@@ -153,6 +188,9 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
+        <Route exact path='/patients/details-popup'>
+          {userPatient ? <PatientDetailsPopup /> : <Login />}
+        </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/practitioners/me'>
@@ -169,7 +207,7 @@ function App() {
         </Route>
         <Route
           exact
-          path='/import AllProducts from "./A"practitioners/me/reviews'
+          path='/practitioners/me/reviews'
         >
           {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>
@@ -187,19 +225,36 @@ function App() {
             loading={loading}
             setCart={setCart}
             handleAddToCart={handleAddToCart}
+            cartWarning={cartWarning}
+            cartAddSuccess={cartAddSuccess}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
           {userPatient || userPractitioner || userAdmin ? (
-            <ProductPage handleAddToCart={handleAddToCart} />
+            <ProductPage
+              handleAddToCart={handleAddToCart}
+              productQuantity={productQuantity}
+              setProductQuantity={setProductQuantity}
+              cartWarning={cartWarning}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
+            />
           ) : (
             <Login />
           )}
         </Route>
         <Route exact path='/cart'>
           {userPatient || userPractitioner ? (
-            <Cart cart={cart} cartCount={cartCount} />
+            <Cart
+              cart={cart}
+              setCart={setCart}
+              cartCount={cartCount}
+              setCartCount={setCartCount}
+              productQuantity={productQuantity}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
+            />
           ) : (
             <Login />
           )}
@@ -208,6 +263,13 @@ function App() {
         {/* == ADMIN ROUTES == */}
         <Route exact path='/admin/login'>
           <AdminLogin setUserAdmin={setUserAdmin} />
+        </Route>
+        <Route exacrt path='/admin/me'>
+          {userAdmin ? (
+            <Admin userAdmin={userAdmin} />
+          ) : (
+            <AdminLogin setUserAdmin={setUserAdmin} />
+          )}
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (

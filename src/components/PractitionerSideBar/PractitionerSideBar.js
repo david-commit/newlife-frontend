@@ -22,7 +22,7 @@ function PractitionerSideBar() {
           <i class='fa-solid fa-star'></i>&nbsp; Reviews
         </NavLink>
         <NavLink exact to='/practitioners/me/calendar'>
-          Calendar
+          <i class='fa-regular fa-calendar-check'></i>&nbsp; Calendar
         </NavLink>
       </nav>
     </div>

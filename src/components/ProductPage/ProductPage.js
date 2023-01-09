@@ -5,13 +5,19 @@ import loadingGif from '../../img/loading.gif';
 // https://github.com/n49/react-stars
 import ReactStars from 'react-stars';
 
-function ProductPage({ handleAddToCart }) {
+function ProductPage({
+  handleAddToCart,
+  productQuantity,
+  setProductQuantity,
+  cartWarning,
+  handleAddorRemoveQuantity,
+}) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState(1);
   const [newRating, setNewRating] = useState(0);
-  const [prevRating] = useState(4.5);
+  const [prevRating, setPrevRating] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
@@ -19,37 +25,27 @@ function ProductPage({ handleAddToCart }) {
     console.log(newRating);
   };
 
+  // Fetches a single product
   useEffect(() => {
     const fetchProduct = async () => {
       setProductLoading(true);
       const response = await fetch(
-        `https://fakestoreapi.com/products/${productID}`
+        `http://localhost:3000/products/${productID}`
       );
       const results = await response.json();
       setProduct(results);
+      setPrevRating(results.rating);
       setProductLoading(false);
     };
     fetchProduct();
   }, [productID]);
 
+  // Loading Animationmethod_name
   if (productLoading) {
     return (
       <img src={loadingGif} alt='Loading animation' className='loading-gif' />
     );
   }
-
-  function handleAddQty() {
-    setProductQuantity((productQuantity) => productQuantity + 1);
-  }
-
-  function handleReduceQty() {
-    {
-      productQuantity < 2
-        ? alert('Quantity cannot be less than 1')
-        : setProductQuantity((productQuantity) => productQuantity - 1);
-    }
-  }
-  console.log(productQuantity);
 
   return (
     <div className='product-page-main-container'>
@@ -59,18 +55,23 @@ function ProductPage({ handleAddToCart }) {
           <span>
             Product ID: {product.id} | Category: {product.category}
           </span>
-          <h1>{product.title}</h1>
+          <h1>{product.name}</h1>
           <h3 className='product-price'>
-            Ksh <span>{product.price}</span>
+            Ksh <span>{parseFloat(product.price).toFixed(2)}</span>
           </h3>
           <span className='product-quantity'>
-            <button onClick={() => handleReduceQty()}>-</button>
+            <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
+              -
+            </button>
             <input
               type='number'
-              value={productQuantity}
+              value={product.quantity}
+              // value={productQuantity}
               onChange={(e) => setProductQuantity(parseInt(e.target.value))}
             />
-            <button onClick={() => handleAddQty()}>+</button>
+            <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
+              +
+            </button>
           </span>
           <br />
           <br />
@@ -111,27 +112,12 @@ function ProductPage({ handleAddToCart }) {
       <section className='product-details-bottom-section'>
         <h3>Dosage considerations</h3>
         <ul>
-          <li>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-            blanditiis ea enim ad exercitationem, velit similique quisquam
-            cupiditate dolor! Error cupiditate consectetur nobis temporibus
-            deleniti perferendis ratione! Facilis, ipsa rem.
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-            laudantium voluptatum a quis ipsa magnam, recusandae natus itaque
-            sunt ut labore sit deleniti quisquam laboriosam repudiandae tempore,
-            atque eos voluptatibus.
-          </li>
+          <li>{product.dosage}</li>
         </ul>
         <h3>Side Effects</h3>
-        <ul>
-          <li>Constipation</li>
-          <li>Skin rash or dermatisis</li>
-          <li>Diziness</li>
-          <li>Drowsiness</li>
-          <li>Dry mouth</li>
-        </ul>
+        <p>{product.effects}</p>
+        <br />
+        <br />
       </section>
       <form id='review-form'>
         <h2>Add Review</h2>
@@ -161,12 +147,13 @@ function ProductPage({ handleAddToCart }) {
         <button type='submit'>Submit Review</button>{' '}
         <button
           type='reset'
-          style={{ width: 'fit-content' }}
+          style={{ width: 'fit-content', backgroundColor: 'grey' }}
           onClick={() => setNewRating(0)}
         >
           Clear
         </button>
       </form>
+      {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
     </div>
   );
 }

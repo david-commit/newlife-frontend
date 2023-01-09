@@ -4,7 +4,7 @@ import './Shop.css';
 import ShopPagination from '../ShopPagination/ShopPagination';
 import loadingGif from '../../img/loading.gif';
 
-function Shop({ products, handleSearch, loading, handleAddToCart }) {
+function Shop({ products, handleSearch, loading, handleAddToCart, cartWarning, cartAddSuccess }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
@@ -42,16 +42,16 @@ function Shop({ products, handleSearch, loading, handleAddToCart }) {
             <div className='shop-card-text'>
               <p>{product.category}</p>
               <div className='product-title'>
-                <h3>{product.title}</h3>
+                <h3>{product.name}</h3>
               </div>
               <section className='card-price-button'>
-                <h4>Ksh {product.price}</h4>
+                <h4>Ksh {parseFloat(product.price).toFixed(2)}</h4>
                 <button
                   type='button'
                   onClick={(e) => {
                     e.preventDefault();
                     // alert('Added to Cart!');
-                    handleAddToCart(product)
+                    handleAddToCart(product);
                   }}
                 >
                   Add to Cart
@@ -85,6 +85,8 @@ function Shop({ products, handleSearch, loading, handleAddToCart }) {
             border: '1px solid grey',
           }}
         />
+        {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
+        {cartAddSuccess ? <p id='cart-success'>Item added succesfully</p> : ''}
         <select
           id='shop-sort'
           // onChange={(e) => setSortProducts(e.target.value)}

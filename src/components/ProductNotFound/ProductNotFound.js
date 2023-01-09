@@ -1,12 +1,12 @@
 import React from 'react';
-import './PageNotFound.css';
+import './ProductNotFound.css';
 import { Link } from 'react-router-dom';
 
-function PageNotFound() {
+function ProductNotFound() {
   return (
-    <div className='page-not-found-container'>
+    <div className='product-not-found-container'>
       <div className='not-found-img'>
-        <h1>Page Not Found</h1>
+        <h1>Product Not Found</h1>
         <br />
         <Link to="/">
           Return <i class='fa-solid fa-house'></i> 
@@ -16,4 +16,4 @@ function PageNotFound() {
   );
 }
 
-export default PageNotFound;
+export default ProductNotFound;
