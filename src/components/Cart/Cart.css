@@ -66,6 +66,7 @@
   text-align: center;
   justify-content: center;
   color: white;
+  border-radius: 10px;
 }
 #proceed-to-checkout {
   background-color: white;

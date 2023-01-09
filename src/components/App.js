@@ -29,6 +29,7 @@ import AddPractitioner from './AddPractitioner/AddPractitioner';
 import AddProduct from './AddProduct/AddProduct';
 import AllProducts from './AllProducts/AllProducts';
 import AllPractitioners from './AllPractitioners/AllPractitioners';
+import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
@@ -182,6 +183,9 @@ function App() {
         </Route>
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
+        </Route>
+        <Route exact path="/patients/details-popup">
+          {userPatient ? <PatientDetailsPopup /> : <Login />}
         </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}

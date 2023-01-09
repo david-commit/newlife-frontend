@@ -39,7 +39,7 @@ function Cart({
 
   return (
     <div className='cart-main-container'>
-      <h1>Cart</h1>
+      <h1 style={{ color: '#1d3e68' }}>Cart</h1>
       <br />
       <div className='cart-container'>
         <section className='cart-cards'>
@@ -51,7 +51,7 @@ function Cart({
                 <div className='cart-card' key={product.id}>
                   <img src={product.image} alt='Product' />
                   <section className='cart-card-detail-section'>
-                    <p>{product.title}</p>
+                    <h2>{product.name}</h2>
                     <br />
                     <div className='quantity-change-buttons'>
                       Quantity:{' '}
