@@ -1,11 +1,11 @@
 import React from 'react'
 import { Admin, Resource } from 'react-admin'
-import restProvider from 'ra-data-simple-rest'
+// import restProvider from 'ra-data-simple-rest'
 import PractitionerList from './PractitionerList'
 import PractitionerCreate from './PractitionerCreate'
+import PractitionerEdit from './PractitionerEdit'
 import ProductEdit from './ProductEdit'
 import ProductList from './ProductList'
-import ProductCreate from './ProductCreate'
 import ProductCreate from './ProductCreate'
 
 
