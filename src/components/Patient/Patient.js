@@ -57,6 +57,24 @@ function Patient() {
             <span>Blood Group:</span>
             O-
           </p>
+
+          <div className='patient-details-notification-section'>
+        <h2>Notifications</h2>
+        <div className='patient-details-notification'>
+          <h4>Upcoming appointment (in 2hrs)</h4>
+          <p>Dr. Grace Laura (Psychologist)</p>
+          
+        </div>
+        <div className='patient-details-notification'>
+          <h4>Upcoming appointment (in 3hrs)</h4>
+          <p>Dr. Grace Laura (Nutritionist)</p>
+          
+        </div>
+        <div className='patient-details-notification'>
+          <h4>Upcomming appointment (in 3hrs)</h4>
+          <p>Dr. Grace Laura (Nutritionist)</p>
+          </div>
+        </div>
         </div>
       </div>
     </div>
