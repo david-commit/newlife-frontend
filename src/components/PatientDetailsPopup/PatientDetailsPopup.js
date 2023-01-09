@@ -18,13 +18,31 @@ function PatientDetailsPopup() {
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+
   useEffect(() => {
     onOpenModal();
   }, []);
 
+  const handlePatientDataSumbit = (e) => {
+    e.preventDefault();
+    fetch('', {
+      method: 'POST',
+      header: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        phone_number: phone,
+        dob,
+        location: address,
+        bio,
+        height,
+        weight,
+        bmi,
+        blood_group: bloodGroup,
+      }),
+    });
+  };
+
   return (
     <div>
-      {/* <button onClick={onOpenModal}>Open modal</button> */}
       <Modal
         open={open}
         onClose={onCloseModal}
@@ -38,7 +56,10 @@ function PatientDetailsPopup() {
           <br />
           <br />
           <h1>Add Relevant Data</h1>
-          <form className='patient-details-form-popup'>
+          <form
+            onSubmit={handlePatientDataSumbit}
+            className='patient-details-form-popup'
+          >
             {' '}
             <label>
               Phone <br />
@@ -46,6 +67,7 @@ function PatientDetailsPopup() {
                 type='tel'
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
+                required
               />
             </label>
             <br />
@@ -56,6 +78,7 @@ function PatientDetailsPopup() {
                 type='date'
                 value={dob}
                 onChange={(e) => setDOB(e.target.value)}
+                required
               />
             </label>
             <br />
@@ -65,7 +88,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                onChange={(e) => setAddress(e.target.
+                 requiredvalue)}
               />
             </label>
             <br />
@@ -85,7 +109,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={height}
-                onChange={(e) => setHeight(e.target.value)}
+                onChange={(e) => setHeight(e.target.
+                 requiredvalue)}
               />
             </label>
             <br />
@@ -95,7 +120,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={weight}
-                onChange={(e) => setWeight(e.target.value)}
+                onChange={(e) => setWeight(e.target.
+                 requiredvalue)}
               />
             </label>{' '}
             <br />
@@ -106,6 +132,7 @@ function PatientDetailsPopup() {
                 disabled
                 value={bmi}
                 onChange={(e) => setBMI(e.target.value)}
+                required
               />
             </label>
             <br />
@@ -115,21 +142,17 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={bloodGroup}
-                onChange={(e) => setBloodGroup(e.target.value)}
+                onChange={(e) => setBloodGroup(e.target.
+                 requiredvalue)}
               />
             </label>
             <br />
             <br />
             <button type='submit'>Submit Data</button>
           </form>
-      <br />
+          <br />
         </div>
       </Modal>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
       <br />
       <br />
