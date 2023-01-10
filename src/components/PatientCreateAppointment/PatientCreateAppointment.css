@@ -12,3 +12,12 @@
   color: #1d3e68;
   padding-bottom: 10px;
 }
+
+.appointment-form button[type='submit'] {
+  width: fit-content;
+  padding: 6px 10px;
+  font-size: 14px;
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+}
