@@ -12,7 +12,6 @@ function PatientDetailsPopup() {
   const [bio, setBio] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
-  const [bmi, setBMI] = useState(0);
   const [bloodGroup, setBloodGroup] = useState('');
   const [open, setOpen] = useState(false);
 
@@ -35,7 +34,6 @@ function PatientDetailsPopup() {
         bio,
         height,
         weight,
-        bmi,
         blood_group: bloodGroup,
       }),
     });
@@ -88,8 +86,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={address}
-                onChange={(e) => setAddress(e.target.
-                 requiredvalue)}
+                onChange={(e) => setAddress(e.target.value)}
+                required
               />
             </label>
             <br />
@@ -109,8 +107,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={height}
-                onChange={(e) => setHeight(e.target.
-                 requiredvalue)}
+                onChange={(e) => setHeight(e.target.value)}
+                required
               />
             </label>
             <br />
@@ -120,21 +118,10 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={weight}
-                onChange={(e) => setWeight(e.target.
-                 requiredvalue)}
-              />
-            </label>{' '}
-            <br />
-            <br />
-            <label>
-              BMI <br />
-              <input
-                disabled
-                value={bmi}
-                onChange={(e) => setBMI(e.target.value)}
+                onChange={(e) => setWeight(e.target.dvalue)}
                 required
               />
-            </label>
+            </label>{' '}
             <br />
             <br />
             <label>
@@ -142,8 +129,8 @@ function PatientDetailsPopup() {
               <input
                 type='text'
                 value={bloodGroup}
-                onChange={(e) => setBloodGroup(e.target.
-                 requiredvalue)}
+                onChange={(e) => setBloodGroup(e.target.value)}
+                required
               />
             </label>
             <br />
