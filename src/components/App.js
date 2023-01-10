@@ -164,7 +164,7 @@ function App() {
           <SignUp />
         </Route>
         <Route exact path='/login'>
-          <Login />
+          <Login setUserPatient={setUserPatient} setUserPractitioner={setUserPractitioner} />
         </Route>
         <Route exact path='/reset-password'>
           <ResetPassword />
