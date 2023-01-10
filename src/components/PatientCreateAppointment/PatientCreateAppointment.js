@@ -28,7 +28,7 @@ function PatientCreateAppointment() {
           <br />
           <div className='form-buttons'>
             <button type='submit'>Submit Request</button>
-            <button type='reset'>Reset</button>
+            
           </div>
         </form>
       </div>
