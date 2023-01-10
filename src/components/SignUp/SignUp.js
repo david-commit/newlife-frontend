@@ -22,7 +22,15 @@ function SignUp() {
         email,
         password,
         password_confirmation: cPassword,
-      }),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.ok) {
+            console.log("Success");
+          } else {
+            console.log("Fail");
+          }
+        }),
     });
   }
 
