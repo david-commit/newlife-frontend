@@ -18,8 +18,10 @@ function Cart({
   handleAddQty,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [phone, setPhone] = useState('');
 
+  // Modal Popup Component
+  const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
@@ -109,21 +111,53 @@ function Cart({
           </button>
         </section>
       </div>
-      <Modal
-        open={open}
-        onClose={onCloseModal}
-        center
-        className='checkout-modal'
-      >
-        <div className='checkout-popup-container'>
-          <img src={mpesaImg} alt='Mpesa' />
-          <h2>Simple centered modal</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-            pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
-            hendrerit risus, sed porttitor quam.
-          </p>
-        </div>
+      <Modal id='checkout-modal' open={open} onClose={onCloseModal} center>
+        {cartCount > 0 ? (
+          <>
+            <img src={mpesaImg} alt='Mpesa' style={{ width: '100%' }} />
+            <div className='checkout-popup-container'>
+              <br />
+              <h1>Checkout</h1>
+              <br />
+              <h2>Your order</h2>
+              {cart?.map((item) => {
+                return <p>{item.name} x 1</p>;
+              })}
+              
+              <br />
+              <h1>Payment (Secure)</h1>
+              <br />
+              <form className='checkout-form'>
+                <label>
+                  Mpesa number
+                  <br />
+                  <input
+                    type='tel'
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </label>
+                <br />
+                <label>
+                  Amount
+                  <br />
+                  <input
+                    readOnly
+                    value={parseFloat(totalPrice).toFixed(2)}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </label>
+                <br />
+                <button type='submit' onClick={() => alert("Hello World")}>Send Prompt</button>
+              </form>
+            </div>
+          </>
+        ) : (
+          <div className='checkout-empty-cart'>
+            <br />
+            <h1>No items in Cart</h1>
+          </div>
+        )}
       </Modal>
     </div>
   );

@@ -103,3 +103,6 @@
   color: white;
   cursor: pointer;
 }
+.product-title h3 {
+  font-size: 29px;
+}
