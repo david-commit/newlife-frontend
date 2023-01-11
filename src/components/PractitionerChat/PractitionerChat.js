@@ -8,6 +8,7 @@ function PractitionerChat() {
     'Practitioner 2',
     'Practitioner 3',
   ]);
+  const [message, setMessage] = useState('');
   const [messages, setMessages] = useState(true);
 
   useEffect(() => {
@@ -19,6 +20,17 @@ function PractitionerChat() {
       .then((r) => r.json())
       .then((d) => setMessages(d));
   }, []);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    });
+  };
 
   return (
     <div className='practitioner-chat-main-container'>
@@ -65,9 +77,9 @@ function PractitionerChat() {
               <h3>No messages</h3>
             )}
           </section>
-          <form>
+          <form onSubmit={handleSendMessage}>
             <section className='practitioner-chat--static'>
-              <input type='text' placeholder='Type message...' />
+              <input type='text' placeholder='Type message...' value={message} onChange={(e) => setMessage(e.target.value)} />
               <button type='submit'>Send</button>
             </section>
           </form>

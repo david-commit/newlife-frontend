@@ -32,7 +32,7 @@ import AllPractitioners from './AllPractitioners/AllPractitioners';
 import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
 import ResetPassword from './ResetPassword/ResetPassword';
 import EditPractitioner from './Admin/EditPractitioner';
-
+import EditProduct from './Admin/EditProduct'
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
@@ -40,17 +40,81 @@ function App() {
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+  ]);
+  const [cartCount, setCartCount] = useState(5);
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState(1);
   const [cartWarning, setCartWarming] = useState(false);
   const [cartAddSuccess, setCartSuccess] = useState(false);
+  const [sortProducts, setSortedProducts] = useState('');
+  const [sortAsc] = useState('');
+  const [sortDesc] = useState('price-desc');
 
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
     userPatient ? (
-      fetch(`/api/patients/me`).then((r) => {
+      fetch(`http://localhost:3000/api/patients/me`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPatient(user));
         }
@@ -80,19 +144,32 @@ function App() {
       const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
-      setProducts(results);
+      // Sort Products Logic on shop page
+      sortProducts === 'price-asc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp > b.price_in_2dp ? 1 : -1))
+          )
+        : sortProducts === 'price-desc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
+          )
+        : setProducts(results);
+
+      // Render products based on search
       setSearchQuery(results);
 
       setLoading(false);
     };
     fetchProducts();
-  }, []);
+  }, [sortProducts]);
 
   // Handle search feature
   const handleSearch = (e) => {
     setProducts(
       searchQuery.filter((product) => {
-        return product.title
+        return product.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       })
@@ -121,7 +198,6 @@ function App() {
       }, 3500);
     }
   };
-  console.log(cart);
 
   // // Quantity Add Button on Product Page
   function handleAddQty() {
@@ -137,21 +213,6 @@ function App() {
     }
   }
 
-  // const handleAddorRemoveQuantity = (item, operator) => {
-  //   let ind = -1
-  //   cart.forEach((data, index) => {
-  //     if (data.id === item.id) {
-  //       ind = index
-  //     }
-  //   })
-  //   const tempArray = cart
-  //   tempArray[ind] += operator
-  //   if (tempArray[ind].productQuantity === 0) {
-  //     tempArray[ind].productQuantity = 1
-  //   }
-  //   setCart([...tempArray])
-  // }
-
   return (
     <div className='App'>
       <NavBar
@@ -166,7 +227,10 @@ function App() {
           <SignUp />
         </Route>
         <Route exact path='/login'>
-          <Login setUserPatient={setUserPatient} setUserPractitioner={setUserPractitioner} />
+          <Login
+            setUserPatient={setUserPatient}
+            setUserPractitioner={setUserPractitioner}
+          />
         </Route>
         <Route exact path='/reset-password'>
           <ResetPassword />
@@ -190,10 +254,6 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
-
-        <Route exact path='/admin/editpractitioner'>
-          { <EditPractitioner /> }
-        </Route>
         <Route exact path='/patients/details-popup'>
           {userPatient ? <PatientDetailsPopup /> : <Login />}
         </Route>
@@ -211,16 +271,13 @@ function App() {
         <Route exact path='/practitioners/me/chat'>
           {userPractitioner ? <PractitionerChat /> : <Login />}
         </Route>
-        <Route
-          exact
-          path='/practitioners/me/reviews'
-        >
+        <Route exact path='/practitioners/me/reviews'>
           {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>
         <Route exact path='/practitioners/me/calendar'>
           {userPractitioner ? <PractitionerCalendar /> : <Login />}
         </Route>
-        {/* == PRACTITIONER ROUTES */}
+        overflow: ;{/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
           <AboutUs />
         </Route>
@@ -233,6 +290,10 @@ function App() {
             handleAddToCart={handleAddToCart}
             cartWarning={cartWarning}
             cartAddSuccess={cartAddSuccess}
+            sortAsc={sortAsc}
+            sortDesc={sortDesc}
+            sortProducts={sortProducts}
+            setSortedProducts={setSortedProducts}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
@@ -267,6 +328,12 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
+        <Route exact path='/admin/practitioner/edit'>
+          <EditPractitioner />
+        </Route>
+        <Route exact path='/admin/product/edit'>
+          <EditProduct />
+        </Route>
         <Route exact path='/admin/login'>
           <AdminLogin setUserAdmin={setUserAdmin} />
         </Route>

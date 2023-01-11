@@ -64,7 +64,7 @@
   align-items: flex-end;
 }
 .practitioner-chat--static input {
-  width: 45vh;
+  width: 60vh;
   font-size: 14px;
   padding: 4px;
   height: 40px;
@@ -80,4 +80,6 @@
 }
 .practitioner-chat--static button:hover {
   cursor: pointer;
+  background-color: #00a3c8;
+  border: 1px solid grey;
 }

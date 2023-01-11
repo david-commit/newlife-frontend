@@ -1,19 +1,28 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './Login.css';
 
-function Login({setUserPatient, setUserPractitioner}) {
+function Login({
+  setUserPatient,
+  setUserPractitioner,
+}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pracCheckbox, setPracCheckbox] = useState(false);
   const [errors, setErrors] = useState('');
+  const [userPatientSuccess, setUserPatientSuccess] = useState(false);
+  const [userPractitionerSuccess, setUserPractitionerSuccess] = useState(false);
+  const patientLoginLink = 'http://localhost:3000/login';
+  const practitionerLoginLink = 'http://localhost:3000/practitioner/login';
+  const loginLink = pracCheckbox ? practitionerLoginLink : patientLoginLink;
   // const errors = ["Invalid Username or Password"]
+  console.log(loginLink);
 
   function handleLoginSubmit(e) {
     e.preventDefault();
     // setPracCheckbox(false);
     setErrors([]);
-    fetch(`http://localhost:3000/login`, {
+    fetch(loginLink, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -25,16 +34,23 @@ function Login({setUserPatient, setUserPractitioner}) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          // onLogin(user);
-          // setSuccess(user);
-          // SET USER
-          console.log(user);
+          pracCheckbox
+            ? setUserPractitioner(user) && setUserPractitionerSuccess(true)
+            : setUserPatient(user) && setUserPatientSuccess(true) && console.log(user)
+          localStorage.setItem('token', user.jwt);
         });
       } else {
-        // response.json().then((err) => setErrors(err.errors));
+        response.json().then((err) => setErrors(err.errors));
         console.log(response);
       }
     });
+  }
+
+  if (userPatientSuccess) {
+    return <Redirect to='/patients/me' />;
+  }
+  if (userPractitionerSuccess) {
+    return <Redirect to='/practitioners/me' />;
   }
 
   return (
@@ -55,21 +71,21 @@ function Login({setUserPatient, setUserPractitioner}) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span id='practitioner-check'>
+          <label id='practitioner-check'>
             <input
               type='checkbox'
               value={pracCheckbox}
               onChange={() => setPracCheckbox(!pracCheckbox)}
             />
             &nbsp; Log in as practitioner
-          </span>
+          </label>
           <button type='submit'>Log In</button>
         </form>
         <br />
         {errors ? (
           <>
             <div className='login-error-display'>
-              {errors.map((error) => {
+              {errors?.map((error) => {
                 console.log(error);
                 return (
                   <p key={error} style={{ color: 'red' }}>
@@ -86,7 +102,10 @@ function Login({setUserPatient, setUserPractitioner}) {
         <div className='already'>
           <hr />
           <p>
-            Forgot password? <Link to="/reset-password" id='reset-text'>Reset</Link>
+            Forgot password?{' '}
+            <Link to='/reset-password' id='reset-text'>
+              Reset
+            </Link>
           </p>
           <p>
             Don't have an account? &nbsp;
