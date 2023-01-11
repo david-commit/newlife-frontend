@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, Redirect, Route } from 'react-router-dom';
 import './Login.css';
 
-function Login({setUserPatient, setUserPractitioner}) {
+function Login({
+  userPatient,
+  setUserPatient,
+  userPractitioner,
+  setUserPractitioner,
+}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [pracCheckbox, setPracCheckbox] = useState(false);
   const [errors, setErrors] = useState('');
+  const [userPatientSuccess, setUserPatientSuccess] = useState(false)
+  const [userPractitionerSuccess, setUserPractitionerSuccess] = useState(false)
   // const errors = ["Invalid Username or Password"]
 
   function handleLoginSubmit(e) {
@@ -25,16 +32,23 @@ function Login({setUserPatient, setUserPractitioner}) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          // onLogin(user);
-          // setSuccess(user);
-          // SET USER
-          console.log(user);
+          setUserPatient(user);
+          setUserPatientSuccess(true)
+          localStorage.setItem("token", user.jwt)
         });
       } else {
-        // response.json().then((err) => setErrors(err.errors));
+        response.json().then((err) => setErrors(err.errors));
         console.log(response);
       }
     });
+  }
+  console.log(userPatient);
+
+  if (userPatientSuccess) {
+    return <Redirect to="/patients/me" />
+  }
+  if (userPractitionerSuccess) {
+    return <Redirect to='/patients/me' />;
   }
 
   return (
@@ -69,7 +83,7 @@ function Login({setUserPatient, setUserPractitioner}) {
         {errors ? (
           <>
             <div className='login-error-display'>
-              {errors.map((error) => {
+              {errors?.map((error) => {
                 console.log(error);
                 return (
                   <p key={error} style={{ color: 'red' }}>
@@ -86,7 +100,10 @@ function Login({setUserPatient, setUserPractitioner}) {
         <div className='already'>
           <hr />
           <p>
-            Forgot password? <Link to="/reset-password" id='reset-text'>Reset</Link>
+            Forgot password?{' '}
+            <Link to='/reset-password' id='reset-text'>
+              Reset
+            </Link>
           </p>
           <p>
             Don't have an account? &nbsp;

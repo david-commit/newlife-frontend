@@ -80,4 +80,6 @@
 }
 .practitioner-chat--static button:hover {
   cursor: pointer;
+  background-color: #00a3c8;
+  border: 1px solid grey;
 }

@@ -62,11 +62,11 @@ function NavBar({
           </NavLink>
           <nav className='menubar-nav'>
             {/* == Displays User Role is logged in currently */}
-            {/* {userPatient
+            {userPatient
               ? 'Logged as Patient!'
               : userPractitioner
               ? 'Logged as Practitioner!'
-              : 'Not logged In!'} */}
+              : 'Not logged In!'}
             <NavLink exact to='/'>
               Home
             </NavLink>
