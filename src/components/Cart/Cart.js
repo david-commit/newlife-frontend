@@ -1,8 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Cart.css';
+// https://react-responsive-modal.leopradel.com/
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import mpesaImg from '../../img/Lipanampesa.png';
 
 function Cart({
   cart,
@@ -15,12 +18,17 @@ function Cart({
   handleAddQty,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   // Adds Prices to get Total price
   const handlePrice = () => {
     let total = 0;
     cart.map((item) => {
-      total += item.price * productQuantity;
+      total += item.price_in_2dp * productQuantity;
+      console.log(item);
     });
     setTotalPrice(total);
   };
@@ -68,13 +76,14 @@ function Cart({
                       >
                         +
                       </button>{' '}
-                      | Ksh. {parseFloat(product.price).toFixed(2)}
+                      | Ksh. {parseFloat(product.price_in_2dp).toFixed(2)}
                     </div>
                     <p>
                       Total: Ksh.{' '}
-                      {parseFloat(product.price * productQuantity).toFixed(2)}
+                      {parseFloat(
+                        product.price_in_2dp * productQuantity
+                      ).toFixed(2)}
                     </p>
-                    product.price * productQuantity
                   </section>
                   <i
                     class='fa-regular fa-circle-xmark'
@@ -95,13 +104,27 @@ function Cart({
           <br />
           <h2>Total Items: {cartCount}</h2>
           <br />
-          <Link to='/checkout'>
-            <button type='button' id='proceed-to-checkout'>
-              Proceed to Checkout
-            </button>
-          </Link>
+          <button onClick={onOpenModal} id='pay-button-checkout'>
+            Pay
+          </button>
         </section>
       </div>
+      <Modal
+        open={open}
+        onClose={onCloseModal}
+        center
+        className='checkout-modal'
+      >
+        <div className='checkout-popup-container'>
+          <img src={mpesaImg} alt='Mpesa' />
+          <h2>Simple centered modal</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            pulvinar risus non risus hendrerit venenatis. Pellentesque sit amet
+            hendrerit risus, sed porttitor quam.
+          </p>
+        </div>
+      </Modal>
     </div>
   );
 }

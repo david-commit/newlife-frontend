@@ -37,7 +37,6 @@
 }
 .cart-card-detail-section {
   width: 65%;
-  /* border: 1px dashed red; */
 }
 .cart-card-detail-section > p {
   font-size: 20px;
@@ -68,14 +67,16 @@
   color: white;
   border-radius: 10px;
 }
-#proceed-to-checkout {
+#pay-button-checkout {
   background-color: white;
   border: 1px solid #1d3e68;
   color: #1d3e68;
   padding: 6px 12px;
   font-size: 18px;
+  width: 50%;
+  margin: 0 auto;
 }
-#proceed-to-checkout:hover {
+#pay-button-checkout:hover {
   background-color: transparent;
   border: 1px solid white;
   cursor: pointer;
@@ -92,3 +93,8 @@
   width: 30px;
   text-align: center;
 }
+/* == CHECKOUT == */
+.checkout-popup-container {
+  width: 100%;
+}
+/* == CHECKOUT == */
