@@ -12,4 +12,27 @@
 }
 .patient-existing-appointments h1 {
  color: #1d3e68;
+
 }
+
+.patient-existing-appointments h3{
+    color: #1d3e68;
+    font-size: 25px;
+   
+}
+
+.patient-existing-appointments h4{
+    color:  #00a3c8;
+    font-size: 25px;
+}
+
+.patients-appointments button{
+    width: fit-content;
+    padding: 6px 10px;
+    font-size: 18px;
+    background-color:  #1d3e68;
+    color: rgb(255, 255, 255);
+    position:relative; left:550px; bottom: 60px
+    
+}
+
