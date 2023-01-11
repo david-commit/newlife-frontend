@@ -47,6 +47,8 @@
     padding: 6px;
     margin: 4px;
     border-radius: 0 10px;
+    position:relative; left:350px; top:5px;
+    
   }
   .sending-bubble {
     background-color: #00a3c8;
@@ -57,7 +59,9 @@
     border-radius: 10px 0;
     display: flex;
     justify-content: flex-end;
-  }
+
+    
+   }
   .patient-chat--static {
     display: flex;
     justify-content: flex-end;
