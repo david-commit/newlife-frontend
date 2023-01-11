@@ -54,7 +54,7 @@ function PatientChat() {
 
                 <div className='sending-bubble'>receiver message</div>
                 <div className='receiving-bubble'>
-                  Sender message Sender message
+                  Sender message
                 </div>
 
                 <div className='sending-bubble'>
