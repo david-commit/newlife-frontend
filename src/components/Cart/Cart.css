@@ -12,11 +12,11 @@
   justify-content: space-between;
 }
 .cart-cards {
- overflow: scroll;
- height: 70vh;
- width: 78%;
- border: 1px solid #d9d9d9;
- border-radius: 10px;
+  overflow: scroll;
+  height: 70vh;
+  width: 78%;
+  border: 1px solid #d9d9d9;
+  border-radius: 10px;
 }
 .cart-card {
   display: flex;
@@ -37,13 +37,12 @@
 }
 .cart-card-detail-section {
   width: 65%;
-  /* border: 1px dashed red; */
 }
 .cart-card-detail-section > p {
   font-size: 20px;
   text-align: left;
   align-items: flex-start;
- }
+}
 .cart-card > i {
   font-size: 36px;
   color: red;
@@ -68,14 +67,16 @@
   color: white;
   border-radius: 10px;
 }
-#proceed-to-checkout {
+#pay-button-checkout {
   background-color: white;
   border: 1px solid #1d3e68;
   color: #1d3e68;
   padding: 6px 12px;
   font-size: 18px;
+  width: 50%;
+  margin: 0 auto;
 }
-#proceed-to-checkout:hover {
+#pay-button-checkout:hover {
   background-color: transparent;
   border: 1px solid white;
   cursor: pointer;
@@ -92,3 +93,60 @@
   width: 30px;
   text-align: center;
 }
+/* == CHECKOUT == */
+/* #checkout-modal {
+  background: #b2dbbf;
+  max-width: 1000px;
+  width: 1040%;
+} */
+.checkout-popup-container {
+  width: 60%;
+  border: #1d3e68 1px dashed;
+  margin: auto;
+  height: 70vh;
+  /* overflow-y: scroll; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.checkout-popup-container > img {
+  width: 100%;
+}
+.checkout-popup-container h1 {
+  text-align: center;
+  color: #1d3e68;
+}
+.checkout-popup-container h2 {
+  padding-bottom: 8px;
+  color: #1d3e68;
+}
+.checkout-popup-container p {
+  font-size: 18px;
+}
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  /* border: 1px dashed red; */
+  margin: 0 auto;
+}
+.checkout-form > label > input {
+  width: 100%;
+  padding: 6px;
+  font-size: 15px;
+}
+.checkout-form > button {
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+  font-size: 16px;
+  padding: 6px 0;
+}
+.checkout-form > button:hover {
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+/* == CHECKOUT == */

@@ -33,19 +33,77 @@ import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
 import ResetPassword from './ResetPassword/ResetPassword';
 import EditPractitioner from './Admin/EditPractitioner';
 
-
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
   const [userPatient, setUserPatient] = useState(true);
   const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cart, setCart] = useState([
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+  ]);
+  const [cartCount, setCartCount] = useState(5);
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState(1);
   const [cartWarning, setCartWarming] = useState(false);
   const [cartAddSuccess, setCartSuccess] = useState(false);
+  const [sortProducts, setSortedProducts] = useState('');
+  const [sortAsc] = useState('');
+  const [sortDesc] = useState('price-desc');
 
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
@@ -85,19 +143,32 @@ function App() {
       const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
-      setProducts(results);
+      // Sort Products Logic on shop page
+      sortProducts === 'price-asc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp > b.price_in_2dp ? 1 : -1))
+          )
+        : sortProducts === 'price-desc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
+          )
+        : setProducts(results);
+
+      // Render products based on search
       setSearchQuery(results);
 
       setLoading(false);
     };
     fetchProducts();
-  }, []);
+  }, [sortProducts]);
 
   // Handle search feature
   const handleSearch = (e) => {
     setProducts(
       searchQuery.filter((product) => {
-        return product.title
+        return product.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       })
@@ -126,7 +197,6 @@ function App() {
       }, 3500);
     }
   };
-  console.log(cart);
 
   // // Quantity Add Button on Product Page
   function handleAddQty() {
@@ -141,21 +211,6 @@ function App() {
         : setProductQuantity((productQuantity) => productQuantity - 1);
     }
   }
-
-  // const handleAddorRemoveQuantity = (item, operator) => {
-  //   let ind = -1
-  //   cart.forEach((data, index) => {
-  //     if (data.id === item.id) {
-  //       ind = index
-  //     }
-  //   })
-  //   const tempArray = cart
-  //   tempArray[ind] += operator
-  //   if (tempArray[ind].productQuantity === 0) {
-  //     tempArray[ind].prodoverflow: ;uctQuantity = 1
-  //   }
-  //   setCart([...tempArray])
-  // }
 
   return (
     <div className='App'>
@@ -172,9 +227,7 @@ function App() {
         </Route>
         <Route exact path='/login'>
           <Login
-            userPatient={userPatient}
             setUserPatient={setUserPatient}
-            userPractitioner={userPractitioner}
             setUserPractitioner={setUserPractitioner}
           />
         </Route>
@@ -200,8 +253,11 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
-        <Route exact path="/admin/editpractitioner" component={EditPractitioner}>
-        </Route>
+        <Route
+          exact
+          path='/admin/editpractitioner'
+          component={EditPractitioner}
+        ></Route>
         <Route exact path='/patients/details-popup'>
           {userPatient ? <PatientDetailsPopup /> : <Login />}
         </Route>
@@ -238,6 +294,10 @@ function App() {
             handleAddToCart={handleAddToCart}
             cartWarning={cartWarning}
             cartAddSuccess={cartAddSuccess}
+            sortAsc={sortAsc}
+            sortDesc={sortDesc}
+            sortProducts={sortProducts}
+            setSortedProducts={setSortedProducts}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}

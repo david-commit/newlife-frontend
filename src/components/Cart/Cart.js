@@ -1,8 +1,11 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Cart.css';
+// https://react-responsive-modal.leopradel.com/
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
+import mpesaImg from '../../img/Lipanampesa.png';
 
 function Cart({
   cart,
@@ -15,12 +18,19 @@ function Cart({
   handleAddQty,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [phone, setPhone] = useState('');
+
+  // Modal Popup Component
+  const [open, setOpen] = useState(false);
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   // Adds Prices to get Total price
   const handlePrice = () => {
     let total = 0;
     cart.map((item) => {
-      total += item.price * productQuantity;
+      total += item.price_in_2dp * productQuantity;
+      console.log(item);
     });
     setTotalPrice(total);
   };
@@ -68,13 +78,14 @@ function Cart({
                       >
                         +
                       </button>{' '}
-                      | Ksh. {parseFloat(product.price).toFixed(2)}
+                      | Ksh. {parseFloat(product.price_in_2dp).toFixed(2)}
                     </div>
                     <p>
                       Total: Ksh.{' '}
-                      {parseFloat(product.price * productQuantity).toFixed(2)}
+                      {parseFloat(
+                        product.price_in_2dp * productQuantity
+                      ).toFixed(2)}
                     </p>
-                    product.price * productQuantity
                   </section>
                   <i
                     class='fa-regular fa-circle-xmark'
@@ -95,13 +106,59 @@ function Cart({
           <br />
           <h2>Total Items: {cartCount}</h2>
           <br />
-          <Link to='/checkout'>
-            <button type='button' id='proceed-to-checkout'>
-              Proceed to Checkout
-            </button>
-          </Link>
+          <button onClick={onOpenModal} id='pay-button-checkout'>
+            Pay
+          </button>
         </section>
       </div>
+      <Modal id='checkout-modal' open={open} onClose={onCloseModal} center>
+        {cartCount > 0 ? (
+          <>
+            <img src={mpesaImg} alt='Mpesa' style={{ width: '100%' }} />
+            <div className='checkout-popup-container'>
+              <br />
+              <h1>Checkout</h1>
+              <br />
+              <h2>Your order</h2>
+              {cart?.map((item) => {
+                return <p>{item.name} x 1</p>;
+              })}
+              
+              <br />
+              <h1>Payment (Secure)</h1>
+              <br />
+              <form className='checkout-form'>
+                <label>
+                  Mpesa number
+                  <br />
+                  <input
+                    type='tel'
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </label>
+                <br />
+                <label>
+                  Amount
+                  <br />
+                  <input
+                    readOnly
+                    value={parseFloat(totalPrice).toFixed(2)}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
+                </label>
+                <br />
+                <button type='submit' onClick={() => alert("Hello World")}>Send Prompt</button>
+              </form>
+            </div>
+          </>
+        ) : (
+          <div className='checkout-empty-cart'>
+            <br />
+            <h1>No items in Cart</h1>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 }
