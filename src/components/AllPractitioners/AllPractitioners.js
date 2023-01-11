@@ -61,7 +61,7 @@ const AllPractitioners = () => {
         <td>{user.phone}</td>
         <td>{user.speciality}</td>
         <td>{user.department}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner/${user.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
+        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner${users.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
         <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteUser(user.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
       </tr>
 
