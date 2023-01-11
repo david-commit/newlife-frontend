@@ -87,7 +87,7 @@ function App() {
       const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
-      // Sort Products Logic
+      // Sort Products Logic on shop page
       sortProducts === 'price-asc'
         ? setProducts(
             results &&
@@ -99,7 +99,6 @@ function App() {
               results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
           )
         : setProducts(results);
-      console.log(results);
 
       // Render products based on search
       setSearchQuery(results);
@@ -113,7 +112,7 @@ function App() {
   const handleSearch = (e) => {
     setProducts(
       searchQuery.filter((product) => {
-        return product.title
+        return product.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       })
@@ -142,7 +141,6 @@ function App() {
       }, 3500);
     }
   };
-  console.log(cart);
 
   // // Quantity Add Button on Product Page
   function handleAddQty() {
@@ -157,21 +155,6 @@ function App() {
         : setProductQuantity((productQuantity) => productQuantity - 1);
     }
   }
-
-  // const handleAddorRemoveQuantity = (item, operator) => {
-  //   let ind = -1
-  //   cart.forEach((data, index) => {
-  //     if (data.id === item.id) {
-  //       ind = index
-  //     }
-  //   })
-  //   const tempArray = cart
-  //   tempArray[ind] += operator
-  //   if (tempArray[ind].productQuantity === 0) {
-  //     tempArray[ind].prodoverflow: ;uctQuantity = 1
-  //   }
-  //   setCart([...tempArray])
-  // }
 
   return (
     <div className='App'>
