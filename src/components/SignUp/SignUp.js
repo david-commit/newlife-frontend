@@ -27,9 +27,11 @@ function SignUp() {
       .then((res) => res.json())
       .then((res) => {
         if (res.ok) {
-          console.log("Success");
+          res.json().then((user) => {
+            console.log(user);
+          });
         } else {
-          console.log("Fail");
+          console.log(res);
         }
       });
   }
