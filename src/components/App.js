@@ -190,7 +190,9 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
-        <Route exact path="/admin/editpractitioner" component={EditPractitioner}>
+
+        <Route exact path='/admin/editpractitioner'>
+          { <EditPractitioner /> }
         </Route>
         <Route exact path='/patients/details-popup'>
           {userPatient ? <PatientDetailsPopup /> : <Login />}

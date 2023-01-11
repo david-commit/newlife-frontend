@@ -26,71 +26,74 @@ const EditPractitioner = () => {
   const onSubmit = async e => {
     e.preventDefault();
     await axios.put(`http://localhost:3000/users/${id}`, user);
-    history.push("/");
+    history.push("/admin");
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:3000/users/${id}`);
+    const result = await axios.get(`http://localhost:3000/users/${id}`, user);
     setUser(result.data);
   };
   return (
-    <div className="container">
+    <div className="all-practitioners-main-container">
         <AdminSidebar/>
-      <div className="w-75 mx-auto shadow p-5">
-        <h2 className="text-center mb-4">Edit A Practitioner</h2>
+      <div className='all-practitioners-container'>
+        <h1>Edit A Practitioner</h1>
+        <section className='th'>
         <form onSubmit={e => onSubmit(e)}>
-          <div className="form-group">
+          <div>
+            <br/>
             <input
               type="text"
-              className="form-control form-control-lg"
               placeholder="Enter Practitioner Name"
               name="name"
               value={name}
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
+          <div>
+            <br/>
             <input
               type="text"
-              className="form-control form-control-lg"
               placeholder="Enter Practitioner UserName"
               name="username"
               value={username}
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
+          <div>
+            <br/>
             <input
               type="email"
-              className="form-control form-control-lg"
               placeholder="Enter Practitioner Email"
               name="email"
               value={email}
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
+          <div>
+            <br/>
             <input
               type="text"
-              className="form-control form-control-lg"
               placeholder="Enter the Practitioner Phone Number"
               name="phone"
               value={phone}
               onChange={e => onInputChange(e)}
             />
           </div>
-          <div className="form-group">
+          <div>
+            <br/>
             <input
               type="text"
-              className="form-control form-control-lg"
               placeholder="Enter the Practitioner Website Name"
               name="website"
               value={website}
               onChange={e => onInputChange(e)}
             />
           </div>
-          <button className="btn btn-warning btn-block">Update A practitioner</button>
+          <br/>
+          <button>Update A practitioner</button>
         </form>
+        </section>
       </div>
     </div>
   );
