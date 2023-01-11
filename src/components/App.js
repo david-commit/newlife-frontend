@@ -50,7 +50,12 @@ function App() {
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
     userPatient ? (
-      fetch(`/api/patients/me`).then((r) => {
+      fetch(`http://localhost:3000/api/patients/me`, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
+        },
+      }).then((r) => {
         if (r.ok) {
           r.json().then((user) => setUserPatient(user));
         }
@@ -147,7 +152,7 @@ function App() {
   //   const tempArray = cart
   //   tempArray[ind] += operator
   //   if (tempArray[ind].productQuantity === 0) {
-  //     tempArray[ind].productQuantity = 1
+  //     tempArray[ind].prodoverflow: ;uctQuantity = 1
   //   }
   //   setCart([...tempArray])
   // }
@@ -166,7 +171,12 @@ function App() {
           <SignUp />
         </Route>
         <Route exact path='/login'>
-          <Login setUserPatient={setUserPatient} setUserPractitioner={setUserPractitioner} />
+          <Login
+            userPatient={userPatient}
+            setUserPatient={setUserPatient}
+            userPractitioner={userPractitioner}
+            setUserPractitioner={setUserPractitioner}
+          />
         </Route>
         <Route exact path='/reset-password'>
           <ResetPassword />
@@ -209,16 +219,13 @@ function App() {
         <Route exact path='/practitioners/me/chat'>
           {userPractitioner ? <PractitionerChat /> : <Login />}
         </Route>
-        <Route
-          exact
-          path='/practitioners/me/reviews'
-        >
+        <Route exact path='/practitioners/me/reviews'>
           {userPractitioner ? <PractitionerReviews /> : <Login />}
         </Route>
         <Route exact path='/practitioners/me/calendar'>
           {userPractitioner ? <PractitionerCalendar /> : <Login />}
         </Route>
-        {/* == PRACTITIONER ROUTES */}
+        overflow: ;{/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
           <AboutUs />
         </Route>
