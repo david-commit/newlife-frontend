@@ -35,9 +35,9 @@ import EditPractitioner from './Admin/EditPractitioner';
 import EditProduct from './Admin/EditProduct'
 
 function App() {
-  const [userAdmin, setUserAdmin] = useState(null);
-  const [userPatient, setUserPatient] = useState(null);
-  const [userPractitioner, setUserPractitioner] = useState(null);
+  const [userAdmin, setUserAdmin] = useState(true);
+  const [userPatient, setUserPatient] = useState(true);
+  const [userPractitioner, setUserPractitioner] = useState(true);
   const [products, setProducts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([
