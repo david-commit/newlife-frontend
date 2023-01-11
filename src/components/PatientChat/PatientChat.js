@@ -3,7 +3,7 @@ import './PatientChat.css';
 import PatientSideBar from '../PatientSidebar/PatientSidebar';
 
 function PatientChat() {
-  const [Patients, setPatients] = useState([
+  const [patients, setPatients] = useState([
     'Patient 1',
     'Patient 2',
     'Patient 3',
@@ -21,20 +21,20 @@ function PatientChat() {
   }, []);
 
   return (
-    <div className='Patient-chat-main-container'>
+    <div className='patient-chat-main-container'>
       <PatientSideBar />
-      <div className='Patient-chat-container'>
+      <div className='patient-chat-container'>
         <h1>Patient Chat</h1>
         <br />
         <select onChange={(e) => setPatients(e.target.value)}>
           <option hidden>Select Patient</option>
-          {Patients?.map((Patient) => {
-            return <option value=''>{Patient}</option>;
+          {patients?.map((patient) => {
+            return <option value=''>{patient}</option>;
           })}
         </select>
         <br />
         <br />
-        <div className='Patient-chats'>
+        <div className='patient-chats'>
           <section className='chat-messages'>
             {messages ? (
               <>
