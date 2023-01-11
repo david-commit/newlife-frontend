@@ -21,9 +21,8 @@ function Cart({
   const [phone, setPhone] = useState('');
 
   // Modal Popup Component
-  const [open, setOpen] = useState(false);
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
+  const [openFirst, setOpenFirst] = React.useState(false);
+  const [openSecond, setOpenSecond] = React.useState(false);
 
   // Adds Prices to get Total price
   const handlePrice = () => {
@@ -106,24 +105,28 @@ function Cart({
           <br />
           <h2>Total Items: {cartCount}</h2>
           <br />
-          <button onClick={onOpenModal} id='pay-button-checkout'>
+          <button onClick={() => setOpenFirst(true)} id='pay-button-checkout'>
             Pay
           </button>
         </section>
       </div>
-      <Modal id='checkout-modal' open={open} onClose={onCloseModal} center>
+      <Modal
+        id='checkout-modal'
+        open={openFirst}
+        onClose={() => setOpenFirst(false)}
+        center
+      >
         {cartCount > 0 ? (
           <>
             <img src={mpesaImg} alt='Mpesa' style={{ width: '100%' }} />
             <div className='checkout-popup-container'>
-              <br />
               <h1>Checkout</h1>
               <br />
               <h2>Your order</h2>
               {cart?.map((item) => {
                 return <p>{item.name} x 1</p>;
               })}
-              
+              <br />
               <br />
               <h1>Payment (Secure)</h1>
               <br />
@@ -139,16 +142,27 @@ function Cart({
                 </label>
                 <br />
                 <label>
-                  Amount
+                  Amount (Ksh)
                   <br />
                   <input
                     readOnly
-                    value={parseFloat(totalPrice).toFixed(2)}
+                    value={parseFloat(totalPrice).toFixed(0)}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </label>
                 <br />
-                <button type='submit' onClick={() => alert("Hello World")}>Send Prompt</button>
+
+                <button type='submit' onClick={() => alert('Hello World')}>
+                  Send Prompt
+                </button>
+                <br />
+                <p
+                  id='checkout-need-help'
+                  className='button'
+                  onClick={() => setOpenSecond(true)}
+                >
+                  Need Help?
+                </p>
               </form>
             </div>
           </>
@@ -158,6 +172,10 @@ function Cart({
             <h1>No items in Cart</h1>
           </div>
         )}
+      </Modal>
+      <Modal open={openSecond} onClose={() => setOpenSecond(false)} center>
+        <br /><br />
+        <h1>qwertyuiop</h1>
       </Modal>
     </div>
   );
