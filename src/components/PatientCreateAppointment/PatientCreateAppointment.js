@@ -24,8 +24,10 @@ function PatientCreateAppointment() {
             <option>Pediatrics</option>
           </select>
           <input type='date' />
+          <input type='time' />
           <textarea placeholder='Provide information on the apppointment'></textarea>
           <br />
+
           <div className='form-buttons'>
             <button type='submit'>Submit Request</button>
             

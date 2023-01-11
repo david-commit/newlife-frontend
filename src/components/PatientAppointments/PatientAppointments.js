@@ -13,44 +13,30 @@ function PatientAppointments() {
           <br></br>
           <p><h3>Dr. Grace Laura - General Consultation</h3>
           <h4>2:00pm</h4></p>
-
-          <div className='form-buttons'>
-            <button type='View'>View </button>
+          <button type='View'>View </button>
             <button type='Delete'>Delete</button>
-          </div>
+            
           
         <div className='patients-appointments'>
-          <br></br>
+          
           <p><h3>Dr. Grace Laura - General Consultation</h3>
           <h4>2:00pm</h4></p>
-
-          <div className='form-buttons'>
-            <button type='View'>View </button>
+          <button type='View'>View </button>
             <button type='Delete'>Delete</button>
-          </div>
+         
         </div>
         
         <div className='patients-appointments'>
-          <br></br>
-          <p><h3>Dr. Grace Laura - General Consultation</h3>
-          <h4>2:00pm</h4></p>
-
-          <div className='form-buttons'>
-            <button type='View'>View </button>
-            <button type='Delete'>Delete</button>
-          </div>
-        </div>
         
-        <div className='patients-appointments'>
-          <br></br>
           <p><h3>Dr. Grace Laura - General Consultation</h3>
           <h4>2:00pm</h4></p>
-
-          <div className='form-buttons'>
-            <button type='View'>View </button>
+          <button type='View'>View </button>
             <button type='Delete'>Delete</button>
-          </div>
+
+         
+          
         </div>
+       
         </div>
       </div>
     </div>
