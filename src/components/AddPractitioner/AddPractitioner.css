@@ -24,3 +24,11 @@ width: 35%;
 font-size: 14px;
 padding: 6px; 
 }
+.button-container {
+  width: 35%;
+font-size: 14px;
+padding: 6px;
+background-color:  #00a3c8;
+border:  1px solid #00a3c8;
+color: white; 
+}

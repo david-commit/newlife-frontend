@@ -9,12 +9,14 @@ const AddPractitioner = () => {
   const [user, setUser] = useState({
     name: "",
     username: "",
+    role:"",
     email: "",  
     phone: "",
-    website: ""
+    speciality: "",
+    department: ""
   });
 
-  const { name, username, email, phone, website } = user;
+  const { name, role, username, email, phone, speciality, department } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -28,44 +30,58 @@ const AddPractitioner = () => {
     <div className="all-practitioners-main-container">
       <AdminSidebar/>
       <div className="add-practitioners-container">
-        <h1>Add A Practitioner</h1>
+        <h1>Practitioner Credentials</h1>
         <form onSubmit={e => onSubmit(e)}>
-                    <input
+        <br/>
+            <input
               type="text"
               placeholder="Enter Practitioner Name"
               name="name"
               value={name}
               onChange={e => onInputChange(e)}
             />
-                             <input
+          <br/>
+            <input
               type="text"
-              placeholder="Enter Practitioner Username"
-              name="username"
-              value={username}
+              placeholder="Enter Practitoner Role"
+              name="role"
+              value={role}
               onChange={e => onInputChange(e)}
             />
-                             <input
+            <br/>
+            <input
               type="email"
               placeholder="Enter Practitioner E-mail"
               name="email"
               value={email}
               onChange={e => onInputChange(e)}
             />
-                             <input
+            <br/>
+          <input
               type="text"
               placeholder="Enter Practitioner Phone Number"
               name="phone"
               value={phone}
               onChange={e => onInputChange(e)}
             />
-                             <input
+          <br/>
+          <input
               type="text"
-              placeholder="Enter Practitioner Website Name"
-              name="website"
-              value={website}
+              placeholder="Enter Practitioner Speciality"
+              name="speciality"
+              value={speciality}
               onChange={e => onInputChange(e)}
             />
-      <button type="submit">Add A practitioner</button>
+              <br/>
+          <input
+              type="text"
+              placeholder="Enter Practitioner Department"
+              name="department"
+              value={department}
+              onChange={e => onInputChange(e)}
+            />
+            <br/>
+      <button className="button-container" type="submit">Add A practitioner</button>
         </form>
       </div>
         </div>

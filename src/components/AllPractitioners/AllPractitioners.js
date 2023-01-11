@@ -40,10 +40,13 @@ const AllPractitioners = () => {
 
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">SNo</th>
       <th scope="col">Name</th>
-      <th scope="col">User Name</th>
+      <th scope="col">Role</th>
       <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Speciality</th>
+      <th scope="col">Department</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
     </tr>
@@ -53,8 +56,11 @@ const AllPractitioners = () => {
       <tr>
         <td scope="row"><strong>{index + 1}</strong></td>
         <td>{user.name}</td>
-        <td>{user.username}</td>
+        <td>{user.role}</td>
         <td>{user.email}</td>
+        <td>{user.phone}</td>
+        <td>{user.speciality}</td>
+        <td>{user.department}</td>
         <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner/${user.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
         <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteUser(user.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
       </tr>
