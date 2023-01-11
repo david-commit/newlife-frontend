@@ -31,6 +31,8 @@ import AllProducts from './AllProducts/AllProducts';
 import AllPractitioners from './AllPractitioners/AllPractitioners';
 import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
 import ResetPassword from './ResetPassword/ResetPassword';
+import EditPractitioner from './Admin/EditPractitioner';
+
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
@@ -188,6 +190,8 @@ function App() {
         <Route exact path='/patients/me/calendar'>
           {userPatient ? <PatientCalendar /> : <Login />}
         </Route>
+        <Route exact path="/admin/editpractitioner" component={EditPractitioner}>
+        </Route>
         <Route exact path='/patients/details-popup'>
           {userPatient ? <PatientDetailsPopup /> : <Login />}
         </Route>
@@ -264,7 +268,7 @@ function App() {
         <Route exact path='/admin/login'>
           <AdminLogin setUserAdmin={setUserAdmin} />
         </Route>
-        <Route exacrt path='/admin/me'>
+        <Route exact path='/admin/me'>
           {userAdmin ? (
             <Admin userAdmin={userAdmin} />
           ) : (
