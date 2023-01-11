@@ -10,7 +10,7 @@ function AdminSidebar() {
           <i class='fa-solid fa-user'></i>&nbsp; All Practitioners
         </NavLink>
         <NavLink exact to='/admin/add-practitioner'>
-          <i class='fa-solid fa-calendar-plus'></i>&nbsp; Add Practutioner
+          <i class='fa-solid fa-calendar-plus'></i>&nbsp; Add Practitioner
         </NavLink>
         <NavLink exact to='/admin/products'>
           <i class='fa-solid fa-eye'></i>&nbsp; All Products

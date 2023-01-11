@@ -13,5 +13,14 @@
  border: 1px dashed red;
 }
 .add-practitioners-container h1 {
- color: #1d3e68;
+  color: #1d3e68;
+}
+.add-practitioners-container form {
+  display: flex;
+  flex-direction: column;
+}
+.add-practitioners-container form > input {
+width: 35%;
+font-size: 14px;
+padding: 6px; 
 }
