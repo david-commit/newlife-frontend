@@ -11,10 +11,12 @@ function Shop({
   handleAddToCart,
   cartWarning,
   cartAddSuccess,
+  sortProducts,
   setSortedProducts,
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
+  console.log(sortProducts);
 
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -96,9 +98,15 @@ function Shop({
         {cartAddSuccess ? <p id='cart-success'>Item added succesfully</p> : ''}
         <select
           id='shop-sort'
-          onChange={(e) => setSortedProducts(e.target.value) && window.location.reload()}
+          onChange={(e) => setSortedProducts(e.target.value)}
         >
-          <option hidden>Sort Products</option>
+          <option hidden>
+            {sortProducts === 'price-asc'
+              ? 'Price: Low to High'
+              : sortProducts === 'price-desc'
+              ? 'Price: High to Low'
+              : 'Sort Products'}
+          </option>
           <option value='price-asc'>Price: Low to High</option>
           <option value='price-desc'>Price: High to Low</option>
         </select>

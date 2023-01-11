@@ -48,7 +48,6 @@ function App() {
   const [sortProducts, setSortedProducts] = useState('');
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
-  console.log(sortProducts);
 
   useEffect(() => {
     // auto-login for patient, practitioner & Admin
@@ -176,7 +175,6 @@ function App() {
 
   return (
     <div className='App'>
-      price price
       <NavBar
         userPatient={userPatient}
         userPractitioner={userPractitioner}
@@ -259,6 +257,7 @@ function App() {
             cartAddSuccess={cartAddSuccess}
             sortAsc={sortAsc}
             sortDesc={sortDesc}
+            sortProducts={sortProducts}
             setSortedProducts={setSortedProducts}
           />
         </Route>
