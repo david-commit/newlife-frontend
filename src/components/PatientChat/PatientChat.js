@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import './PatientChat.css';
 import PatientSideBar from '../PatientSidebar/PatientSidebar';
+import { useHistory } from 'react-router-dom';
 
-function PatientChat() {
+function PatientChat({loggedIn, userType}) {
   const [patients, setPatients] = useState([
     'Patient 1',
     'Patient 2',
     'Patient 3',
   ]);
   const [messages, setMessages] = useState(true);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
 
   useEffect(() => {
     fetch('')

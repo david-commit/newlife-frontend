@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './PractitionerChat.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useHistory } from 'react-router-dom';
 
-function PractitionerChat() {
+function PractitionerChat({loggedIn, userType}) {
   const [practitioners, setPractitioners] = useState([
     'Practitioner 1',
     'Practitioner 2',
@@ -10,16 +11,27 @@ function PractitionerChat() {
   ]);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState(true);
+  const history = useHistory()
 
-  useEffect(() => {
-    fetch('')
-      .then((r) => r.json())
-      .then((d) => setPractitioners(d));
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
 
-    fetch('')
-      .then((r) => r.json())
-      .then((d) => setMessages(d));
-  }, []);
+  // useEffect(() => {
+  //   fetch('')
+  //     .then((r) => r.json())
+  //     .then((d) => setPractitioners(d));
+
+  //   fetch('')
+  //     .then((r) => r.json())
+  //     .then((d) => setMessages(d));
+  // }, []);
 
   const handleSendMessage = (e) => {
     e.preventDefault();

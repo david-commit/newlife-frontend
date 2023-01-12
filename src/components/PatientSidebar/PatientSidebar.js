@@ -3,7 +3,7 @@ import './PatientSidebar.css';
 import { NavLink } from 'react-router-dom';
 import PatientCalendar from '../PatientCalendar/PatientCalendar';
 
-function PatientSidebar() {
+function PatientSidebar({loggedIn, userType}) {
   return (
     <div className='patient-sidebar-nav-container'>
       <nav className='patient-sidebar-nav'>
