@@ -32,17 +32,18 @@ function Login({loggedIn, setLoggedIn, userType, setUserType}) {
       body: JSON.stringify({username: formData.username, password: formData.password}),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((user) => {
-          localStorage.setItem('token', user.jwt);
-          localStorage.setItem('user', JSON.stringify(user.user))
+        response.json().then((person) => {
+          localStorage.setItem('token', person.jwt);
           localStorage.setItem('loggedIn', true)
           localStorage.setItem("userType", formData.prac_checkbox ? "practitioner" : "patient")
 
           if (formData.prac_checkbox) {
+            localStorage.setItem('person', JSON.stringify(person.practitioner))
             setLoggedIn(true)
             setUserType('practitioner')
             history.push('/practitioners/me')
           } else {
+            localStorage.setItem('person', JSON.stringify(person.user))
             setLoggedIn(true)
             setUserType('patient')
             history.push('/patients/me')
