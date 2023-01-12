@@ -15,6 +15,9 @@
 .add-practitioners-container h1 {
   color: #1d3e68;
 }
+.label{
+  color: #021231;
+}
 .add-practitioners-container form {
   display: flex;
   flex-direction: column;
