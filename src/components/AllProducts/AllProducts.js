@@ -16,7 +16,7 @@ const AllProducts = () => {
     setProducts(result.data);
   };
   const deleteProduct = async id => {
-    await axios.delete(`http://localhost:3000/products/${id}`);
+    await axios.delete(`http://localhost:3000/products/${products.id}`);
     loadProduct();
   };
   return (
@@ -43,6 +43,7 @@ const AllProducts = () => {
       <th scope="col">SNo</th>
       <th scope="col">Brand Name</th>
       <th scope="col">Generic Name</th>
+      <th scope="col">ID</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
       <th scope="col">Form</th>
@@ -57,11 +58,12 @@ const AllProducts = () => {
         <td scope="row"><strong>{index + 1}</strong></td>
         <td>{product.brandName}</td>
         <td>{product.genericName}</td>
+        <td>{product.id}</td>
         <td>{product.category}</td>
         <td>{product.quantity}</td>
         <td>{product.form}</td>
         <td>{product.price}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner${products.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
+        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/product/edit/${product.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
         <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteProduct(product.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
       </tr>
 

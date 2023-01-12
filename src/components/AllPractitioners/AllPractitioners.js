@@ -41,6 +41,7 @@ const AllPractitioners = () => {
   <thead>
     <tr>
       <th scope="col">SNo</th>
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Role</th>
       <th scope="col">Email</th>
@@ -55,13 +56,14 @@ const AllPractitioners = () => {
     {users.map((user,index)=>(
       <tr>
         <td scope="row"><strong>{index + 1}</strong></td>
+        <td>{user.id}</td>
         <td>{user.name}</td>
         <td>{user.role}</td>
         <td>{user.email}</td>
         <td>{user.phone}</td>
         <td>{user.speciality}</td>
         <td>{user.department}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner${users.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
+        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/practitioner/edit/${user.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
         <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteUser(user.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
       </tr>
 
