@@ -1,37 +1,62 @@
 import React, { useState } from "react";
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-function SignUp() {
-  const [firstName, setFirstName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [cPassword, setCPassword] = useState("");
+function SignUp({loggedIn, setLoggedIn, userType, setUserType}) {
   const [errors, setErrors] = useState("");
+  const history = useHistory()
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmation_password: ""
+  })
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  }
 
   function handleSignupSubmit(e) {
     e.preventDefault();
-    setErrors([]);
     fetch(`http://localhost:3000/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        username: firstName,
-        email,
-        password,
-        password_confirmation: cPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.ok) {
-          console.log("Success");
-        } else {
-          console.log("Fail");
-        }
-      });
+      body: JSON.stringify(formData),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          localStorage.setItem('token', user.jwt);
+          localStorage.setItem('user', JSON.stringify(user.user))
+          localStorage.setItem('loggedIn', true)
+          localStorage.setItem("userType", formData.prac_checkbox ? "practitioner" : "patient")
+
+          if (formData.prac_checkbox) {
+            setLoggedIn(true)
+            setUserType('practitioner')
+            history.push('/practitioners/me')
+          } else {
+            setLoggedIn(true)
+            setUserType('patient')
+            history.push('/patients/me')
+          }
+        });
+      } else {
+        response.json().then(setErrors("An Error occurred. Couldn't sign you in"));
+        console.log(errors)
+      }
+    });
+  }
+
+  function updateFormData(e){
+    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
   }
 
   return (
@@ -42,27 +67,31 @@ function SignUp() {
           <p>Register as a patient</p>
           <input
             type="text"
+            id="username"
             placeholder="User Name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={formData.username}
+            onChange={updateFormData}
           />
           <input
+            id="email"
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={formData.email}
+            onChange={updateFormData}
           />
           <input
+            id="password"
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={updateFormData}
           />
           <input
+            id="password_confirmation"
             type="password"
             placeholder="Confirm Password"
-            value={cPassword}
-            onChange={(e) => setCPassword(e.target.value)}
+            value={formData.password_confirmation}
+            onChange={updateFormData}
           />
           <button to="/login" type="submit">
             Sign Up

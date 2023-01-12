@@ -1,8 +1,21 @@
 import React from 'react';
 import './PatientCreateAppointment.css';
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
+import { useHistory } from 'react-router-dom';
 
-function PatientCreateAppointment() {
+function PatientCreateAppointment({loggedIn, userType}) {
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
   return (
     <div className='patient-main-container'>
       <PatientSidebar />

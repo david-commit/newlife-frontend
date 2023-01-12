@@ -1,20 +1,40 @@
 import React from 'react';
 import './PractitionerCreateAppointment.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-
-function PractitionerCreateAppointment() {
+function PractitionerCreateAppointment({loggedIn, userType}) {
 
   const [patients, setPatients] = useState([])
   const [patient, setPatient] = useState("");
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
   
   useEffect(() => {
-    fetch('http://localhost:3000/patient_profiles')
-    .then((response) => response.json())
-    .then((data) => setPatients(data))
+    fetch('http://localhost:3000/patient_profiles', {
+      headers: {"Accept": "application/json", "Authorization": localStorage.getItem("token")}
+    })
+    .then((response) => {
+      if(response.ok){
+        response.json().then(data => setPatients(data))
+      }else{
+        console.log("An error occurred")
+        response.json().then(errors => console.log(errors))
+      }
+    })
   }, [])
+
+  console.log(localStorage.getItem("token"))
 
   return (
     <div className='practitioner-main-container'>

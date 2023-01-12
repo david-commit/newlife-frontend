@@ -1,8 +1,21 @@
 import React from 'react';
 import './Practitioner.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useHistory } from 'react-router-dom';
 
-function Practitioner() {
+function Practitioner({loggedIn, userType}) {
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
   return (
     <div className='practitioner-main-container'>
       <PractitionerSideBar />
