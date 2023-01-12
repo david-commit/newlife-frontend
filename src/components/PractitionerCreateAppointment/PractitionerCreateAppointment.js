@@ -4,17 +4,15 @@ import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-
 function PractitionerCreateAppointment() {
+  const [patients, setPatients] = useState('');
+  const [patient, setPatient] = useState('');
 
-  const [patients, setPatients] = useState([])
-  const [patient, setPatient] = useState("");
-  
   useEffect(() => {
     fetch('http://localhost:3000/patient_profiles')
-    .then((response) => response.json())
-    .then((data) => setPatients(data))
-  }, [])
+      .then((response) => response.json())
+      .then((data) => setPatients(data));
+  }, []);
 
   return (
     <div className='practitioner-main-container'>
@@ -30,13 +28,14 @@ function PractitionerCreateAppointment() {
         <form className='appointment-form'>
           <select onChange={(e) => setPatient(e.target.value)}>
             <option hidden>Select Patient</option>
-            {patients?.map((patient) => {
-              return (
-                <option value={patient.id} key={patient.id}>
-                  {patient.first_name} {patient.last_name}
-                </option>
-              );
-            })}
+            {/* {patients &&
+              patients.map((patient) => {
+                return (
+                  <option value={patient.id} key={patient.id}>
+                    {patient.first_name} {patient.last_name}
+                  </option>
+                );
+              })} */}
           </select>
           <select>
             <option hidden>Select type of appointment</option>
