@@ -30,52 +30,58 @@ const AddPractitioner = () => {
     <div className="all-practitioners-main-container">
       <AdminSidebar/>
       <div className="add-practitioners-container">
-        <h1>Practitioner Credentials</h1>
+        <h1>Practitioner Information</h1>
         <form onSubmit={e => onSubmit(e)}>
         <br/>
+        <label className="label" htmlFor="name">Enter Practitioner Name</label>
             <input
               type="text"
-              placeholder="Enter Practitioner Name"
+              placeholder="Name"
               name="name"
               value={name}
               onChange={e => onInputChange(e)}
             />
           <br/>
+          <label className="label" htmlFor="name">Enter Practitoner Role</label>
             <input
               type="text"
-              placeholder="Enter Practitoner Role"
+              placeholder="Role"
               name="role"
               value={role}
               onChange={e => onInputChange(e)}
             />
             <br/>
+            <label className="label" htmlFor="email">Enter Practitioner E-mail</label>
             <input
               type="email"
-              placeholder="Enter Practitioner E-mail"
+              placeholder="E-mail"
               name="email"
               value={email}
               onChange={e => onInputChange(e)}
             />
             <br/>
+            <label className="label" htmlFor="phone">Enter Practitioner Phone Number</label>
           <input
               type="text"
-              placeholder="Enter Practitioner Phone Number"
+              placeholder="Phone Number"
               name="phone"
               value={phone}
               onChange={e => onInputChange(e)}
             />
           <br/>
+          <label className="label" htmlFor="speciality">Enter Practitioner Speciality</label>
           <input
               type="text"
-              placeholder="Enter Practitioner Speciality"
+              placeholder="Speciality"
               name="speciality"
               value={speciality}
               onChange={e => onInputChange(e)}
             />
               <br/>
+              <label className="label" htmlFor="department">Enter Practitioner Department</label>
           <input
               type="text"
-              placeholder="Enter Practitioner Department"
+              placeholder="Department"
               name="department"
               value={department}
               onChange={e => onInputChange(e)}
