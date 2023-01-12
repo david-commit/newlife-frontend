@@ -6,6 +6,7 @@ import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/511
 function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
   function handleLogoutClick() {
     const token = localStorage.getItem("token")
+    const intervalId = JSON.parse(localStorage.getItem("intervalId"))
 
     const logoutEndpoint = userType == "patient"?
       "http://127.0.0.1:3000/logout" :
@@ -22,6 +23,8 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
         setUserType("")
       }
     });
+
+    return clearInterval(intervalId)
   }
 // console.log(cartCount)
   return (
