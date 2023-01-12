@@ -6,6 +6,7 @@ import './Cart.css';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import mpesaImg from '../../img/Lipanampesa.png';
+import safMpesa from '../../img/sararicom-mpesa.png';
 
 function Cart({
   cart,
@@ -174,8 +175,58 @@ function Cart({
         )}
       </Modal>
       <Modal open={openSecond} onClose={() => setOpenSecond(false)} center>
-        <br /><br />
-        <h1>qwertyuiop</h1>
+        <br />
+        <br />
+        <img src={safMpesa} alt='saf mpesa' />
+        <h1>FAQ</h1>
+        <section>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
+            voluptatem in provident corrupti. Itaque quaerat eligendi
+            exercitationem reprehenderit harum quae voluptas fugit sequi
+            delectus nesciunt, incidunt dolor expedita sapiente sed.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
+            repudiandae aspernatur dolorem natus, debitis ut magni eligendi,
+            sint modi nulla officiis quaerat fugit officia facilis autem eaque
+            consectetur, consequuntur doloremque.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+            officia aperiam et a labore quia laborum soluta excepturi voluptate,
+            ratione ex dolorem ullam porro id. Commodi, modi est. Doloribus, a!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            corrupti optio libero ullam! Itaque quam ipsa excepturi magni
+            repellendus expedita perferendis ut delectus iusto tenetur
+            dignissimos enim incidunt, explicabo eaque.
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
+            voluptatem in provident corrupti. Itaque quaerat eligendi
+            exercitationem reprehenderit harum quae voluptas fugit sequi
+            delectus nesciunt, incidunt dolor expedita sapiente sed.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
+            repudiandae aspernatur dolorem natus, debitis ut magni eligendi,
+            sint modi nulla officiis quaerat fugit officia facilis autem eaque
+            consectetur, consequuntur doloremque.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+            officia aperiam et a labore quia laborum soluta excepturi voluptate,
+            ratione ex dolorem ullam porro id. Commodi, modi est. Doloribus, a!
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
+            corrupti optio libero ullam! Itaque quam ipsa excepturi magni
+            repellendus expedita perferendis ut delectus iusto tenetur
+            dignissimos enim incidunt, explicabo eaque.
+          </p>
+        </section>
       </Modal>
     </div>
   );
