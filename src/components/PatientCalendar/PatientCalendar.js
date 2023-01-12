@@ -1,11 +1,14 @@
 import React from 'react';
+import './PatientCalendar.css';
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
 
 function PatientCalendar() {
   return (
-    <div>
+    <div className='patient-calendar-main-container'>
       <PatientSidebar />
-      PatientCalendar
+      <div className='patient-calendar-container'>
+      <h1>Patient Calendar</h1>
+    </div>
     </div>
   );
 }
