@@ -39,5 +39,4 @@ const AllProductsPagination =
     </nav>
   )
 }
-
 export default AllProductsPagination

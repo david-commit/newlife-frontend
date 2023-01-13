@@ -3,9 +3,22 @@ import axios from "axios";
 import {Link} from 'react-router-dom'
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllProducts.css';
+import AllProductsPagination from './AllProductsPagination'
 
 const AllProducts = () => {
   const [products,setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(15);
+  // Get current products for pagination
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  // Change Pagination Pages
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(()=>{
     loadProduct();
@@ -20,9 +33,9 @@ const AllProducts = () => {
     loadProduct();
   };
   return (
-    <div className='all-practitioners-main-container'>
+    <div className='all-products-main-container'>
       <AdminSidebar />
-      <div className='all-practitioners-container'>
+      <div className='all-products-container'>
     <h1>All Products</h1>
     <br/>
     <section>
@@ -31,7 +44,7 @@ const AllProducts = () => {
     type='search'
 
     />
-    <Link to="/admin/add-practitioner">
+    <Link to="/admin/add-product">
     <button>+ Add Product</button>
     </Link>
     </section>
@@ -53,7 +66,7 @@ const AllProducts = () => {
     </tr>
   </thead>
   <tbody>
-    {products.map((product,index)=>(
+  {currentProducts.map((product,index)=>(
       <tr>
         <td scope="row"><strong>{index + 1}</strong></td>
         <td>{product.brandName}</td>
@@ -70,6 +83,10 @@ const AllProducts = () => {
     ))}
   </tbody>
 </table>
+<AllProductsPagination productsPerPage={productsPerPage}
+        products={products}
+        paginate={paginate}
+        currentPage={currentPage}/>
       </div>
     </div>
   );
