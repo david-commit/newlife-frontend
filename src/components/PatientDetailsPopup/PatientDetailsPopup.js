@@ -3,10 +3,9 @@ import './PatientDetailsPopup.css';
 // https://react-responsive-modal.leopradel.com/?#custom-container
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function PatientDetailsPopup({loggedIn, userType}) {
+function PatientDetailsPopup({loggedIn, userType, modalOpen, setModalOpen}) {
   const [phone, setPhone] = useState('');
   const [dob, setDOB] = useState('');
   const [address, setAddress] = useState('');
@@ -14,7 +13,6 @@ function PatientDetailsPopup({loggedIn, userType}) {
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [bloodGroup, setBloodGroup] = useState('');
-  const [open, setOpen] = useState(false);
   const history = useHistory()
 
   if (loggedIn) {
@@ -26,13 +24,6 @@ function PatientDetailsPopup({loggedIn, userType}) {
   } else {
     history.push('/login')
   }
-
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
-
-  useEffect(() => {
-    onOpenModal();
-  }, []);
 
   const handlePatientDataSumbit = (e) => {
     e.preventDefault();
@@ -52,10 +43,10 @@ function PatientDetailsPopup({loggedIn, userType}) {
   };
 
   return (
-    <div>
+    <div id='patient-details-popup'>
       <Modal
-        open={open}
-        onClose={onCloseModal}
+        open={modalOpen}
+        onClose={()=> setModalOpen(false)}
         center
         classNames={{
           overlay: 'customOverlay',
@@ -65,7 +56,7 @@ function PatientDetailsPopup({loggedIn, userType}) {
         <div className='patient-details-popup-container'>
           <br />
           <br />
-          <h1>Add Relevant Data</h1>
+          <h1>Edit Details</h1>
           <form
             onSubmit={handlePatientDataSumbit}
             className='patient-details-form-popup'

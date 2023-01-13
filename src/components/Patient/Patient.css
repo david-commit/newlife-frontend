@@ -45,3 +45,22 @@ padding-bottom: 20px;
   padding: 1rem;
   width: 30vw;
 }
+
+button.edit-personal-details {
+  color: white;
+  width: fit-content;
+  height: 3rem;
+  font-size: 1.2rem;
+  border: 1px solid #1d3e68;
+  border-radius: 5px;
+  background-color: #00a3c8;
+  padding: 0 16px;
+  margin-top: 1rem;
+}
+
+button.edit-personal-details:hover {
+  cursor: pointer;
+  background-color: #1d3e68;
+  color: white;
+  transition: all 0.35s ease-in-out;
+}
