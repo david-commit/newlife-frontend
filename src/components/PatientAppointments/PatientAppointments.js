@@ -40,8 +40,9 @@ function PatientAppointments({loggedIn, userType}) {
                 return {
                   departmentName: appointment.practitioner?.department?.name,
                   practitionerLastName: appointment.practitioner?.last_name,
-                  appointmentTime: appointment.time,
-                  appointmentType: appointment.appointment_type
+                  time: appointment.time,
+                  type: appointment.appointment_type,
+                  info: appointment.appointment_info
                 }
               })
             )
@@ -64,11 +65,11 @@ function PatientAppointments({loggedIn, userType}) {
               <div className='patients-appointments'>
                 <br></br>
                 <p>
-                  <h3>{`${appointment.appointmentType}`}</h3>
+                  <h3>{`${appointment.type}`}</h3>
                   <p>
                     {`(Dr. ${appointment.practitionerLastName}, ${appointment.departmentName} Department))`}
                   </p>
-                  <h4>{`${appointment.appointmentTime}` }</h4></p>
+                  <h4>{`${appointment.time}` }</h4></p>
                 <button type='View'>View </button>
                 <button type='Delete'>Delete</button>
               </div>
