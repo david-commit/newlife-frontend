@@ -4,12 +4,12 @@ import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 import { useHistory } from 'react-router-dom';
 
 function PractitionerChat({loggedIn, userType}) {
+  const history = useHistory()
+  const personId = JSON.parse(localStorage.getItem("person"))?.id
   const [chats, setChats] = useState(JSON.parse(localStorage.getItem("appointments")) || {});
   const [activeChat, setActiveChat] = useState(localStorage.getItem("activeChat") || "")
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState(true);
-  const history = useHistory()
-  const personId = JSON.parse(localStorage.getItem("person"))?.id
+
 
   // if(true){
   //   console.log(typeof()
@@ -54,23 +54,42 @@ function PractitionerChat({loggedIn, userType}) {
   }
 
   useEffect(() => {
+
+    updateAppointments()
       const intervalId = setInterval(updateAppointments, 1000)
       localStorage.setItem("intervalId", JSON.stringify(intervalId))
-
       return function(){
         clearInterval(intervalId)
       }
   }, []);
 
-  const handleSendMessage = (e) => {
+  function handleSendMessage(e){
     e.preventDefault();
-    fetch('', {
+
+    const messageData = {
+      appointment_id: chats?.[activeChat]?.id,
+      sender_id: chats?.[activeChat]?.practitioner?.id,
+      sender_class: "Practitioner",
+      receiver_id: chats?.[activeChat]?.user?.id,
+      receiver_class: "User",
+      content: message
+    }
+
+    fetch('http://localhost:3000/messages', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token")
       },
-      body: JSON.stringify({ message }),
-    });
+      body: JSON.stringify(messageData)
+    }).then(res => {
+      if(!res.ok){
+        res.json().then(data =>{
+          console.warn(data)
+        })
+      }
+    })
   };
 
   function handleChatPick(e){
