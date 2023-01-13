@@ -22,7 +22,7 @@ function PatientChat({loggedIn, userType}) {
 
   function updateAppointments() {
     const token = localStorage.getItem("token")
-    const appointmentsApiEndpoint = `http://localhost:3000/practitioners/${personId}/appointments`
+    const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
 
     fetch(appointmentsApiEndpoint, {
       headers: {
@@ -33,6 +33,7 @@ function PatientChat({loggedIn, userType}) {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
+            console.log("no of appointments: ", data.length)
             const appointments = {}
             data.forEach((appointment, index) => {
               const chatTitle = `${index + 1} ${appointment?.appointment_type}; (Dr. ${appointment?.practitioner?.last_name}, ${appointment?.time})`
