@@ -55,7 +55,7 @@ function App() {
       stock: 33,
     },
     {
-      id: 1,
+      id: 2,
       name: 'Lamictal',
       category: 'Bipolar Disorder',
       price_in_2dp: 300.61,
@@ -66,7 +66,7 @@ function App() {
       stock: 33,
     },
     {
-      id: 1,
+      id: 3,
       name: 'Lamictal',
       category: 'Bipolar Disorder',
       price_in_2dp: 300.61,
@@ -77,7 +77,7 @@ function App() {
       stock: 33,
     },
     {
-      id: 1,
+      id: 4,
       name: 'Lamictal',
       category: 'Bipolar Disorder',
       price_in_2dp: 300.61,
@@ -88,7 +88,7 @@ function App() {
       stock: 33,
     },
     {
-      id: 1,
+      id: 5,
       name: 'Lamictal',
       category: 'Bipolar Disorder',
       price_in_2dp: 300.61,
@@ -101,12 +101,23 @@ function App() {
   ]);
   const [cartCount, setCartCount] = useState(5);
   const [loading, setLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState(1);
+  const [productQuantity, setProductQuantity] = useState({});
   const [cartWarning, setCartWarming] = useState(false);
   const [cartAddSuccess, setCartSuccess] = useState(false);
   const [sortProducts, setSortedProducts] = useState('');
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
+
+  // Initializing the value of each product with value 1
+  // Products are identified by their ids (ids are used as keys)
+  useEffect(()=>{
+    const newProductQuantity = {}
+    cart.forEach(product => {
+      newProductQuantity[product.id] = 1
+    })
+
+    setProductQuantity(newProductQuantity)
+  }, [])
 
   // Fetch all products
   useEffect(() => {
@@ -172,16 +183,30 @@ function App() {
   };
 
   // // Quantity Add Button on Product Page
-  function handleAddQty() {
-    setProductQuantity((productQuantity) => productQuantity + 1);
+  function handleAddQty(product) {
+    setProductQuantity((productQuantity) =>{
+      if(!productQuantity[product.id]){
+        return {...productQuantity, [product.id]: 1}
+      }else {
+        const newQuantity = productQuantity[product.id] + 1
+        return { ...productQuantity, [product.id]: newQuantity }
+      }
+    });
   }
 
   // Quantity Reduce Button on Product Page
-  function handleReduceQty() {
+  function handleReduceQty(product) {
     {
-      productQuantity < 2
+      productQuantity[product.id] < 2
         ? alert('Quantity cannot be less than 1')
-        : setProductQuantity((productQuantity) => productQuantity - 1);
+        : setProductQuantity((productQuantity) => {
+          if (!productQuantity[product.id]) {
+            return { ...productQuantity, [product.id]: 1 }
+          } else {
+            const newQuantity = productQuantity[product.id] - 1
+            return { ...productQuantity, [product.id]: newQuantity }
+          }
+        });
     }
   }
 
