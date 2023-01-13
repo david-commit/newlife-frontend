@@ -108,36 +108,6 @@ function App() {
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
 
-  // useEffect(() => {
-  //   // auto-login for patient, practitioner & Admin
-  //   userPatient ? (
-  //     fetch(`http://localhost:3000/api/patients/me`, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: 'Bearer ' + localStorage.getItem('token'),
-  //       },
-  //     }).then((r) => {
-  //       if (r.ok) {
-  //         r.json().then((user) => setUserPatient(user));
-  //       }
-  //     })
-  //   ) : userPractitioner ? (
-  //     fetch(`/api/practitioners/me`).then((r) => {
-  //       if (r.ok) {
-  //         r.json().then((user) => setUserPractitioner(user));
-  //       }
-  //     })
-  //   ) : userAdmin ? (
-  //     fetch(`/api/admin/me`).then((r) => {
-  //       if (r.ok) {
-  //         r.json().then((user) => setUserAdmin(user));
-  //       }
-  //     })
-  //   ) : (
-  //     <Home />
-  //   );
-  // }, [userPatient, userPractitioner, userAdmin]);
-
   // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
