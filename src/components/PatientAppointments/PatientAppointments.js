@@ -4,6 +4,9 @@ import "./PatientAppointments.css"
 import { useHistory } from 'react-router-dom';
 
 function PatientAppointments({loggedIn, userType}) {
+  const token = localStorage.getItem("token")
+  const personId = JSON.parse(localStorage.getItem("person") || false)?.id
+  const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
   const [appointments, setAppointments] = useState(
     JSON.parse(localStorage.getItem("person") ||false)?.appointments || []
   )
@@ -22,10 +25,6 @@ function PatientAppointments({loggedIn, userType}) {
   }
 
   useEffect(()=>{
-    const token = localStorage.getItem("token")
-    const personId = JSON.parse(localStorage.getItem("person") || false)?.id
-    const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
-
     fetch(appointmentsApiEndpoint, {
       headers: {
         "Accept": "application/json",
@@ -42,7 +41,8 @@ function PatientAppointments({loggedIn, userType}) {
                   practitionerLastName: appointment.practitioner?.last_name,
                   time: appointment.time,
                   type: appointment.appointment_type,
-                  info: appointment.appointment_info
+                  info: appointment.appointment_info,
+                  id: appointment.id
                 }
               })
             )
@@ -52,6 +52,27 @@ function PatientAppointments({loggedIn, userType}) {
         }
       })
   }, [])
+
+  function handleDeleteAppointment(deletedAppointment){
+    fetch(`http://localhost:3000/appointments/${deletedAppointment.id}`, {
+      method: 'DELETE',
+      headers: {
+        "Accept": "application/json",
+        "Authorization": token
+      }
+    })
+    .then(res => {
+      if(res.ok){
+        setAppointments(appointments => {
+          return (
+            appointments.filter(appointment => appointment.id != deletedAppointment.id)
+          )
+        })
+      }else{
+        res.json().then(data => console.warn(data))
+      }
+    })
+  }
 
   return (
     <div className='patient-appointments-main-container'>
@@ -71,7 +92,7 @@ function PatientAppointments({loggedIn, userType}) {
                   </p>
                   <h4>{`${appointment.time}` }</h4></p>
                 <button type='View'>View </button>
-                <button type='Delete'>Delete</button>
+                <button type='Delete' onClick={() => handleDeleteAppointment(appointment)}>Delete</button>
               </div>
             )
           })
