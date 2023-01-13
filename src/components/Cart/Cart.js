@@ -68,6 +68,7 @@ function Cart({
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
                         onClick={() => handleReduceQty()}
+                        id='cart-qty-btns'
                       >
                         -
                       </button>
@@ -75,6 +76,7 @@ function Cart({
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
                         onClick={() => handleAddQty()}
+                        id='cart-qty-btns'
                       >
                         +
                       </button>{' '}
@@ -171,6 +173,7 @@ function Cart({
           <div className='checkout-empty-cart'>
             <br />
             <h1>No items in Cart</h1>
+            <br />
           </div>
         )}
       </Modal>
@@ -186,40 +189,47 @@ function Cart({
             exercitationem reprehenderit harum quae voluptas fugit sequi
             delectus nesciunt, incidunt dolor expedita sapiente sed.
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
             repudiandae aspernatur dolorem natus, debitis ut magni eligendi,
             sint modi nulla officiis quaerat fugit officia facilis autem eaque
             consectetur, consequuntur doloremque.
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
             officia aperiam et a labore quia laborum soluta excepturi voluptate,
             ratione ex dolorem ullam porro id. Commodi, modi est. Doloribus, a!
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
             corrupti optio libero ullam! Itaque quam ipsa excepturi magni
             repellendus expedita perferendis ut delectus iusto tenetur
             dignissimos enim incidunt, explicabo eaque.
           </p>
+          <br />
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
             voluptatem in provident corrupti. Itaque quaerat eligendi
             exercitationem reprehenderit harum quae voluptas fugit sequi
             delectus nesciunt, incidunt dolor expedita sapiente sed.
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro
             repudiandae aspernatur dolorem natus, debitis ut magni eligendi,
             sint modi nulla officiis quaerat fugit officia facilis autem eaque
             consectetur, consequuntur doloremque.
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
             officia aperiam et a labore quia laborum soluta excepturi voluptate,
             ratione ex dolorem ullam porro id. Commodi, modi est. Doloribus, a!
           </p>
+          <br />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
             corrupti optio libero ullam! Itaque quam ipsa excepturi magni

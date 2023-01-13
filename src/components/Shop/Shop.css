@@ -52,6 +52,12 @@
   align-items: center;
   padding: 10px;
 }
+#free-button {
+  border: none;
+  border-radius: 3px; 
+  color: white;
+  background-color: #32cd32;
+}
 .shop-card img {
   width: 100%;
   height: 270px;
@@ -59,10 +65,13 @@
 }
 .shop-card-text {
   width: 100%;
-  /* border: 1px dashed red; */
   display: flex;
   flex-direction: column;
   margin-top: 20px;
+}
+.shop-card-text > section {
+  display: flex;
+  justify-content: space-between;
 }
 .shop-card-text p {
   font-size: 14px;
