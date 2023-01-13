@@ -5,6 +5,7 @@ import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/511
 
 function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
   function handleLogoutClick() {
+    setLoggedIn(false)
     const token = localStorage.getItem("token")
     const intervalId = JSON.parse(localStorage.getItem("intervalId"))
 
@@ -19,7 +20,6 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
      }).then((r) => {
       if (r.ok) {
         localStorage.clear()
-        setLoggedIn(false)
         setUserType("")
       }
     });
