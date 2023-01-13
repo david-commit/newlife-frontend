@@ -30,8 +30,9 @@ function Patient({loggedIn, userType}) {
           <p className='patient-details-title'>
             <span>Bio:</span>
           </p>
-
-          <textarea >{personalDetails?.bio}</textarea>
+          <div className='patient-details-bio'>
+            {personalDetails?.bio}
+          </div>
           <br />
 
           <p className='practitioner-details-title'>

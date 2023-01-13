@@ -39,3 +39,9 @@ text-align: center;
 padding-bottom: 20px;
 }
 
+.patient-details-bio {
+  border: solid #1d3e68 0.1rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 30vw;
+}
