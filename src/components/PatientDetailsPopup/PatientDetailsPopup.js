@@ -5,19 +5,8 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useHistory } from 'react-router-dom';
 
-function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen }) {
-  const [personDetails, setPersonDetails] = useState(
-    JSON.parse(localStorage.getItem("person") || false)?.["patient_profiles"]?.[0] ||
-    {
-      phone_number: "",
-      dob: "",
-      bio: "",
-      height: "",
-      weight: "",
-      bmi: "",
-      blood_group: ""
-    }
-  )
+function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, personDetails, setPersonDetails}) {
+  const person = JSON.parse(localStorage.getItem("person") || false)
   const history = useHistory()
 
   if (loggedIn) {
@@ -36,15 +25,34 @@ function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen }) {
 
   const handlePatientDataSumbit = (e) => {
     e.preventDefault();
-    fetch('', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        "Accept": "application/json",
-        "Authorization": localStorage.getItem("token")
-      },
-      body: JSON.stringify(personDetails)
-    });
+    const personId = person?.id
+    const profileId = person?.patient_profiles[0]?.id
+
+    if(personId && profileId){
+      fetch(`http://127.0.0.1:3000/patient_profiles/${personId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          "Authorization": localStorage.getItem("token")
+        },
+        body: JSON.stringify(personDetails)
+      })
+        .then(res => {
+          if (res.ok) {
+            res.json().then(data => {
+              setModalOpen(false)
+              const newProfileDetails = {...person.patient_profiles[0], ...data}
+              const newPersonDetails = {...person, patient_profiles: [newProfileDetails]}
+              localStorage.setItem("person", JSON.stringify(newPersonDetails))
+            })
+          } else {
+            res.json().then(data => console.warn(data))
+          }
+        })
+    }else{
+      console.warn("Couldn't find person id. Are you even logged in?")
+    }
   };
 
   return (

@@ -5,9 +5,18 @@ import PatientDetailsPopup from '../PatientDetailsPopup/PatientDetailsPopup';
 import { useHistory } from 'react-router-dom';
 
 function Patient({loggedIn, userType}) {
+  const person = JSON.parse(localStorage.getItem("person") || false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [personalDetails, setPersonalDetails] = useState(
-    JSON.parse(localStorage.getItem("person") || false)?.patient_profiles?.[0]
+  const [personDetails, setPersonDetails] = useState(person?.["patient_profiles"]?.[0] ||
+  {
+    phone_number: "",
+    dob: "",
+    bio: "",
+    height: "",
+    weight: "",
+    bmi: "",
+    blood_group: ""
+  }
   )
   const history = useHistory()
 
@@ -30,7 +39,7 @@ function Patient({loggedIn, userType}) {
       <div className='patient-main-container'>
         <PatientSidebar />
         <div className='patient-details-dash-section'>
-          <h1>{`Hi ${personalDetails?.first_name}`}</h1>
+          <h1>{`Hi ${personDetails?.first_name}`}</h1>
           <p>See your personal details below</p>
           <br />
           <div className='patient-details-section'>
@@ -38,17 +47,17 @@ function Patient({loggedIn, userType}) {
               <span>Bio:</span>
             </p>
             <div className='patient-details-bio'>
-              {personalDetails?.bio}
+              {personDetails?.bio}
             </div>
             <br />
 
             <p className='practitioner-details-title'>
               <span>Date of Birth: </span>
-              {personalDetails?.dob}
+              {personDetails?.dob}
             </p>
             <p className='practitioner-details-title'>
               <span>Phone: </span>
-              {personalDetails?.phone_number}
+              {personDetails?.phone_number}
             </p>
             <p className='practitioner-details-title'>
               <span>Email: </span>
@@ -62,20 +71,21 @@ function Patient({loggedIn, userType}) {
               <span>Age:</span>
               35
             </p>
+            */}
             <p className='practitioner-details-title'>
-              <span>Height:</span>2 meters
-            </p> */}
+              <span>Height: </span>{`${personDetails?.height} meters`}
+            </p>
             <p className='practitioner-details-title'>
               <span>Weight: </span>
-              {`${personalDetails?.weight}Kg`}
+              {`${personDetails?.weight}Kg`}
             </p>
             <p className='practitioner-details-title'>
               <span>BMI: </span>
-              {personalDetails?.bmi}
+              {personDetails?.bmi}
             </p>
             <p className='practitioner-details-title'>
               <span>Blood Group: </span>
-              {personalDetails?.blood_group}
+              {personDetails?.blood_group}
             </p>
 
             <button className='edit-personal-details' onClick={handleEditDetailsClick}>Edit Details</button>
@@ -106,7 +116,9 @@ function Patient({loggedIn, userType}) {
             loggedIn={loggedIn}
             userType={userType}
             modalOpen={modalOpen}
-            setModalOpen={setModalOpen}/> : ""
+            setModalOpen={setModalOpen}
+            personDetails={personDetails}
+            setPersonDetails={setPersonDetails}/> : ""
       }
       
     </>
