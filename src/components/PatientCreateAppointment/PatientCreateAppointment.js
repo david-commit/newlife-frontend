@@ -69,7 +69,6 @@ function PatientCreateAppointment({loggedIn, userType}) {
 
   function handleInputChange(e){
     setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
-    console.log("form data: ", formData)
   }
 
   return (

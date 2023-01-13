@@ -12,8 +12,6 @@ function PatientAppointments({loggedIn, userType}) {
   )
   const history = useHistory()
 
-  console.log("appointments: ", appointments)
-
   if (loggedIn) {
     if (userType == "practitioner") {
       history.push('/practitioners/me')

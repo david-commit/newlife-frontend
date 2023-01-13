@@ -33,7 +33,6 @@ function PatientChat({loggedIn, userType}) {
       .then(response => {
         if (response.ok) {
           response.json().then(data => {
-            console.log("no of appointments: ", data.length)
             const appointments = {}
             data.forEach((appointment, index) => {
               const chatTitle = `${index + 1} ${appointment?.appointment_type}; (Dr. ${appointment?.practitioner?.last_name}, ${appointment?.time})`
