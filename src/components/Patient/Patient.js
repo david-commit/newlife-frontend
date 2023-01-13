@@ -4,7 +4,9 @@ import PatientSidebar from '../PatientSidebar/PatientSidebar';
 import { useHistory } from 'react-router-dom';
 
 function Patient({loggedIn, userType}) {
-  const [personalDetails, setPersonalDetails] = useState(JSON.parse(localStorage.getItem("person")).patient_profiles[0])
+  const [personalDetails, setPersonalDetails] = useState(
+    JSON.parse(localStorage.getItem("person") || false)?.patient_profiles?.[0]
+  )
   const history = useHistory()
 
   if (loggedIn) {
