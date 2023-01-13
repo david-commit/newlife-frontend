@@ -53,10 +53,10 @@ const AllProducts = () => {
 
   <thead>
     <tr>
-      <th scope="col">SNo</th>
+      {/* <th scope="col">SNo</th> */}
+      <th scope="col">ID</th>
       <th scope="col">Brand Name</th>
       <th scope="col">Generic Name</th>
-      <th scope="col">ID</th>
       <th scope="col">Category</th>
       <th scope="col">Quantity</th>
       <th scope="col">Form</th>
@@ -68,10 +68,10 @@ const AllProducts = () => {
   <tbody>
   {currentProducts.map((product,index)=>(
       <tr>
-        <td scope="row"><strong>{index + 1}</strong></td>
+        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+        <td><strong>{product.id}</strong></td>
         <td>{product.brandName}</td>
         <td>{product.genericName}</td>
-        <td>{product.id}</td>
         <td>{product.category}</td>
         <td>{product.quantity}</td>
         <td>{product.form}</td>
