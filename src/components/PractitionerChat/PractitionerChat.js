@@ -54,13 +54,11 @@ function PractitionerChat({loggedIn, userType}) {
   }
 
   useEffect(() => {
-
-    updateAppointments()
-      const intervalId = setInterval(updateAppointments, 1000)
-      localStorage.setItem("intervalId", JSON.stringify(intervalId))
-      return function(){
-        clearInterval(intervalId)
-      }
+    const intervalId = setInterval(updateAppointments, 1000)
+    localStorage.setItem("intervalId", JSON.stringify(intervalId))
+    return function(){
+      clearInterval(intervalId)
+    }
   }, []);
 
   function handleSendMessage(e){
