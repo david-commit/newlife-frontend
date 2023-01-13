@@ -49,7 +49,14 @@ function Shop({
           <div className='shop-card'>
             <img src={product.image} alt='Product' />
             <div className='shop-card-text'>
-              <p>{product.category}</p>
+              <section>
+                <p>{product.category}</p>
+                {parseFloat(product.price_in_2dp) < 1 ? (
+                  <button id='free-button'>Free</button>
+                ) : (
+                  ''
+                )}
+              </section>
               <div className='product-title'>
                 <h3>{product.name}</h3>
               </div>
