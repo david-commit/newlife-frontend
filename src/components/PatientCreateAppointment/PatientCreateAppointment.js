@@ -62,7 +62,7 @@ function PatientCreateAppointment({loggedIn, userType}) {
       if(!res.ok){
         res.json().then(data => console.warn(data))
       }else{
-        
+        history.push('/patients/me/appointments')
       }
     })  
   }
