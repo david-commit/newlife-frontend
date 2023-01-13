@@ -53,7 +53,7 @@ const AllPractitioners = () => {
 
   <thead>
     <tr>
-      <th scope="col">SNo</th>
+      {/* <th scope="col">SNo</th> */}
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Role</th>
@@ -68,8 +68,8 @@ const AllPractitioners = () => {
   <tbody>
     {currentPractitioners.map((user,index)=>(
       <tr>
-        <td scope="row"><strong>{index + 1}</strong></td>
-        <td>{user.id}</td>
+        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+        <td><strong>{user.id}</strong></td>
         <td>{user.name}</td>
         <td>{user.role}</td>
         <td>{user.email}</td>

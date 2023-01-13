@@ -1,0 +1,21 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.product-pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  .product-pagination-container a {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+  }
+  #active-page {
+    background-color: #00a3c8;
+    color: white;
+    border: 1px solid #00a3c8;
+  }
