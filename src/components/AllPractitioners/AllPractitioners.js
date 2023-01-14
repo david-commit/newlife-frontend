@@ -1,11 +1,22 @@
 import React, {useState,useEffect} from 'react';
 import axios from "axios";
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllPractitioners.css';
 
-const AllPractitioners = () => {
+const AllPractitioners = ({loggedIn, userType}) => {
   const [users,setUsers] = useState([]);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "patient") {
+      history.push('/patients/me')
+    }
+  } else {
+    history.push('/login')
+  }
 
   useEffect(()=>{
     loadUser();

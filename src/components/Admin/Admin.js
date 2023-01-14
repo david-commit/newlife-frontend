@@ -1,8 +1,24 @@
 import React, {useState,useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import axios from "axios";
 
-const AllPractitioners = () => {
+const AllPractitioners = ({loggedIn, userType}) => {
 const [users,setUsers] = useState([]);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "patient") {
+      history.push('/patients/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
+  console.log("usertype: ", userType)
+
+
 useEffect(()=>{
   console.log("Newlife Hospital");
 },[]);
