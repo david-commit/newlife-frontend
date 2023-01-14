@@ -1,14 +1,25 @@
 import React from 'react';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import './ResetPassword.css';
 import Patient from '../Patient/Patient';
 
-function ResetPassword() {
+function ResetPassword({loggedIn, userType}) {
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassoword] = useState('');
   const [newCPassword, setNewCPassoword] = useState('');
   const [sendEmailSuccess, setSendEmailSuccess] = useState(true);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  }
 
   // To send confirmation email to user's email
   const handleSendEmail = (e) => {

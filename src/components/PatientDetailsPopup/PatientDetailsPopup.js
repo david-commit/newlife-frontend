@@ -4,8 +4,9 @@ import './PatientDetailsPopup.css';
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function PatientDetailsPopup() {
+function PatientDetailsPopup({loggedIn, userType}) {
   const [phone, setPhone] = useState('');
   const [dob, setDOB] = useState('');
   const [address, setAddress] = useState('');
@@ -14,6 +15,17 @@ function PatientDetailsPopup() {
   const [weight, setWeight] = useState('');
   const [bloodGroup, setBloodGroup] = useState('');
   const [open, setOpen] = useState(false);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);

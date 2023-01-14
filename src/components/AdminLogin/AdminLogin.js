@@ -10,7 +10,7 @@ function AdminLogin({ setUserAdmin }) {
 
   function handleAdminLogin(e){
     e.preventDefault()
-    fetch(`/api/adlin/login`, {
+    fetch(`http://localhost:3000/admin/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -49,7 +49,7 @@ function AdminLogin({ setUserAdmin }) {
             type='password'
             placeholder='Password'
             value={password}
-            setPassword={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <br />
           <p>

@@ -1,13 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Patient.css';
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
+import { useHistory } from 'react-router-dom';
 
-function Patient() {
+function Patient({loggedIn, userType}) {
+  const [personalDetails, setPersonalDetails] = useState(JSON.parse(localStorage.getItem("person")).patient_profiles[0])
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  }else{
+    history.push('/login')
+  }
+
   return (
     <div className='patient-main-container'>
       <PatientSidebar />
       <div className='patient-details-dash-section'>
-        <h1>Hi John,</h1>
+        <h1>{`Hi ${personalDetails?.first_name}`}</h1>
         <p>See your personal details below</p>
         <br />
         <div className='patient-details-section'>
@@ -15,27 +29,22 @@ function Patient() {
             <span>Bio:</span>
           </p>
 
-          <textarea >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-            alias, voluptatum vero eaque veniam inventore nihil possimus
-            repellendus nemo commodi cupiditate eum praesentium incidunt odit
-            tenetur consequatur corporis cumque id?
-          </textarea>
+          <textarea >{personalDetails?.bio}</textarea>
           <br />
 
           <p className='practitioner-details-title'>
-            <span>Date of Birth:</span>
-           01/01/1988
+            <span>Date of Birth: </span>
+            {personalDetails?.dob}
           </p>
           <p className='practitioner-details-title'>
-            <span>Phone:</span>
-            +254709876543
+            <span>Phone: </span>
+            {personalDetails?.phone_number}
           </p>
           <p className='practitioner-details-title'>
-            <span>Email:</span>
-           john@newlife.com
+            <span>Email: </span>
+            {JSON.parse(localStorage.getItem("person"))?.email}
           </p>
-          <p className='practitioner-details-title'>
+          {/* <p className='practitioner-details-title'>
             <span>Location:</span>
             Nairobi
           </p>
@@ -45,18 +54,18 @@ function Patient() {
           </p>
           <p className='practitioner-details-title'>
             <span>Height:</span>2 meters
+          </p> */}
+          <p className='practitioner-details-title'>
+            <span>Weight: </span>
+            {`${personalDetails?.weight}Kg`}
           </p>
           <p className='practitioner-details-title'>
-            <span>Weight:</span>
-            76kg
+            <span>BMI: </span>
+            {personalDetails?.bmi}
           </p>
           <p className='practitioner-details-title'>
-            <span>BMI:</span>
-            19
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Blood Group:</span>
-            O-
+            <span>Blood Group: </span>
+            {personalDetails?.blood_group}
           </p>
         </div>
       </div>

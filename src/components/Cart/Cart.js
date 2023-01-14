@@ -30,7 +30,7 @@ function Cart({
     let total = 0;
     cart.map((item) => {
       total += item.price_in_2dp * productQuantity;
-      console.log(item);
+      // console.log(item);
     });
     setTotalPrice(total);
   };
@@ -45,6 +45,24 @@ function Cart({
     const arr = cart.filter((item) => item.id !== id);
     setCart(arr);
     setCartCount(arr.length);
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/carts")
+  })
+
+  const handlePostToCart = (item) => {
+    fetch('http://localhost:3000/shopping_carts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({}),
+    });
+  };
+
+  const handleDeleteFromCart = (item) => {
+    fetch(`http://localhost:3000/shopping_carts/${item.id}`, {
+      method: 'DELETE'
+    });
   };
 
   return (
@@ -67,16 +85,16 @@ function Cart({
                       Quantity:{' '}
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
-                        onClick={() => handleReduceQty()}
                         id='cart-qty-btns'
+                        onClick={() => handleReduceQty(product)}
                       >
                         -
                       </button>
-                      <input value={productQuantity} />
+                      <input value={productQuantity[product.id]} />
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
-                        onClick={() => handleAddQty()}
                         id='cart-qty-btns'
+                        onClick={() => handleAddQty(product)}
                       >
                         +
                       </button>{' '}
@@ -85,7 +103,7 @@ function Cart({
                     <p>
                       Total: Ksh.{' '}
                       {parseFloat(
-                        product.price_in_2dp * productQuantity
+                        product.price_in_2dp * productQuantity[product.id]
                       ).toFixed(2)}
                     </p>
                   </section>
