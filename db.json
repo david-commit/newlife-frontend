@@ -377,6 +377,16 @@
       "speciality": "Dental",
       "department": "Dentistry",
       "id": 1
+    },
+    {
+      "name": "Winston ",
+      "username": "",
+      "role": "Dentist",
+      "email": "winslangt@gmail.com",
+      "phone": "+254719535899",
+      "speciality": "Dental",
+      "department": "Dentistry",
+      "id": 39
     }
   ],
   "products": [
