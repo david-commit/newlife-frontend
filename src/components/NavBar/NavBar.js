@@ -100,9 +100,9 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
                 <NavLink exact to='/practitioners/me'>
                   Dashboard
                 </NavLink>
-                <NavLink exact to='/products'>
+                {/* <NavLink exact to='/products'>
                   Shop
-                </NavLink>
+                </NavLink> */}
                 <NavLink exact to='/'>
                   <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>

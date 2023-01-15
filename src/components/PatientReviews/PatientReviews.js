@@ -144,7 +144,6 @@ function PatientReviews({ loggedIn, userType }) {
       },
     },
   ]);
-  console.log(userReviews);
 
   if (loggedIn) {
     if (userType == 'practitioner') {
