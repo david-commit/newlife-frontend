@@ -1,13 +1,104 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import './PractitionerChat.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useHistory } from 'react-router-dom';
 
-function PractitionerChat() {
+function PractitionerChat({loggedIn, userType}) {
+  const [practitioners, setPractitioners] = useState([
+    'Practitioner 1',
+    'Practitioner 2',
+    'Practitioner 3',
+  ]);
+  const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState(true);
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
+  // useEffect(() => {
+  //   fetch('')
+  //     .then((r) => r.json())
+  //     .then((d) => setPractitioners(d));
+
+  //   fetch('')
+  //     .then((r) => r.json())
+  //     .then((d) => setMessages(d));
+  // }, []);
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    fetch('', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ message }),
+    });
+  };
+
   return (
-    <div className='practitioner-main-container'>
-      <PractitionerSideBar /> Practitioner Chat
+    <div className='practitioner-chat-main-container'>
+      <PractitionerSideBar />
+      <div className='practitioner-chat-container'>
+        <h1>Practitioner Chat</h1>
+        <br />
+        <select onChange={(e) => setPractitioners(e.target.value)}>
+          <option hidden>Select Practitioner</option>
+          {practitioners?.map((practitioner) => {
+            return <option value=''>{practitioner}</option>;
+          })}
+        </select>
+        <br />
+        <br />
+        <div className='practitioner-chats'>
+          <section className='chat-messages'>
+            {messages ? (
+              <>
+                <div className='receiving-bubble'>Sender message</div>
+
+                <div className='sending-bubble'>receiver message</div>
+                <div className='receiving-bubble'>Sender message</div>
+
+                <div className='sending-bubble'>receiver message</div>
+                <div className='receiving-bubble'>Sender message</div>
+
+                <div className='sending-bubble'>receiver message</div>
+                <div className='receiving-bubble'>Sender message</div>
+
+                <div className='sending-bubble'>receiver message</div>
+                <div className='receiving-bubble'>Sender message</div>
+
+                <div className='sending-bubble'>receiver message</div>
+                <div className='receiving-bubble'>
+                  Sender message Sender message
+                </div>
+
+                <div className='sending-bubble'>
+                  receiver messag euuygyyug qwertyu
+                </div>
+              </>
+            ) : (
+              <h3>No messages</h3>
+            )}
+          </section>
+          <form onSubmit={handleSendMessage}>
+            <section className='practitioner-chat--static'>
+              <input type='text' placeholder='Type message...' value={message} onChange={(e) => setMessage(e.target.value)} />
+              <button type='submit'>Send</button>
+            </section>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
 
-export default PractitionerChat
+export default PractitionerChat;

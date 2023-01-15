@@ -2,8 +2,21 @@ import React from 'react'
 import './PatientReviews.css'
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
 import ReactStars from 'react-stars';
+import { useHistory } from 'react-router-dom';
 
-function PatientReviews() {
+function PatientReviews({loggedIn, userType}) {
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
   return (
     <div className='patient-reviews-main-container'>
       <PatientSidebar />

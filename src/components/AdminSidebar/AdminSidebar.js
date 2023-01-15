@@ -6,11 +6,14 @@ function AdminSidebar() {
   return (
     <div className='admin-sidebar-nav-container'>
       <nav className='admin-sidebar-nav'>
+        <NavLink exact to='/admin/me'>
+          <i class='fa-solid fa-user'></i>&nbsp; Dashboard
+          </NavLink>
         <NavLink exact to='/admin'>
           <i class='fa-solid fa-user'></i>&nbsp; All Practitioners
         </NavLink>
         <NavLink exact to='/admin/add-practitioner'>
-          <i class='fa-solid fa-calendar-plus'></i>&nbsp; Add Practutioner
+          <i class='fa-solid fa-calendar-plus'></i>&nbsp; Add Practitioner
         </NavLink>
         <NavLink exact to='/admin/products'>
           <i class='fa-solid fa-eye'></i>&nbsp; All Products

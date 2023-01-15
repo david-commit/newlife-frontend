@@ -1,99 +1,130 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Login.css";
+import React, { useState } from 'react';
+import { Link, Redirect, useHistory } from 'react-router-dom';
+import './Login.css';
 
-function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [pracCheckbox, setPracCheckbox] = useState(false);
-  const [errors, setErrors] = useState("");
-  // const errors = ["Invalid Username or Password"]
+function Login({loggedIn, setLoggedIn, userType, setUserType}) {
+  const [formData, setFormData] = useState({username: "", password: "", prac_checkbox: false})
+  const [error, setError] = useState("");
+  const patientLoginLink = 'http://localhost:3000/login';
+  const practitionerLoginLink = 'http://localhost:3000/practitioner/login';
+  const history = useHistory()
+
+  if(loggedIn){
+    if(userType == "patient"){
+      history.push('/patients/me')
+    } else if (userType == "practitioner"){
+      history.push('/practitioners/me')
+    } else if (userType == "admin"){
+      history.push('/admin/me')
+    }
+  }
 
   function handleLoginSubmit(e) {
+    const loginLink = formData.prac_checkbox? practitionerLoginLink : patientLoginLink
+    console.log(formData)
     e.preventDefault();
     // setPracCheckbox(false);
-    setErrors([]);
-    fetch(`http://localhost:3000/login`, {
-      method: "POST",
+    fetch(loginLink, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
+      body: JSON.stringify({username: formData.username, password: formData.password}),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((user) => {
-          // onLogin(user);
-          // setSuccess(user);
-          // SET USER
-          console.log(user);
+        response.json().then((person) => {
+          localStorage.setItem('token', person.jwt);
+          localStorage.setItem('loggedIn', true)
+          localStorage.setItem("userType", formData.prac_checkbox ? "practitioner" : "patient")
+
+          if (formData.prac_checkbox) {
+            localStorage.setItem('person', JSON.stringify(person.practitioner))
+            setLoggedIn(true)
+            setUserType('practitioner')
+            history.push('/practitioners/me')
+          } else {
+            localStorage.setItem('person', JSON.stringify(person.user))
+            setLoggedIn(true)
+            setUserType('patient')
+            history.push('/patients/me')
+          }
         });
       } else {
-        // response.json().then((err) => setErrors(err.errors));
-        console.log(response);
+        response.json().then(setError("Invalid username or password"));
+        console.log(error)
       }
     });
   }
 
+  function updateFormData(e){
+    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
+  }
+
   return (
-    <div className="login-main-container">
-      <div className="login-form-container">
-        <form className="login-form" onSubmit={handleLoginSubmit}>
+    <div className='login-main-container'>
+      <div className='login-form-container'>
+        <form className='login-form' onSubmit={handleLoginSubmit}>
           <h1>Login</h1>
           <p>Schedule an appointment now</p>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="username"
+            type='text'
+            placeholder='username'
+            value={formData.username}
+            onChange={updateFormData}
           />
           <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            type='password'
+            placeholder='Password'
+            value={formData.password}
+            onChange={updateFormData}
           />
-          <span id="practitioner-check">
+          <label id='practitioner-check'>
             <input
-              type="checkbox"
-              value={pracCheckbox}
-              onChange={() => setPracCheckbox(!pracCheckbox)}
+              id='prac_checkbox'
+              type='checkbox'
+              value={formData.prac_checkbox}
+              onChange={updateFormData}
             />
             &nbsp; Log in as practitioner
-          </span>
-          <button type="submit">Log In</button>
+          </label>
+          <button type='submit'>Log In</button>
         </form>
         <br />
-        {errors ? (
+
+        {error ? (
           <>
-            <div className="login-error-display">
-              {errors.map((error) => {
-                console.log(error);
-                return (
-                  <p key={error} style={{ color: "red" }}>
+            <div className='login-error-display'>
+              {
+                  <p key={error} style={{ color: 'red' }}>
                     {error}
                   </p>
-                );
-              })}
+              }
             </div>
             <br />
           </>
         ) : (
-          ""
+          ''
         )}
-        <div className="already">
+        
+        <div className='already'>
           <hr />
+          <p>
+            Forgot password?{' '}
+            <Link to='/reset-password' id='reset-text'>
+              Reset
+            </Link>
+          </p>
           <p>
             Don't have an account? &nbsp;
             <Link to={`/signup`}>
-              <button type="button">Sign Up</button>
+              <button type='button'>Sign Up</button>
             </Link>
           </p>
         </div>
       </div>
-      <div className="login-img"></div>
+      <div className='login-img'></div>
     </div>
   );
 }

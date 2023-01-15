@@ -90,3 +90,7 @@
   text-align: center;
   border: 1px solid red;
 }
+#reset-text {
+  color: #00a3c8;
+  text-decoration: none;
+}

@@ -3,19 +3,23 @@ import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
-function NavBar({
-  userPatient,
-  userPractitioner,
-  setUserPatient,
-  setUserPractitioner,
-  cartCount,
-}) {
+function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
   function handleLogoutClick() {
-    fetch(`/logout`, { method: 'DELETE' }).then((r) => {
+    const token = localStorage.getItem("token")
+
+    const logoutEndpoint = userType == "patient"?
+      "http://127.0.0.1:3000/logout" :
+      userType == "practitioner" ? "http://127.0.0.1:3000/practitioner/logout" :
+      "http://127.0.0.1:3000/admin/logout"
+
+    fetch(logoutEndpoint, {
+      method: 'DELETE',
+      headers: {"Accept": "application/json", "Authorization": token}
+     }).then((r) => {
       if (r.ok) {
-        setUserPatient(null);
-        setUserPractitioner(null);
-        alert('Logged out!');
+        localStorage.clear()
+        setLoggedIn(false)
+        setUserType("")
       }
     });
   }
@@ -62,21 +66,21 @@ function NavBar({
           </NavLink>
           <nav className='menubar-nav'>
             {/* == Displays User Role is logged in currently */}
-            {/* {userPatient
+            {loggedIn && (userType == "patient" )
               ? 'Logged as Patient!'
-              : userPractitioner
+              : loggedIn && (userType == "practitioner")
               ? 'Logged as Practitioner!'
-              : 'Not logged In!'} */}
+              : 'Not logged In!'}
             <NavLink exact to='/'>
               Home
             </NavLink>
             <NavLink exact to='/about'>
               About Us
             </NavLink>
-            {userPatient ? (
+            {loggedIn && (userType == "patient") ? (
               <>
                 <NavLink exact to='/patients/me'>
-                  Appointments
+                  Dashboard
                 </NavLink>
                 <NavLink exact to='/products'>
                   Shop
@@ -88,13 +92,13 @@ function NavBar({
                   </div>
                 </NavLink>
                 <NavLink exact to='/'>
-                  <button>Logout</button>
+                  <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
-            ) : userPractitioner ? (
+            ) : loggedIn && (userType == "practitioner") ? (
               <>
                 <NavLink exact to='/practitioners/me'>
-                  Appointments
+                  Dashboard
                 </NavLink>
                 <NavLink exact to='/products'>
                   Shop

@@ -4,11 +4,20 @@ import './Shop.css';
 import ShopPagination from '../ShopPagination/ShopPagination';
 import loadingGif from '../../img/loading.gif';
 
-function Shop({ products, handleSearch, loading, handleAddToCart }) {
+function Shop({
+  products,
+  handleSearch,
+  loading,
+  handleAddToCart,
+  cartWarning,
+  cartAddSuccess,
+  sortProducts,
+  setSortedProducts,
+}) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
 
-  // Get current products
+  // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = products.slice(
@@ -40,21 +49,27 @@ function Shop({ products, handleSearch, loading, handleAddToCart }) {
           <div className='shop-card'>
             <img src={product.image} alt='Product' />
             <div className='shop-card-text'>
-              <p>{product.category}</p>
+              <section>
+                <p>{product.category}</p>
+                {parseFloat(product.price_in_2dp) < 1 ? (
+                  <button id='free-button'>Free</button>
+                ) : (
+                  ''
+                )}
+              </section>
               <div className='product-title'>
-                <h3>{product.title}</h3>
+                <h3>{product.name}</h3>
               </div>
               <section className='card-price-button'>
-                <h4>Ksh {product.price}</h4>
+                <h4>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</h4>
                 <button
                   type='button'
                   onClick={(e) => {
                     e.preventDefault();
-                    // alert('Added to Cart!');
-                    handleAddToCart(product)
+                    handleAddToCart(product);
                   }}
                 >
-                  Add to Cart
+                  + Add to Cart
                 </button>
               </section>
             </div>
@@ -85,11 +100,19 @@ function Shop({ products, handleSearch, loading, handleAddToCart }) {
             border: '1px solid grey',
           }}
         />
+        {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
+        {cartAddSuccess ? <p id='cart-success'>Item added succesfully</p> : ''}
         <select
           id='shop-sort'
-          // onChange={(e) => setSortProducts(e.target.value)}
+          onChange={(e) => setSortedProducts(e.target.value)}
         >
-          <option hidden>Sort</option>
+          <option hidden>
+            {sortProducts === 'price-asc'
+              ? 'Price: Low to High'
+              : sortProducts === 'price-desc'
+              ? 'Price: High to Low'
+              : 'Sort Products'}
+          </option>
           <option value='price-asc'>Price: Low to High</option>
           <option value='price-desc'>Price: High to Low</option>
         </select>

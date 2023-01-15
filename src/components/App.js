@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import NavBar from './NavBar/NavBar';
 import Home from './Home/Home';
 import AboutUs from './AboutUs/AboutUs';
@@ -25,75 +25,153 @@ import PatientCalendar from './PatientCalendar/PatientCalendar';
 import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
 import Admin from './Admin/Admin';
 import AdminLogin from './AdminLogin/AdminLogin';
-import AddPractitioner from "./AddPractitioner/AddPractitioner"
-import AddProduct from "./AddProduct/AddProduct"
+import AddPractitioner from './AddPractitioner/AddPractitioner';
+import AddProduct from './AddProduct/AddProduct';
 import AllProducts from './AllProducts/AllProducts';
-import AllPractitioners from "./AllPractitioners/AllPractitioners"
+import AllPractitioners from './AllPractitioners/AllPractitioners';
+import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
+import ResetPassword from './ResetPassword/ResetPassword';
+import EditPractitioner from './Admin/EditPractitioner';
+import EditProduct from './Admin/EditProduct'
 
 function App() {
-  const [userAdmin, setUserAdmin] = useState(true)
-  const [userPatient, setUserPatient] = useState(true);
-  const [userPractitioner, setUserPractitioner] = useState(true);
+  const [userAdmin, setUserAdmin] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("loggedIn"))
+  const [userType, setUserType] = useState(localStorage.getItem("userType"))
   const [products, setProducts] = useState([]);
+  const [userPatient, setUserPatient] = useState("")
+  const [userPractitioner, setUserPractitioner] = useState("")
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([
     {
       id: 1,
-      title: 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops',
-      price: 109.95,
-      description:
-        'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday',
-      category: "men's clothing",
-      image: 'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg',
-      rating: {
-        rate: 3.9,
-        count: 120,
-      },
-    }
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
+    {
+      id: 1,
+      name: 'Lamictal',
+      category: 'Bipolar Disorder',
+      price_in_2dp: 300.61,
+      description: null,
+      image:
+        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
+      dosage: null,
+      stock: 33,
+    },
   ]);
-  const [cartCount, setCartCount] = useState(0);
+  const [cartCount, setCartCount] = useState(5);
   const [loading, setLoading] = useState(false);
-  console.log(cart)
+  const [productQuantity, setProductQuantity] = useState(1);
+  const [cartWarning, setCartWarming] = useState(false);
+  const [cartAddSuccess, setCartSuccess] = useState(false);
+  const [sortProducts, setSortedProducts] = useState('');
+  const [sortAsc] = useState('');
+  const [sortDesc] = useState('price-desc');
 
-  useEffect(() => {
-    // auto-login for both user and practitioner
-    userPatient ? (
-      fetch(`patients/me`).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUserPatient(user));
-        }
-      })
-    ) : userPractitioner ? (
-      fetch(`practitioners/me`).then((r) => {
-        if (r.ok) {
-          r.json().then((user) => setUserPractitioner(user));
-        }
-      })
-    ) : (
-      <Home />
-    );
-  }, [userPatient, userPractitioner]);
+  // useEffect(() => {
+  //   // auto-login for patient, practitioner & Admin
+  //   userPatient ? (
+  //     fetch(`http://localhost:3000/api/patients/me`, {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         Authorization: 'Bearer ' + localStorage.getItem('token'),
+  //       },
+  //     }).then((r) => {
+  //       if (r.ok) {
+  //         r.json().then((user) => setUserPatient(user));
+  //       }
+  //     })
+  //   ) : userPractitioner ? (
+  //     fetch(`/api/practitioners/me`).then((r) => {
+  //       if (r.ok) {
+  //         r.json().then((user) => setUserPractitioner(user));
+  //       }
+  //     })
+  //   ) : userAdmin ? (
+  //     fetch(`/api/admin/me`).then((r) => {
+  //       if (r.ok) {
+  //         r.json().then((user) => setUserAdmin(user));
+  //       }
+  //     })
+  //   ) : (
+  //     <Home />
+  //   );
+  // }, [userPatient, userPractitioner, userAdmin]);
 
   // Fetch all products
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      const response = await fetch('https://fakestoreapi.com/products');
+      // const response = await fetch('https://fakestoreapi.com/products');
+      const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
-      setProducts(results);
+      // Sort Products Logic on shop page
+      sortProducts === 'price-asc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp > b.price_in_2dp ? 1 : -1))
+          )
+        : sortProducts === 'price-desc'
+        ? setProducts(
+            results &&
+              results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
+          )
+        : setProducts(results);
+
+      // Render products based on search
       setSearchQuery(results);
 
       setLoading(false);
     };
     fetchProducts();
-  }, []);
+  }, [sortProducts]);
 
   // Handle search feature
   const handleSearch = (e) => {
     setProducts(
       searchQuery.filter((product) => {
-        return product.title
+        return product.name
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       })
@@ -101,82 +179,108 @@ function App() {
     return products;
   };
 
-  const handleAddToCart = (product) => {
-    // cart.push(product)
-    setCart((cart) => [...cart, product])
-    setCartCount(cart.length)
-
-    // CHECKS IF PRODUCT EXISTS IN CART
-    // const exist = cart.find((x) => x.id === product.id);
-    // if (exist) {
-    //   return cart.map((x) =>
-    //     x.id === product.id ? { ...x, qty: x.qty + 1 } : x
-    //   );
-    // } else {
-    //   return {...cart}
-    // }
-    // console.log(cart)
+  const handleAddToCart = (item) => {
+    // CHECK IF ITEM EXISTS IN CART
+    let exist = false;
+    cart.forEach((product) => {
+      if (product.id === item.id) {
+        exist = true;
+        setCartWarming(true);
+        setTimeout(() => {
+          setCartWarming(false);
+        }, 3500);
+      }
+    });
+    if (!exist) {
+      cart.unshift(item);
+      setCartCount(cart.length);
+      setCartSuccess(true);
+      setTimeout(() => {
+        setCartSuccess(false);
+      }, 3500);
+    }
   };
+
+  // // Quantity Add Button on Product Page
+  function handleAddQty() {
+    setProductQuantity((productQuantity) => productQuantity + 1);
+  }
+
+  // Quantity Reduce Button on Product Page
+  function handleReduceQty() {
+    {
+      productQuantity < 2
+        ? alert('Quantity cannot be less than 1')
+        : setProductQuantity((productQuantity) => productQuantity - 1);
+    }
+  }
 
   return (
     <div className='App'>
       <NavBar
-        userPatient={userPatient}
-        userPractitioner={userPractitioner}
-        setUserPatient={setUserPatient}
-        setUserPractitioner={setUserPractitioner}
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        userType={userType}
+        setUserType={setUserType}
+        // userPatient={userPatient}
+        // userPractitioner={userPractitioner}
+        // setUserPatient={setUserPatient}
+        // setUserPractitioner={setUserPractitioner}
         cartCount={cartCount}
       />
       <Switch>
         <Route exact path='/signup'>
-          <SignUp />
+          <SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} userType={userType} setUserType={setUserType}/>
         </Route>
         <Route exact path='/login'>
-          <Login />
+          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} userType={userType} setUserType={setUserType} />
+        </Route>
+        <Route exact path='/reset-password'>
+          <ResetPassword loggedIn={loggedIn} userType={userType} />
         </Route>
         {/* == PATIENT ROUTES */}
         <Route exact path='/patients/me'>
-          {userPatient ? <Patient /> : <Login />}
+          <Patient loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/patients/me/create-appointment'>
-          {userPatient ? <PatientCreateAppointment /> : <Login />}
+          <PatientCreateAppointment loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/patients/me/appointments'>
-          {userPatient ? <PatientAppointments /> : <Login />}
+          <PatientAppointments loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/patients/me/chat'>
-          {userPatient ? <PatientChat /> : <Login />}
+          <PatientChat loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/patients/me/reviews'>
-          {userPatient ? <PatientReviews /> : <Login />}
+          <PatientReviews loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/patients/me/calendar'>
-          {userPatient ? <PatientCalendar /> : <Login />}
+          <PatientCalendar loggedIn={loggedIn} userType={userType} />
+        </Route>
+        <Route exact path='/patients/details-popup'>
+          <PatientDetailsPopup loggedIn={loggedIn} userType={userType} />
         </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}
         <Route exact path='/practitioners/me'>
-          {userPractitioner ? <Practitioner /> : <Login />}
+          <Practitioner loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/practitioners/me/create-appointment'>
-          {userPractitioner ? <PractitionerCreateAppointment /> : <Login />}
+          <PractitionerCreateAppointment loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/practitioners/me/appointments'>
-          {userPractitioner ? <PractitionerAppointments /> : <Login />}
+          <PractitionerAppointments loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/practitioners/me/chat'>
-          {userPractitioner ? <PractitionerChat /> : <Login />}
+          <PractitionerChat loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route
-          exact
-          path='/import AllProducts from "./A"practitioners/me/reviews'
-        >
-          {userPractitioner ? <PractitionerReviews /> : <Login />}
+        <Route exact path='/practitioners/me/reviews'>
+          <PractitionerReviews loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/practitioners/me/calendar'>
-          {userPractitioner ? <PractitionerCalendar /> : <Login />}
+          <PractitionerCalendar loggedIn={loggedIn} userType={userType} />
         </Route>
-        {/* == PRACTITIONER ROUTES */}
+        overflow: ;{/* == PRACTITIONER ROUTES */}
         <Route exact path='/about'>
           <AboutUs />
         </Route>
@@ -187,62 +291,100 @@ function App() {
             loading={loading}
             setCart={setCart}
             handleAddToCart={handleAddToCart}
+            cartWarning={cartWarning}
+            cartAddSuccess={cartAddSuccess}
+            sortAsc={sortAsc}
+            sortDesc={sortDesc}
+            sortProducts={sortProducts}
+            setSortedProducts={setSortedProducts}
           />
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userPatient || userPractitioner || userAdmin ? (
-            <ProductPage handleAddToCart={handleAddToCart} />
-          ) : (
-            <Login />
-          )}
+          {
+            userType == "practitioner" || userType == "patient" ? (
+              <ProductPage
+                handleAddToCart={handleAddToCart}
+                productQuantity={productQuantity}
+                setProductQuantity={setProductQuantity}
+                cartWarning={cartWarning}
+                handleAddQty={handleAddQty}
+                handleReduceQty={handleReduceQty}
+                loggedIn={loggedIn}
+                userType={userType}
+              />
+            ): ""
+          }
         </Route>
         <Route exact path='/cart'>
-          {userPatient || userPractitioner ? (
-            <Cart cart={cart} cartCount={cartCount} />
-          ) : (
-            <Login />
-          )}
+          {
+            userType == "practitioner" || userType == "patient" ? (
+              <Cart
+                cart={cart}
+                setCart={setCart}
+                cartCount={cartCount}
+                setCartCount={setCartCount}
+                productQuantity={productQuantity}
+                handleAddQty={handleAddQty}
+                handleReduceQty={handleReduceQty}
+                loggedIn={loggedIn}
+                userType={userType}
+              />
+            ) : ""
+          }
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
+        <Route exact path='/admin/practitioner/edit/:id'>
+          <EditPractitioner loggedIn={loggedIn} userType={userType} />
+        </Route>
+        <Route exact path='/admin/product/edit/:id'>
+          <EditProduct loggedIn={loggedIn} userType={userType} />
+        </Route>
         <Route exact path='/admin/login'>
-          <AdminLogin setUserAdmin={setUserAdmin} />
+          <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+        </Route>
+        <Route exact path='/admin/me'>
+          {userAdmin ? (
+            <Admin userAdmin={userAdmin} loggedIn={loggedIn} userType={userType} />
+          ) : (
+              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+          )}
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (
-            <AllPractitioners />
+            <AllPractitioners loggedIn={loggedIn} userType={userType} />
           ) : (
-            <AdminLogin setUserAdmin={setUserAdmin} />
+              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
           )}
         </Route>
         <Route exact path='/admin/add-practitioner'>
           {userAdmin ? (
-            <AddPractitioner />
+            <AddPractitioner loggedIn={loggedIn} userType={userType} />
           ) : (
-            <AdminLogin setUserAdmin={setUserAdmin} />
+              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
           )}
         </Route>
         <Route exact path='/admin/products'>
           {userAdmin ? (
-            <AllProducts />
+            <AllProducts loggedIn={loggedIn} userType={userType} />
           ) : (
-            <AdminLogin setUserAdmin={setUserAdmin} />
+              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
           )}
         </Route>
         <Route exact path='/admin/add-product'>
           {userAdmin ? (
-            <AddProduct />
+            <AddProduct loggedIn={loggedIn} userType={userType} />
           ) : (
-            <AdminLogin setUserAdmin={setUserAdmin} />
+              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
           )}
         </Route>
         {/* == ADMIN ROUTES == */}
         <Route exact path='/'>
-          <Home />
+          <Home loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='*'>
-          <PageNotFound />
+          <PageNotFound loggedIn={loggedIn} userType={userType} />
         </Route>
       </Switch>
       <Footer />
