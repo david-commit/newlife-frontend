@@ -1,7 +1,7 @@
 import React from 'react'
 import './PatientSidebar.css';
 import { NavLink } from 'react-router-dom';
-import PatientCalendar from '../PatientCalendar/PatientCalendar';
+
 
 function PatientSidebar({loggedIn, userType}) {
   return (
@@ -23,7 +23,7 @@ function PatientSidebar({loggedIn, userType}) {
           <i class='fa-solid fa-star'></i>&nbsp; Reviews
         </NavLink>
         <NavLink exact to='/patients/me/calendar'>
-          <i class='fa-regular fa-calendar-check'></i>&nbsp; Calendar
+          <i class='fa-solid fa-calendar'></i>&nbsp; Calendar
         </NavLink>
       </nav>
     </div>
