@@ -1,3 +1,38 @@
 /* LIGHT BLUE > #00a3c8 */
 /* DARK BLUE > #1d3e68 */
 /* LIGHT GREY > #f8f9fb */
+.patient-reviews-main-container {
+  width: 85%;
+  height: 70vh;
+  display: flex;
+  margin: 0 auto -80px auto;
+}
+.patient-review-section {
+  border: #1d3e68 1px dashed;
+  padding: 40px;
+  width: 80%;
+}
+.patient-review-section h1 {
+  color: #1d3e68;
+}
+.patient-review-section > table {
+ border-collapse: collapse;
+ width: 100%;
+}
+.patient-review-section > table > tbody > tr > th {
+ border: 1px solid #00a3c8;
+ background-color: #00a3c8;
+ padding: 6px 0;
+ color: white;
+}
+.patient-review-section > table > tbody > tr > td {
+ border: 1px solid grey;
+ text-align: center;
+}
+.patient-review-section > table > tbody > tr > td > i {
+ color: red;
+}
+.patient-review-section > table > tbody > tr > td > i:hover {
+ cursor: pointer;
+ color: #1d3e68;
+}

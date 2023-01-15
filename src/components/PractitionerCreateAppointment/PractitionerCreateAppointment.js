@@ -32,11 +32,6 @@ function PractitionerCreateAppointment({loggedIn, userType}) {
       }
     })
   }, [])
-<<<<<<< HEAD
-
-  console.log(localStorage.getItem("token"))
-=======
->>>>>>> 386b0b17e27bbe8da86f9c16e55e6dcc9f62f942
 
   return (
     <div className='practitioner-main-container'>

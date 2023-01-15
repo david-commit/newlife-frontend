@@ -1,12 +1,19 @@
 import React from 'react';
 import './AdminLogin.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
 function AdminLogin({ setUserAdmin, loggedIn, setLoggedIn, userType, setUserType }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState("")
+  const history = useHistory();
+
+   if(loggedIn){
+    if (userType == 'admin') {
+      history.push('/admin/me');
+    }
+   }
 
   function handleAdminLogin(e){
     e.preventDefault()

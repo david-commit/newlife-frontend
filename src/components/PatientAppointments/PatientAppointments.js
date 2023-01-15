@@ -89,8 +89,9 @@ function PatientAppointments({loggedIn, userType}) {
                     {`(Dr. ${appointment.practitionerLastName}, ${appointment.departmentName} Department))`}
                   </p>
                   <h4>{`${appointment.time}` }</h4></p>
-                <button type='View'>View </button>
+                {/* <button type='View'>View </button> */}
                 <button type='Delete' onClick={() => handleDeleteAppointment(appointment)}>Delete</button>
+                <hr />
               </div>
             )
           })

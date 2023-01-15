@@ -16,7 +16,7 @@ function Footer() {
             </p>
           </div>
           <form class='newsletter'>
-            <input id='email' placeholder='Enter your email address'></input>
+            <input id='news-email' placeholder='Enter your email address'></input>
             <button type='submit' id='sub'>Subscribe</button>
           </form>
         </div>

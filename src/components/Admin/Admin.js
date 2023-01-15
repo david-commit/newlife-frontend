@@ -4,9 +4,9 @@ import axios from "axios";
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 // import Graph from '../Graph/Graph';
 import './Admin.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+// import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-function Dashboard () {
+// function Admin () {
   const AllPractitioners = ({loggedIn, userType}) => {
   const [users,setUsers] = useState([]);
     const history = useHistory()
@@ -66,7 +66,7 @@ function Dashboard () {
           <div class="card">
             <div class="card-inner">
               <p class="text-primary">AVAILABLE PRACTITIONERS</p>
-              <span> <FontAwesomeIcon icon="fa-solid fa-shelves" /></span>
+              {/* <span> <FontAwesomeIcon icon="fa-solid fa-shelves" /></span> */}
             </div>
             <span class="text-primary font-weight-bold">16</span>
           </div>
@@ -94,4 +94,5 @@ function Dashboard () {
   );
 }
 
-export default Dashboard;
+// export default Admin;
+export default AllPractitioners;
