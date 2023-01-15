@@ -1,126 +1,6 @@
 {
   "users": [
     {
-      "id": 3,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 4,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 5,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 6,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 7,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 8,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 9,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 14,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 15,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
-      "id": 16,
-      "name": "Leanne Graham",
-      "role": "Bret",
-      "email": "Sincere@april.biz",
-      "department": "Kulas Light",
-      "phone": "1-770-736-8031 x56442",
-      "website": "hildegard.org",
-      "speciality": "Romaguera-Crona",
-      "catchPhrase": "Multi-layered client-server neural-net",
-      "bs": "harness real-time e-markets"
-    },
-    {
       "id": 17,
       "name": "Leanne Graham",
       "role": "Bret",
@@ -387,6 +267,56 @@
       "speciality": "Dental",
       "department": "Dentistry",
       "id": 39
+    },
+    {
+      "name": "",
+      "username": "",
+      "role": "",
+      "email": "",
+      "phone": "",
+      "speciality": "",
+      "department": "",
+      "id": 40
+    },
+    {
+      "name": "",
+      "username": "",
+      "role": "",
+      "email": "",
+      "phone": "",
+      "speciality": "",
+      "department": "",
+      "id": 41
+    },
+    {
+      "name": "",
+      "username": "",
+      "role": "",
+      "email": "",
+      "phone": "",
+      "speciality": "",
+      "department": "",
+      "id": 42
+    },
+    {
+      "name": "Winston Langat",
+      "username": "",
+      "role": "Dentist",
+      "email": "winslangt@gmail.com",
+      "phone": "+254719535899",
+      "speciality": "Dental",
+      "department": "Dental",
+      "id": 43
+    },
+    {
+      "name": "qwert",
+      "username": "",
+      "role": "qwert",
+      "email": "qwert@gmail.com",
+      "phone": "098765432",
+      "speciality": "qwert",
+      "department": "qwert",
+      "id": 44
     }
   ],
   "products": [
