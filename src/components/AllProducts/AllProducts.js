@@ -1,11 +1,12 @@
 import React, {useState,useEffect} from 'react';
 import axios from "axios";
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllProducts.css';
 import AllProductsPagination from './AllProductsPagination'
 
-const AllProducts = () => {
+
+const AllProducts = ({loggedIn, userType}) => {
   const [products,setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(15);
@@ -16,6 +17,20 @@ const AllProducts = () => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
+  
+    const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "patient") {
+      history.push('/patients/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
+  console.log("usertype: ", userType)
 
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);

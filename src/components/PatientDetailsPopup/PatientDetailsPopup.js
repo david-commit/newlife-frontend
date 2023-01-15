@@ -3,18 +3,10 @@ import './PatientDetailsPopup.css';
 // https://react-responsive-modal.leopradel.com/?#custom-container
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
-import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function PatientDetailsPopup({loggedIn, userType}) {
-  const [phone, setPhone] = useState('');
-  const [dob, setDOB] = useState('');
-  const [address, setAddress] = useState('');
-  const [bio, setBio] = useState('');
-  const [height, setHeight] = useState('');
-  const [weight, setWeight] = useState('');
-  const [bloodGroup, setBloodGroup] = useState('');
-  const [open, setOpen] = useState(false);
+function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, personDetails, setPersonDetails}) {
+  const person = JSON.parse(localStorage.getItem("person") || false)
   const history = useHistory()
 
   if (loggedIn) {
@@ -27,35 +19,47 @@ function PatientDetailsPopup({loggedIn, userType}) {
     history.push('/login')
   }
 
-  const onOpenModal = () => setOpen(true);
-  const onCloseModal = () => setOpen(false);
-
-  useEffect(() => {
-    onOpenModal();
-  }, []);
+  function modifyFormInput(e){
+    setPersonDetails(personDetails=> ({...personDetails, [e.target.id]: e.target.value}))
+  }
 
   const handlePatientDataSumbit = (e) => {
     e.preventDefault();
-    fetch('', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        phone_number: phone,
-        dob,
-        location: address,
-        bio,
-        height,
-        weight,
-        blood_group: bloodGroup,
-      }),
-    });
+    const personId = person?.id
+    const profileId = person?.patient_profiles[0]?.id
+
+    if(personId && profileId){
+      fetch(`http://127.0.0.1:3000/patient_profiles/${personId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          "Authorization": localStorage.getItem("token")
+        },
+        body: JSON.stringify(personDetails)
+      })
+        .then(res => {
+          if (res.ok) {
+            res.json().then(data => {
+              setModalOpen(false)
+              const newProfileDetails = {...person.patient_profiles[0], ...data}
+              const newPersonDetails = {...person, patient_profiles: [newProfileDetails]}
+              localStorage.setItem("person", JSON.stringify(newPersonDetails))
+            })
+          } else {
+            res.json().then(data => console.warn(data))
+          }
+        })
+    }else{
+      console.warn("Couldn't find person id. Are you even logged in?")
+    }
   };
 
   return (
-    <div>
+    <div id='patient-details-popup'>
       <Modal
-        open={open}
-        onClose={onCloseModal}
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
         center
         classNames={{
           overlay: 'customOverlay',
@@ -65,7 +69,7 @@ function PatientDetailsPopup({loggedIn, userType}) {
         <div className='patient-details-popup-container'>
           <br />
           <br />
-          <h1>Add Relevant Data</h1>
+          <h1>Edit Details</h1>
           <form
             onSubmit={handlePatientDataSumbit}
             className='patient-details-form-popup'
@@ -75,8 +79,9 @@ function PatientDetailsPopup({loggedIn, userType}) {
               Phone <br />
               <input
                 type='tel'
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                id='phone_number'
+                value={personDetails.phone_number}
+                onChange={modifyFormInput}
                 required
               />
             </label>
@@ -85,20 +90,10 @@ function PatientDetailsPopup({loggedIn, userType}) {
             <label>
               Date of Birth <br />
               <input
+                id='dob'
                 type='date'
-                value={dob}
-                onChange={(e) => setDOB(e.target.value)}
-                required
-              />
-            </label>
-            <br />
-            <br />
-            <label>
-              Address <br />
-              <input
-                type='text'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
+                value={personDetails.dob}
+                onChange={modifyFormInput}
                 required
               />
             </label>
@@ -107,9 +102,10 @@ function PatientDetailsPopup({loggedIn, userType}) {
             <label>
               Bio <br />
               <textarea
+                id="bio"
                 type='text'
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                value={personDetails.bio}
+                onChange={modifyFormInput}
               />
             </label>
             <br />
@@ -117,9 +113,10 @@ function PatientDetailsPopup({loggedIn, userType}) {
             <label>
               Height <br />
               <input
+                id='height'
                 type='text'
-                value={height}
-                onChange={(e) => setHeight(e.target.value)}
+                value={personDetails.height}
+                onChange={modifyFormInput}
                 required
               />
             </label>
@@ -128,20 +125,34 @@ function PatientDetailsPopup({loggedIn, userType}) {
             <label>
               Weight <br />
               <input
+                id='weight'
                 type='text'
-                value={weight}
-                onChange={(e) => setWeight(e.target.dvalue)}
+                value={personDetails.weight}
+                onChange={modifyFormInput}
                 required
               />
             </label>{' '}
             <br />
             <br />
             <label>
+              BMI <br />
+              <input
+                id='bmi'
+                type='text'
+                value={personDetails.bmi}
+                onChange={modifyFormInput}
+                required
+              />
+            </label>
+            <br />
+            <br />
+            <label>
               Blood Group <br />
               <input
+                id='blood_group'
                 type='text'
-                value={bloodGroup}
-                onChange={(e) => setBloodGroup(e.target.value)}
+                value={personDetails.blood_group}
+                onChange={modifyFormInput}
                 required
               />
             </label>

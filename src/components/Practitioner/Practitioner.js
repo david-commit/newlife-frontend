@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom';
 
 function Practitioner({loggedIn, userType}) {
   const history = useHistory()
-  const [personalDetails, setPersonalDetails] = useState(JSON.parse(localStorage.getItem("person")).practitioner_profiles[0])
+  const [personalDetails, setPersonalDetails] = useState(
+    JSON.parse(localStorage.getItem("person") || false)?.practitioner_profiles?.[0]
+  )
 
   if (loggedIn) {
     if (userType == "patient") {

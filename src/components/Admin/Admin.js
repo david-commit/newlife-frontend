@@ -1,12 +1,37 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
+import axios from "axios";
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 // import Graph from '../Graph/Graph';
 import './Admin.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
-
-
 function Dashboard () {
+  const AllPractitioners = ({loggedIn, userType}) => {
+  const [users,setUsers] = useState([]);
+    const history = useHistory()
+
+    if (loggedIn) {
+      if (userType == "practitioner") {
+        history.push('/practitioners/me')
+      } else if (userType == "patient") {
+        history.push('/patients/me')
+      }
+    } else {
+      history.push('/login')
+    }
+
+    console.log("usertype: ", userType)
+
+
+  useEffect(()=>{
+    console.log("Newlife Hospital");
+  },[]);
+  const loadUser = () =>{
+    const result = axios.get("http://localhost:3000/Practitioners");
+    setUsers(result.data);
+  }
+
   return (
     <div className='all-dashboards-main-container'>
       <AdminSidebar />

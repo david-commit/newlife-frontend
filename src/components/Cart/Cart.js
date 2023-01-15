@@ -46,7 +46,6 @@ function Cart({
     setCart(arr);
     setCartCount(arr.length);
   };
-
   return (
     <div className='cart-main-container'>
       <h1 style={{ color: '#1d3e68' }}>Cart</h1>
@@ -67,15 +66,15 @@ function Cart({
                       Quantity:{' '}
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
-                        onClick={() => handleReduceQty()}
+                        onClick={() => handleReduceQty(product)}
                         id='cart-qty-btns'
                       >
                         -
                       </button>
-                      <input value={productQuantity} />
+                      <input value={productQuantity[product.id]} />
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
-                        onClick={() => handleAddQty()}
+                        onClick={() => handleAddQty(product)}
                         id='cart-qty-btns'
                       >
                         +
@@ -85,7 +84,7 @@ function Cart({
                     <p>
                       Total: Ksh.{' '}
                       {parseFloat(
-                        product.price_in_2dp * productQuantity
+                        product.price_in_2dp * productQuantity[product.id]
                       ).toFixed(2)}
                     </p>
                   </section>

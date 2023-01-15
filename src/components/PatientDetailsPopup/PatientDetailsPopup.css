@@ -49,3 +49,8 @@
   color: #1d3e68;
   transition: all 0.35s ease-in-out;
 }
+
+.patient-details-popup {
+  position: absolute;
+  z-index: 2;
+}
