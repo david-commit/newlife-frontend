@@ -42,64 +42,8 @@ function App() {
   const [userPatient, setUserPatient] = useState("")
   const [userPractitioner, setUserPractitioner] = useState("")
   const [searchQuery, setSearchQuery] = useState('');
-  const [cart, setCart] = useState([
-    {
-      id: 1,
-      name: 'Lamictal',
-      category: 'Bipolar Disorder',
-      price_in_2dp: 300.61,
-      description: null,
-      image:
-        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
-      dosage: null,
-      stock: 33,
-    },
-    {
-      id: 2,
-      name: 'Lamictal',
-      category: 'Bipolar Disorder',
-      price_in_2dp: 300.61,
-      description: null,
-      image:
-        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
-      dosage: null,
-      stock: 33,
-    },
-    {
-      id: 3,
-      name: 'Lamictal',
-      category: 'Bipolar Disorder',
-      price_in_2dp: 300.61,
-      description: null,
-      image:
-        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
-      dosage: null,
-      stock: 33,
-    },
-    {
-      id: 4,
-      name: 'Lamictal',
-      category: 'Bipolar Disorder',
-      price_in_2dp: 300.61,
-      description: null,
-      image:
-        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
-      dosage: null,
-      stock: 33,
-    },
-    {
-      id: 5,
-      name: 'Lamictal',
-      category: 'Bipolar Disorder',
-      price_in_2dp: 300.61,
-      description: null,
-      image:
-        'https://www.cphi-online.com/46/product/124/50/63/281Amitriptine-50-mg%20(1).jpg',
-      dosage: null,
-      stock: 33,
-    },
-  ]);
-  const [cartCount, setCartCount] = useState(5);
+  const [cart, setCart] = useState([]);
+  const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState({});
   const [cartWarning, setCartWarming] = useState(false);

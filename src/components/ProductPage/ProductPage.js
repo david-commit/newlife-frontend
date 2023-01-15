@@ -18,6 +18,9 @@ function ProductPage({
   const [newRating, setNewRating] = useState(0);
   const [prevRating, setPrevRating] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  console.log(product);
+  console.log(reviews);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
@@ -35,6 +38,7 @@ function ProductPage({
       const results = await response.json();
       setProduct(results);
       setPrevRating(results.rating);
+      setReviews(results.reviews);
       setProductLoading(false);
     };
     fetchProduct();
@@ -47,6 +51,17 @@ function ProductPage({
     );
   }
 
+  // Find product average rating
+  const getAverageRating = () => {
+    const allRatings = [];
+    reviews?.map((review) => {
+      allRatings.push(review.rating);
+    });
+    const sumOfConsecutives = (value1, value2) => value1 + value2;
+    const sumOfNums = allRatings.reduce(sumOfConsecutives);
+    console.log(sumOfNums)
+  };
+
   return (
     <div className='product-page-main-container'>
       <div className='product-details-container'>
@@ -57,7 +72,7 @@ function ProductPage({
           </span>
           <h1>{product.name}</h1>
           <h3 className='product-price'>
-            Ksh <span>{parseFloat(product.price).toFixed(2)}</span>
+            Ksh <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </h3>
           <span className='product-quantity'>
             <button onClick={() => handleAddorRemoveQuantity(product, -1)}>

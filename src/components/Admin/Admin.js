@@ -5,7 +5,7 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 // import Graph from '../Graph/Graph';
 import './Admin.css';
 
-function Dashboard () {
+// function Admin () {
   const AllPractitioners = ({loggedIn, userType}) => {
   const [users,setUsers] = useState([]);
     const history = useHistory()
@@ -93,4 +93,5 @@ function Dashboard () {
   );
 }
 
-export default Dashboard;
+// export default Admin;
+export default AllPractitioners;
