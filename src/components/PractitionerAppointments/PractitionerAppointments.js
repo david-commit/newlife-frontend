@@ -12,6 +12,7 @@ function PractitionerAppointments({loggedIn, userType}) {
   const [appointments, setAppointments] = useState(
     JSON.parse(localStorage.getItem('person') || false)?.appointments || []
   );
+  console.log(appointments)
   // =========================
 
   if (loggedIn) {

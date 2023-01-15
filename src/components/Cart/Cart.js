@@ -20,6 +20,8 @@ function Cart({
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
   const [phone, setPhone] = useState('');
+  const [mpesaError, setMpesaError] = useState([]);
+  const [amount, setAmount] = useState(0);
 
   // Modal Popup Component
   const [openFirst, setOpenFirst] = React.useState(false);
@@ -47,9 +49,9 @@ function Cart({
     setCartCount(arr.length);
   };
 
-  useEffect(() => {
-    fetch("http://localhost:3000/carts")
-  })
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/carts")
+  // })
 
   const handlePostToCart = (item) => {
     fetch('http://localhost:3000/shopping_carts', {
@@ -61,7 +63,26 @@ function Cart({
 
   const handleDeleteFromCart = (item) => {
     fetch(`http://localhost:3000/shopping_carts/${item.id}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+    });
+  };
+
+  const handleMpesaPrompt = (e) => {
+    e.preventDefault();
+    fetch(`http://localhost:3000/stkpush`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone, amount }),
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then(() => {
+          alert(`Payment of Ksh${amount} was successful`);
+        });
+      } else {
+        response.json().then((err) => {
+          setMpesaError(err);
+        });
+      }
     });
   };
 
@@ -151,7 +172,7 @@ function Cart({
               <br />
               <h1>Payment (Secure)</h1>
               <br />
-              <form className='checkout-form'>
+              <form className='checkout-form' onSubmit={handleMpesaPrompt}>
                 <label>
                   Mpesa number
                   <br />
@@ -167,15 +188,13 @@ function Cart({
                   <br />
                   <input
                     readOnly
-                    value={parseFloat(totalPrice).toFixed(0)}
-                    onChange={(e) => setPhone(e.target.value)}
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
                   />
                 </label>
                 <br />
 
-                <button type='submit' onClick={() => alert('Hello World')}>
-                  Send Prompt
-                </button>
+                <button type='submit'>Send Prompt</button>
                 <br />
                 <p
                   id='checkout-need-help'
