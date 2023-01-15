@@ -53,7 +53,7 @@ const AllPractitioners = () => {
 
   <thead>
     <tr>
-      {/* <th scope="col">SNo</th> */}
+      {/* <th scope="col">Auto</th> */}
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Role</th>

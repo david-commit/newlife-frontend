@@ -2,7 +2,6 @@ import React from 'react';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 // import Graph from '../Graph/Graph';
 import './Admin.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 
 
@@ -41,7 +40,7 @@ function Dashboard () {
           <div class="card">
             <div class="card-inner">
               <p class="text-primary">AVAILABLE PRACTITIONERS</p>
-              <span> <FontAwesomeIcon icon="fa-solid fa-shelves" /></span>
+              <span> Available</span>
             </div>
             <span class="text-primary font-weight-bold">16</span>
           </div>

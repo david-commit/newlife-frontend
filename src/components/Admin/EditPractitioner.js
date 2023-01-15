@@ -81,7 +81,7 @@ const EditPractitioner = () => {
             />
           </div>
           <div>
-            <br/>
+             <br/>
             <input
               type="text"
               placeholder="Enter the Practitioner Website Name"
