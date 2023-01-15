@@ -330,10 +330,10 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
-        <Route exact path='/admin/practitioner/edit'>
+        <Route exact path='/admin/practitioner/edit/:id'>
           <EditPractitioner loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/admin/product/edit'>
+        <Route exact path='/admin/product/edit/:id'>
           <EditProduct loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/login'>

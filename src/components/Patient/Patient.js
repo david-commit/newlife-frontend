@@ -50,7 +50,6 @@ function Patient({loggedIn, userType}) {
               {personDetails?.bio}
             </div>
             <br />
-
             <p className='practitioner-details-title'>
               <span>Date of Birth: </span>
               {personDetails?.dob}

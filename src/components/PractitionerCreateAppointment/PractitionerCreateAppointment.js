@@ -47,13 +47,14 @@ function PractitionerCreateAppointment({loggedIn, userType}) {
         <form className='appointment-form'>
           <select onChange={(e) => setPatient(e.target.value)}>
             <option hidden>Select Patient</option>
-            {patients?.map((patient) => {
-              return (
-                <option value={patient.id} key={patient.id}>
-                  {patient.first_name} {patient.last_name}
-                </option>
-              );
-            })}
+            {/* {patients &&
+              patients.map((patient) => {
+                return (
+                  <option value={patient.id} key={patient.id}>
+                    {patient.first_name} {patient.last_name}
+                  </option>
+                );
+              })} */}
           </select>
           <select>
             <option hidden>Select type of appointment</option>

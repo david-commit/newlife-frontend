@@ -12,7 +12,7 @@
   justify-content: space-between;
 }
 .cart-cards {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 70vh;
   width: 78%;
   border: 1px solid #d9d9d9;
@@ -34,6 +34,7 @@
 .cart-card > img {
   height: inherit;
   width: 20%;
+  border-radius: 5px;
 }
 .cart-card-detail-section {
   width: 65%;
@@ -83,6 +84,9 @@
   color: white;
   transition: all 0.35s ease-in-out;
 }
+.quantity-change-buttons {
+  padding-bottom: 10px;
+}
 .quantity-change-buttons > button,
 .quantity-change-buttons > input {
   background-color: white;
@@ -93,13 +97,16 @@
   width: 30px;
   text-align: center;
 }
+#cart-qty-btns {
+  background-color: #1d3e68;
+  width: 20px;
+  color: white;
+  font-weight: 700;
+}
 /* == CHECKOUT == */
 .checkout-popup-container {
   width: 60%;
-  /* border: #1d3e68 1px dashed; */
   margin: auto;
-  height: 70vh;
-  /* overflow-y: scroll; */
   display: flex;
   flex-direction: column;
   justify-content: center;

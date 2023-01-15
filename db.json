@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": 3,
       "name": "Leanne Graham",
       "role": "Bret",
       "email": "Sincere@april.biz",
@@ -13,7 +13,271 @@
       "bs": "harness real-time e-markets"
     },
     {
-      "id": 2,
+      "id": 4,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 5,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 6,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 7,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 8,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 9,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 14,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 15,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 16,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 17,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 18,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 19,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 20,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 21,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 22,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 23,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 24,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 25,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 26,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 27,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 28,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 29,
+      "name": "Leanne Graham",
+      "role": "Bret",
+      "email": "Sincere@april.biz",
+      "department": "Kulas Light",
+      "phone": "1-770-736-8031 x56442",
+      "website": "hildegard.org",
+      "speciality": "Romaguera-Crona",
+      "catchPhrase": "Multi-layered client-server neural-net",
+      "bs": "harness real-time e-markets"
+    },
+    {
+      "id": 30,
       "name": "Ervin Howell",
       "role": "Antonette",
       "email": "Shanna@melissa.tv",
@@ -25,7 +289,7 @@
       "bs": "synergize scalable supply-chains"
     },
     {
-      "id": 3,
+      "id": 31,
       "name": "Clementine Bauch",
       "role": "Samantha",
       "email": "Nathan@yesenia.net",
@@ -35,7 +299,7 @@
       "speciality": "Romaguera-Jacobson"
     },
     {
-      "id": 4,
+      "id": 32,
       "name": "Patricia Lebsack",
       "role": "Karianne",
       "email": "Julianne.OConner@kory.org",
@@ -47,7 +311,7 @@
       "bs": "transition cutting-edge web services"
     },
     {
-      "id": 5,
+      "id": 33,
       "name": "Chelsey Dietrich",
       "role": "Kamren",
       "email": "Lucio_Hettinger@annie.ca",
@@ -59,7 +323,7 @@
       "bs": "revolutionize end-to-end systems"
     },
     {
-      "id": 6,
+      "id": 35,
       "name": "Mrs. Dennis Schulist",
       "role": "Leopoldo_Corkery",
       "email": "Karley_Dach@jasper.info",
@@ -71,7 +335,7 @@
       "bs": "e-enable innovative applications"
     },
     {
-      "id": 8,
+      "id": 36,
       "name": "Nicholas Runolfsdottir V",
       "role": "Maxime_Nienow",
       "email": "Sherwood@rosamond.me",
@@ -83,7 +347,7 @@
       "bs": "e-enable extensible e-tailers"
     },
     {
-      "id": 9,
+      "id": 37,
       "name": "Glenna Reichert",
       "role": "Delphine",
       "email": "Chaim_McDermott@dana.io",
@@ -95,14 +359,34 @@
       "bs": "aggregate real-time technologies"
     },
     {
-      "brandName": "Panadol",
-      "genericName": "",
-      "category": "Pain killer",
-      "quantity": "30",
-      "form": "Tablet",
-      "price": "150",
-      "enericName": "Panadol",
-      "id": 10
+      "name": "Lucas  Graham",
+      "username": "",
+      "role": "Dentist",
+      "email": "lucas@example.com",
+      "phone": "071223345",
+      "speciality": "Dental",
+      "department": "Dentistry",
+      "id": 38
+    },
+    {
+      "name": "Lucas  Graham",
+      "username": "",
+      "role": "Dentist",
+      "email": "lucas@example.com",
+      "phone": "071223345",
+      "speciality": "Dental",
+      "department": "Dentistry",
+      "id": 1
+    },
+    {
+      "name": "Winston ",
+      "username": "",
+      "role": "Dentist",
+      "email": "winslangt@gmail.com",
+      "phone": "+254719535899",
+      "speciality": "Dental",
+      "department": "Dentistry",
+      "id": 39
     }
   ],
   "products": [

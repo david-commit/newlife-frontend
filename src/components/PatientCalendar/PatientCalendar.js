@@ -1,4 +1,5 @@
 import React from 'react';
+import './PatientCalendar.css';
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
 import { useHistory } from 'react-router-dom';
 
@@ -16,9 +17,11 @@ function PatientCalendar({loggedIn, userType}) {
   }
 
   return (
-    <div>
+    <div className='patient-calendar-main-container'>
       <PatientSidebar />
-      PatientCalendar
+      <div className='patient-calendar-container'>
+      <h1>Patient Calendar</h1>
+    </div>
     </div>
   );
 }

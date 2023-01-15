@@ -6,6 +6,9 @@ function AdminSidebar() {
   return (
     <div className='admin-sidebar-nav-container'>
       <nav className='admin-sidebar-nav'>
+        <NavLink exact to='/admin/me'>
+          <i class='fa-solid fa-user'></i>&nbsp; Dashboard
+          </NavLink>
         <NavLink exact to='/admin'>
           <i class='fa-solid fa-user'></i>&nbsp; All Practitioners
         </NavLink>

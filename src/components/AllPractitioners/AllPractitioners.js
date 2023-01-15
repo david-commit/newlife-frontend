@@ -3,9 +3,21 @@ import axios from "axios";
 import {Link, useHistory} from 'react-router-dom'
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllPractitioners.css';
+import AllPractitionersPagination from './AllPractitionersPagination';
 
 const AllPractitioners = ({loggedIn, userType}) => {
   const [users,setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [practitionersPerPage] = useState(15);
+  
+  // Get current practitioners for pagination
+  const indexOfLastPractitioner = currentPage * practitionersPerPage;
+  const indexOfFirstPractitioner = indexOfLastPractitioner - practitionersPerPage;
+  const currentPractitioners = users.slice(
+    indexOfFirstPractitioner,
+    indexOfLastPractitioner
+  );
+  
   const history = useHistory()
 
   if (loggedIn) {
@@ -17,6 +29,9 @@ const AllPractitioners = ({loggedIn, userType}) => {
   } else {
     history.push('/login')
   }
+
+  // Change Pagination Pages
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(()=>{
     loadUser();
@@ -51,7 +66,8 @@ const AllPractitioners = ({loggedIn, userType}) => {
 
   <thead>
     <tr>
-      <th scope="col">SNo</th>
+      {/* <th scope="col">SNo</th> */}
+      <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Role</th>
       <th scope="col">Email</th>
@@ -63,22 +79,28 @@ const AllPractitioners = ({loggedIn, userType}) => {
     </tr>
   </thead>
   <tbody>
-    {users.map((user,index)=>(
+    {currentPractitioners.map((user,index)=>(
       <tr>
-        <td scope="row"><strong>{index + 1}</strong></td>
+        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+        <td><strong>{user.id}</strong></td>
         <td>{user.name}</td>
         <td>{user.role}</td>
         <td>{user.email}</td>
         <td>{user.phone}</td>
         <td>{user.speciality}</td>
         <td>{user.department}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/editpractitioner${users.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
+        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/practitioner/edit/${user.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
         <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteUser(user.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
       </tr>
 
     ))}
   </tbody>
 </table>
+{console.log(users)}
+<AllPractitionersPagination practitionersPerPage={practitionersPerPage}
+        practitioners={users}
+        paginate={paginate}
+        currentPage={currentPage}/>
       </div>
     </div>
   );
