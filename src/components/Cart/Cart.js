@@ -85,16 +85,16 @@ function Cart({
                       Quantity:{' '}
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
-                        id='cart-qty-btns'
                         onClick={() => handleReduceQty(product)}
+                        id='cart-qty-btns'
                       >
                         -
                       </button>
                       <input value={productQuantity[product.id]} />
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
-                        id='cart-qty-btns'
                         onClick={() => handleAddQty(product)}
+                        id='cart-qty-btns'
                       >
                         +
                       </button>{' '}

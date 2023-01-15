@@ -8,6 +8,8 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
     setLoggedIn(false)
     const token = localStorage.getItem("token")
     const intervalId = JSON.parse(localStorage.getItem("intervalId"))
+    localStorage.clear()
+    setUserType("")
 
     const logoutEndpoint = userType == "patient"?
       "http://127.0.0.1:3000/logout" :
@@ -17,12 +19,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
     fetch(logoutEndpoint, {
       method: 'DELETE',
       headers: {"Accept": "application/json", "Authorization": token}
-     }).then((r) => {
-      if (r.ok) {
-        localStorage.clear()
-        setUserType("")
-      }
-    });
+     })
 
     return clearInterval(intervalId)
   }

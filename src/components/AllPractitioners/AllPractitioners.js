@@ -1,14 +1,15 @@
 import React, {useState,useEffect} from 'react';
 import axios from "axios";
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllPractitioners.css';
 import AllPractitionersPagination from './AllPractitionersPagination';
 
-const AllPractitioners = () => {
+const AllPractitioners = ({loggedIn, userType}) => {
   const [users,setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [practitionersPerPage] = useState(15);
+  
   // Get current practitioners for pagination
   const indexOfLastPractitioner = currentPage * practitionersPerPage;
   const indexOfFirstPractitioner = indexOfLastPractitioner - practitionersPerPage;
@@ -16,6 +17,18 @@ const AllPractitioners = () => {
     indexOfFirstPractitioner,
     indexOfLastPractitioner
   );
+  
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "patient") {
+      history.push('/patients/me')
+    }
+  } else {
+    history.push('/login')
+  }
 
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -53,7 +66,7 @@ const AllPractitioners = () => {
 
   <thead>
     <tr>
-      <th scope="col">SNo</th>
+      {/* <th scope="col">SNo</th> */}
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Role</th>
@@ -68,8 +81,8 @@ const AllPractitioners = () => {
   <tbody>
     {currentPractitioners.map((user,index)=>(
       <tr>
-        <td scope="row"><strong>{index + 1}</strong></td>
-        <td>{user.id}</td>
+        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+        <td><strong>{user.id}</strong></td>
         <td>{user.name}</td>
         <td>{user.role}</td>
         <td>{user.email}</td>

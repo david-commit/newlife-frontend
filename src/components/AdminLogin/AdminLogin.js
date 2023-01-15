@@ -3,7 +3,7 @@ import './AdminLogin.css';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-function AdminLogin({ setUserAdmin }) {
+function AdminLogin({ setUserAdmin, loggedIn, setLoggedIn, userType, setUserType }) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState("")

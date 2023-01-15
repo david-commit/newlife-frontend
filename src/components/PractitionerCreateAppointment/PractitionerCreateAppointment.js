@@ -28,13 +28,15 @@ function PractitionerCreateAppointment({loggedIn, userType}) {
       if(response.ok){
         response.json().then(data => setPatients(data))
       }else{
-        console.log("An error occurred")
-        response.json().then(errors => console.log(errors))
+        response.json().then(errors => console.warn(errors))
       }
     })
   }, [])
+<<<<<<< HEAD
 
   console.log(localStorage.getItem("token"))
+=======
+>>>>>>> 386b0b17e27bbe8da86f9c16e55e6dcc9f62f942
 
   return (
     <div className='practitioner-main-container'>

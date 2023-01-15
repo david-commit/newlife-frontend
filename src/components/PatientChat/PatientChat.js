@@ -22,7 +22,7 @@ function PatientChat({loggedIn, userType}) {
 
   function updateAppointments() {
     const token = localStorage.getItem("token")
-    const appointmentsApiEndpoint = `http://localhost:3000/practitioners/${personId}/appointments`
+    const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
 
     fetch(appointmentsApiEndpoint, {
       headers: {

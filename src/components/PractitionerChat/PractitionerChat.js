@@ -10,12 +10,6 @@ function PractitionerChat({loggedIn, userType}) {
   const [activeChat, setActiveChat] = useState(localStorage.getItem("activeChat") || "")
   const [message, setMessage] = useState('');
 
-
-  // if(true){
-  //   console.log(typeof()
-  //   // console.log(JSON.parse(localStorage.getItem("activeChat")))
-  // }
-
   if (loggedIn) {
     if (userType == "patient") {
       history.push('/patients/me')
