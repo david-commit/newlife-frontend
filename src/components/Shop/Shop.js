@@ -31,6 +31,7 @@ function Shop({
 
   function searchHandle(e) {
     e.preventDefault();
+    console.log(query);
   }
 
   const renderedProducts =
@@ -85,7 +86,9 @@ function Shop({
       <h1>Shop</h1>
       <div className="shop-search-filter-container">
         <input
-          onChange={handleSearch}
+          // onChange={handleSearch}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
           type="search"
           id="search-input"
           placeholder="Search"
