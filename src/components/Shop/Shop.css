@@ -104,8 +104,10 @@ input:focus {
   justify-content: space-between;
   margin-top: 1vw;
   margin-bottom: 1vw;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: thin solid rgb(29, 62, 104, 0.5);
+
+  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px; */
 }
 
 .shop-card > img {
