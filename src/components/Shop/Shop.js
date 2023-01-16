@@ -80,11 +80,11 @@ function Shop({
               </section>
 
               <div className="product-title">
-                <h3>{product.name}</h3>
+                <p>{product.name}</p>
               </div>
 
               <section className="card-price-button">
-                <h4>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</h4>
+                <p>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</p>
                 <button
                   type="button"
                   onClick={(e) => {
