@@ -1,6 +1,6 @@
 import React from 'react';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
-// import Graph from '../Graph/Graph';
+import CovidLineGraph from './Graph'
 import './Admin.css';
 
 
@@ -40,25 +40,26 @@ function Dashboard () {
           <div class="card">
             <div class="card-inner">
               <p class="text-primary">AVAILABLE PRACTITIONERS</p>
-              <span> Available</span>
             </div>
             <span class="text-primary font-weight-bold">16</span>
           </div>
-          {/* <Graph /> */}
+          <div>
+          </div>
         </div>
-
         <div class="charts">
 
           <div class="charts-card">
-            <p class="chart-title">Top 5 Products</p>
+            <p class="chart-title">Number of patients admitted at NewLife hospital</p>
             <div id="bar-chart"></div>
           </div>
-
+{/* 
           <div class="charts-card">
             <p class="chart-title">Purchase and Sales Orders</p>
             <div id="area-chart"></div>
-          </div>
-
+          </div> */}
+          <div>
+          <CovidLineGraph />
+        </div>
         </div>
         
       </main>
