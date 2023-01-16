@@ -72,16 +72,6 @@ import './Admin.css';
           </div>
         </div>
         <div class="charts">
-
-          <div class="charts-card">
-            <p class="chart-title">Number of patients admitted at NewLife hospital</p>
-            <div id="bar-chart"></div>
-          </div>
-{/* 
-          <div class="charts-card">
-            <p class="chart-title">Purchase and Sales Orders</p>
-            <div id="area-chart"></div>
-          </div> */}
           <div>
           <CovidLineGraph />
         </div>
