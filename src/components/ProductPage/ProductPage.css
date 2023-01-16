@@ -1,9 +1,9 @@
 /* LIGHT BLUE > #00a3c8 */
 /* DARK BLUE > #1d3e68 */
 /* LIGHT GREY > #f8f9fb */
-.product-page-main-container {
+
+/* .product-page-main-container {
   width: 85%;
-  margin: 50px auto 0 auto;
 }
 .product-details-container {
   display: flex;
@@ -13,11 +13,9 @@
 .product-details-container img {
   width: 45%;
   height: 550px;
-  /* border: 1px dashed blue; */
 }
 .product-details-section {
   width: 50%;
-  /* border: 1px dashed red; */
   padding: 40px;
 }
 .product-details-section h1 {
@@ -113,4 +111,37 @@
   background-color: #1d3e68;
   border: #1d3e68 1px solid;
   transition: all 0.35s ease-in-out;
+} */
+
+.product-page-main-container {
+  border: thin solid #1d3e68;
+  width: 85%;
+  height: 45vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.product-page-main-container > * {
+  border: thin solid #1d3e68;
+  width: 50%;
+  height: 100%;
+}
+
+.product-details-container {
+  background-color: #00a3c8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-details-bottom-section {
+  background-color: aqua;
+}
+
+#review-form {
+  background-color: chocolate;
 }

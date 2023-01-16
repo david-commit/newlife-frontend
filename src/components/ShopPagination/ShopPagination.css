@@ -22,7 +22,7 @@
   justify-content: center;
   font-size: 1.5vw;
   color: #1d3e68;
-  border: thin solid #1d3e68;
+  border: thin solid rgb(29, 62, 104, .3);
 }
 #active-page {
   background-color: #00a3c8;
