@@ -17,6 +17,7 @@ function Shop({
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
   let [query, setQuery] = useState("");
+  let [result, setResult] = useState("");
 
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -41,6 +42,19 @@ function Shop({
   function searchResult(e) {
     e.preventDefault();
     console.log(query);
+
+    fetch("http://localhost:3000/practitionerSearch", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
   }
   const renderedProducts =
     currentProducts &&
@@ -92,8 +106,9 @@ function Shop({
   return (
     <div className="shop-main-container">
       <h1>Shop</h1>
+
       <div className="shop-search-filter-container">
-        <form id="search-products-form">
+        <form id="search-products-form" onSubmit={searchResult}>
           <input
             // onChange={handleSearch}
             type="search"
@@ -107,6 +122,7 @@ function Shop({
 
         {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
         {cartAddSuccess ? <p id="cart-success">Item added succesfully</p> : ""}
+
         <select
           id="shop-sort"
           onChange={(e) => setSortedProducts(e.target.value)}
@@ -122,6 +138,7 @@ function Shop({
           <option value="price-desc">Price: High to Low</option>
         </select>
       </div>
+
       <div className="shop-cards">{renderedProducts}</div>
       <ShopPagination
         productsPerPage={productsPerPage}
