@@ -3,60 +3,75 @@ import './AdminLogin.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
-function AdminLogin({ setUserAdmin, loggedIn, setLoggedIn, userType, setUserType }) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
+  const [formData, setFormData] = useState({username: "", password: ""})
   const [errors, setErrors] = useState("")
   const history = useHistory();
 
-   if(loggedIn){
-    if (userType == 'admin') {
-      history.push('/admin/me');
+  if(loggedIn){
+    if(userType == "patient"){
+      history.push('/patients/me')
+    } else if (userType == "practitioner"){
+      history.push('/practitioners/me')
+    } else if (userType == "admin"){
+      history.push('/admin/me')
     }
-   }
+  }
 
-  function handleAdminLogin(e){
-    e.preventDefault()
-    fetch(`http://localhost:3000/admin/login`, {
-      method: "POST",
+  function handleLoginSubmit(e) {
+    e.preventDefault();
+    console.log(formData)
+    // setPracCheckbox(false);
+    fetch('http://localhost:3000/admin/login', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json"
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        email,
-        password
-      })
+      body: JSON.stringify({username: formData.username, password: formData.password}),
     }).then((response) => {
       if (response.ok) {
-        response.json().then((user) => {
-          // SET USER
-          setUserAdmin(user)
-        })
+        response.json().then((person) => {
+          localStorage.setItem('token', person.jwt);
+          localStorage.setItem('loggedIn', true)
+          localStorage.setItem("userType", "admin")
+
+          localStorage.setItem('person', JSON.stringify(person.admin))
+          setLoggedIn(true)
+          setUserType('admin')
+          history.push('/admin/me')
+        });
       } else {
-        response.json().then((err) => setErrors(err.errors));
+        response.json().then();
+        console.log(errors)
       }
-    })
+    });
+  }
+
+  function updateFormData(e){
+    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
   }
 
   return (
     <div className='admin-login-main-container'>
       <div className='admin-login-container'>
-        <form onSubmit={handleAdminLogin} id='admin-login-form'>
+        <form onSubmit={handleLoginSubmit} id='admin-login-form'>
           <h1>Administrator Login</h1>
           <br />
           <br />
           <input
+            id='username'
             type='text'
-            placeholder='Email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder='Username'
+            value={formData.email}
+            onChange={updateFormData}
           />
           <br />
           <input
+            id='password'
             type='password'
             placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={formData.password}
+            onChange={updateFormData}
           />
           <br />
           <p>

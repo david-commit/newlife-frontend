@@ -35,12 +35,9 @@ import EditPractitioner from './Admin/EditPractitioner';
 import EditProduct from './Admin/EditProduct'
 
 function App() {
-  const [userAdmin, setUserAdmin] = useState(true);
   const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("loggedIn"))
   const [userType, setUserType] = useState(localStorage.getItem("userType"))
   const [products, setProducts] = useState([]);
-  const [userPatient, setUserPatient] = useState("")
-  const [userPractitioner, setUserPractitioner] = useState("")
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
@@ -281,42 +278,22 @@ function App() {
           <EditProduct loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/login'>
-          <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+          <AdminLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn} userType={userType} setUserType={setUserType}/>
         </Route>
         <Route exact path='/admin/me'>
-          {userAdmin ? (
-            <Admin userAdmin={userAdmin} loggedIn={loggedIn} userType={userType} />
-          ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
-          )}
+          <Admin loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin'>
-          {userAdmin ? (
-            <AllPractitioners loggedIn={loggedIn} userType={userType} />
-          ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
-          )}
+          <AllPractitioners loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/add-practitioner'>
-          {userAdmin ? (
-            <AddPractitioner loggedIn={loggedIn} userType={userType} />
-          ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
-          )}
+          <AddPractitioner loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/products'>
-          {userAdmin ? (
-            <AllProducts loggedIn={loggedIn} userType={userType} />
-          ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
-          )}
+          <AllProducts loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/add-product'>
-          {userAdmin ? (
-            <AddProduct loggedIn={loggedIn} userType={userType} />
-          ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
-          )}
+          <AddProduct loggedIn={loggedIn} userType={userType} />
         </Route>
         {/* == ADMIN ROUTES == */}
         <Route exact path='/'>
