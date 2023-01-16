@@ -1,50 +1,69 @@
-import React, {useState,useEffect} from 'react';
-import axios from "axios";
-import {Link, useHistory} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllPractitioners.css';
 import AllPractitionersPagination from './AllPractitionersPagination';
 
-const AllPractitioners = ({loggedIn, userType}) => {
-  const [users,setUsers] = useState([]);
+const AllPractitioners = ({ loggedIn, userType }) => {
+  const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [practitionersPerPage] = useState(15);
-  
+  const [practitionersPerPage, setCurrentPrcatitioners] = useState(15);
+  const [searchQuery, setSearchQuery] = useState('');
+
   // Get current practitioners for pagination
   const indexOfLastPractitioner = currentPage * practitionersPerPage;
-  const indexOfFirstPractitioner = indexOfLastPractitioner - practitionersPerPage;
+  const indexOfFirstPractitioner =
+    indexOfLastPractitioner - practitionersPerPage;
   const currentPractitioners = users.slice(
     indexOfFirstPractitioner,
     indexOfLastPractitioner
   );
-  
-  const history = useHistory()
+
+  const history = useHistory();
 
   if (loggedIn) {
-    if (userType == "practitioner") {
-      history.push('/practitioners/me')
-    } else if (userType == "patient") {
-      history.push('/patients/me')
+    if (userType == 'practitioner') {
+      history.push('/practitioners/me');
+    } else if (userType == 'patient') {
+      history.push('/patients/me');
     }
   } else {
-    history.push('/login')
+    history.push('/login');
   }
 
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  useEffect(()=>{
+  useEffect(() => {
     loadUser();
-  },[]);
+  }, []);
 
-  const loadUser = async () =>{
-    const result = await axios.get("http://localhost:3000/users");
+  const loadUser = async () => {
+    const result = await axios.get(
+      'http://localhost:3000/practitioner_profiles'
+    );
     setUsers(result.data);
+    setSearchQuery(result.data)
   };
-  const deleteUser = async id => {
-    await axios.delete(`http://localhost:3000/users/${id}`);
+  const deleteUser = async (id) => {
+    await axios.delete(`http://localhost:3000/practitioner_profiles/${id}`);
     loadUser();
   };
+
+  // Handle search feature
+  const handleSearch = (e) => {
+    setUsers(
+      searchQuery.filter((prac) => {
+        return prac.first_name 
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      })
+    );
+    return currentPractitioners;
+  };
+  console.log(currentPractitioners)
+
   return (
     <div className='all-practitioners-main-container'>
       <AdminSidebar />
@@ -52,7 +71,7 @@ const AllPractitioners = ({loggedIn, userType}) => {
         <h1>All Practitioners</h1>
         <br />
         <section>
-          <input placeholder='Search' type='search' />
+          <input placeholder='Search' type='search' onChange={handleSearch} />
           <Link to='/admin/add-practitioner'>
             <button>+ Add Practitioner</button>
           </Link>
@@ -63,11 +82,10 @@ const AllPractitioners = ({loggedIn, userType}) => {
             <tr>
               {/* <th scope="col">Auto</th> */}
               <th scope='col'>ID</th>
+              <th scope='col'>Name</th>
               <th scope='col'>Username</th>
-              <th scope='col'>Role</th>
               <th scope='col'>Email</th>
               <th scope='col'>Phone</th>
-              <th scope='col'>Speciality</th>
               <th scope='col'>Department</th>
               <th scope='col'>Edit</th>
               <th scope='col'>Delete</th>
@@ -75,18 +93,18 @@ const AllPractitioners = ({loggedIn, userType}) => {
           </thead>
           <tbody>
             {currentPractitioners.map((user, index) => (
-              <tr>
-                {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+              <tr key={index}>
                 <td>
-                  <strong>{user.id}</strong>
+                  <strong>{index + 1}</strong>
                 </td>
-                <td>{user.username}</td>
-                <td>{user.role}</td>
-                <td>{user.email}</td>
-                <td>{user.phone_number}</td>
-                <td>{user.speciality}</td>
-                {/* <td>{user.practitioner.department.name}</td> */}
                 <td>
+                  {user.first_name} {user.last_name}
+                </td>
+                <td id='centered-cell'>{user.practitioner.username}</td>
+                <td id='centered-cell'>{user.practitioner.email}</td>
+                <td id='centered-cell'>{user.phone_number}</td>
+                <td id='centered-cell'>{user.practitioner.department.name}</td>
+                <td id='centered-cell'>
                   <Link
                     id='td-edit-icon'
                     className='btn btn-primary m-2'
@@ -95,20 +113,19 @@ const AllPractitioners = ({loggedIn, userType}) => {
                     <i class='fa fa-pencil' aria-hidden='true'></i>
                   </Link>
                 </td>
-                <td>
-                  <Link
+                <td id='centered-cell'>
+                  <i
+                    class='fa fa-trash'
+                    aria-hidden='true'
                     id='td-delete-icon'
-                    className='btn btn-danger'
                     onClick={() => deleteUser(user.id)}
-                  >
-                    <i class='fa fa-trash' aria-hidden='true'></i>
-                  </Link>
+                  ></i>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        {console.log(users)}
+        {/* {console.log(users)} */}
         <AllPractitionersPagination
           practitionersPerPage={practitionersPerPage}
           practitioners={users}
@@ -118,6 +135,6 @@ const AllPractitioners = ({loggedIn, userType}) => {
       </div>
     </div>
   );
-}
+};
 
 export default AllPractitioners;
