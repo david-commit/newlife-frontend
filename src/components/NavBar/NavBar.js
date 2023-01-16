@@ -95,7 +95,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
                   <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
-            ) : loggedIn && (userType == "practitioner") ? (
+            ) : loggedIn && (userType == "practitioner" || userType == "admin") ? (
               <>
                 <NavLink exact to='/practitioners/me'>
                   Dashboard
@@ -107,7 +107,17 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
                   <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
-            ) : (
+            ) : loggedIn && (userType == "admin")?(
+              <>
+                <NavLink exact to='/admin/me'>
+                  Dashboard
+                </NavLink>
+            
+                <NavLink exact to='/'>
+                  <button onClick={handleLogoutClick}>Logout</button>
+                </NavLink>              
+              </>
+            ):(
               <>
                 <NavLink exact to='/login'>
                   <button>Login</button>

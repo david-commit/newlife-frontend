@@ -1,0 +1,6 @@
+.graph {
+    width: 80%;
+    display: flex;
+    margin: 0 auto -80px auto;
+    height: 100vh;
+  }
