@@ -6,64 +6,84 @@ import './AddProduct.css';
 
 const AddProduct = () => {
   let history = useHistory();
-  const [products, setProducts] = useState([])
-  const [user, setUser] = useState({
-    name: '',
-    image: '',
-    category: '',
-    stock: '',
-    price: '',
-  });
+  const [categories] = useState([]);
+  const [name, setName] = useState('')
+  const [image, setImage] = useState('')
+  const [category, setCategory] = useState('')
+  const [stock, setStock] = useState(0)
+  const [price, setPrice] = useState(0)
+  const [errors, setErrors] = useState([])
+  console.log(category)
 
-  const { name, category, price, image, stock } = user;
-  const onInputChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    await axios.post('http://localhost:3000/users', user);
-    history.push('/admin/products');
-  };
-
+  // Storing all categories in array
   useEffect(() => {
-    fetch(`/products`)
-    .then(res => res.json())
-    .then(data => setProducts(data))
-  })
+    fetch(`http://localhost:3000/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.map((d) => categories.push(d.category));
+      });
+  }, []);
+
+  // Removes duplicates in array
+  const uniqueCategoryArray = [...new Set(categories)];
+  // console.log(uniqueCategoryArray);
+
+  const handleAddProduct = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/admins/1/products`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        image,
+        category,
+        stock,
+        price,
+      })
+    }).then((response) => {
+      if (response.ok) {
+        alert('Product added successfully!')
+      } else {
+        alert("Product not added!")
+        setErrors(response)
+      }
+    })
+  }
 
   return (
     <div className='add-Products-main-container'>
       <AdminSidebar />
       <div className='add-Products-container'>
         <h1>Add Product</h1>
-        <form onSubmit={(e) => onSubmit(e)}>
+        <form onSubmit={handleAddProduct}>
           <br />
-          <label htmlFor="name">Enter Name</label>
+          <label htmlFor='name'>Enter Name</label>
           <input
             type='text'
             placeholder='Enter Name'
-            name='name'
             value={name}
-            onChange={(e) => onInputChange(e)}
+            onChange={(e) => setName(e.target.value)}
           />
           <br />
           <label>Enter Image URL</label>
           <input
-            type='text'
+            type='url'
             placeholder='Enter Image URL'
-            name='image'
             value={image}
-            onChange={(e) => onInputChange(e)}
+            onChange={(e) => setImage(e.target.value)}
           />
           <br />
-          <select onChange={(e) => onInputChange(e)} >
+          <select onChange={(e) => setCategory(e.target.value)}>
             <option hidden>Select Product Category</option>
-            {products > 0 ? (products?.map((product) => {
-              return(
-                <option value={product.id}>{product.category}</option>
-              )
-            })) : (
+            {categories ? (
+              uniqueCategoryArray?.map((cat, index) => {
+                return (
+                  <option value={cat} key={index}>
+                    {cat}
+                  </option>
+                );
+              })
+            ) : (
               <p>Select Category</p>
             )}
           </select>
@@ -71,11 +91,10 @@ const AddProduct = () => {
           <label>Enter product quantity</label>
           <input
             type='number'
-            min="0"
+            min='0'
             placeholder='Enter the quantity of the product'
-            name='stock'
             value={stock}
-            onChange={(e) => onInputChange(e)}
+            onChange={(e) => setStock(e.target.value)}
           />
           <br />
           <label>Enter Price</label>
@@ -84,13 +103,16 @@ const AddProduct = () => {
             placeholder='Enter the Product Price'
             name='price'
             value={price}
-            onChange={(e) => onInputChange(e)}
+            onChange={(e) => setPrice(e.tarhet.value)}
           />
           <br />
           <button className='button-container' type='submit'>
             Add Product
           </button>
         </form>
+        {Array.isArray(errors) && errors.map((error) => {
+          return <li>{error}</li>
+        })}
       </div>
     </div>
   );

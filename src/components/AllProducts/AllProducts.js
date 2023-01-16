@@ -1,10 +1,9 @@
-import React, {useState,useEffect} from 'react';
-import axios from "axios";
-import {Link, useHistory} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AllProducts.css';
-import AllProductsPagination from './AllProductsPagination'
-
+import AllProductsPagination from './AllProductsPagination';
 
 const AllProducts = ({ loggedIn, userType }) => {
   const [products, setProducts] = useState([]);
@@ -19,7 +18,7 @@ const AllProducts = ({ loggedIn, userType }) => {
   );
 
   const history = useHistory();
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchQuery, setSearchQuery] = useState('');
 
   if (loggedIn) {
     if (userType == 'practitioner') {
@@ -43,12 +42,12 @@ const AllProducts = ({ loggedIn, userType }) => {
   const loadProduct = async () => {
     const result = await axios.get('http://localhost:3000/products');
     setProducts(result.data);
-    setSearchQuery(result.data)
+    setSearchQuery(result.data);
   };
-  const deleteProduct = async (id) => {
-    await axios.delete(`http://localhost:3000/products/${products.id}`);
-    loadProduct();
-  };
+  // const deleteProduct = async (id) => {
+  //   await axios.delete(`http://localhost:3000/products/${products.id}`);
+  //   loadProduct();
+  // };
 
   // Handle search feature
   const handleSearch = (e) => {
@@ -99,7 +98,7 @@ const AllProducts = ({ loggedIn, userType }) => {
                 <td>{product.name}</td>
                 <td>{product.category}</td>
                 <td id='centered-cell'>
-                  <img src={product.image} alt='' />
+                  <img src={product.image} alt='product' />
                 </td>
                 <td id='centered-cell'>{product.stock}</td>
                 <td id='centered-cell'>{product.price_in_2dp}</td>
@@ -113,13 +112,19 @@ const AllProducts = ({ loggedIn, userType }) => {
                   </Link>
                 </td>
                 <td id='centered-cell'>
-                  <Link
+                  <i
+                    class='fa fa-trash'
+                    aria-hidden='true'
                     id='td-delete-icon'
-                    className='btn btn-danger'
-                    onClick={() => deleteProduct(product.id)}
-                  >
-                    <i class='fa fa-trash' aria-hidden='true'></i>
-                  </Link>
+                    onClick={() => {
+                      fetch(
+                        `http://localhost:3000/admins/1/products/${product.id}`,
+                        {
+                          method: 'DELETE',
+                        }
+                      );
+                    }}
+                  ></i>
                 </td>
               </tr>
             ))}
