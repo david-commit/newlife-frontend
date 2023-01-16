@@ -67,18 +67,22 @@ function Shop({
         >
           <div className="shop-card">
             <img src={product.image} alt="Product" />
+
             <div className="shop-card-text">
-              <section>
+              <section className="shop-card-section1">
                 <p>{product.category}</p>
+
                 {parseFloat(product.price_in_2dp) < 1 ? (
                   <button id="free-button">Free</button>
                 ) : (
                   ""
                 )}
               </section>
+
               <div className="product-title">
                 <h3>{product.name}</h3>
               </div>
+
               <section className="card-price-button">
                 <h4>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</h4>
                 <button
@@ -91,6 +95,7 @@ function Shop({
                   + Add to Cart
                 </button>
               </section>
+
             </div>
           </div>
         </Link>
