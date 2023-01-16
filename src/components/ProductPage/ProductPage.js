@@ -64,15 +64,17 @@ function ProductPage({
 
   return (
     <div className="product-page-main-container">
-
       <div className="product-details-container">
-        <img src={product.image} alt="Product appearance" />
+        <span id="product-page-details">
+          Product ID: {product.id} | Category: {product.category}
+        </span>
+        <h1 id="product-page-title">{product.name}</h1>
+
+        <span id="product-page-image">
+          <img src={product.image} alt="Product appearance" />
+        </span>
 
         <section className="product-details-section">
-          <span>
-            Product ID: {product.id} | Category: {product.category}
-          </span>
-          <h1>{product.name}</h1>
           <h3 className="product-price">
             Ksh <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </h3>
@@ -125,7 +127,6 @@ function ProductPage({
             </div>
           </section>
         </section>
-
       </div>
 
       <section className="product-details-bottom-section">
