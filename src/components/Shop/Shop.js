@@ -16,6 +16,7 @@ function Shop({
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
+  let [query, setQuery] = useState("");
 
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -27,6 +28,10 @@ function Shop({
 
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  function searchHandle(e) {
+    e.preventDefault();
+  }
 
   const renderedProducts =
     currentProducts &&
