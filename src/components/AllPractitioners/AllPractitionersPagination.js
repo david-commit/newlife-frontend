@@ -1,11 +1,12 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './Pagination.css';
+import {NavLink} from 'react-router-dom';
+import './AllPractitionersPagination.css'
 
-function Pagination({ productsPerPage, products, paginate, currentPage }) {
-  const pageNumbers = [];
-
-  for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
+const AllPractitionersPagination = 
+(   {practitionersPerPage, practitioners, paginate, currentPage} ) => {
+    const pageNumbers = [];
+    console.log(practitioners)
+  for (let i = 1; i <= Math.ceil(practitioners.length / practitionersPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -15,9 +16,8 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
   function renderLastPage() {
     return pageNumbers[pageNumbers.length - 1];
   }
-
   return (
-    <nav className='pagination-container'>
+    <nav className='practitioner-pagination-container'>
       <NavLink to='#' onClick={() => paginate(renderFirstPage())}>
         «
       </NavLink>
@@ -37,7 +37,7 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
         »
       </NavLink>
     </nav>
-  );
+  )
 }
 
-export default Pagination;
+export default AllPractitionersPagination

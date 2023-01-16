@@ -1,70 +1,120 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './PatientCreateAppointment.css';
 import PatientSidebar from '../PatientSidebar/PatientSidebar';
+import { useHistory } from 'react-router-dom';
 
-function PatientCreateAppointment() {
+function PatientCreateAppointment({loggedIn, userType}) {
+  const [practitioners, setPractitioners] = useState(JSON.parse(localStorage.getItem("practitioners")) || [])
+  const [formData, setFormData] = useState({
+    user_id: JSON.parse(localStorage.getItem("person"))?.id,
+    practitioner_id: "",
+    date: "",
+    approved: false,
+    appointment_type: "",
+    appointment_info: "",
+    time: ""
+  })
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:3000/practitioners", {
+      method: 'GET',
+      headers: {
+        "Accept": "application/json",
+        "Authorization": localStorage.getItem("token")
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then(data => {
+            localStorage.setItem("practitioners", JSON.stringify(data))
+            setPractitioners(data)
+          })
+        } else {
+          res.json().then(data => console.warn(data))
+        }
+      })
+  }, [])
+
+  function handleSubmitAppoitmentRequest(e){
+    e.preventDefault()
+
+    fetch("http://127.0.0.1:3000/appointments", {
+      method: 'POST',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem("token")
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(res => {
+      if(!res.ok){
+        res.json().then(data => console.warn(data))
+      }else{
+        history.push('/patients/me/appointments')
+      }
+    })  
+  }
+
+  function handleInputChange(e){
+    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
+  }
+
   return (
     <div className='patient-main-container'>
       <PatientSidebar />
       <div className='patient-create-appointment-container'>
         <h1>Book an appointment</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-          deleniti assumenda praesentium natus quod, veritatis facere mollitia
-          aspernatur autem, expedita ea dolore sint ullam tempora ex cumque
-          minus eveniet! Consequuntur!
-        </p>
-        <form className='appointment-form'>
-          <select>
+
+        <form className='appointment-form' onSubmit={handleSubmitAppoitmentRequest}>
+          <select id="practitioner_id" onChange={handleInputChange}>
             <option hidden>Select Doctor</option>
-            <option>Dr. Grace Laura</option>
-            <option>Dr. Faith Ondiege</option>
-            <option>Dr. Ivy Sifuma</option>
+            {
+              practitioners.map(practitioner => {
+                const department = practitioner.department?.name
+                const firstName = practitioner.practitioner_profiles[0]?.first_name
+                const lastName = practitioner.practitioner_profiles[0]?.last_name
+                const practitionerId = practitioner?.id
+ 
+                return (
+                  <option value={practitionerId}>
+                    {`Dr. ${firstName} ${lastName} (${department} Department)`}
+                  </option>
+                )
+              })
+            }
           </select>
-          <select>
+          <select id="appointment_type" onChange={handleInputChange}>
             <option hidden>Select type of appointment</option>
-            <option>Consultation</option>
-            <option>Dermatology</option>
-            <option>Nutrition</option>
-            <option>Pediatrics</option>
+            <option value="Consultation">Consultation</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Nutrition">Nutrition</option>
+            <option value="Pediatrics">Pediatrics</option>
           </select>
-          <input type='date' />
-          <textarea placeholder='Provide information on the apppointment'></textarea>
+          <input id="date" type='date' onChange={handleInputChange} value={formData.date} />
+          <input id="time" type='time' onChange={handleInputChange} value={formData.time}/>
+          <textarea id="appointment_info" onChange={handleInputChange} value={formData.appointment_info} placeholder='Provide information on the apppointment'>
+
+          </textarea>
           <br />
+
           <div className='form-buttons'>
             <button type='submit'>Submit Request</button>
-            <button type='reset'>Reset</button>
           </div>
         </form>
       </div>
-      <div className='working-hours'>
-        <h2>Opening Hours:</h2>
-        <p>
-          Do you know of a doctor who can provide you with care? NewLife
-          Hospital will offer you the best.
-        </p>
-        <br />
-        <p className='working-weekdays'>
-          <span>Mon – Wed:</span> 9:00 AM - 7:00 PM{' '}
-        </p>
-        <p className='working-weekdays'>
-          <span>Thursday:</span> 9:00 AM - 6:30 PM{' '}
-        </p>
-        <p className='working-weekdays'>
-          <span>Friday:</span> 9:00 AM - 6:00 PM{' '}
-        </p>
-        <p className='working-weekdays'>
-          <span>Sun - Sun:</span> CLOSED{' '}
-        </p>
-        <br />
-        <h4>Need a personal health plan?</h4>
-        <p>
-          We offer you the best. <br />
-          Give us a call: <br />
-          Toll Free: 0812 345 678 <br /> Saf: +254 712 345 678 <br /> Air: +254
-          733 123 456
-        </p>
-      </div>
+    
     </div>
   );
 }

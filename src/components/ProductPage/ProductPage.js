@@ -1,56 +1,102 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './ProductPage.css';
 import loadingGif from '../../img/loading.gif';
+// https://github.com/n49/react-stars
+import ReactStars from 'react-stars';
 
-function ProductPage({ handleAddToCart }) {
+function ProductPage({
+  handleAddToCart,
+  productQuantity,
+  setProductQuantity,
+  cartWarning,
+  handleAddorRemoveQuantity,
+}) {
   const { productID } = useParams();
   const [product, setProduct] = useState([]);
   const [productLoading, setProductLoading] = useState(false);
-  const [productQuantity, setProductQuantity] = useState('');
+  const [newRating, setNewRating] = useState(0);
+  const [prevRating, setPrevRating] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [reviews, setReviews] = useState([]);
+  console.log(product);
+  console.log(reviews);
 
+  // Setting new product rating from user
+  const ratingChanged = (newRating) => {
+    setNewRating(newRating);
+    console.log(newRating);
+  };
+
+  // Fetches a single product
   useEffect(() => {
     const fetchProduct = async () => {
       setProductLoading(true);
       const response = await fetch(
-        `https://fakestoreapi.com/products/${productID}`
+        `http://localhost:3000/products/${productID}`
       );
       const results = await response.json();
       setProduct(results);
+      setPrevRating(results.rating);
+      setReviews(results.reviews);
       setProductLoading(false);
     };
     fetchProduct();
   }, [productID]);
 
+  // Loading Animationmethod_name
   if (productLoading) {
     return (
       <img src={loadingGif} alt='Loading animation' className='loading-gif' />
     );
   }
 
+  // Find product average rating
+  const getAverageRating = () => {
+    const allRatings = [];
+    reviews?.map((review) => {
+      allRatings.push(review.rating);
+    });
+    const sumOfConsecutives = (value1, value2) => value1 + value2;
+    const sumOfNums = allRatings.reduce(sumOfConsecutives);
+    console.log(sumOfNums)
+  };
+
   return (
     <div className='product-page-main-container'>
       <div className='product-details-container'>
         <img src={product.image} alt='Product appearance' />
         <section className='product-details-section'>
-          <p>{product.category}</p>
-          <h1>{product.title}</h1>
+          <span>
+            Product ID: {product.id} | Category: {product.category}
+          </span>
+          <h1>{product.name}</h1>
           <h3 className='product-price'>
-            Ksh <span>{product.price}</span>
+            Ksh <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </h3>
-          <input
-            type='number'
-            id='product-quantity'
-            // defaultValue='1'
-            value={productQuantity}
-            onChange={(e) => setProductQuantity(e.target.type)}
-          />
+          <span className='product-quantity'>
+            <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
+              -
+            </button>
+            <input
+              type='number'
+              value={product.quantity}
+              // value={productQuantity}
+              onChange={(e) => setProductQuantity(parseInt(e.target.value))}
+            />
+            <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
+              +
+            </button>
+          </span>
           <br />
           <br />
           {/* <Link path to='/cart'> */}
-            <button id='product-page-cart-button' onClick={handleAddToCart(product)}>
-              <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
-            </button>
+          <button
+            id='product-page-cart-button'
+            onClick={() => handleAddToCart(product)}
+          >
+            <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
+          </button>
           {/* </Link> */}
           <br />
           <br />
@@ -60,34 +106,69 @@ function ProductPage({ handleAddToCart }) {
           <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
-          <p id='product-rating'>4/5</p>
+          <section className='prevRating'>
+            <p id='product-rating'>
+              <strong>{prevRating}</strong>/5
+            </p>
+            <div>
+              <ReactStars
+                count={5}
+                value={prevRating}
+                size={24}
+                color2={'#ffd700'}
+                half={false}
+                edit={false}
+              />
+              <p>200 verified ratings</p>
+            </div>
+          </section>
         </section>
       </div>
       <section className='product-details-bottom-section'>
         <h3>Dosage considerations</h3>
         <ul>
-          <li>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta
-            blanditiis ea enim ad exercitationem, velit similique quisquam
-            cupiditate dolor! Error cupiditate consectetur nobis temporibus
-            deleniti perferendis ratione! Facilis, ipsa rem.
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deserunt
-            laudantium voluptatum a quis ipsa magnam, recusandae natus itaque
-            sunt ut labore sit deleniti quisquam laboriosam repudiandae tempore,
-            atque eos voluptatibus.
-          </li>
+          <li>{product.dosage}</li>
         </ul>
         <h3>Side Effects</h3>
-        <ul>
-          <li>Constipation</li>
-          <li>Skin rash or dermatisis</li>
-          <li>Diziness</li>
-          <li>Drowsiness</li>
-          <li>Dry mouth</li>
-        </ul>
+        <p>{product.effects}</p>
+        <br />
+        <br />
       </section>
+      <form id='review-form'>
+        <h2>Add Review</h2>
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={30}
+          color2={'#ffd700'}
+          half={true}
+        />
+        {newRating < 2
+          ? 'Poor'
+          : newRating < 3
+          ? 'Below Average'
+          : newRating < 4
+          ? 'Average'
+          : newRating < 5
+          ? 'Above Average'
+          : newRating < 6
+          ? 'Excellent'
+          : 'Select Rate'}
+        <br />
+        <br />
+        <textarea id='review-textarea' placeholder='Type review..'></textarea>
+        <br />
+        <br />
+        <button type='submit'>Submit Review</button>{' '}
+        <button
+          type='reset'
+          style={{ width: 'fit-content', backgroundColor: 'grey' }}
+          onClick={() => setNewRating(0)}
+        >
+          Clear
+        </button>
+      </form>
+      {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
     </div>
   );
 }

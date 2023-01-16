@@ -2,7 +2,8 @@ import React from 'react'
 import './PatientSidebar.css';
 import { NavLink } from 'react-router-dom';
 
-function PatientSidebar() {
+
+function PatientSidebar({loggedIn, userType}) {
   return (
     <div className='patient-sidebar-nav-container'>
       <nav className='patient-sidebar-nav'>
@@ -20,6 +21,9 @@ function PatientSidebar() {
         </NavLink>
         <NavLink exact to='/patients/me/reviews'>
           <i class='fa-solid fa-star'></i>&nbsp; Reviews
+        </NavLink>
+        <NavLink exact to='/patients/me/calendar'>
+          <i class='fa-solid fa-calendar'></i>&nbsp; Calendar
         </NavLink>
       </nav>
     </div>

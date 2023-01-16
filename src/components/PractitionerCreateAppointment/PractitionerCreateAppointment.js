@@ -1,8 +1,38 @@
 import React from 'react';
 import './PractitionerCreateAppointment.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-function PractitionerCreateAppointment() {
+function PractitionerCreateAppointment({loggedIn, userType}) {
+
+  const [patients, setPatients] = useState([])
+  const [patient, setPatient] = useState("");
+  const history = useHistory()
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+  
+  useEffect(() => {
+    fetch('http://localhost:3000/patient_profiles', {
+      headers: {"Accept": "application/json", "Authorization": localStorage.getItem("token")}
+    })
+    .then((response) => {
+      if(response.ok){
+        response.json().then(data => setPatients(data))
+      }else{
+        response.json().then(errors => console.warn(errors))
+      }
+    })
+  }, [])
+
   return (
     <div className='practitioner-main-container'>
       <PractitionerSideBar />
@@ -15,11 +45,16 @@ function PractitionerCreateAppointment() {
           minus eveniet! Consequuntur!
         </p>
         <form className='appointment-form'>
-          <select>
+          <select onChange={(e) => setPatient(e.target.value)}>
             <option hidden>Select Patient</option>
-            <option>Grace Laura</option>
-            <option>Faith Ondiege</option>
-            <option>Ivy Sifuma</option>
+            {/* {patients &&
+              patients.map((patient) => {
+                return (
+                  <option value={patient.id} key={patient.id}>
+                    {patient.first_name} {patient.last_name}
+                  </option>
+                );
+              })} */}
           </select>
           <select>
             <option hidden>Select type of appointment</option>

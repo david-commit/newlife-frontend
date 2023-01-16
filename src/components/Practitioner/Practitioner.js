@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Practitioner.css';
 import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import { useHistory } from 'react-router-dom';
 
-function Practitioner() {
+function Practitioner({loggedIn, userType}) {
+  const history = useHistory()
+  const [personalDetails, setPersonalDetails] = useState(
+    JSON.parse(localStorage.getItem("person") || false)?.practitioner_profiles?.[0]
+  )
+
+  if (loggedIn) {
+    if (userType == "patient") {
+      history.push('/patients/me')
+    } else if (userType == "admin") {
+      history.push('/admin/me')
+    }
+  } else {
+    history.push('/login')
+  }
+
   return (
     <div className='practitioner-main-container'>
       <PractitionerSideBar />
       <div className='practitioner-details-dash-section'>
-        <h1>Hi Dr. Marcy,</h1>
+        <h1>{`Hi Dr. ${personalDetails?.last_name}`}
+        </h1>
         <p>See your personal details below</p>
         <br />
         <div className='practitioner-details-section'>
@@ -15,55 +32,50 @@ function Practitioner() {
             <span>Bio:&nbsp;</span>
           </p>
 
-          <textarea readOnly id='bio'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-            alias, voluptatum vero eaque veniam inventore nihil possimus
-            repellendus nemo commodi cupiditate eum praesentium incidunt odit
-            tenetur consequatur corporis cumque id?
-          </textarea>
+          <textarea readOnly id='bio'>{personalDetails?.bio}</textarea>
           <br />
           <p className='practitioner-details-title'>
             <span>Job title:&nbsp;</span>
-            Pediatric Doctor
+            {personalDetails?.job_title}
           </p>
           <p className='practitioner-details-title'>
             <span>Department:&nbsp;</span>
-            Pediatrics
+            {JSON.parse(localStorage.getItem("person"))?.department?.name}
           </p>
           <p className='practitioner-details-title'>
             <span>Date of Birth:&nbsp;</span>
-            12/12/1998
+            {personalDetails?.dob}
           </p>
           <p className='practitioner-details-title'>
             <span>Phone:&nbsp;</span>
-            +25412345678
+            {personalDetails?.phone_number}
           </p>
           <p className='practitioner-details-title'>
             <span>Email:&nbsp;</span>
-            practitioner@newlife.com
+            {JSON.parse(localStorage.getItem("person"))?.email}
           </p>
-          <p className='practitioner-details-title'>
+          {/* <p className='practitioner-details-title'>
             <span>Location:&nbsp;</span>
             Doonholm
-          </p>
-          <p className='practitioner-details-title'>
+          </p> */}
+          {/* <p className='practitioner-details-title'>
             <span>Age:&nbsp;</span>
             34
-          </p>
-          <p className='practitioner-details-title'>
+          </p> */}
+          {/* <p className='practitioner-details-title'>
             <span>Height:&nbsp;</span>2 meters
-          </p>
+          </p> */}
           <p className='practitioner-details-title'>
             <span>Weight:&nbsp;</span>
-            68kg
+            {personalDetails?.weight}
           </p>
           <p className='practitioner-details-title'>
             <span>BMI:&nbsp;</span>
-            18
+            {personalDetails?.bmi}
           </p>
           <p className='practitioner-details-title'>
             <span>Blood Group:&nbsp;</span>
-            O-
+            {personalDetails?.blood_group}
           </p>
         </div>
       </div>
