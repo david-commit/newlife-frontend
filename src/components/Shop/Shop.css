@@ -85,18 +85,20 @@ input:focus {
 
 .shop-cards {
   display: grid;
-  grid-template-columns: 23% 23% 23% 23%;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 2vw;
   justify-content: space-between;
 }
 
 .shop-card:hover {
-  border: 1px solid lightgrey;
+  border: thin solid lightgrey;
   transition: all 0.35s ease-in-out;
   -webkit-transition: all 0.2s ease-in;
   transform: scale(1.015);
 }
 
-.shop-card {
+/* .shop-card {
   margin: 30px 0;
   height: 430px;
   border-radius: 10px;
@@ -104,6 +106,19 @@ input:focus {
   flex-direction: column;
   align-items: center;
   padding: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+} */
+
+.shop-card {
+  height: 20vw;
+  border: thin solid #1d3e68;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
