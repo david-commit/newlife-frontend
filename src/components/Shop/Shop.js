@@ -42,8 +42,7 @@ function Shop({
   function searchResult(e) {
     e.preventDefault();
     console.log(query);
-
-    fetch("http://localhost:3000/practitionerSearch", {
+    fetch("http://localhost:3000/productSearch", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -56,6 +55,7 @@ function Shop({
       .then((data) => console.log(data))
       .catch((error) => console.error(error));
   }
+
   const renderedProducts =
     currentProducts &&
     currentProducts.map((product) => {
