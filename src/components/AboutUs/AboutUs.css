@@ -188,10 +188,14 @@
 }
 .team-card img {
   width: 100%;
+  height: 31vh;
   padding-bottom: 20px;
   border-radius: 50%;
+  /* border: 1px dashed red; */
 }
 .team-card h2 {
+  width: 100%;
+  height: 90px;
   color: #1d3e68;
   font-size: 28px;
   padding-bottom: 10px;

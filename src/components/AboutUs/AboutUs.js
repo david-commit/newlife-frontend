@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AboutUs.css';
 import { Link } from 'react-router-dom';
-import AboutPracImg from '../../img/black-male-doc-with-tab.png'
-import teamImg1 from '../../img/black-female-nurse-smiling-face.png';
+import AboutPracImg from '../../img/black-male-doc-with-tab.png';
+import teamImg1 from '../../img/front-view-nurse-wearing-stethoscope.jpg';
 
 function AboutUs() {
+  const [practitioners, setPractitioners] = useState([]);
+  console.log(practitioners);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/practitioner_profiles`)
+      .then((response) => response.json())
+      .then((d) => setPractitioners(d));
+  }, []);
+
   return (
     <div className='about-main-container'>
       <div className='about-title-banner'>About Us</div>
@@ -189,31 +198,20 @@ function AboutUs() {
         <h1>Meet The Team</h1>
         <div className='team-container'>
           {/*  */}
-          <div className='team-card'>
-            <img src={teamImg1} alt='' />
-            <h2>Dr. Grace Laura</h2>
-            <p>Chief Medical Officer</p>
-          </div>
-          <div className='team-card'>
-            <img src={teamImg1} alt='' />
-            <h2>Dr. Grace Laura</h2>
-            <p>Chief Medical Officer</p>
-          </div>
-          <div className='team-card'>
-            <img src={teamImg1} alt='' />
-            <h2>Dr. Grace Laura</h2>
-            <p>Chief Medical Officer</p>
-          </div>
-          <div className='team-card'>
-            <img src={teamImg1} alt='' />
-            <h2>Dr. Grace Laura</h2>
-            <p>Chief Medical Officer</p>
-          </div>{' '}
-          <div className='team-card'>
-            <img src={teamImg1} alt='' />
-            <h2>Dr. Grace Laura</h2>
-            <p>Chief Medical Officer</p>
-          </div>
+          {practitioners?.map((prac) => {
+            return (
+              <div className='team-card'>
+                <img
+                  src={prac.image}
+                  alt='Image by <a href="https://www.freepik.com/free-photo/front-view-nurse-wearing-stethoscope_32486202.htm#page=2&query=black%20woman%20doctor&position=7&from_view=keyword">Freepik</a>'
+                />
+                <h2>
+                  Dr. {prac.first_name} {prac.last_name}
+                </h2>
+                <p>{prac.practitioner.department.name} Specialist</p>
+              </div>
+            );
+          })}
           {/*  */}
         </div>
       </div>
