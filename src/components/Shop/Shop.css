@@ -11,9 +11,8 @@
 }
 
 .shop-main-container > * {
-  border: thin solid #1d3e68;
-  margin-top: 0.5vw;
-  margin-bottom: 0.5vw;
+  margin-top: 0.3vw;
+  margin-bottom: 0.2vw;
 }
 
 .shop-main-container h1 {
@@ -40,7 +39,6 @@
   width: 25%;
   height: 3vw;
   font-size: 1.3vw;
-  border: thin solid #1d3e68;
   color: #1d3e68;
   text-align: center;
   display: flex;
@@ -100,7 +98,6 @@ input:focus {
 
 .shop-card {
   height: 20vw;
-  border: thin solid #1d3e68;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,6 +119,13 @@ input:focus {
 
 #free-button {
   border: none;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  font-size: 1vw;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   color: white;
   background-color: #32cd32;
 }
@@ -133,12 +137,10 @@ input:focus {
   align-items: center;
   justify-content: space-between;
   height: 40%;
-  border: thin solid #1d3e68;
 }
 
 .shop-card-text > * {
   width: 100%;
-  border: thin solid #1d3e68;
 }
 
 .shop-card-section1 {
@@ -165,6 +167,7 @@ input:focus {
 .product-title {
   width: 100%;
   font-size: 1.3vw;
+  font-weight: bold;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -207,51 +210,3 @@ input:focus {
   text-decoration: none;
   border: thin solid transparent;
 }
-
-/*
-.shop-card-text > section {
-  display: flex;
-  justify-content: space-between;
-}
-.shop-card-text p {
-  font-size: 14px;
-  padding: 2px 0;
-}
-.shop-card-text h3 {
-  height: 55px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.shop-card-text h4 {
-  font-size: 20px;
-}
-.shop-card-nav {
-  text-decoration: none;
-  color: #1d3e68;
-}
-.card-price-button {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-}
-.card-price-button button {
-  background-color: white;
-  border: 1px solid #00a3c8;
-  font-size: 16px;
-  padding: 4px 6px;
-  color: #1d3e68;
-  border-radius: 5px;
-  margin-top: -4px;
-}
-.card-price-button button:hover {
-  background-color: #00a3c8;
-  color: white;
-  cursor: pointer;
-}
-.product-title h3 {
-  font-size: 29px;
-} */
