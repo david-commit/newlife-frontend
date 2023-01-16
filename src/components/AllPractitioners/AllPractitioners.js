@@ -55,7 +55,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
   const handleSearch = (e) => {
     setUsers(
       searchQuery.filter((prac) => {
-        return prac.first_name 
+        return (prac.first_name + prac.last_name)
           .toLowerCase()
           .includes(e.target.value.toLowerCase());
       })

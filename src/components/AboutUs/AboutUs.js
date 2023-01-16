@@ -198,7 +198,7 @@ function AboutUs() {
         <h1>Meet The Team</h1>
         <div className='team-container'>
           {/*  */}
-          {practitioners?.map((prac) => {
+          {practitioners ? practitioners.map((prac) => {
             return (
               <div className='team-card'>
                 <img
@@ -211,7 +211,7 @@ function AboutUs() {
                 <p>{prac.practitioner.department.name} Specialist</p>
               </div>
             );
-          })}
+          }) : <h1>Our Practitioners will appear here</h1>}
           {/*  */}
         </div>
       </div>
