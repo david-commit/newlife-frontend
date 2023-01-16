@@ -1,6 +1,6 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './ShopPagination.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./ShopPagination.css";
 
 function Pagination({ productsPerPage, products, paginate, currentPage }) {
   const pageNumbers = [];
@@ -17,23 +17,23 @@ function Pagination({ productsPerPage, products, paginate, currentPage }) {
   }
 
   return (
-    <nav className='pagination-container'>
-      <NavLink to='#' onClick={() => paginate(renderFirstPage())}>
+    <nav className="pagination-container">
+      <NavLink to="#" onClick={() => paginate(renderFirstPage())}>
         «
       </NavLink>
       {pageNumbers.map((number) => {
         return (
           <NavLink
-            to='#'
+            to="#"
             key={number}
             onClick={() => paginate(number)}
-            id={currentPage === number ? 'active-page' : ''}
+            id={currentPage === number ? "active-page" : ""}
           >
             {number}
           </NavLink>
         );
       })}
-      <NavLink to='#' onClick={() => paginate(renderLastPage())}>
+      <NavLink to="#" onClick={() => paginate(renderLastPage())}>
         »
       </NavLink>
     </nav>
