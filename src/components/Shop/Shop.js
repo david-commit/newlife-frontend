@@ -94,12 +94,6 @@ function Shop({
             type="search"
             id="search-input"
             placeholder="Search"
-            style={{
-              fontSize: "16px",
-              padding: "4px",
-              borderRadius: "5px",
-              border: "1px solid grey",
-            }}
           />
           <button type="submit">Search</button>
         </form>
