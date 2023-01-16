@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Shop.css';
-import ShopPagination from '../ShopPagination/ShopPagination';
-import loadingGif from '../../img/loading.gif';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Shop.css";
+import ShopPagination from "../ShopPagination/ShopPagination";
+import loadingGif from "../../img/loading.gif";
 
 function Shop({
   products,
@@ -43,27 +43,27 @@ function Shop({
       return (
         <Link
           to={`/products/${product.id}`}
-          className='shop-card-nav'
+          className="shop-card-nav"
           key={product.id}
         >
-          <div className='shop-card'>
-            <img src={product.image} alt='Product' />
-            <div className='shop-card-text'>
+          <div className="shop-card">
+            <img src={product.image} alt="Product" />
+            <div className="shop-card-text">
               <section>
                 <p>{product.category}</p>
                 {parseFloat(product.price_in_2dp) < 1 ? (
-                  <button id='free-button'>Free</button>
+                  <button id="free-button">Free</button>
                 ) : (
-                  ''
+                  ""
                 )}
               </section>
-              <div className='product-title'>
+              <div className="product-title">
                 <h3>{product.name}</h3>
               </div>
-              <section className='card-price-button'>
+              <section className="card-price-button">
                 <h4>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</h4>
                 <button
-                  type='button'
+                  type="button"
                   onClick={(e) => {
                     e.preventDefault();
                     handleAddToCart(product);
@@ -80,44 +80,48 @@ function Shop({
 
   if (loading) {
     return (
-      <img src={loadingGif} alt='Loading animation' className='loading-gif' />
+      <img src={loadingGif} alt="Loading animation" className="loading-gif" />
     );
   }
 
   return (
-    <div className='shop-main-container'>
+    <div className="shop-main-container">
       <h1>Shop</h1>
-      <div className='shop-search-filter-container'>
-        <input
-          onChange={handleSearch}
-          type='search'
-          id='search-input'
-          placeholder='Search'
-          style={{
-            fontSize: '16px',
-            padding: '4px',
-            borderRadius: '5px',
-            border: '1px solid grey',
-          }}
-        />
-        {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
-        {cartAddSuccess ? <p id='cart-success'>Item added succesfully</p> : ''}
+      <div className="shop-search-filter-container">
+        <form id="search-products-form">
+          <input
+            onChange={handleSearch}
+            type="search"
+            id="search-input"
+            placeholder="Search"
+            style={{
+              fontSize: "16px",
+              padding: "4px",
+              borderRadius: "5px",
+              border: "1px solid grey",
+            }}
+          />
+          <button type="submit">Search</button>
+        </form>
+
+        {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
+        {cartAddSuccess ? <p id="cart-success">Item added succesfully</p> : ""}
         <select
-          id='shop-sort'
+          id="shop-sort"
           onChange={(e) => setSortedProducts(e.target.value)}
         >
           <option hidden>
-            {sortProducts === 'price-asc'
-              ? 'Price: Low to High'
-              : sortProducts === 'price-desc'
-              ? 'Price: High to Low'
-              : 'Sort Products'}
+            {sortProducts === "price-asc"
+              ? "Price: Low to High"
+              : sortProducts === "price-desc"
+              ? "Price: High to Low"
+              : "Sort Products"}
           </option>
-          <option value='price-asc'>Price: Low to High</option>
-          <option value='price-desc'>Price: High to Low</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
         </select>
       </div>
-      <div className='shop-cards'>{renderedProducts}</div>
+      <div className="shop-cards">{renderedProducts}</div>
       <ShopPagination
         productsPerPage={productsPerPage}
         products={products}
