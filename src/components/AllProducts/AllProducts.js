@@ -6,8 +6,8 @@ import './AllProducts.css';
 import AllProductsPagination from './AllProductsPagination'
 
 
-const AllProducts = ({loggedIn, userType}) => {
-  const [products,setProducts] = useState([]);
+const AllProducts = ({ loggedIn, userType }) => {
+  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(15);
   // Get current products for pagination
@@ -17,94 +17,123 @@ const AllProducts = ({loggedIn, userType}) => {
     indexOfFirstProduct,
     indexOfLastProduct
   );
-  
-    const history = useHistory()
+
+  const history = useHistory();
+  const [searchQuery, setSearchQuery] = useState('')
 
   if (loggedIn) {
-    if (userType == "practitioner") {
-      history.push('/practitioners/me')
-    } else if (userType == "patient") {
-      history.push('/patients/me')
+    if (userType == 'practitioner') {
+      history.push('/practitioners/me');
+    } else if (userType == 'patient') {
+      history.push('/patients/me');
     }
   } else {
-    history.push('/login')
+    history.push('/login');
   }
 
-  console.log("usertype: ", userType)
+  console.log('usertype: ', userType);
 
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  useEffect(()=>{
+  useEffect(() => {
     loadProduct();
-  },[]);
+  }, []);
 
-  const loadProduct = async () =>{
-    const result = await axios.get("http://localhost:3000/products");
+  const loadProduct = async () => {
+    const result = await axios.get('http://localhost:3000/products');
     setProducts(result.data);
+    setSearchQuery(result.data)
   };
-  const deleteProduct = async id => {
+  const deleteProduct = async (id) => {
     await axios.delete(`http://localhost:3000/products/${products.id}`);
     loadProduct();
   };
+
+  // Handle search feature
+  const handleSearch = (e) => {
+    setProducts(
+      searchQuery.filter((product) => {
+        return product.name
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase());
+      })
+    );
+    return products;
+  };
+
   return (
     <div className='all-products-main-container'>
       <AdminSidebar />
       <div className='all-products-container'>
-    <h1>All Products</h1>
-    <br/>
-    <section>
-    <input
-    placeholder='Search'
-    type='search'
-
-    />
-    <Link to="/admin/add-product">
-    <button>+ Add Product</button>
-    </Link>
-    </section>
-    <br/>
-      <table>
-
-  <thead>
-    <tr>
-      {/* <th scope="col">SNo</th> */}
-      <th scope="col">ID</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Generic Name</th>
-      <th scope="col">Category</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Form</th>
-      <th scope="col">Price</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-  {currentProducts.map((product,index)=>(
-      <tr>
-        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
-        <td><strong>{product.id}</strong></td>
-        <td>{product.brandName}</td>
-        <td>{product.genericName}</td>
-        <td>{product.category}</td>
-        <td>{product.quantity}</td>
-        <td>{product.form}</td>
-        <td>{product.price}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/product/edit/${product.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
-        <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteProduct(product.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
-      </tr>
-
-    ))}
-  </tbody>
-</table>
-<AllProductsPagination productsPerPage={productsPerPage}
-        products={products}
-        paginate={paginate}
-        currentPage={currentPage}/>
+        <h1>All Products</h1>
+        <br />
+        <section>
+          <input placeholder='Search' type='search' onChange={handleSearch} />
+          <Link to='/admin/add-product'>
+            <button>+ Add Product</button>
+          </Link>
+        </section>
+        <br />
+        <table>
+          <thead>
+            <tr>
+              {/* <th scope="col">SNo</th> */}
+              <th scope='col'>ID</th>
+              <th scope='col'>Name</th>
+              <th scope='col'>Category</th>
+              <th scope='col'>Picture</th>
+              <th scope='col'>In stock</th>
+              <th scope='col'>Price</th>
+              <th scope='col'>Edit</th>
+              <th scope='col'>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentProducts.map((product, index) => (
+              <tr key={product.id}>
+                {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+                <td>
+                  <strong>{product.id}</strong>
+                </td>
+                <td>{product.name}</td>
+                <td>{product.category}</td>
+                <td id='centered-cell'>
+                  <img src={product.image} alt='' />
+                </td>
+                <td id='centered-cell'>{product.stock}</td>
+                <td id='centered-cell'>{product.price_in_2dp}</td>
+                <td id='centered-cell'>
+                  <Link
+                    id='td-edit-icon'
+                    className='btn btn-primary m-2'
+                    to={`/admin/product/edit/${product.id}`}
+                  >
+                    <i class='fa fa-pencil' aria-hidden='true'></i>
+                  </Link>
+                </td>
+                <td id='centered-cell'>
+                  <Link
+                    id='td-delete-icon'
+                    className='btn btn-danger'
+                    onClick={() => deleteProduct(product.id)}
+                  >
+                    <i class='fa fa-trash' aria-hidden='true'></i>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <AllProductsPagination
+          productsPerPage={productsPerPage}
+          products={products}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
       </div>
     </div>
   );
-}
+};
 
 export default AllProducts;

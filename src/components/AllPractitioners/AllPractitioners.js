@@ -49,58 +49,72 @@ const AllPractitioners = ({loggedIn, userType}) => {
     <div className='all-practitioners-main-container'>
       <AdminSidebar />
       <div className='all-practitioners-container'>
-    <h1>All Practitioners</h1>
-    <br/>
-    <section>
-    <input
-    placeholder='Search'
-    type='search'
-
-    />
-    <Link to="/admin/add-practitioner">
-    <button>+ Add Practitioner</button>
-    </Link>
-    </section>
-    <br/>
-      <table>
-
-  <thead>
-    <tr>
-      {/* <th scope="col">Auto</th> */}
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Role</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Speciality</th>
-      <th scope="col">Department</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    {currentPractitioners.map((user,index)=>(
-      <tr>
-        {/* <td scope="row"><strong>{index + 1}</strong></td> */}
-        <td><strong>{user.id}</strong></td>
-        <td>{user.name}</td>
-        <td>{user.role}</td>
-        <td>{user.email}</td>
-        <td>{user.phone}</td>
-        <td>{user.speciality}</td>
-        <td>{user.department}</td>
-        <td><Link id="td-edit-icon" className="btn btn-primary m-2" to={`/admin/practitioner/edit/${user.id}`}><i class="fa fa-pencil" aria-hidden="true"></i></Link></td>
-        <td><Link id="td-delete-icon" className="btn btn-danger" onClick={() => deleteUser(user.id)}><i class="fa fa-trash" aria-hidden="true"></i></Link></td>
-      </tr>
-
-    ))}
-  </tbody>
-</table>
-{console.log(users)}
-<AllPractitionersPagination practitionersPerPage={practitionersPerPage}
-        practitioners={users}
-        paginate={paginate}
-        currentPage={currentPage}/>
+        <h1>All Practitioners</h1>
+        <br />
+        <section>
+          <input placeholder='Search' type='search' />
+          <Link to='/admin/add-practitioner'>
+            <button>+ Add Practitioner</button>
+          </Link>
+        </section>
+        <br />
+        <table>
+          <thead>
+            <tr>
+              {/* <th scope="col">Auto</th> */}
+              <th scope='col'>ID</th>
+              <th scope='col'>Username</th>
+              <th scope='col'>Role</th>
+              <th scope='col'>Email</th>
+              <th scope='col'>Phone</th>
+              <th scope='col'>Speciality</th>
+              <th scope='col'>Department</th>
+              <th scope='col'>Edit</th>
+              <th scope='col'>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentPractitioners.map((user, index) => (
+              <tr>
+                {/* <td scope="row"><strong>{index + 1}</strong></td> */}
+                <td>
+                  <strong>{user.id}</strong>
+                </td>
+                <td>{user.username}</td>
+                <td>{user.role}</td>
+                <td>{user.email}</td>
+                <td>{user.phone_number}</td>
+                <td>{user.speciality}</td>
+                {/* <td>{user.practitioner.department.name}</td> */}
+                <td>
+                  <Link
+                    id='td-edit-icon'
+                    className='btn btn-primary m-2'
+                    to={`/admin/practitioner/edit/${user.id}`}
+                  >
+                    <i class='fa fa-pencil' aria-hidden='true'></i>
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    id='td-delete-icon'
+                    className='btn btn-danger'
+                    onClick={() => deleteUser(user.id)}
+                  >
+                    <i class='fa fa-trash' aria-hidden='true'></i>
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {console.log(users)}
+        <AllPractitionersPagination
+          practitionersPerPage={practitionersPerPage}
+          practitioners={users}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
       </div>
     </div>
   );

@@ -36,11 +36,11 @@ import EditProduct from './Admin/EditProduct'
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("loggedIn"))
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('loggedIn'));
   const [userType, setUserType] = useState(localStorage.getItem("userType"))
   const [products, setProducts] = useState([]);
-  const [userPatient, setUserPatient] = useState("")
-  const [userPractitioner, setUserPractitioner] = useState("")
+  const [userPatient, setUserPatient] = useState('');
+  const [userPractitioner, setUserPractitioner] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
@@ -54,14 +54,14 @@ function App() {
 
   // Initializing the value of each product with value 1
   // Products are identified by their ids (ids are used as keys)
-  useEffect(()=>{
-    const newProductQuantity = {}
-    cart.forEach(product => {
-      newProductQuantity[product.id] = 1
-    })
+  useEffect(() => {
+    const newProductQuantity = {};
+    cart.forEach((product) => {
+      newProductQuantity[product.id] = 1;
+    });
 
-    setProductQuantity(newProductQuantity)
-  }, [])
+    setProductQuantity(newProductQuantity);
+  }, []);
 
   // Fetch all products
   useEffect(() => {
@@ -128,12 +128,12 @@ function App() {
 
   // // Quantity Add Button on Product Page
   function handleAddQty(product) {
-    setProductQuantity((productQuantity) =>{
-      if(!productQuantity[product.id]){
-        return {...productQuantity, [product.id]: 1}
-      }else {
-        const newQuantity = productQuantity[product.id] + 1
-        return { ...productQuantity, [product.id]: newQuantity }
+    setProductQuantity((productQuantity) => {
+      if (!productQuantity[product.id]) {
+        return { ...productQuantity, [product.id]: 1 };
+      } else {
+        const newQuantity = productQuantity[product.id] + 1;
+        return { ...productQuantity, [product.id]: newQuantity };
       }
     });
   }
@@ -144,13 +144,13 @@ function App() {
       productQuantity[product.id] < 2
         ? alert('Quantity cannot be less than 1')
         : setProductQuantity((productQuantity) => {
-          if (!productQuantity[product.id]) {
-            return { ...productQuantity, [product.id]: 1 }
-          } else {
-            const newQuantity = productQuantity[product.id] - 1
-            return { ...productQuantity, [product.id]: newQuantity }
-          }
-        });
+            if (!productQuantity[product.id]) {
+              return { ...productQuantity, [product.id]: 1 };
+            } else {
+              const newQuantity = productQuantity[product.id] - 1;
+              return { ...productQuantity, [product.id]: newQuantity };
+            }
+          });
     }
   }
 
@@ -169,10 +169,20 @@ function App() {
       />
       <Switch>
         <Route exact path='/signup'>
-          <SignUp loggedIn={loggedIn} setLoggedIn={setLoggedIn} userType={userType} setUserType={setUserType}/>
+          <SignUp
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+            userType={userType}
+            setUserType={setUserType}
+          />
         </Route>
         <Route exact path='/login'>
-          <Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} userType={userType} setUserType={setUserType} />
+          <Login
+            loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
+            userType={userType}
+            setUserType={setUserType}
+          />
         </Route>
         <Route exact path='/reset-password'>
           <ResetPassword loggedIn={loggedIn} userType={userType} />
@@ -205,7 +215,10 @@ function App() {
           <Practitioner loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/practitioners/me/create-appointment'>
-          <PractitionerCreateAppointment loggedIn={loggedIn} userType={userType} />
+          <PractitionerCreateAppointment
+            loggedIn={loggedIn}
+            userType={userType}
+          />
         </Route>
         <Route exact path='/practitioners/me/appointments'>
           <PractitionerAppointments loggedIn={loggedIn} userType={userType} />
@@ -240,37 +253,37 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {
-            userType == "practitioner" || userType == "patient" ? (
-              <ProductPage
-                handleAddToCart={handleAddToCart}
-                productQuantity={productQuantity}
-                setProductQuantity={setProductQuantity}
-                cartWarning={cartWarning}
-                handleAddQty={handleAddQty}
-                handleReduceQty={handleReduceQty}
-                loggedIn={loggedIn}
-                userType={userType}
-              />
-            ): ""
-          }
+          {userType == 'practitioner' || userType == 'patient' ? (
+            <ProductPage
+              handleAddToCart={handleAddToCart}
+              productQuantity={productQuantity}
+              setProductQuantity={setProductQuantity}
+              cartWarning={cartWarning}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
+          ) : (
+            ''
+          )}
         </Route>
         <Route exact path='/cart'>
-          {
-            userType == "practitioner" || userType == "patient" ? (
-              <Cart
-                cart={cart}
-                setCart={setCart}
-                cartCount={cartCount}
-                setCartCount={setCartCount}
-                productQuantity={productQuantity}
-                handleAddQty={handleAddQty}
-                handleReduceQty={handleReduceQty}
-                loggedIn={loggedIn}
-                userType={userType}
-              />
-            ) : ""
-          }
+          {userType == 'practitioner' || userType == 'patient' ? (
+            <Cart
+              cart={cart}
+              setCart={setCart}
+              cartCount={cartCount}
+              setCartCount={setCartCount}
+              productQuantity={productQuantity}
+              handleAddQty={handleAddQty}
+              handleReduceQty={handleReduceQty}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
+          ) : (
+            ''
+          )}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
@@ -281,41 +294,69 @@ function App() {
           <EditProduct loggedIn={loggedIn} userType={userType} />
         </Route>
         <Route exact path='/admin/login'>
-          <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+          <AdminLogin
+            setUserAdmin={setUserAdmin}
+            loggedIn={loggedIn}
+            userType={userType}
+          />
         </Route>
         <Route exact path='/admin/me'>
           {userAdmin ? (
-            <Admin userAdmin={userAdmin} loggedIn={loggedIn} userType={userType} />
+            <Admin
+              userAdmin={userAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           )}
         </Route>
         <Route exact path='/admin'>
           {userAdmin ? (
             <AllPractitioners loggedIn={loggedIn} userType={userType} />
           ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           )}
         </Route>
         <Route exact path='/admin/add-practitioner'>
           {userAdmin ? (
             <AddPractitioner loggedIn={loggedIn} userType={userType} />
           ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           )}
         </Route>
         <Route exact path='/admin/products'>
           {userAdmin ? (
-            <AllProducts loggedIn={loggedIn} userType={userType} />
+            <AllProducts loggedIn={loggedIn} userType={userType}  handleSearch={handleSearch} />
           ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           )}
         </Route>
         <Route exact path='/admin/add-product'>
           {userAdmin ? (
             <AddProduct loggedIn={loggedIn} userType={userType} />
           ) : (
-              <AdminLogin setUserAdmin={setUserAdmin} loggedIn={loggedIn} userType={userType} />
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
           )}
         </Route>
         {/* == ADMIN ROUTES == */}
