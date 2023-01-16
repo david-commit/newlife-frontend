@@ -95,10 +95,12 @@ function Shop({
       <div className="shop-search-filter-container">
         <form id="search-products-form">
           <input
-            onChange={handleSearch}
+            // onChange={handleSearch}
             type="search"
             id="search-input"
             placeholder="Search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <button type="submit">Search</button>
         </form>
