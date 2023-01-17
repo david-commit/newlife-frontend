@@ -129,6 +129,7 @@ function ProductPage({
         <button
           id="product-page-cart-button"
           onClick={() => handleAddToCart(product)}
+
         >
           <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
         </button>
@@ -201,7 +202,6 @@ function ProductPage({
           </span>
         </form>
       </section>
-
       {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
     </div>
   );

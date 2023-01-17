@@ -40,12 +40,12 @@ function CovidLineGraph () {
   };
 const options ={
 plugins: {
-  legend: true
+  legend: false
 },
 scales: {
 x: {
   grid: {
-    display: true
+    display:false
   }
 },
 y: {

@@ -50,8 +50,10 @@ function SignUp({loggedIn, setLoggedIn, userType, setUserType}) {
           }
         });
       } else {
-        response.json().then(setErrors("Unable to sign you up. An error occurred"));
-        console.log(errors)
+        response.json().then(data => {
+          setErrors("Unable to sign you up. An error occurred")
+          console.warn(data)
+        });
       }
     });
   }
