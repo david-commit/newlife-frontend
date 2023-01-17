@@ -74,6 +74,11 @@ function ProductPage({
           <img src={product.image} alt="Product appearance" />
         </span>
 
+        <div id="product-description">
+          <h3>Description</h3>
+          <p>{product.description}</p>
+        </div>
+
         <div id="product-page-info">
           <span className="product-price">
             Ksh &nbsp;{" "}
@@ -109,9 +114,6 @@ function ProductPage({
             <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
           </button>
           {/* </Link> */}
-
-          <h3>Desctiption</h3>
-          <p id="product-description">{product.description}</p>
 
           <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
