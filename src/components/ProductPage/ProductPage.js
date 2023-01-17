@@ -25,7 +25,7 @@ function ProductPage({
 
   console.log("products", product);
   console.log("reviews", reviews);
-  console.log("dosage", dosage);
+  console.log("rate", rate);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
