@@ -45,7 +45,7 @@ function ProductPage({
       setDosage(results.dosage_considerations);
       setReviews(results.reviews);
       setProductLoading(false);
-      setEffect(results.side_effects)
+      setEffect(results.side_effects);
     };
     fetchProduct();
   }, [productID, setDosage]);
@@ -165,7 +165,11 @@ function ProductPage({
 
         <span className="word-container">
           <h3>Reviews</h3>
-          <ul>{product.review}</ul>
+          <ul>
+            {reviews.map((e) => {
+              return <li className="review-item">{e.description_content}</li>;
+            })}
+          </ul>
         </span>
 
         <form id="review-form">
