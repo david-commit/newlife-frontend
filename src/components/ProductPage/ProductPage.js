@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./ProductPage.css";
 import loadingGif from "../../img/loading.gif";
-// https://github.com/n49/react-stars
 import ReactStars from "react-stars";
 
 function ProductPage({
