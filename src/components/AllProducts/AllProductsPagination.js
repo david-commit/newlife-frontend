@@ -5,7 +5,7 @@ import './AllProductsPagination.css'
 const AllProductsPagination = 
 (   {productsPerPage, products, paginate, currentPage} ) => {
     const pageNumbers = [];
-    console.log(products)
+    // console.log(products)
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
   }
