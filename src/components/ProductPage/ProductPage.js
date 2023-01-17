@@ -20,6 +20,7 @@ function ProductPage({
   const [prevRating, setPrevRating] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState([]);
+  let [effect, setEffect] = useState([]);
 
   console.log("products", product);
   console.log("reviews", reviews);
@@ -44,6 +45,7 @@ function ProductPage({
       setDosage(results.dosage_considerations);
       setReviews(results.reviews);
       setProductLoading(false);
+      setEffect(results.side_effects)
     };
     fetchProduct();
   }, [productID, setDosage]);
@@ -154,7 +156,11 @@ function ProductPage({
 
         <span className="word-container">
           <h3>Side Effects</h3>
-          <ul>{product.effects}</ul>
+          <ul>
+            {effect.map((e) => {
+              return <li>{e.side_effect}</li>;
+            })}
+          </ul>
         </span>
 
         <span className="word-container">
