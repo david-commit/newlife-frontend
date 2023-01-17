@@ -80,6 +80,8 @@ function PatientChat({loggedIn, userType}) {
         res.json().then(data => {
           console.warn(data)
         })
+      }else{
+        setMessage('')
       }
     })
   };
