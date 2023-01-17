@@ -83,18 +83,18 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
           </p>
           <br />
           <button type='submit'>Log In</button>
+          <br />
+          {errors && errors ? (
+            <>
+              <div className='admin-login-error-display'>
+                {errors ? <p>{errors.error}</p> : ''}
+              </div>
+              <br />
+            </>
+          ) : (
+            ''
+          )}
         </form>
-        <br />
-        {errors && errors ? (
-          <>
-            <div className='admin-login-error-display'>
-              {errors ? <p>{errors.error}</p> : ''}
-            </div>
-            <br />
-          </>
-        ) : (
-          ''
-        )}
       </div>
     </div>
   );
