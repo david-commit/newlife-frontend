@@ -23,15 +23,20 @@ function ProductPage({
   let [rate, setRate] = useState("");
   let [effect, setEffect] = useState([]);
 
-  console.log("products", product);
-  console.log("reviews", reviews);
-  console.log("rate", rate);
+  // console.log("products", product);
+  // console.log("reviews", reviews);
+  // console.log("rate", rate);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
     setNewRating(newRating);
     console.log(newRating);
   };
+
+  function handleQuantity(e) {
+    e.preventDefault();
+    console.log(quantity);
+  }
 
   // Fetches a single product
   useEffect(() => {
@@ -62,17 +67,6 @@ function ProductPage({
       <img src={loadingGif} alt="Loading animation" className="loading-gif" />
     );
   }
-
-  // Find product average rating
-  const getAverageRating = () => {
-    const allRatings = [];
-    reviews?.map((review) => {
-      allRatings.push(review.rating);
-    });
-    const sumOfConsecutives = (value1, value2) => value1 + value2;
-    const sumOfNums = allRatings.reduce(sumOfConsecutives);
-    console.log(sumOfNums);
-  };
 
   return (
     <div className="product-page-main-container">
@@ -114,13 +108,13 @@ function ProductPage({
             <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </span>
 
-          <form className="product-quantity">
+          <form className="product-quantity" onSubmit={handleQuantity}>
             <input
               type="number"
               min="1"
-              value={product.quantity}
+              value={quantity}
               placeholder="Quantity"
-              onChange={(e) => setProductQuantity(parseInt(e.target.value))}
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
             />
             <button type="submit">Set</button>
           </form>
@@ -129,7 +123,6 @@ function ProductPage({
         <button
           id="product-page-cart-button"
           onClick={() => handleAddToCart(product)}
-
         >
           <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
         </button>
