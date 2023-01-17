@@ -114,7 +114,6 @@ function ProductPage({
             Ksh &nbsp;{" "}
             <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </span>
-
           <span className="product-quantity">
             <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
               -
@@ -140,6 +139,7 @@ function ProductPage({
         <button
           id="product-page-cart-button"
           onClick={() => handleAddToCart(product)}
+
         >
           <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
         </button>
@@ -217,7 +217,6 @@ function ProductPage({
           </span>
         </form>
       </section>
-
       {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
     </div>
   );

@@ -318,6 +318,7 @@ function App() {
             />
           )}
         </Route>
+
         <Route exact path="/admin">
           {userAdmin ? (
             <AllPractitioners loggedIn={loggedIn} userType={userType} />

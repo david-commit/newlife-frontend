@@ -17,7 +17,9 @@ function Shop({
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(12);
   let [query, setQuery] = useState("");
+
   let [result, setResult] = useState("");
+
 
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
@@ -30,14 +32,10 @@ function Shop({
   // Change Pagination Pages
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  // Sort Products Logic
-  // const [sortProducts, setSortProducts] = useState('');
-  // if (sortProducts === "price-asc") {
-  //   products && products.sort((a, b) => a.price > b.price ? 1 : -1)
-  // }
-  // if (sortProducts === "price-desc") {
-  //   products && products.sort((a, b) => a.price < b.price ? 1 : -1)
-  // }
+  function searchHandle(e) {
+    e.preventDefault();
+    console.log(query);
+  }
 
   function searchResult(e) {
     e.preventDefault();
@@ -68,8 +66,10 @@ function Shop({
           <div className="shop-card">
             <img src={product.image} alt="Product" />
 
+
             <div className="shop-card-text">
               <section className="shop-card-section1">
+
                 <p>{product.category}</p>
 
                 {parseFloat(product.price_in_2dp) < 1 ? (
@@ -78,6 +78,7 @@ function Shop({
                   ""
                 )}
               </section>
+
 
               <div className="product-title">
                 <p>{product.name}</p>
@@ -111,6 +112,7 @@ function Shop({
   return (
     <div className="shop-main-container">
       <h1>Shop</h1>
+
 
       <div className="shop-search-filter-container">
         <form id="search-products-form" onSubmit={searchResult}>
