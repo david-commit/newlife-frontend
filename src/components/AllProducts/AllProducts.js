@@ -44,10 +44,6 @@ const AllProducts = ({ loggedIn, userType }) => {
     setProducts(result.data);
     setSearchQuery(result.data);
   };
-  // const deleteProduct = async (id) => {
-  //   await axios.delete(`http://localhost:3000/products/${products.id}`);
-  //   loadProduct();
-  // };
 
   // Handle search feature
   const handleSearch = (e) => {
@@ -114,11 +110,11 @@ const AllProducts = ({ loggedIn, userType }) => {
             </tr>
           </thead>
           <tbody>
-            {currentProducts?.map((product, index) => (
+            {currentProducts?.map((product) => (
               <tr key={product.id}>
                 {/* <td scope="row"><strong>{index + 1}</strong></td> */}
                 <td>
-                  <strong>{index + 1}</strong>
+                  <strong>{product.id}</strong>
                 </td>
                 <td>{product.name}</td>
                 <td>{product.category}</td>

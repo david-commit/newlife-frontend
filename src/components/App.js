@@ -1,57 +1,58 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
-import { Switch, Route, Redirect } from "react-router-dom";
-import NavBar from "./NavBar/NavBar";
-import Home from "./Home/Home";
-import AboutUs from "./AboutUs/AboutUs";
-import SignUp from "./SignUp/SignUp";
-import Login from "./Login/Login";
-import Patient from "./Patient/Patient";
-import Practitioner from "./Practitioner/Practitioner";
-import Shop from "./Shop/Shop";
-import Footer from "./Footer/Footer";
-import PatientCreateAppointment from "./PatientCreateAppointment/PatientCreateAppointment";
-import PatientAppointments from "./PatientAppointments/PatientAppointments";
-import PatientChat from "./PatientChat/PatientChat";
-import PatientReviews from "./PatientReviews/PatientReviews";
-import ProductPage from "./ProductPage/ProductPage";
-import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment";
-import PageNotFound from "./PageNotFound/PageNotFound";
-import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments";
-import PractitionerChat from "./PractitionerChat/PractitionerChat";
-import PractitionerReviews from "./PractitionerReviews/PractitionerReviews";
-import Cart from "./Cart/Cart";
-import PatientCalendar from "./PatientCalendar/PatientCalendar";
-import PractitionerCalendar from "./PractitionerCalendar/PractitionerCalendar";
-import Admin from "./Admin/Admin";
-import AdminLogin from "./AdminLogin/AdminLogin";
-import AddPractitioner from "./AddPractitioner/AddPractitioner";
-import AddProduct from "./AddProduct/AddProduct";
-import AllProducts from "./AllProducts/AllProducts";
-import AllPractitioners from "./AllPractitioners/AllPractitioners";
-import PatientDetailsPopup from "./PatientDetailsPopup/PatientDetailsPopup";
-import ResetPassword from "./ResetPassword/ResetPassword";
-import EditPractitioner from "./Admin/EditPractitioner";
-import EditProduct from "./Admin/EditProduct";
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import NavBar from './NavBar/NavBar';
+import Home from './Home/Home';
+import AboutUs from './AboutUs/AboutUs';
+import SignUp from './SignUp/SignUp';
+import Login from './Login/Login';
+import Patient from './Patient/Patient';
+import Practitioner from './Practitioner/Practitioner';
+import Shop from './Shop/Shop';
+import Footer from './Footer/Footer';
+import PatientCreateAppointment from './PatientCreateAppointment/PatientCreateAppointment';
+import PatientAppointments from './PatientAppointments/PatientAppointments';
+import PatientChat from './PatientChat/PatientChat';
+import PatientReviews from './PatientReviews/PatientReviews';
+import ProductPage from './ProductPage/ProductPage';
+import PractitionerCreateAppointment from './PractitionerCreateAppointment/PractitionerCreateAppointment';
+import PageNotFound from './PageNotFound/PageNotFound';
+import PractitionerAppointments from './PractitionerAppointments/PractitionerAppointments';
+import PractitionerChat from './PractitionerChat/PractitionerChat';
+import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
+import Cart from './Cart/Cart';
+import PatientCalendar from './PatientCalendar/PatientCalendar';
+import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
+import Admin from './Admin/Admin';
+import AdminLogin from './AdminLogin/AdminLogin';
+import AddPractitioner from './AddPractitioner/AddPractitioner';
+import AddProduct from './AddProduct/AddProduct';
+import AllProducts from './AllProducts/AllProducts';
+import AllPractitioners from './AllPractitioners/AllPractitioners';
+import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
+import ResetPassword from './ResetPassword/ResetPassword';
+import EditPractitioner from './Admin/EditPractitioner';
+import EditProduct from './Admin/EditProduct';
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("loggedIn"));
-  const [userType, setUserType] = useState(localStorage.getItem("userType"));
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('loggedIn'));
+  const [userType, setUserType] = useState(localStorage.getItem('userType'));
   const [products, setProducts] = useState([]);
-  const [userPatient, setUserPatient] = useState("");
-  const [userPractitioner, setUserPractitioner] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [userPatient, setUserPatient] = useState('');
+  const [userPractitioner, setUserPractitioner] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState({});
   const [cartWarning, setCartWarming] = useState(false);
   const [cartAddSuccess, setCartSuccess] = useState(false);
-  const [sortProducts, setSortedProducts] = useState("");
+  const [sortProducts, setSortedProducts] = useState('');
   let [dosage, setDosage] = useState([]);
-  const [sortAsc] = useState("");
-  const [sortDesc] = useState("price-desc");
+  const [sortAsc] = useState('');
+  const [sortDesc] = useState('price-desc');
+  const [productCategories] = useState([]);
 
   // Initializing the value of each product with value 1
   // Products are identified by their ids (ids are used as keys)
@@ -69,16 +70,16 @@ function App() {
     const fetchProducts = async () => {
       setLoading(true);
       // const response = await fetch('https://fakestoreapi.com/products');
-      const response = await fetch("http://localhost:3000/products");
+      const response = await fetch('http://localhost:3000/products');
       const results = await response.json();
 
       // Sort Products Logic on shop page
-      sortProducts === "price-asc"
+      sortProducts === 'price-asc'
         ? setProducts(
             results &&
               results.sort((a, b) => (a.price_in_2dp > b.price_in_2dp ? 1 : -1))
           )
-        : sortProducts === "price-desc"
+        : sortProducts === 'price-desc'
         ? setProducts(
             results &&
               results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
@@ -143,7 +144,7 @@ function App() {
   function handleReduceQty(product) {
     {
       productQuantity[product.id] < 2
-        ? alert("Quantity cannot be less than 1")
+        ? alert('Quantity cannot be less than 1')
         : setProductQuantity((productQuantity) => {
             if (!productQuantity[product.id]) {
               return { ...productQuantity, [product.id]: 1 };
@@ -154,6 +155,19 @@ function App() {
           });
     }
   }
+
+  // Get & Store all product categories
+  useEffect(() => {
+    fetch(`http://localhost:3000/products`)
+      .then((res) => res.json())
+      .then((data) => {
+        data.map((d) => productCategories.push(d.category));
+      });
+  }, []);
+
+  // Removes duplicates in array
+  const uniqueCategoryArray = [...new Set(productCategories)];
+  // console.log(uniqueCategoryArray);
 
   return (
     <div className='App'>
@@ -306,10 +320,7 @@ function App() {
         </Route>
         <Route exact path='/admin/me'>
           {userAdmin ? (
-            <Admin
-              loggedIn={loggedIn}
-              userType={userType}
-            />
+            <Admin loggedIn={loggedIn} userType={userType} />
           ) : (
             <AdminLogin
               setUserAdmin={setUserAdmin}
@@ -357,7 +368,11 @@ function App() {
         </Route>
         <Route exact path='/admin/add-product'>
           {userAdmin ? (
-            <AddProduct loggedIn={loggedIn} userType={userType} />
+            <AddProduct
+              loggedIn={loggedIn}
+              userType={userType}
+              uniqueCategoryArray={uniqueCategoryArray}
+            />
           ) : (
             <AdminLogin
               setUserAdmin={setUserAdmin}

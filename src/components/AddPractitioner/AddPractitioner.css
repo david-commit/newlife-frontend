@@ -40,6 +40,14 @@
   border: 1px solid grey;
   border-radius: 5px;
 }
+.add-practitioners-container form > select {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+}
 .button-container {
   width: 35%;
   font-size: 14px;

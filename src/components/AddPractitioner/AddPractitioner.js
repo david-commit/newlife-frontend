@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
@@ -9,6 +9,7 @@ const AddPractitioner = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
+  const [department, setDepartment] = useState('');
   const [firstErrors, setFirstErrors] = useState([]);
   const [secondErrors, setSecondErrors] = useState([]);
   const [fName, setFName] = useState('');
@@ -23,8 +24,15 @@ const AddPractitioner = () => {
   let [bmi] = useState(0);
   const [jobTitle, setJobTitle] = useState('');
   const [image, setImage] = useState('');
+  const [departments, setDepartments] = useState([]);
   let history = useHistory();
-  // console.log(bmi);
+
+  // Fetch All Departments
+  useEffect(() => {
+    fetch(`http://localhost:3000/departments`)
+      .then((r) => r.json())
+      .then((d) => setDepartments(d));
+  }, []);
 
   // Handles Practitioner Signup
   const handleAddPractitioner = (e) => {
@@ -37,6 +45,7 @@ const AddPractitioner = () => {
         email,
         password,
         password_confirmation: cPassword,
+        department_id: department,
       }),
     }).then((response) => {
       if (response.ok) {
@@ -51,11 +60,14 @@ const AddPractitioner = () => {
     });
   };
 
+  // Get user token
+  const token = localStorage.getItem('token');
+
   // Handles Practitioner Profile data
   const handleFillProfileDetails = (data) => {
     fetch(`http://localhost:3000/patient_profiles`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({
         practitioner_id: data.id,
         first_name: fName,
@@ -74,6 +86,7 @@ const AddPractitioner = () => {
     }).then((response) => {
       if (response.ok) {
         response.json(() => alert('Practitioner added successfully!'));
+        history.push(`/admin/all-practitioners`);
       } else {
         response.json().then((err) => {
           setSecondErrors(err.errors);
@@ -81,7 +94,6 @@ const AddPractitioner = () => {
         });
       }
     });
-    history.push(`/admin/all-practitioners`);
   };
 
   bmi = (weight / height / height).toFixed(1);
@@ -125,6 +137,14 @@ const AddPractitioner = () => {
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
+          <br />
+          <label>Select medical department</label>
+          <select onChange={(e) => setDepartment(e.target.value)}>
+            <option hidden>Select Department</option>
+            {departments?.map((dep) => {
+              return <option value={dep.id}>{dep.name}</option>;
+            })}
+          </select>
           {/* =======SECOND REQUEST========== */}
           <br />
           <label>Enter first name</label>
