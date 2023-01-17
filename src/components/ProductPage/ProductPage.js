@@ -153,42 +153,38 @@ function ProductPage({
           <h3>Reviews</h3>
           <ul>{product.review}</ul>
         </span>
-      </section>
 
-      {/* <form id="review-form">
-        <h2>Add Review</h2>
-        <ReactStars
-          count={5}
-          onChange={ratingChanged}
-          size={30}
-          color2={"#ffd700"}
-          half={true}
-        />
-        {newRating < 2
-          ? "Poor"
-          : newRating < 3
-          ? "Below Average"
-          : newRating < 4
-          ? "Average"
-          : newRating < 5
-          ? "Above Average"
-          : newRating < 6
-          ? "Excellent"
-          : "Select Rate"}
-        <br />
-        <br />
-        <textarea id="review-textarea" placeholder="Type review.."></textarea>
-        <br />
-        <br />
-        <button type="submit">Submit Review</button>{" "}
-        <button
-          type="reset"
-          style={{ width: "fit-content", backgroundColor: "grey" }}
-          onClick={() => setNewRating(0)}
-        >
-          Clear
-        </button>
-      </form> */}
+        <form id="review-form">
+          <h3>Add Review</h3>
+          <ReactStars
+            count={5}
+            onChange={ratingChanged}
+            size={30}
+            color2={"#ffd700"}
+            half={true}
+          />
+          {newRating < 2
+            ? "Poor"
+            : newRating < 3
+            ? "Below Average"
+            : newRating < 4
+            ? "Average"
+            : newRating < 5
+            ? "Above Average"
+            : newRating < 6
+            ? "Excellent"
+            : "Select Rate"}
+          <textarea id="review-textarea" placeholder="Type review.."></textarea>
+          <span id="review-buttons">
+            <button type="reset" id="reset" onClick={() => setNewRating(0)}>
+              Clear
+            </button>
+            <button type="submit" id="submit">
+              Submit
+            </button>
+          </span>
+        </form>
+      </section>
 
       {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
     </div>

@@ -339,3 +339,69 @@
   align-items: center;
   justify-content: flex-start;
 }
+
+#review-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 15vw;
+}
+
+#review-form * {
+  font-size: 1.3vw;
+}
+#review-form * {
+  font-size: 1.3vw;
+}
+
+#review-form > h3 {
+  border: thin solid #1d3e68;
+  height: 3vw;
+  width: 100%;
+  font-size: 1.5vw;
+  display: flex;
+  color: #1d3e68;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#review-buttons {
+  width: 100%;
+  height: 3vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#review-buttons button {
+  width: 20%;
+  height: 100%;
+  border: thin solid #1d3e68;
+  background-color: #1d3e68;
+  color: white;
+  font-size: 1.3vw;
+}
+
+#review-buttons > #reset:hover {
+  background-color: red;
+  border: thin solid transparent;
+}
+
+#review-textarea {
+  width: 80%;
+  height: 10vw;
+  border: thin solid #1d3e68;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: cen;
+  text-align: center;
+}
+
+#review-textarea:focus {
+  outline: thin solid transparent;
+}
