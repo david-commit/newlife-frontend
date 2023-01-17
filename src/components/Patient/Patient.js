@@ -15,7 +15,9 @@ function Patient({loggedIn, userType}) {
     height: "",
     weight: "",
     bmi: "",
-    blood_group: ""
+    blood_group: "",
+    first_name: "",
+    last_name: ""
   }
   )
   const history = useHistory()

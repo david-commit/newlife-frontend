@@ -23,33 +23,63 @@ function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, pers
     setPersonDetails(personDetails=> ({...personDetails, [e.target.id]: e.target.value}))
   }
 
+  function updatePersonProfile(profileId){
+    fetch(`http://127.0.0.1:3000/patient_profiles/${profileId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+        "Authorization": localStorage.getItem("token")
+      },
+      body: JSON.stringify(personDetails)
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then(data => {
+            setModalOpen(false)
+            const newProfileDetails = {...person.patient_profiles[0], ...data}
+            const newPersonDetails = {...person, patient_profiles: [newProfileDetails]}
+            localStorage.setItem("person", JSON.stringify(newPersonDetails))
+          })
+        } else {
+          res.json().then(data => console.warn(data))
+        }
+      })
+  }
+
+  function addNewProfile(personId){
+    fetch(`http://127.0.0.1:3000/patient_profiles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        "Accept": "application/json",
+        "Authorization": localStorage.getItem("token")
+      },
+      body: JSON.stringify({...personDetails, user_id: personId})
+    })
+      .then(res => {
+        if (res.ok) {
+          res.json().then(data => {
+            setModalOpen(false)
+            const newProfileDetails = data
+            const newPersonDetails = {...person, patient_profiles: [newProfileDetails]}
+            localStorage.setItem("person", JSON.stringify(newPersonDetails))
+          })
+        } else {
+          res.json().then(data => console.warn(data))
+        }
+      })   
+  }
+
   const handlePatientDataSumbit = (e) => {
     e.preventDefault();
     const personId = person?.id
-    const profileId = person?.patient_profiles[0]?.id
+    const profileId = person?.patient_profiles?.[0]?.id
 
     if(personId && profileId){
-      fetch(`http://127.0.0.1:3000/patient_profiles/${personId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          "Accept": "application/json",
-          "Authorization": localStorage.getItem("token")
-        },
-        body: JSON.stringify(personDetails)
-      })
-        .then(res => {
-          if (res.ok) {
-            res.json().then(data => {
-              setModalOpen(false)
-              const newProfileDetails = {...person.patient_profiles[0], ...data}
-              const newPersonDetails = {...person, patient_profiles: [newProfileDetails]}
-              localStorage.setItem("person", JSON.stringify(newPersonDetails))
-            })
-          } else {
-            res.json().then(data => console.warn(data))
-          }
-        })
+      updatePersonProfile(profileId)
+    }else if(personId && !profileId){
+      addNewProfile(personId)
     }else{
       console.warn("Couldn't find person id. Are you even logged in?")
     }
@@ -67,14 +97,38 @@ function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, pers
         }}
       >
         <div className='patient-details-popup-container'>
-          <br />
-          <br />
-          <h1>Edit Details</h1>
+              <h1>Edit Details</h1>
           <form
             onSubmit={handlePatientDataSumbit}
             className='patient-details-form-popup'
           >
             {' '}
+            <br />
+            <br />
+            <label>
+              First Name <br />
+              <input
+                id='first_name'
+                type='text'
+                value={personDetails.first_name}
+                onChange={modifyFormInput}
+                required
+              />
+            </label>
+            <br />
+            <br />
+            <label>
+              Last Name <br />
+              <input
+                id='last_name'
+                type='text'
+                value={personDetails.last_name}
+                onChange={modifyFormInput}
+                required
+              />
+            </label>
+            <br />
+            <br />
             <label>
               Phone <br />
               <input
@@ -135,18 +189,6 @@ function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, pers
             <br />
             <br />
             <label>
-              BMI <br />
-              <input
-                id='bmi'
-                type='text'
-                value={personDetails.bmi}
-                onChange={modifyFormInput}
-                required
-              />
-            </label>
-            <br />
-            <br />
-            <label>
               Blood Group <br />
               <input
                 id='blood_group'
@@ -163,15 +205,6 @@ function PatientDetailsPopup({ loggedIn, userType, modalOpen, setModalOpen, pers
           <br />
         </div>
       </Modal>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
       <br />
       <br />
     </div>
