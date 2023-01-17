@@ -74,27 +74,34 @@ function ProductPage({
           <img src={product.image} alt="Product appearance" />
         </span>
 
-        <section className="product-details-section">
-          <h3 className="product-price">
-            Ksh <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
-          </h3>
+        <div id="product-page-info">
+          <span className="product-price">
+            Ksh &nbsp;{" "}
+            <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
+          </span>
+
           <span className="product-quantity">
             <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
               -
             </button>
+
             <input
               type="number"
+              min="1"
               value={product.quantity}
               // value={productQuantity}
               onChange={(e) => setProductQuantity(parseInt(e.target.value))}
             />
+
             <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
               +
             </button>
           </span>
-          <br />
-          <br />
+        </div>
+
+        <section className="product-details-section">
           {/* <Link path to='/cart'> */}
+
           <button
             id="product-page-cart-button"
             onClick={() => handleAddToCart(product)}
@@ -102,11 +109,10 @@ function ProductPage({
             <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
           </button>
           {/* </Link> */}
-          <br />
-          <br />
+
           <h3>Desctiption</h3>
           <p id="product-description">{product.description}</p>
-          <br />
+
           <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
