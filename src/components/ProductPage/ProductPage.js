@@ -23,6 +23,7 @@ function ProductPage({
 
   console.log("products", product);
   console.log("reviews", reviews);
+  console.log("dosage", dosage);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
@@ -45,7 +46,7 @@ function ProductPage({
       setProductLoading(false);
     };
     fetchProduct();
-  }, [productID]);
+  }, [productID, setDosage]);
 
   // Loading Animationmethod_name
   if (productLoading) {
@@ -144,7 +145,11 @@ function ProductPage({
       <section className="product-details-bottom-section">
         <span className="word-container">
           <h3>Dosage considerations</h3>
-          <ul>{product.dosage}</ul>
+          <ul>
+            {dosage.map((e) => {
+              return <li key={e.id}>{e.consideration}</li>;
+            })}
+          </ul>
         </span>
 
         <span className="word-container">
