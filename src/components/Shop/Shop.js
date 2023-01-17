@@ -18,9 +18,6 @@ function Shop({
   const [productsPerPage] = useState(12);
   let [query, setQuery] = useState("");
 
-  let [result, setResult] = useState("");
-
-
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -37,23 +34,6 @@ function Shop({
     console.log(query);
   }
 
-  function searchResult(e) {
-    e.preventDefault();
-    console.log(query);
-    fetch("http://localhost:3000/productSearch", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
-  }
-
   const renderedProducts =
     currentProducts &&
     currentProducts.map((product) => {
@@ -65,27 +45,20 @@ function Shop({
         >
           <div className="shop-card">
             <img src={product.image} alt="Product" />
-
-
             <div className="shop-card-text">
-              <section className="shop-card-section1">
-
+              <section>
                 <p>{product.category}</p>
-
                 {parseFloat(product.price_in_2dp) < 1 ? (
                   <button id="free-button">Free</button>
                 ) : (
                   ""
                 )}
               </section>
-
-
               <div className="product-title">
-                <p>{product.name}</p>
+                <h3>{product.name}</h3>
               </div>
-
               <section className="card-price-button">
-                <p>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</p>
+                <h4>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</h4>
                 <button
                   type="button"
                   onClick={(e) => {
@@ -96,7 +69,6 @@ function Shop({
                   + Add to Cart
                 </button>
               </section>
-
             </div>
           </div>
         </Link>
@@ -112,24 +84,23 @@ function Shop({
   return (
     <div className="shop-main-container">
       <h1>Shop</h1>
-
-
       <div className="shop-search-filter-container">
-        <form id="search-products-form" onSubmit={searchResult}>
-          <input
-            // onChange={handleSearch}
-            type="search"
-            id="search-input"
-            placeholder="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <button type="submit">Search</button>
-        </form>
-
+        <input
+          // onChange={handleSearch}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          type="search"
+          id="search-input"
+          placeholder="Search"
+          style={{
+            fontSize: "16px",
+            padding: "4px",
+            borderRadius: "5px",
+            border: "1px solid grey",
+          }}
+        />
         {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
         {cartAddSuccess ? <p id="cart-success">Item added succesfully</p> : ""}
-
         <select
           id="shop-sort"
           onChange={(e) => setSortedProducts(e.target.value)}
@@ -145,7 +116,6 @@ function Shop({
           <option value="price-desc">Price: High to Low</option>
         </select>
       </div>
-
       <div className="shop-cards">{renderedProducts}</div>
       <ShopPagination
         productsPerPage={productsPerPage}
