@@ -1,12 +1,12 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import './Cart.css';
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import "./Cart.css";
 // https://react-responsive-modal.leopradel.com/
-import 'react-responsive-modal/styles.css';
-import { Modal } from 'react-responsive-modal';
-import mpesaImg from '../../img/Lipanampesa.png';
-import safMpesa from '../../img/sararicom-mpesa.png';
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import mpesaImg from "../../img/Lipanampesa.png";
+import safMpesa from "../../img/sararicom-mpesa.png";
 
 function Cart({
   cart,
@@ -19,9 +19,10 @@ function Cart({
   handleAddQty,
 }) {
   const [totalPrice, setTotalPrice] = useState(0);
-  const [phone, setPhone] = useState('');
+  const [phone, setPhone] = useState("");
   const [mpesaError, setMpesaError] = useState([]);
   const [amount, setAmount] = useState(0);
+  let [sumTotal, setSumTotal] = useState("");
 
   // Modal Popup Component
   const [openFirst, setOpenFirst] = React.useState(false);
@@ -37,10 +38,19 @@ function Cart({
     setTotalPrice(total);
   };
 
+  let total = cart.map((e) => {
+    return e.price_in_2dp;
+  });
+
   // Call the function on render
   useEffect(() => {
+    total.length === 0
+      ? setSumTotal(0)
+      : setSumTotal(total.reduce((a, b) => a + b, 0));
     handlePrice();
-  });
+  }, [setSumTotal, total]);
+
+  console.log(sumTotal);
 
   // Fiters out Products from Cart
   const handleRemove = (id) => {
@@ -54,29 +64,30 @@ function Cart({
   // })
 
   const handlePostToCart = (item) => {
-    fetch('http://localhost:3000/shopping_carts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch("http://localhost:3000/shopping_carts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({}),
     });
   };
 
   const handleDeleteFromCart = (item) => {
     fetch(`http://localhost:3000/shopping_carts/${item.id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     });
   };
 
   const handleMpesaPrompt = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/stkpush`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    fetch(`https://e5f5-102-215-78-19.in.ngrok.io/stkpush`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ phone, amount }),
     }).then((response) => {
       if (response.ok) {
         response.json().then(() => {
           alert(`Payment of Ksh${amount} was successful`);
+          console.log(response);
         });
       } else {
         response.json().then((err) => {
@@ -86,28 +97,31 @@ function Cart({
     });
   };
 
+  // console.log(cart);
+
   return (
-    <div className='cart-main-container'>
-      <h1 style={{ color: '#1d3e68' }}>Cart</h1>
+    <div className="cart-main-container">
+      <h1 style={{ color: "#1d3e68" }}>Cart</h1>
       <br />
-      <div className='cart-container'>
-        <section className='cart-cards'>
+
+      <div className="cart-container">
+        <section className="cart-cards">
           {/* --.map is not a function--
           --https://stackoverflow.com/a/70817122/20689462-- */}
           {Array.isArray(cart) ? (
             cart.map((product) => {
               return (
-                <div className='cart-card' key={product.id}>
-                  <img src={product.image} alt='Product' />
-                  <section className='cart-card-detail-section'>
+                <div className="cart-card" key={product.id}>
+                  <img src={product.image} alt="Product" />
+                  <section className="cart-card-detail-section">
                     <h2>{product.name}</h2>
                     <br />
-                    <div className='quantity-change-buttons'>
-                      Quantity:{' '}
+                    <div className="quantity-change-buttons">
+                      Quantity:{" "}
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
                         onClick={() => handleReduceQty(product)}
-                        id='cart-qty-btns'
+                        id="cart-qty-btns"
                       >
                         -
                       </button>
@@ -115,21 +129,21 @@ function Cart({
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
                         onClick={() => handleAddQty(product)}
-                        id='cart-qty-btns'
+                        id="cart-qty-btns"
                       >
                         +
-                      </button>{' '}
+                      </button>{" "}
                       | Ksh. {parseFloat(product.price_in_2dp).toFixed(2)}
                     </div>
                     <p>
-                      Total: Ksh.{' '}
+                      Total: Ksh.{" "}
                       {parseFloat(
                         product.price_in_2dp * productQuantity[product.id]
                       ).toFixed(2)}
                     </p>
                   </section>
                   <i
-                    class='fa-regular fa-circle-xmark'
+                    class="fa-regular fa-circle-xmark"
                     onClick={() => handleRemove(product.id)}
                   ></i>
                 </div>
@@ -139,29 +153,31 @@ function Cart({
             <h1>No Items in Cart</h1>
           )}
         </section>
-        <section className='cart-calculation-section'>
+
+        <section className="cart-calculation-section">
           <h2>
             Total Price: <br />
-            Ksh. {parseFloat(totalPrice).toFixed(2)}
+            Ksh. {parseFloat(sumTotal).toFixed(2)}
           </h2>
           <br />
           <h2>Total Items: {cartCount}</h2>
           <br />
-          <button onClick={() => setOpenFirst(true)} id='pay-button-checkout'>
+          <button onClick={() => setOpenFirst(true)} id="pay-button-checkout">
             Pay
           </button>
         </section>
       </div>
+
       <Modal
-        id='checkout-modal'
+        id="checkout-modal"
         open={openFirst}
         onClose={() => setOpenFirst(false)}
         center
       >
         {cartCount > 0 ? (
           <>
-            <img src={mpesaImg} alt='Mpesa' style={{ width: '100%' }} />
-            <div className='checkout-popup-container'>
+            <img src={mpesaImg} alt="Mpesa" style={{ width: "100%" }} />
+            <div className="checkout-popup-container">
               <h1>Checkout</h1>
               <br />
               <h2>Your order</h2>
@@ -172,12 +188,12 @@ function Cart({
               <br />
               <h1>Payment (Secure)</h1>
               <br />
-              <form className='checkout-form' onSubmit={handleMpesaPrompt}>
+              <form className="checkout-form" onSubmit={handleMpesaPrompt}>
                 <label>
                   Mpesa number
                   <br />
                   <input
-                    type='tel'
+                    type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -194,11 +210,11 @@ function Cart({
                 </label>
                 <br />
 
-                <button type='submit'>Send Prompt</button>
+                <button type="submit">Send Prompt</button>
                 <br />
                 <p
-                  id='checkout-need-help'
-                  className='button'
+                  id="checkout-need-help"
+                  className="button"
                   onClick={() => setOpenSecond(true)}
                 >
                   Need Help?
@@ -207,17 +223,18 @@ function Cart({
             </div>
           </>
         ) : (
-          <div className='checkout-empty-cart'>
+          <div className="checkout-empty-cart">
             <br />
             <h1>No items in Cart</h1>
             <br />
           </div>
         )}
       </Modal>
+
       <Modal open={openSecond} onClose={() => setOpenSecond(false)} center>
         <br />
         <br />
-        <img src={safMpesa} alt='saf mpesa' />
+        <img src={safMpesa} alt="saf mpesa" />
         <h1>FAQ</h1>
         <section>
           <p>
