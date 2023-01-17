@@ -7,6 +7,8 @@ import ReactStars from "react-stars";
 function ProductPage({
   handleAddToCart,
   productQuantity,
+  dosage,
+  setDosage,
   setProductQuantity,
   cartWarning,
   handleAddorRemoveQuantity,
@@ -18,8 +20,9 @@ function ProductPage({
   const [prevRating, setPrevRating] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState([]);
-  console.log(product);
-  console.log(reviews);
+
+  console.log("products", product);
+  console.log("reviews", reviews);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
@@ -37,6 +40,7 @@ function ProductPage({
       const results = await response.json();
       setProduct(results);
       setPrevRating(results.rating);
+      setDosage(results.dosage_considerations);
       setReviews(results.reviews);
       setProductLoading(false);
     };

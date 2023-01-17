@@ -1,56 +1,57 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import NavBar from './NavBar/NavBar';
-import Home from './Home/Home';
-import AboutUs from './AboutUs/AboutUs';
-import SignUp from './SignUp/SignUp';
-import Login from './Login/Login';
-import Patient from './Patient/Patient';
-import Practitioner from './Practitioner/Practitioner';
-import Shop from './Shop/Shop';
-import Footer from './Footer/Footer';
-import PatientCreateAppointment from './PatientCreateAppointment/PatientCreateAppointment';
-import PatientAppointments from './PatientAppointments/PatientAppointments';
-import PatientChat from './PatientChat/PatientChat';
-import PatientReviews from './PatientReviews/PatientReviews';
-import ProductPage from './ProductPage/ProductPage';
-import PractitionerCreateAppointment from './PractitionerCreateAppointment/PractitionerCreateAppointment';
-import PageNotFound from './PageNotFound/PageNotFound';
-import PractitionerAppointments from './PractitionerAppointments/PractitionerAppointments';
-import PractitionerChat from './PractitionerChat/PractitionerChat';
-import PractitionerReviews from './PractitionerReviews/PractitionerReviews';
-import Cart from './Cart/Cart';
-import PatientCalendar from './PatientCalendar/PatientCalendar';
-import PractitionerCalendar from './PractitionerCalendar/PractitionerCalendar';
-import Admin from './Admin/Admin';
-import AdminLogin from './AdminLogin/AdminLogin';
-import AddPractitioner from './AddPractitioner/AddPractitioner';
-import AddProduct from './AddProduct/AddProduct';
-import AllProducts from './AllProducts/AllProducts';
-import AllPractitioners from './AllPractitioners/AllPractitioners';
-import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
-import ResetPassword from './ResetPassword/ResetPassword';
-import EditPractitioner from './Admin/EditPractitioner';
-import EditProduct from './Admin/EditProduct'
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import { Switch, Route, Redirect } from "react-router-dom";
+import NavBar from "./NavBar/NavBar";
+import Home from "./Home/Home";
+import AboutUs from "./AboutUs/AboutUs";
+import SignUp from "./SignUp/SignUp";
+import Login from "./Login/Login";
+import Patient from "./Patient/Patient";
+import Practitioner from "./Practitioner/Practitioner";
+import Shop from "./Shop/Shop";
+import Footer from "./Footer/Footer";
+import PatientCreateAppointment from "./PatientCreateAppointment/PatientCreateAppointment";
+import PatientAppointments from "./PatientAppointments/PatientAppointments";
+import PatientChat from "./PatientChat/PatientChat";
+import PatientReviews from "./PatientReviews/PatientReviews";
+import ProductPage from "./ProductPage/ProductPage";
+import PractitionerCreateAppointment from "./PractitionerCreateAppointment/PractitionerCreateAppointment";
+import PageNotFound from "./PageNotFound/PageNotFound";
+import PractitionerAppointments from "./PractitionerAppointments/PractitionerAppointments";
+import PractitionerChat from "./PractitionerChat/PractitionerChat";
+import PractitionerReviews from "./PractitionerReviews/PractitionerReviews";
+import Cart from "./Cart/Cart";
+import PatientCalendar from "./PatientCalendar/PatientCalendar";
+import PractitionerCalendar from "./PractitionerCalendar/PractitionerCalendar";
+import Admin from "./Admin/Admin";
+import AdminLogin from "./AdminLogin/AdminLogin";
+import AddPractitioner from "./AddPractitioner/AddPractitioner";
+import AddProduct from "./AddProduct/AddProduct";
+import AllProducts from "./AllProducts/AllProducts";
+import AllPractitioners from "./AllPractitioners/AllPractitioners";
+import PatientDetailsPopup from "./PatientDetailsPopup/PatientDetailsPopup";
+import ResetPassword from "./ResetPassword/ResetPassword";
+import EditPractitioner from "./Admin/EditPractitioner";
+import EditProduct from "./Admin/EditProduct";
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('loggedIn'));
-  const [userType, setUserType] = useState(localStorage.getItem("userType"))
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem("loggedIn"));
+  const [userType, setUserType] = useState(localStorage.getItem("userType"));
   const [products, setProducts] = useState([]);
-  const [userPatient, setUserPatient] = useState('');
-  const [userPractitioner, setUserPractitioner] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
+  const [userPatient, setUserPatient] = useState("");
+  const [userPractitioner, setUserPractitioner] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [cart, setCart] = useState([]);
   const [cartCount, setCartCount] = useState(0);
   const [loading, setLoading] = useState(false);
   const [productQuantity, setProductQuantity] = useState({});
   const [cartWarning, setCartWarming] = useState(false);
   const [cartAddSuccess, setCartSuccess] = useState(false);
-  const [sortProducts, setSortedProducts] = useState('');
-  const [sortAsc] = useState('');
-  const [sortDesc] = useState('price-desc');
+  const [sortProducts, setSortedProducts] = useState("");
+  let [dosage, setDosage] = useState([]);
+  const [sortAsc] = useState("");
+  const [sortDesc] = useState("price-desc");
 
   // Initializing the value of each product with value 1
   // Products are identified by their ids (ids are used as keys)
@@ -68,16 +69,16 @@ function App() {
     const fetchProducts = async () => {
       setLoading(true);
       // const response = await fetch('https://fakestoreapi.com/products');
-      const response = await fetch('http://localhost:3000/products');
+      const response = await fetch("http://localhost:3000/products");
       const results = await response.json();
 
       // Sort Products Logic on shop page
-      sortProducts === 'price-asc'
+      sortProducts === "price-asc"
         ? setProducts(
             results &&
               results.sort((a, b) => (a.price_in_2dp > b.price_in_2dp ? 1 : -1))
           )
-        : sortProducts === 'price-desc'
+        : sortProducts === "price-desc"
         ? setProducts(
             results &&
               results.sort((a, b) => (a.price_in_2dp < b.price_in_2dp ? 1 : -1))
@@ -142,7 +143,7 @@ function App() {
   function handleReduceQty(product) {
     {
       productQuantity[product.id] < 2
-        ? alert('Quantity cannot be less than 1')
+        ? alert("Quantity cannot be less than 1")
         : setProductQuantity((productQuantity) => {
             if (!productQuantity[product.id]) {
               return { ...productQuantity, [product.id]: 1 };
@@ -155,7 +156,7 @@ function App() {
   }
 
   return (
-    <div className='App'>
+    <div className="App">
       <NavBar
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
@@ -168,7 +169,7 @@ function App() {
         cartCount={cartCount}
       />
       <Switch>
-        <Route exact path='/signup'>
+        <Route exact path="/signup">
           <SignUp
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
@@ -176,7 +177,7 @@ function App() {
             setUserType={setUserType}
           />
         </Route>
-        <Route exact path='/login'>
+        <Route exact path="/login">
           <Login
             loggedIn={loggedIn}
             setLoggedIn={setLoggedIn}
@@ -184,59 +185,59 @@ function App() {
             setUserType={setUserType}
           />
         </Route>
-        <Route exact path='/reset-password'>
+        <Route exact path="/reset-password">
           <ResetPassword loggedIn={loggedIn} userType={userType} />
         </Route>
         {/* == PATIENT ROUTES */}
-        <Route exact path='/patients/me'>
+        <Route exact path="/patients/me">
           <Patient loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/me/create-appointment'>
+        <Route exact path="/patients/me/create-appointment">
           <PatientCreateAppointment loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/me/appointments'>
+        <Route exact path="/patients/me/appointments">
           <PatientAppointments loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/me/chat'>
+        <Route exact path="/patients/me/chat">
           <PatientChat loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/me/reviews'>
+        <Route exact path="/patients/me/reviews">
           <PatientReviews loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/me/calendar'>
+        <Route exact path="/patients/me/calendar">
           <PatientCalendar loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/patients/details-popup'>
+        <Route exact path="/patients/details-popup">
           <PatientDetailsPopup loggedIn={loggedIn} userType={userType} />
         </Route>
         {/* == PATIENT ROUTES */}
         {/* == PRACTITIONER ROUTES */}
-        <Route exact path='/practitioners/me'>
+        <Route exact path="/practitioners/me">
           <Practitioner loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/practitioners/me/create-appointment'>
+        <Route exact path="/practitioners/me/create-appointment">
           <PractitionerCreateAppointment
             loggedIn={loggedIn}
             userType={userType}
           />
         </Route>
-        <Route exact path='/practitioners/me/appointments'>
+        <Route exact path="/practitioners/me/appointments">
           <PractitionerAppointments loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/practitioners/me/chat'>
+        <Route exact path="/practitioners/me/chat">
           <PractitionerChat loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/practitioners/me/reviews'>
+        <Route exact path="/practitioners/me/reviews">
           <PractitionerReviews loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/practitioners/me/calendar'>
+        <Route exact path="/practitioners/me/calendar">
           <PractitionerCalendar loggedIn={loggedIn} userType={userType} />
         </Route>
         overflow: ;{/* == PRACTITIONER ROUTES */}
-        <Route exact path='/about'>
+        <Route exact path="/about">
           <AboutUs />
         </Route>
-        <Route exact path='/products'>
+        <Route exact path="/products">
           <Shop
             products={products}
             handleSearch={handleSearch}
@@ -253,7 +254,7 @@ function App() {
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         <Route path={`/products/:productID`}>
-          {userType == 'practitioner' || userType == 'patient' ? (
+          {userType == "practitioner" || userType == "patient" ? (
             <ProductPage
               handleAddToCart={handleAddToCart}
               productQuantity={productQuantity}
@@ -263,13 +264,15 @@ function App() {
               handleReduceQty={handleReduceQty}
               loggedIn={loggedIn}
               userType={userType}
+              dosage={dosage}
+              setDosage={setDosage}
             />
           ) : (
-            ''
+            ""
           )}
         </Route>
-        <Route exact path='/cart'>
-          {userType == 'practitioner' || userType == 'patient' ? (
+        <Route exact path="/cart">
+          {userType == "practitioner" || userType == "patient" ? (
             <Cart
               cart={cart}
               setCart={setCart}
@@ -282,25 +285,25 @@ function App() {
               userType={userType}
             />
           ) : (
-            ''
+            ""
           )}
         </Route>
         {/* == BOTH PRACTITIONER & PATIENT Routes */}
         {/* == ADMIN ROUTES == */}
-        <Route exact path='/admin/practitioner/edit/:id'>
+        <Route exact path="/admin/practitioner/edit/:id">
           <EditPractitioner loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/admin/product/edit/:id'>
+        <Route exact path="/admin/product/edit/:id">
           <EditProduct loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='/admin/login'>
+        <Route exact path="/admin/login">
           <AdminLogin
             setUserAdmin={setUserAdmin}
             loggedIn={loggedIn}
             userType={userType}
           />
         </Route>
-        <Route exact path='/admin/me'>
+        <Route exact path="/admin/me">
           {userAdmin ? (
             <Admin
               userAdmin={userAdmin}
@@ -315,7 +318,7 @@ function App() {
             />
           )}
         </Route>
-        <Route exact path='/admin'>
+        <Route exact path="/admin">
           {userAdmin ? (
             <AllPractitioners loggedIn={loggedIn} userType={userType} />
           ) : (
@@ -326,7 +329,7 @@ function App() {
             />
           )}
         </Route>
-        <Route exact path='/admin/add-practitioner'>
+        <Route exact path="/admin/add-practitioner">
           {userAdmin ? (
             <AddPractitioner loggedIn={loggedIn} userType={userType} />
           ) : (
@@ -337,9 +340,13 @@ function App() {
             />
           )}
         </Route>
-        <Route exact path='/admin/products'>
+        <Route exact path="/admin/products">
           {userAdmin ? (
-            <AllProducts loggedIn={loggedIn} userType={userType}  handleSearch={handleSearch} />
+            <AllProducts
+              loggedIn={loggedIn}
+              userType={userType}
+              handleSearch={handleSearch}
+            />
           ) : (
             <AdminLogin
               setUserAdmin={setUserAdmin}
@@ -348,7 +355,7 @@ function App() {
             />
           )}
         </Route>
-        <Route exact path='/admin/add-product'>
+        <Route exact path="/admin/add-product">
           {userAdmin ? (
             <AddProduct loggedIn={loggedIn} userType={userType} />
           ) : (
@@ -360,10 +367,10 @@ function App() {
           )}
         </Route>
         {/* == ADMIN ROUTES == */}
-        <Route exact path='/'>
+        <Route exact path="/">
           <Home loggedIn={loggedIn} userType={userType} />
         </Route>
-        <Route exact path='*'>
+        <Route exact path="*">
           <PageNotFound loggedIn={loggedIn} userType={userType} />
         </Route>
       </Switch>
