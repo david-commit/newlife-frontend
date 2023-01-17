@@ -104,6 +104,24 @@ function ProductPage({
           </span>
         </div>
 
+        <section className="prevRating">
+          <p id="product-rating">
+            <strong>{prevRating}</strong>/5
+          </p>
+
+          <div>
+            <ReactStars
+              count={5}
+              value={prevRating}
+              size={24}
+              color2={"#ffd700"}
+              half={false}
+              edit={false}
+            />
+            <p>200 verified ratings</p>
+          </div>
+        </section>
+
         <section className="product-details-section">
           {/* <Link path to='/cart'> */}
 
@@ -115,25 +133,8 @@ function ProductPage({
           </button>
           {/* </Link> */}
 
-          <h3>Rating</h3>
           {/* <p>{product.rating.rate}</p> */}
           {/* <p>{product.rating}</p> */}
-          <section className="prevRating">
-            <p id="product-rating">
-              <strong>{prevRating}</strong>/5
-            </p>
-            <div>
-              <ReactStars
-                count={5}
-                value={prevRating}
-                size={24}
-                color2={"#ffd700"}
-                half={false}
-                edit={false}
-              />
-              <p>200 verified ratings</p>
-            </div>
-          </section>
         </section>
       </div>
 

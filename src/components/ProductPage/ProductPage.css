@@ -233,7 +233,7 @@
 
 #product-description {
   width: 100%;
-  height: max-content;
+  height: 10vw;
 }
 
 #product-description > h3 {
@@ -251,10 +251,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 1.3vw;
+  font-size: 1vw;
   width: 100%;
   height: max-content;
 }
+
 .product-details-bottom-section {
   /* background-color: aqua; */
 }
