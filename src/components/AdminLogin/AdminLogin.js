@@ -20,7 +20,6 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-    console.log(formData)
     // setPracCheckbox(false);
     fetch('http://localhost:3000/admin/login', {
       method: 'POST',
@@ -41,8 +40,9 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
           history.push('/admin/me')
         });
       } else {
-        response.json().then();
-        console.log(errors)
+        response.json().then(errors => {
+          console.warn(errors)
+        });
       }
     });
   }
@@ -85,7 +85,7 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
           <>
             <div className='login-error-display'>
               {errors.map((error) => {
-                console.log(error);
+                console.warn(error);
                 return (
                   <p key={error} style={{ color: 'red' }}>
                     {error}

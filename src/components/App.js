@@ -298,15 +298,15 @@ function App() {
         </Route>
         <Route exact path='/admin/login'>
           <AdminLogin
-            setUserAdmin={setUserAdmin}
             loggedIn={loggedIn}
+            setLoggedIn={setLoggedIn}
             userType={userType}
+            setUserType={setUserType}
           />
         </Route>
         <Route exact path='/admin/me'>
           {userAdmin ? (
             <Admin
-              userAdmin={userAdmin}
               loggedIn={loggedIn}
               userType={userType}
             />
