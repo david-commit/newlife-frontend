@@ -40,18 +40,16 @@
   text-align: center;
   padding-top: 30px;
 }
-.receiving-bubble {
+.sending-bubble {
   background-color: #1d3e68;
   color: white;
-  width: 250px;
   padding: 6px;
   margin: 4px;
   border-radius: 0 10px;
 }
-.sending-bubble {
+.receiving-bubble {
   background-color: #00a3c8;
   color: white;
-  width: 250px;
   padding: 6px;
   margin: 4px;
   border-radius: 10px 0;
@@ -64,7 +62,7 @@
   align-items: flex-end;
 }
 .practitioner-chat--static input {
-  width: 60vh;
+  width: 69vh;
   font-size: 14px;
   padding: 4px;
   height: 40px;
@@ -80,6 +78,15 @@
 }
 .practitioner-chat--static button:hover {
   cursor: pointer;
-  background-color: #00a3c8;
-  border: 1px solid grey;
+}
+
+.practitioner-chat-main-container .message-row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.practitioner-chat-main-container .message-row .dummy-div {
+  min-width: 5rem;
 }
