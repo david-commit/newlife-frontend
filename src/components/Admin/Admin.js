@@ -20,11 +20,6 @@ const AllPractitioners = ({ loggedIn, userType }) => {
     history.push('/login');
   }
 
-  console.log('usertype: ', userType);
-
-  useEffect(() => {
-    console.log('Newlife Hospital');
-  }, []);
   const loadUser = () => {
     const result = axios.get('http://localhost:3000/Practitioners');
     setUsers(result.data);

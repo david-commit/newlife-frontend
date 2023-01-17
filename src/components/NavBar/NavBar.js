@@ -70,6 +70,8 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
               ? 'Logged as Patient!'
               : loggedIn && (userType == "practitioner")
               ? 'Logged as Practitioner!'
+              : loggedIn && (userType == "admin")
+              ? 'Logged as admin'
               : 'Not logged In!'}
             <NavLink exact to='/'>
               Home
