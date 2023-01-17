@@ -12,7 +12,6 @@ function PractitionerAppointments({loggedIn, userType}) {
   const [appointments, setAppointments] = useState(
     JSON.parse(localStorage.getItem('person') || false)?.appointments || []
   );
-  console.log(appointments)
   // =========================
 
   if (loggedIn) {
@@ -35,7 +34,6 @@ function PractitionerAppointments({loggedIn, userType}) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          console.log("appointments ", data)
           setAppointments(
             data.map((appointment) => {
               return {
@@ -55,8 +53,6 @@ function PractitionerAppointments({loggedIn, userType}) {
       }
     });
   }, []);
-
-  console.log(appointments)
 
   function handleDeleteAppointment(deletedAppointment) {
     fetch(`http://localhost:3000/appointments/${deletedAppointment.id}`, {
