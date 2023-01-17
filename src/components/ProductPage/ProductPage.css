@@ -316,6 +316,7 @@
 
 .word-container > h3 {
   border: thin solid #1d3e68;
+  background-color: rgb(0, 163, 200, .2);
   height: 3vw;
   width: 100%;
   font-size: 1.5vw;
