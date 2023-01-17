@@ -1,103 +1,136 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './Practitioner.css';
-import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
 import { useHistory } from 'react-router-dom';
+import PractitionerSideBar from '../PractitionerSideBar/PractitionerSideBar';
+import PatientDetailsPopup from '../PractitionerDetailsPopup/PractitionerDetailsPopup';
 
 function Practitioner({loggedIn, userType}) {
-  const history = useHistory()
-  const [personalDetails, setPersonalDetails] = useState(
-    JSON.parse(localStorage.getItem("person") || false)?.practitioner_profiles?.[0]
+  const person = JSON.parse(localStorage.getItem("person") || false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const [personDetails, setPersonDetails] = useState(person?.["practitioner_profiles"]?.[0] ||
+  {
+    phone_number: "",
+    dob: "",
+    bio: "",
+    height: "",
+    weight: "",
+    bmi: "",
+    blood_group: "",
+    first_name: "",
+    last_name: ""
+  }
   )
+  const history = useHistory()
 
   if (loggedIn) {
-    if (userType == "patient") {
-      history.push('/patients/me')
+    if (userType == "practitioner") {
+      history.push('/practitioners/me')
     } else if (userType == "admin") {
       history.push('/admin/me')
     }
-  } else {
+  }else{
     history.push('/login')
   }
 
-  return (
-    <div className='practitioner-main-container'>
-      <PractitionerSideBar />
-      <div className='practitioner-details-dash-section'>
-        <h1>{`Hi Dr. ${personalDetails?.last_name}`}
-        </h1>
-        <p>See your personal details below</p>
-        <br />
-        <div className='practitioner-details-section'>
-          <p className='practitioner-details-title'>
-            <span>Bio:&nbsp;</span>
-          </p>
+  function handleEditDetailsClick(){
+    setModalOpen(true)
+  }
 
-          <textarea readOnly id='bio'>{personalDetails?.bio}</textarea>
+  return (
+    <>
+      <div className='practitioner-main-container'>
+        <PractitionerSideBar />
+        <div className='practitioner-details-dash-section'>
+          <h1>{`Hi ${personDetails?.first_name}`}</h1>
+          <p>See your personal details below</p>
           <br />
-          <p className='practitioner-details-title'>
-            <span>Job title:&nbsp;</span>
-            {personalDetails?.job_title}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Department:&nbsp;</span>
-            {JSON.parse(localStorage.getItem("person"))?.department?.name}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Date of Birth:&nbsp;</span>
-            {personalDetails?.dob}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Phone:&nbsp;</span>
-            {personalDetails?.phone_number}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Email:&nbsp;</span>
-            {JSON.parse(localStorage.getItem("person"))?.email}
-          </p>
-          {/* <p className='practitioner-details-title'>
-            <span>Location:&nbsp;</span>
-            Doonholm
-          </p> */}
-          {/* <p className='practitioner-details-title'>
-            <span>Age:&nbsp;</span>
-            34
-          </p> */}
-          {/* <p className='practitioner-details-title'>
-            <span>Height:&nbsp;</span>2 meters
-          </p> */}
-          <p className='practitioner-details-title'>
-            <span>Weight:&nbsp;</span>
-            {personalDetails?.weight}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>BMI:&nbsp;</span>
-            {Math.round(personalDetails?.weight * 100/ (personalDetails?.height)**2)/100}
-          </p>
-          <p className='practitioner-details-title'>
-            <span>Blood Group:&nbsp;</span>
-            {personalDetails?.blood_group}
-          </p>
+          <div className='practitioner-details-section'>
+            <p className='practitioner-details-title'>
+              <span>Bio:</span>
+            </p>
+            <div className='practitioner-details-bio'>
+              {personDetails?.bio}
+            </div>
+            <br />
+            <p className='practitioner-details-title'>
+              <span>Job Title: </span>
+              {personDetails?.job_title}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Department: </span>
+              {person?.department?.name}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Date of Birth: </span>
+              {personDetails?.dob}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Phone: </span>
+              {personDetails?.phone_number}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Email: </span>
+              {JSON.parse(localStorage.getItem("person"))?.email}
+            </p>
+            {/* <p className='practitioner-details-title'>
+              <span>Location:</span>
+              Nairobi
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Age:</span>
+              35
+            </p>
+            */}
+            <p className='practitioner-details-title'>
+              <span>Height: </span>{`${personDetails?.height} meters`}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Weight: </span>
+              {`${personDetails?.weight}Kg`}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>BMI: </span>
+              {Math.round(personDetails?.weight * 100/ (personDetails?.height)**2)/100}
+            </p>
+            <p className='practitioner-details-title'>
+              <span>Blood Group: </span>
+              {personDetails?.blood_group}
+            </p>
+
+            <button className='edit-personal-details' onClick={handleEditDetailsClick}>Edit Details</button>
+          </div>
+        </div>
+        <div className='practitioner-details-notification-section'>
+          <h2>Notifications</h2>
+          <div className='practitioner-details-notification'>
+            <h4>Upcomming appointment (in 2hrs)</h4>
+            <p>Dr. Grace Laura (Nutrionist)</p>
+            
+          </div>
+          <div className='practitioner-details-notification'>
+            <h4>Upcomming appointment (in 3hrs)</h4>
+            <p>Dr. Laura Grace(Nutritionist)</p>
+            
+          </div>
+          <div className='practitioner-details-notification'>
+            <h4>Upcomming appointment (in 3hrs)</h4>
+            <p>Dr. Laura Grace(Nutritionist)</p>
+            
+          </div>
         </div>
       </div>
-      <div className='practitioner-details-notification-section'>
-        <h2>Notifications</h2>
-        <div className='practitioner-details-notification'>
-          <h4>Upcomming appointment (in 2hrs)</h4>
-          <p>Dr. Grace Laura (Psychologist)</p>
-          <hr />
-        </div>
-        <div className='practitioner-details-notification'>
-          <h4>Upcomming appointment (in 3hrs)</h4>
-          <p>Dr. Faith Ondiege (Nutritionist)</p>
-          <hr />
-        </div>
-        <div className='practitioner-details-notification'>
-          <h4>Upcomming appointment (in 3hrs)</h4>
-          <p>Dr. Faith Ondiege (Nutritionist)</p>
-          <hr />
-        </div>
-      </div>
-    </div>
+      {
+        modalOpen ?
+        <PatientDetailsPopup
+            loggedIn={loggedIn}
+            userType={userType}
+            modalOpen={modalOpen}
+            setModalOpen={setModalOpen}
+            personDetails={personDetails}
+            setPersonDetails={setPersonDetails}/> : ""
+      }
+      
+    </>
   );
 }
 
