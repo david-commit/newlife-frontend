@@ -2,14 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./AllProductsPagination.css";
 
-const AllProductsPagination = ({
-  productsPerPage,
-  products,
-  paginate,
-  currentPage,
-}) => {
-  const pageNumbers = [];
-  console.log(products);
+const AllProductsPagination = 
+(   {productsPerPage, products, paginate, currentPage} ) => {
+    const pageNumbers = [];
+    // console.log(products)
   for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
   }

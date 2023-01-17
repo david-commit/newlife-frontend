@@ -93,7 +93,7 @@ const AllProducts = ({ loggedIn, userType }) => {
               <tr key={product.id}>
                 {/* <td scope="row"><strong>{index + 1}</strong></td> */}
                 <td>
-                  <strong>{product.id}</strong>
+                  <strong>{index + 1}</strong>
                 </td>
                 <td>{product.name}</td>
                 <td>{product.category}</td>
