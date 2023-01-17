@@ -20,11 +20,11 @@ const AddPractitioner = () => {
   const [weight, setWeight] = useState(0);
   const [height, setHeight] = useState(0);
   const [phone, setPhone] = useState('');
-  const [bmi, setBMI] = useState(0);
+  let [bmi] = useState(0);
   const [jobTitle, setJobTitle] = useState('');
   const [image, setImage] = useState('');
   let history = useHistory();
-  console.log(bmi)
+  // console.log(bmi);
 
   // Handles Practitioner Signup
   const handleAddPractitioner = (e) => {
@@ -81,7 +81,10 @@ const AddPractitioner = () => {
         });
       }
     });
+    history.push(`/admin/all-practitioners`);
   };
+
+  bmi = (weight / height / height).toFixed(1);
 
   return (
     <div className='all-practitioners-main-container'>
@@ -179,7 +182,7 @@ const AddPractitioner = () => {
             onChange={(e) => setBloodGroup(e.target.value)}
           />
           <br />
-          <label>Enter physical height (cm)</label>
+          <label>Enter physical height (m)</label>
           <input
             type='number'
             placeholder='Height (cm)'
@@ -195,13 +198,24 @@ const AddPractitioner = () => {
             onChange={(e) => setWeight(e.target.value)}
           />
           <br />
-          <label>BMI</label>
+          <label>BMI (Kg/m2)</label>
           <input
             disabled
             placeholder='0'
-            value={weight / height ** 2}
-            onChange={(e) => setBMI(e.target.value)}
+            value={bmi}
+            // onChange={(e) => setBMI(e.target.value)}
           />
+          {bmi > 0.01 && bmi < 18.5 ? (
+            <p style={{ color: 'red' }}>Under Weight</p>
+          ) : bmi > 18.5 && bmi < 24.9 ? (
+            <p style={{ color: 'green' }}>Healthy</p>
+          ) : bmi > 24.9 && bmi < 30 ? (
+            <p style={{ color: 'orangered' }}>Over Weight</p>
+          ) : bmi >= 30 ? (
+            <p style={{ color: 'red' }}>Obsese</p>
+          ) : (
+            <p>Enter your height & weight</p>
+          )}
           <br />
           <label>Enter Job Title</label>
           <input

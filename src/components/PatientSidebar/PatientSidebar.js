@@ -22,9 +22,9 @@ function PatientSidebar({loggedIn, userType}) {
         <NavLink exact to='/patients/me/reviews'>
           <i class='fa-solid fa-star'></i>&nbsp; Reviews
         </NavLink>
-        <NavLink exact to='/patients/me/calendar'>
+        {/* <NavLink exact to='/patients/me/calendar'>
           <i class='fa-solid fa-calendar'></i>&nbsp; Calendar
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );

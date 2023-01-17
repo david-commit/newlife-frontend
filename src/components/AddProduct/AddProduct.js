@@ -28,11 +28,14 @@ const AddProduct = () => {
   const uniqueCategoryArray = [...new Set(categories)];
   // console.log(uniqueCategoryArray);
 
+  // Get user token
+  const token = localStorage.getItem('token');
+
   const handleAddProduct = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3000/admins/1/products`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({
         name,
         image,
@@ -102,10 +105,9 @@ const AddProduct = () => {
           <label>Enter Price</label>
           <input
             type='number'
-            placeholder='Enter the Product Price'
             name='price'
             value={price}
-            onChange={(e) => setPrice(e.tarhet.value)}
+            onChange={(e) => setPrice(e.target.value)}
           />
           <br />
           <button className='button-container' type='submit'>
