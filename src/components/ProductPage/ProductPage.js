@@ -165,7 +165,7 @@ function ProductPage({
 
         <span className="word-container">
           <h3>Reviews</h3>
-          <ul>
+          <ul id="review-container">
             {reviews.map((e) => {
               return <li className="review-item">{e.description_content}</li>;
             })}
