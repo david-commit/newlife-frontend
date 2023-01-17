@@ -185,7 +185,7 @@ function ProductPage({
           <ReactStars
             count={5}
             onChange={ratingChanged}
-            size={30}
+            size={40}
             color2={"#ffd700"}
             half={true}
           />

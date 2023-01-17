@@ -286,7 +286,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border: thin solid #1d3e68;
 }
 
 #review-container{
@@ -295,13 +294,13 @@
 
 .review-item{
   width: 80%;
-  border: thin solid #1d3e68;
   background-color: #1d3e68;
   color: white;
   text-align: center;
-  margin-top: .1vw;
+  padding: .5vw;
+  margin-top: .3vw;
   font-size: .8vw;
   margin-left: 1.7vw;
-  margin-bottom: .1vw;
+  margin-bottom: .3vw;
   border-radius: .4vw;
 }
