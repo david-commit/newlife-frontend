@@ -23,15 +23,16 @@ function ProductPage({
   let [rate, setRate] = useState("");
   let [effect, setEffect] = useState([]);
 
-  console.log("products", product);
-  console.log("reviews", reviews);
-  console.log("rate", rate);
-
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
     setNewRating(newRating);
     console.log(newRating);
   };
+
+  function handleQuantity(e) {
+    e.preventDefault();
+    console.log(quantity);
+  }
 
   // Fetches a single product
   useEffect(() => {
@@ -63,17 +64,6 @@ function ProductPage({
     );
   }
 
-  // Find product average rating
-  const getAverageRating = () => {
-    const allRatings = [];
-    reviews?.map((review) => {
-      allRatings.push(review.rating);
-    });
-    const sumOfConsecutives = (value1, value2) => value1 + value2;
-    const sumOfNums = allRatings.reduce(sumOfConsecutives);
-    console.log(sumOfNums);
-  };
-
   return (
     <div className="product-page-main-container">
       <div className="product-details-container">
@@ -100,7 +90,6 @@ function ProductPage({
               half={false}
               edit={false}
             />
-            {/* <p>200 verified ratings</p> */}
           </div>
         </section>
 
@@ -112,42 +101,29 @@ function ProductPage({
         <div id="product-page-info">
           <span className="product-price">
             Ksh &nbsp;{" "}
-            <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
+            <span>
+              {parseFloat(product.price_in_2dp).toFixed(2) * quantity}
+            </span>
           </span>
-          <span className="product-quantity">
-            <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
-              -
-            </button>
 
+          {/* <form className="product-quantity" onSubmit={handleQuantity}>
             <input
               type="number"
               min="1"
-              value={product.quantity}
-              // value={productQuantity}
-              onChange={(e) => setProductQuantity(parseInt(e.target.value))}
+              value={quantity}
+              placeholder="Quantity"
+              onChange={(e) => setQuantity(parseInt(e.target.value))}
             />
+            <button type="submit">Set</button>
+          </form> */}
 
-            <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
-              +
-            </button>
-          </span>
+          <button
+            id="product-page-cart-button"
+            onClick={() => handleAddToCart(product)}
+          >
+            <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
+          </button>
         </div>
-
-        {/* <section className="product-details-section"> */}
-        {/* <Link path to='/cart'> */}
-
-        <button
-          id="product-page-cart-button"
-          onClick={() => handleAddToCart(product)}
-
-        >
-          <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
-        </button>
-        {/* </Link> */}
-
-        {/* <p>{product.rating.rate}</p> */}
-        {/* <p>{product.rating}</p> */}
-        {/* </section> */}
       </div>
 
       <section className="product-details-bottom-section">

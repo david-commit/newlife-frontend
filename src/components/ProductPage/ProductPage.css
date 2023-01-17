@@ -108,7 +108,7 @@
 }
 
 .product-quantity > input {
-  width: 40%;
+  width: 70%;
   height: 100%;
 }
 
@@ -138,9 +138,8 @@
 }
 
 #product-page-cart-button {
-  width: 40%;
-  height: 3.5vw;
-
+  width: 30%;
+  height: 90%;
   background-color: #1d3e68;
   color: white;
   font-size: 1.5vw;
