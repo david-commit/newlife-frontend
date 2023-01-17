@@ -102,10 +102,9 @@ const AddProduct = () => {
           <label>Enter Price</label>
           <input
             type='number'
-            placeholder='Enter the Product Price'
             name='price'
             value={price}
-            onChange={(e) => setPrice(e.tarhet.value)}
+            onChange={(e) => setPrice(e.target.value)}
           />
           <br />
           <button className='button-container' type='submit'>
