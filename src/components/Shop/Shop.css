@@ -6,11 +6,20 @@
   display: flex;
   margin: auto;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
 
 }
+
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  color: #1d3e68;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
 
 .shop-main-container > * {
   margin-top: 0.3vw;
@@ -100,7 +109,7 @@ input:focus {
 
 .shop-card {
   padding: .5vw;
-
+border-radius: .5vw;
   height: 21vw;
   display: flex;
   flex-direction: column;
@@ -209,13 +218,20 @@ input:focus {
 .card-price-button > button {
   width: 47%;
   height: 90%;
-  font-size: 1vw;
+  font-size: .9vw;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: white;
   color: #1d3e68;
-  border: thin solid #1d3e68;
+border-radius: .3vw;
+border: thin solid #1d3e68;
   text-decoration: none;
+}
+
+.card-price-button > button:hover{
+  cursor: pointer;
+  background-color: #1d3e68;
+  color: white;
 }

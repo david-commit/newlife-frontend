@@ -78,7 +78,8 @@ function ProductPage({
 
         <section className="prevRating">
           <p id="product-rating">
-            <strong>Rating: </strong> &nbsp;{rate.average_rating}
+            <strong>Rating: </strong> &nbsp;
+            {parseFloat(rate.average_rating).toFixed(2)}
           </p>
 
           <div id="rating-stars">
@@ -105,17 +106,6 @@ function ProductPage({
               {parseFloat(product.price_in_2dp).toFixed(2) * quantity}
             </span>
           </span>
-
-          {/* <form className="product-quantity" onSubmit={handleQuantity}>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              placeholder="Quantity"
-              onChange={(e) => setQuantity(parseInt(e.target.value))}
-            />
-            <button type="submit">Set</button>
-          </form> */}
 
           <button
             id="product-page-cart-button"
