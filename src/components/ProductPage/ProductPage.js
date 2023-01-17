@@ -74,6 +74,24 @@ function ProductPage({
           <img src={product.image} alt="Product appearance" />
         </span>
 
+        <section className="prevRating">
+          <p id="product-rating">
+            <strong>{prevRating}</strong>/5
+          </p>
+
+          <div id="rating-stars">
+            <ReactStars
+              count={5}
+              value={prevRating}
+              size={40}
+              color2={"#ffd700"}
+              half={false}
+              edit={false}
+            />
+            {/* <p>200 verified ratings</p> */}
+          </div>
+        </section>
+
         <div id="product-description">
           <h3>Description</h3>
           <p>{product.description}</p>
@@ -104,38 +122,20 @@ function ProductPage({
           </span>
         </div>
 
-        <section className="prevRating">
-          <p id="product-rating">
-            <strong>{prevRating}</strong>/5
-          </p>
+        {/* <section className="product-details-section"> */}
+        {/* <Link path to='/cart'> */}
 
-          <div>
-            <ReactStars
-              count={5}
-              value={prevRating}
-              size={24}
-              color2={"#ffd700"}
-              half={false}
-              edit={false}
-            />
-            <p>200 verified ratings</p>
-          </div>
-        </section>
+        <button
+          id="product-page-cart-button"
+          onClick={() => handleAddToCart(product)}
+        >
+          <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
+        </button>
+        {/* </Link> */}
 
-        <section className="product-details-section">
-          {/* <Link path to='/cart'> */}
-
-          <button
-            id="product-page-cart-button"
-            onClick={() => handleAddToCart(product)}
-          >
-            <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
-          </button>
-          {/* </Link> */}
-
-          {/* <p>{product.rating.rate}</p> */}
-          {/* <p>{product.rating}</p> */}
-        </section>
+        {/* <p>{product.rating.rate}</p> */}
+        {/* <p>{product.rating}</p> */}
+        {/* </section> */}
       </div>
 
       <section className="product-details-bottom-section">
