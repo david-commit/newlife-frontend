@@ -14,10 +14,10 @@
 .practitioner-details-dash-section h1 {
  color: #1d3e68;
 }
-.practitioner-details-dash-section textarea {
+.practitioner-details-dash-section .practitioner-details-bio {
 width: 80%;
-height: 100px;
-border: 1px solid lightgray;
+min-height: 5rem;
+border: 1px solid black;
 padding: 6px;border-radius: 5px;
 }
 .practitioner-details-title {
