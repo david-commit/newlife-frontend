@@ -139,12 +139,20 @@ function ProductPage({
       </div>
 
       <section className="product-details-bottom-section">
-        <h3>Dosage considerations</h3>
-        <ul>
-          <li>{product.dosage}</li>
-        </ul>
-        <h3>Side Effects</h3>
-        <p>{product.effects}</p>
+        <span className="word-container">
+          <h3>Dosage considerations</h3>
+          <ul>{product.dosage}</ul>
+        </span>
+
+        <span className="word-container">
+          <h3>Side Effects</h3>
+          <ul>{product.effects}</ul>
+        </span>
+
+        <span className="word-container">
+          <h3>Reviews</h3>
+          <ul>{product.review}</ul>
+        </span>
       </section>
 
       {/* <form id="review-form">
