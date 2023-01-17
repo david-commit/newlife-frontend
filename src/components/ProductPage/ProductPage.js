@@ -20,6 +20,7 @@ function ProductPage({
   const [prevRating, setPrevRating] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState([]);
+  let [rate, setRate] = useState("");
   let [effect, setEffect] = useState([]);
 
   console.log("products", product);
@@ -39,7 +40,12 @@ function ProductPage({
       const response = await fetch(
         `http://localhost:3000/products/${productID}`
       );
+      const res = await fetch(
+        `http://localhost:3000/products/${productID}/average_rating`
+      );
+      let res1 = await res.json();
       const results = await response.json();
+      setRate(res1);
       setProduct(results);
       setPrevRating(results.rating);
       setDosage(results.dosage_considerations);
@@ -100,7 +106,7 @@ function ProductPage({
 
         <div id="product-description">
           <h3>Description</h3>
-          <p>{product.description}</p>
+          <p>No description is available for this product at this time.</p>
         </div>
 
         <div id="product-page-info">
