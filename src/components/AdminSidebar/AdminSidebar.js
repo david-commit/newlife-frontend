@@ -9,7 +9,7 @@ function AdminSidebar() {
         <NavLink exact to='/admin/me'>
           <i class='fa-solid fa-user'></i>&nbsp; Dashboard
           </NavLink>
-        <NavLink exact to='/admin'>
+        <NavLink exact to='/admin/all-practitioners'>
           <i class='fa-solid fa-user'></i>&nbsp; All Practitioners
         </NavLink>
         <NavLink exact to='/admin/add-practitioner'>

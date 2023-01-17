@@ -5,7 +5,7 @@ import './AllPractitionersPagination.css'
 const AllPractitionersPagination = 
 (   {practitionersPerPage, practitioners, paginate, currentPage} ) => {
     const pageNumbers = [];
-    console.log(practitioners)
+    // console.log(practitioners)
   for (let i = 1; i <= Math.ceil(practitioners.length / practitionersPerPage); i++) {
     pageNumbers.push(i);
   }
