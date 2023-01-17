@@ -31,6 +31,10 @@ const AddProduct = () => {
   // Get user token
   const token = localStorage.getItem('token');
 
+  // Get admin data
+  const userData = localStorage.getItem('person');
+  console.log(userData.id)
+
   const handleAddProduct = (e) => {
     e.preventDefault();
     fetch(`http://localhost:3000/admins/1/products`, {

@@ -64,6 +64,28 @@ const AllProducts = ({ loggedIn, userType }) => {
   // Get user token
   const token = localStorage.getItem('token');
 
+  // Get user data
+  const userData = localStorage.getItem('person');
+  const adminId = JSON.parse(userData).id;
+
+  // Handle Delete Product
+  const handleDeleteProduct = (deletedProduct) => {
+    fetch(`http://localhost:3000/admins/${adminId}/products/${deletedProduct.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token,
+        Accept: '*/*',
+      },
+    }).then((result) => {
+      if (result.ok) {
+        setProducts((products) => {
+          return products.filter((product) => product.id != deletedProduct.id);
+        });
+      }
+    });
+  };
+
   return (
     <div className='all-products-main-container'>
       <AdminSidebar />
@@ -92,7 +114,7 @@ const AllProducts = ({ loggedIn, userType }) => {
             </tr>
           </thead>
           <tbody>
-            {currentProducts.map((product, index) => (
+            {currentProducts?.map((product, index) => (
               <tr key={product.id}>
                 {/* <td scope="row"><strong>{index + 1}</strong></td> */}
                 <td>
@@ -119,20 +141,7 @@ const AllProducts = ({ loggedIn, userType }) => {
                     class='fa fa-trash'
                     aria-hidden='true'
                     id='td-delete-icon'
-                    onClick={() => {
-                      fetch(
-                        `http://localhost:3000/admins/1/products/${product.id}`,
-                        {
-                          method: 'DELETE',
-                          headers: {
-                            'Content-Type': 'application/',
-                            Authorization: token,
-                            'Accept': '*/*',
-                          },
-                        }
-                      );
-                      // console.log(product.id)
-                    }}
+                    onClick={() => handleDeleteProduct(product)}
                   ></i>
                 </td>
               </tr>
