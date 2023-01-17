@@ -82,7 +82,7 @@ function Patient({loggedIn, userType}) {
             </p>
             <p className='practitioner-details-title'>
               <span>BMI: </span>
-              {personDetails?.bmi}
+              {Math.round(personDetails?.weight * 100/ (personDetails?.height)**2)/100}
             </p>
             <p className='practitioner-details-title'>
               <span>Blood Group: </span>
