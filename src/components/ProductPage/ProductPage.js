@@ -23,10 +23,6 @@ function ProductPage({
   let [rate, setRate] = useState("");
   let [effect, setEffect] = useState([]);
 
-  // console.log("products", product);
-  // console.log("reviews", reviews);
-  // console.log("rate", rate);
-
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
     setNewRating(newRating);
@@ -105,10 +101,12 @@ function ProductPage({
         <div id="product-page-info">
           <span className="product-price">
             Ksh &nbsp;{" "}
-            <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
+            <span>
+              {parseFloat(product.price_in_2dp).toFixed(2) * quantity}
+            </span>
           </span>
 
-          <form className="product-quantity" onSubmit={handleQuantity}>
+          {/* <form className="product-quantity" onSubmit={handleQuantity}>
             <input
               type="number"
               min="1"
@@ -117,15 +115,15 @@ function ProductPage({
               onChange={(e) => setQuantity(parseInt(e.target.value))}
             />
             <button type="submit">Set</button>
-          </form>
-        </div>
+          </form> */}
 
-        <button
-          id="product-page-cart-button"
-          onClick={() => handleAddToCart(product)}
-        >
-          <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
-        </button>
+          <button
+            id="product-page-cart-button"
+            onClick={() => handleAddToCart(product)}
+          >
+            <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
+          </button>
+        </div>
       </div>
 
       <section className="product-details-bottom-section">
