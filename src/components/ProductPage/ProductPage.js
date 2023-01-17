@@ -100,7 +100,6 @@ function ProductPage({
               half={false}
               edit={false}
             />
-            {/* <p>200 verified ratings</p> */}
           </div>
         </section>
 
@@ -115,27 +114,17 @@ function ProductPage({
             <span>{parseFloat(product.price_in_2dp).toFixed(2)}</span>
           </span>
 
-          <span className="product-quantity">
-            <button onClick={() => handleAddorRemoveQuantity(product, -1)}>
-              -
-            </button>
-
+          <form className="product-quantity">
             <input
               type="number"
               min="1"
               value={product.quantity}
-              // value={productQuantity}
+              placeholder="Quantity"
               onChange={(e) => setProductQuantity(parseInt(e.target.value))}
             />
-
-            <button onClick={() => handleAddorRemoveQuantity(product, +1)}>
-              +
-            </button>
-          </span>
+            <button type="submit">Set</button>
+          </form>
         </div>
-
-        {/* <section className="product-details-section"> */}
-        {/* <Link path to='/cart'> */}
 
         <button
           id="product-page-cart-button"
@@ -143,11 +132,6 @@ function ProductPage({
         >
           <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
         </button>
-        {/* </Link> */}
-
-        {/* <p>{product.rating.rate}</p> */}
-        {/* <p>{product.rating}</p> */}
-        {/* </section> */}
       </div>
 
       <section className="product-details-bottom-section">
