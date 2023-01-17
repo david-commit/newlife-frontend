@@ -12,7 +12,6 @@ function PractitionerAppointments({loggedIn, userType}) {
   const [appointments, setAppointments] = useState(
     JSON.parse(localStorage.getItem('person') || false)?.appointments || []
   );
-  console.log(appointments)
   // =========================
 
   if (loggedIn) {
@@ -38,8 +37,9 @@ function PractitionerAppointments({loggedIn, userType}) {
           setAppointments(
             data.map((appointment) => {
               return {
-                departmentName: appointment.practitioner?.department?.name,
-                practitionerLastName: appointment.practitioner?.last_name,
+                userFirstName: appointment.user?.first_name,
+                userLastName: appointment.user?.last_name,
+                email: appointment.user?.email,
                 time: appointment.time,
                 type: appointment.appointment_type,
                 info: appointment.appointment_info,
@@ -89,7 +89,7 @@ function PractitionerAppointments({loggedIn, userType}) {
                 <p>
                   <h3>{`${appointment.type}`}</h3>
                   <p>
-                    {`(Dr. ${appointment.practitionerLastName}, ${appointment.departmentName} Department))`}
+                    {`${appointment.userFirstName} ${appointment.userLastName} (${appointment.email})`}
                   </p>
                   <h4>{`${appointment.time}` }</h4></p>
                 {/* <button type='View'>View </button> */}

@@ -1,0 +1,51 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.customModal {
+  max-width: 500px;
+  width: 100%;
+  height: 75vh;
+  border: 2px solid #1d3e68;
+  /* background: #1d3e68; */
+  border-radius: 15px;
+}
+.practitioner-details-popup-container h1 {
+  padding-bottom: 20px;
+  color: #1d3e68;
+}
+.practitioner-details-popup-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.practitioner-details-form-popup {
+  width: 50%;
+}
+.practitioner-details-form-popup label {
+  font-size: 1rem;
+}
+.practitioner-details-form-popup input,
+.practitioner-details-form-popup textarea {
+  width: 100%;
+  border: 1px solid #1d3e68;
+  font-size: 0.9rem;
+  padding: 4px;
+  border-radius: 5px;
+}
+.practitioner-details-form-popup button {
+  background-color: #1d3e68;
+  border: 1px solid #1d3e68;
+  color: white;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+.practitioner-details-form-popup button:hover {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #1d3e68;
+  color: #1d3e68;
+  transition: all 0.35s ease-in-out;
+}

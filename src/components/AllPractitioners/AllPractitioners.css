@@ -2,13 +2,14 @@
 /* DARK BLUE > #1d3e68 */
 /* LIGHT GREY > #f8f9fb */
 .all-practitioners-main-container {
-  width: 85%;
+  /* width: 85%; */
+  /* margin-left: 7.5%; */
   display: flex;
   margin: 0 auto -80px auto;
   height: fit-content;
 }
 .all-practitioners-container {
-  width: 100%;
+  width: 80%;
   padding: 35px;
   /* border: 1px dashed red; */
   height: fit-content;

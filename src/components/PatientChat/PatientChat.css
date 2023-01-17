@@ -40,21 +40,16 @@
   text-align: center;
   padding-top: 30px;
 }
-.receiving-bubble {
+.sending-bubble {
   background-color: #1d3e68;
   color: white;
-  width: 250px;
   padding: 6px;
   margin: 4px;
   border-radius: 0 10px;
-  position: relative;
-  left: 175px;
-  top: 5px;
 }
-.sending-bubble {
+.receiving-bubble {
   background-color: #00a3c8;
   color: white;
-  width: 250px;
   padding: 6px;
   margin: 4px;
   border-radius: 10px 0;
@@ -83,4 +78,15 @@
 }
 .patient-chat--static button:hover {
   cursor: pointer;
+}
+
+.patient-chat-main-container .message-row {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.patient-chat-main-container .message-row .dummy-div {
+  min-width: 5rem;
 }

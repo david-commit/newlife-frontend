@@ -4,51 +4,55 @@ import { Link, useHistory } from 'react-router-dom';
 import { useState } from 'react';
 
 function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
-  const [formData, setFormData] = useState({username: "", password: ""})
-  const [errors, setErrors] = useState("")
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [errors, setErrors] = useState('');
   const history = useHistory();
 
-  if(loggedIn){
-    if(userType == "patient"){
-      history.push('/patients/me')
-    } else if (userType == "practitioner"){
-      history.push('/practitioners/me')
-    } else if (userType == "admin"){
-      history.push('/admin/me')
+  if (loggedIn) {
+    if (userType == 'patient') {
+      history.push('/patients/me');
+    } else if (userType == 'practitioner') {
+      history.push('/practitioners/me');
+    } else if (userType == 'admin') {
+      history.push('/admin/me');
     }
   }
 
   function handleLoginSubmit(e) {
     e.preventDefault();
-    console.log(formData)
     // setPracCheckbox(false);
     fetch('http://localhost:3000/admin/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({username: formData.username, password: formData.password}),
+      body: JSON.stringify({
+        username: formData.username,
+        password: formData.password,
+      }),
     }).then((response) => {
       if (response.ok) {
         response.json().then((person) => {
           localStorage.setItem('token', person.jwt);
-          localStorage.setItem('loggedIn', true)
-          localStorage.setItem("userType", "admin")
+          localStorage.setItem('loggedIn', true);
+          localStorage.setItem('userType', 'admin');
 
-          localStorage.setItem('person', JSON.stringify(person.admin))
-          setLoggedIn(true)
-          setUserType('admin')
-          history.push('/admin/me')
+          localStorage.setItem('person', JSON.stringify(person.admin));
+          setLoggedIn(true);
+          setUserType('admin');
+          history.push('/admin/me');
         });
       } else {
-        response.json().then();
-        console.log(errors)
+        response.json().then((errors) => {
+          setErrors(errors);
+        });
       }
     });
   }
+  console.log(errors);
 
-  function updateFormData(e){
-    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
+  function updateFormData(e) {
+    setFormData((formData) => ({ ...formData, [e.target.id]: e.target.value }));
   }
 
   return (
@@ -79,25 +83,18 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
           </p>
           <br />
           <button type='submit'>Log In</button>
+          <br />
+          {errors && errors ? (
+            <>
+              <div className='admin-login-error-display'>
+                {errors ? <p>{errors.error}</p> : ''}
+              </div>
+              <br />
+            </>
+          ) : (
+            ''
+          )}
         </form>
-        <br />
-        {errors && errors ? (
-          <>
-            <div className='login-error-display'>
-              {errors.map((error) => {
-                console.log(error);
-                return (
-                  <p key={error} style={{ color: 'red' }}>
-                    {error}
-                  </p>
-                );
-              })}
-            </div>
-            <br />
-          </>
-        ) : (
-          ""
-        )}
       </div>
     </div>
   );

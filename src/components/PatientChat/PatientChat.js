@@ -80,6 +80,11 @@ function PatientChat({loggedIn, userType}) {
         res.json().then(data => {
           console.warn(data)
         })
+      }else{
+        res.json().then(data => {
+          console.log("new message: ", data)
+        })
+        setMessage('')
       }
     })
   };
@@ -118,9 +123,19 @@ function PatientChat({loggedIn, userType}) {
             {activeChat && chats[activeChat]?.messages?.length ? (
               messagesSorted(chats[activeChat]?.messages).map(message => {
                 if (message.receiver_class == "Practitioner") {
-                  return <div className='receiving-bubble'>{message.content}</div>
+                  return (
+                    <div className='message-row'>
+                      <div className='dummy-div'></div>
+                      <div className='sending-bubble'>{message.content}</div>
+                    </div>
+                  )
                 } else if (message.receiver_class == "User") {
-                  return <div className='sending-bubble'>{message.content}</div>
+                  return (
+                    <div className='message-row'>
+                      <div className='receiving-bubble'>{message.content}</div>
+                      <div className='dummy-div'></div>
+                    </div>
+                  )
                 }
               })
             ) : (
