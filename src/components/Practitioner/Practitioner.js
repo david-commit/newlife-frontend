@@ -7,19 +7,22 @@ import PatientDetailsPopup from '../PractitionerDetailsPopup/PractitionerDetails
 function Practitioner({loggedIn, userType}) {
   const person = JSON.parse(localStorage.getItem("person") || false)
   const [modalOpen, setModalOpen] = useState(false)
-  const [personDetails, setPersonDetails] = useState(person?.["practitioner_profiles"]?.[0] ||
-  {
-    phone_number: "",
-    dob: "",
-    bio: "",
-    height: "",
-    weight: "",
-    bmi: "",
-    blood_group: "",
-    first_name: "",
-    last_name: ""
-  }
+  const [personDetails, setPersonDetails] = useState(
+    JSON.parse(localStorage.getItem("person") ||
+    false)?.["practitioner_profiles"]?.[0] ||
+    {
+      phone_number: "",
+      dob: "",
+      bio: "",
+      height: "",
+      weight: "",
+      bmi: "",
+      blood_group: "",
+      first_name: "",
+      last_name: ""
+    }
   )
+  
   const history = useHistory()
 
   if (loggedIn) {

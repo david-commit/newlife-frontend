@@ -44,11 +44,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
       'http://localhost:3000/practitioner_profiles'
     );
     setUsers(result.data);
-    setSearchQuery(result.data)
-  };
-  const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:3000/practitioner_profiles/${id}`);
-    loadUser();
+    setSearchQuery(result.data);
   };
 
   // Handle search feature
@@ -63,6 +59,34 @@ const AllPractitioners = ({ loggedIn, userType }) => {
     return currentPractitioners;
   };
   // console.log(currentPractitioners)
+
+  // Get user token
+  const token = localStorage.getItem('token');
+
+  // Get user data
+  const userData = localStorage.getItem('person');
+  const adminId = JSON.parse(userData).id;
+
+  // Handle Delete Practitioner
+  const handleDeletePractitioner = (deletedPrac) => {
+    fetch(
+      `http://localhost:3000/admins/${adminId}/products/${deletedPrac.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+          Accept: '*/*',
+        },
+      }
+    ).then((result) => {
+      if (result.ok) {
+        setUsers((users) => {
+          return users.filter((user) => user.id != deletedPrac.id);
+        });
+      }
+    });
+  };
 
   return (
     <div className='all-practitioners-main-container'>
@@ -118,7 +142,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
                     class='fa fa-trash'
                     aria-hidden='true'
                     id='td-delete-icon'
-                    onClick={() => deleteUser(user.id)}
+                    onClick={() => handleDeletePractitioner(user)}
                   ></i>
                 </td>
               </tr>

@@ -2,7 +2,7 @@
 /* DARK BLUE > #1d3e68 */
 /* LIGHT GREY > #f8f9fb */
 .admin-sidebar-nav-container {
-  width: 21%;
+  max-width: 500px;
   background-color: #00a3c8;
 }
 .admin-sidebar-nav {
