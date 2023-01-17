@@ -7,13 +7,13 @@ import './AddProduct.css';
 const AddProduct = () => {
   let history = useHistory();
   const [categories] = useState([]);
-  const [name, setName] = useState('')
-  const [image, setImage] = useState('')
-  const [category, setCategory] = useState('')
-  const [stock, setStock] = useState(0)
-  const [price, setPrice] = useState(0)
-  const [errors, setErrors] = useState([])
-  console.log(category)
+  const [name, setName] = useState('');
+  const [image, setImage] = useState('');
+  const [category, setCategory] = useState('');
+  const [stock, setStock] = useState(0);
+  const [price, setPrice] = useState(0);
+  const [errors, setErrors] = useState([]);
+  console.log(category);
 
   // Storing all categories in array
   useEffect(() => {
@@ -29,7 +29,7 @@ const AddProduct = () => {
   // console.log(uniqueCategoryArray);
 
   const handleAddProduct = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     fetch(`http://localhost:3000/admins/1/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,16 +39,18 @@ const AddProduct = () => {
         category,
         stock,
         price,
-      })
+      }),
     }).then((response) => {
       if (response.ok) {
-        alert('Product added successfully!')
+        response.json().then(() => alert('Product added successfully!'));
       } else {
-        alert("Product not added!")
-        setErrors(response)
+        response.json().then(() => {
+          alert('Product not added!');
+          setErrors(response);
+        });
       }
-    })
-  }
+    });
+  };
 
   return (
     <div className='add-Products-main-container'>
@@ -110,9 +112,10 @@ const AddProduct = () => {
             Add Product
           </button>
         </form>
-        {Array.isArray(errors) && errors.map((error) => {
-          return <li>{error}</li>
-        })}
+        {Array.isArray(errors) &&
+          errors.map((error) => {
+            return <li>{error}</li>;
+          })}
       </div>
     </div>
   );

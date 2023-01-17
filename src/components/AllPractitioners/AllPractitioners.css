@@ -10,7 +10,7 @@
 .all-practitioners-container {
   width: 100%;
   padding: 35px;
-  border: 1px dashed red;
+  /* border: 1px dashed red; */
   height: fit-content;
 }
 .all-practitioners-container h1 {

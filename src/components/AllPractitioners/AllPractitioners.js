@@ -62,7 +62,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
     );
     return currentPractitioners;
   };
-  console.log(currentPractitioners)
+  // console.log(currentPractitioners)
 
   return (
     <div className='all-practitioners-main-container'>

@@ -6,7 +6,7 @@ import teamImg1 from '../../img/front-view-nurse-wearing-stethoscope.jpg';
 
 function AboutUs() {
   const [practitioners, setPractitioners] = useState([]);
-  console.log(practitioners);
+  // console.log(practitioners);
 
   useEffect(() => {
     fetch(`http://localhost:3000/practitioner_profiles`)
