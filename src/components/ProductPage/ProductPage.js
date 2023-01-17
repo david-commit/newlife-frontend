@@ -88,7 +88,7 @@ function ProductPage({
 
         <section className="prevRating">
           <p id="product-rating">
-            <strong>{prevRating}</strong>/5
+            <strong>Rating: </strong> &nbsp;{rate.average_rating}
           </p>
 
           <div id="rating-stars">
