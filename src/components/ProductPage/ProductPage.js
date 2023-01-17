@@ -149,7 +149,11 @@ function ProductPage({
           <h3>Dosage considerations</h3>
           <ul>
             {dosage.map((e) => {
-              return <li key={e.id}>{e.consideration}</li>;
+              return (
+                <li key={e.id} className="word-item">
+                  {e.consideration}
+                </li>
+              );
             })}
           </ul>
         </span>
@@ -158,7 +162,11 @@ function ProductPage({
           <h3>Side Effects</h3>
           <ul>
             {effect.map((e) => {
-              return <li>{e.side_effect}</li>;
+              return (
+                <li className="word-item" key={e.id}>
+                  {e.side_effect}
+                </li>
+              );
             })}
           </ul>
         </span>
