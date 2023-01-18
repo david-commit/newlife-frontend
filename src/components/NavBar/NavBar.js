@@ -66,13 +66,13 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
           </NavLink>
           <nav className='menubar-nav'>
             {/* == Displays User Role is logged in currently */}
-            {loggedIn && (userType == "patient" )
+            {/* {loggedIn && (userType == "patient" )
               ? 'Logged as Patient!'
               : loggedIn && (userType == "practitioner")
               ? 'Logged as Practitioner!'
               : loggedIn && (userType == "admin")
               ? 'Logged as admin'
-              : 'Not logged In!'}
+              : 'Not logged In!'} */}
             <NavLink exact to='/'>
               Home
             </NavLink>
