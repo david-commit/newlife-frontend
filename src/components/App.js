@@ -94,6 +94,7 @@ function App() {
 
       // Render products based on search
       setSearchQuery(results);
+      localStorage.setItem("products", JSON.stringify(results))
 
       setLoading(false);
     };
@@ -297,6 +298,8 @@ function App() {
               cartCount={cartCount}
               setCartCount={setCartCount}
               productQuantity={productQuantity}
+              products={products}
+              cartItems={cartItems}
               handleAddQty={handleAddQty}
               handleReduceQty={handleReduceQty}
               loggedIn={loggedIn}
