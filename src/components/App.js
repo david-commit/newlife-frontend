@@ -300,6 +300,7 @@ function App() {
               productQuantity={productQuantity}
               products={products}
               cartItems={cartItems}
+              setCartItems={setCartItems}
               handleAddQty={handleAddQty}
               handleReduceQty={handleReduceQty}
               loggedIn={loggedIn}

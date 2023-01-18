@@ -14,6 +14,7 @@ function Cart({
   cartCount,
   productQuantity,
   cartItems,
+  setCartItems,
   products,
   setCartCount,
   // handleAddorRemoveQuantity,
@@ -27,7 +28,7 @@ function Cart({
   let [sumTotal, setSumTotal] = useState("");
   const cartProducts = cartItems?.map(item => {
     const productDetails = products?.find(product => product.id == item.product_id)
-    return {...productDetails, quantity: item.quantity}
+    return {...productDetails, quantity: item.quantity, order_id: item.order_id, cart_id: item.id}
   })
 
   // Modal Popup Component
@@ -104,11 +105,58 @@ function Cart({
   };
 
   function getTotalPrice(cartProducts){
-    return cartProducts.reduce((total, curr)=> {return total + curr.price_in_2dp * curr.quantity}, 0)
+    const totalPrice = cartProducts.reduce((total, curr)=> {return total + curr.price_in_2dp * curr.quantity}, 0)
+    return Math.round(totalPrice*100)/100
   }
 
   function getTotalItems(cartProducts){
     return cartProducts.reduce((total, curr)=> {return total + curr.quantity}, 0)
+  }
+
+  function updateDatabaseQty(cartId, newQuantity){
+    fetch(`http://localhost:3000/shopping_carts/${cartId}`, {
+      method: 'PATCH',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify({quantity: newQuantity})
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(updatedCartItem => {
+          const newCartItems = cartItems.map(cartItem => {
+            if(cartItem.id != updatedCartItem.id){
+              return cartItem
+            }else{
+              return updatedCartItem
+            }
+          })
+
+          localStorage.setItem('cartItems', JSON.stringify(newCartItems))
+          setCartItems(newCartItems)
+        })
+      }else{
+        res.json().then(errors => console.warn(errors))
+      }
+    })
+  }
+
+  function handleQtyChange(e, product, method){
+    const cartId = product.cart_id
+    const productId = product.id
+    let newQuantity = null
+    
+    if(method === "inputValue"){
+      newQuantity = e.target.value
+    }else if(method === "addOne"){
+      newQuantity = product.quantity + 1
+    }else if(method == "subtractOne"){
+      newQuantity = product.quantity - 1
+    }
+
+    updateDatabaseQty(cartId, newQuantity)
   }
 
   // console.log(cart);
@@ -136,15 +184,15 @@ function Cart({
                       Quantity:{" "}
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, -1)}
-                        onClick={() => handleReduceQty(product)}
+                        onClick={(e)=>handleQtyChange(e, product, "subtractOne")}
                         id="cart-qty-btns"
                       >
                         -
                       </button>
-                      <input value={product.quantity} />
+                      <input value={product.quantity} onChange={(e)=>handleQtyChange(e, product, "inputValue")}/>
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
-                        onClick={() => handleAddQty(product)}
+                        onClick={(e)=>handleQtyChange(e, product, "addOne")}
                         id="cart-qty-btns"
                       >
                         +
