@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import "./Login.css";
 
-function Login({ loggedIn, setLoggedIn, userType, setUserType }) {
+function Login({ loggedIn, setLoggedIn, userType, setUserType, setCartItems }) {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -22,7 +22,23 @@ function Login({ loggedIn, setLoggedIn, userType, setUserType }) {
       history.push("/admin/me");
     }
   }
-  console.log(formData);
+
+  function getAndStoreCartData(patientId){
+    fetch(`http://localhost:3000/users/${patientId}/cart`, {
+      headers: {"Accept": "application/json", "Authorization": localStorage.getItem("token")}
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(data => {
+          localStorage.setItem('cartItems', JSON.stringify(data))
+          setCartItems(data)
+        })
+      }else{
+        res.json().then(errors => console.warn(errors))
+      }
+    })
+  }
+
   function handleLoginSubmit(e) {
     const loginLink = formData.prac_checkbox
       ? practitionerLoginLink
@@ -57,6 +73,7 @@ function Login({ loggedIn, setLoggedIn, userType, setUserType }) {
             setUserType("practitioner");
             history.push("/practitioners/me");
           } else {
+            getAndStoreCartData(person.user.id)
             localStorage.setItem("person", JSON.stringify(person.user));
             setLoggedIn(true);
             setUserType("patient");
