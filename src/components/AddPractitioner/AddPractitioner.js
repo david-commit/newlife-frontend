@@ -298,16 +298,6 @@ const AddPractitioner = () => {
             value={image}
             onChange={(e) => setImage(e.target.value)}
           />
-
-          {/* <br />
-          <label>Enter Practitioner Department</label>
-          <input
-            type='text'
-            placeholder='Department'
-            name='department'
-            value={department}
-            onChange={(e) => setDepartment(e.target.value)}
-          /> */}
           <br />
           <button className='button-container' type='submit'>
             Add A practitioner

@@ -33,6 +33,7 @@ import PatientDetailsPopup from './PatientDetailsPopup/PatientDetailsPopup';
 import ResetPassword from './ResetPassword/ResetPassword';
 import EditPractitioner from './Admin/EditPractitioner';
 import EditProduct from './Admin/EditProduct';
+import AddPractitionerProfile from './AddPractitioner/AddPractitionerProfile';
 
 function App() {
   const [userAdmin, setUserAdmin] = useState(true);
@@ -343,6 +344,17 @@ function App() {
         <Route exact path='/admin/add-practitioner'>
           {userAdmin ? (
             <AddPractitioner loggedIn={loggedIn} userType={userType} />
+          ) : (
+            <AdminLogin
+              setUserAdmin={setUserAdmin}
+              loggedIn={loggedIn}
+              userType={userType}
+            />
+          )}
+        </Route>
+        <Route exact path='/admin/add-practitioner-profile'>
+          {userAdmin ? (
+            <AddPractitionerProfile loggedIn={loggedIn} userType={userType} />
           ) : (
             <AdminLogin
               setUserAdmin={setUserAdmin}

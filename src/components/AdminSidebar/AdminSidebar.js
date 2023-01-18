@@ -15,6 +15,10 @@ function AdminSidebar() {
         <NavLink exact to='/admin/add-practitioner'>
           <i class='fa-solid fa-user-plus'></i>&nbsp; Add Practitioner
         </NavLink>
+        <NavLink exact to='/admin/add-practitioner-profile'>
+          <i class='fa-solid fa-address-card'></i>&nbsp; Add Practitioner
+          Profile
+        </NavLink>
         <NavLink exact to='/admin/products'>
           <i class='fa-solid fa-pills'></i>&nbsp; All Products
         </NavLink>
