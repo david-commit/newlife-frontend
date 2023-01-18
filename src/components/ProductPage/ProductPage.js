@@ -32,7 +32,7 @@ function ProductPage({
     e.preventDefault();
     console.log(rating, header, content, productID, userId);
 
-    fetch("http://localhost:3000/reviews", {
+    fetch("https://newlife-backend-production.up.railway.app/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,10 +55,10 @@ function ProductPage({
     const fetchProduct = async () => {
       setProductLoading(true);
       const response = await fetch(
-        `http://localhost:3000/products/${productID}`
+        `https://newlife-backend-production.up.railway.app/products/${productID}`
       );
       const res = await fetch(
-        `http://localhost:3000/products/${productID}/average_rating`
+        `https://newlife-backend-production.up.railway.app/products/${productID}/average_rating`
       );
       let res1 = await res.json();
       const results = await response.json();

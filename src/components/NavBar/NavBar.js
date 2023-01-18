@@ -12,9 +12,9 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
     setUserType("")
 
     const logoutEndpoint = userType == "patient"?
-      "http://127.0.0.1:3000/logout" :
-      userType == "practitioner" ? "http://127.0.0.1:3000/practitioner/logout" :
-      "http://127.0.0.1:3000/admin/logout"
+      "https://newlife-backend-production.up.railway.app/logout" :
+      userType == "practitioner" ? "https://newlife-backend-production.up.railway.app/practitioner/logout" :
+      "https://newlife-backend-production.up.railway.app/admin/logout"
 
     fetch(logoutEndpoint, {
       method: 'DELETE',

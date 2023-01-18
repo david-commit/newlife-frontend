@@ -166,7 +166,7 @@ function PatientReviews({ loggedIn, userType }) {
 
   // Fetch all reviews
   // useEffect(() => {
-  //   fetch(`http://localhost:3000/reviews`, {
+  //   fetch(`https://newlife-backend-production.up.railway.app/reviews`, {
   //     headers: { Authorization: token },
   //   })
   //     .then((r) => r.json())

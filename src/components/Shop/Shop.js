@@ -42,7 +42,7 @@ function Shop({
   function searchResult(e) {
     e.preventDefault();
     console.log(query);
-    fetch("http://localhost:3000/productSearch", {
+    fetch("https://newlife-backend-production.up.railway.app/productSearch", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Shop({
     const productId = product.id
     const orderId = cartItems[0].order_id
 
-    fetch('http://localhost:3000/shopping_carts', {
+    fetch('https://newlife-backend-production.up.railway.app/shopping_carts', {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json',

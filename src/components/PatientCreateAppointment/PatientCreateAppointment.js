@@ -27,7 +27,7 @@ function PatientCreateAppointment({loggedIn, userType}) {
   }
 
   useEffect(() => {
-    fetch("http://127.0.0.1:3000/practitioners", {
+    fetch("https://newlife-backend-production.up.railway.app/practitioners", {
       method: 'GET',
       headers: {
         "Accept": "application/json",
@@ -49,7 +49,7 @@ function PatientCreateAppointment({loggedIn, userType}) {
   function handleSubmitAppoitmentRequest(e){
     e.preventDefault()
 
-    fetch("http://127.0.0.1:3000/appointments", {
+    fetch("https://newlife-backend-production.up.railway.app/appointments", {
       method: 'POST',
       headers: {
         "Accept": "application/json",

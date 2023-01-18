@@ -17,7 +17,7 @@ const AddProduct = ({ uniqueCategoryArray }) => {
 
   // Storing all categories in array
   useEffect(() => {
-    fetch(`http://localhost:3000/products`)
+    fetch(`https://newlife-backend-production.up.railway.app/products`)
       .then((res) => res.json())
       .then((data) => {
         data.map((d) => categories.push(d.category));
@@ -33,7 +33,7 @@ const AddProduct = ({ uniqueCategoryArray }) => {
 
   const handleAddProduct = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/admins/${adminId}/products`, {
+    fetch(`https://newlife-backend-production.up.railway.app/admins/${adminId}/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({

@@ -41,7 +41,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
 
   const loadUser = async () => {
     const result = await axios.get(
-      'http://localhost:3000/practitioner_profiles'
+      'https://newlife-backend-production.up.railway.app/practitioner_profiles'
     );
     setUsers(result.data);
     setSearchQuery(result.data);
@@ -70,7 +70,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
   // Handle Delete Practitioner
   const handleDeletePractitioner = (deletedPrac) => {
     fetch(
-      `http://localhost:3000/practitioner_profiles/${deletedPrac.id}`,
+      `https://newlife-backend-production.up.railway.app/practitioner_profiles/${deletedPrac.id}`,
       {
         method: 'DELETE',
         headers: {
