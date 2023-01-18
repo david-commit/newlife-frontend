@@ -10,8 +10,8 @@ function PatientReviews({ loggedIn, userType }) {
     {
       id: 1,
       rating: 2,
-      description_header: 'Average',
-      description_content: 'Qwerty qwertyuio',
+      description_header: 'Below Average',
+      description_content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit',
       product: {
         id: 2,
         name: 'Lamotrigine',
@@ -27,8 +27,8 @@ function PatientReviews({ loggedIn, userType }) {
     {
       id: 2,
       rating: 2,
-      description_header: 'Average',
-      description_content: 'Qwerty qwertyuio',
+      description_header: 'Below Average',
+      description_content: 'Came Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi at eligen',
       product: {
         id: 1,
         name: 'Lamictal',
@@ -45,7 +45,7 @@ function PatientReviews({ loggedIn, userType }) {
       id: 3,
       rating: 3,
       description_header: 'Average',
-      description_content: 'Qwerty qwertyuio',
+      description_content: 'I like Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque omnis',
       product: {
         id: 3,
         name: 'Latuda',
@@ -60,9 +60,9 @@ function PatientReviews({ loggedIn, userType }) {
     },
     {
       id: 4,
-      rating: 1,
-      description_header: 'Good',
-      description_content: 'Qwerty qwertyuio',
+      rating: 5,
+      description_header: 'Excellent',
+      description_content: 'Though Lorem ipsum dolor sit amet, consectetur adipisi',
       product: {
         id: 11,
         name: 'Doxorubicin',
@@ -94,9 +94,9 @@ function PatientReviews({ loggedIn, userType }) {
     },
     {
       id: 6,
-      rating: 5,
+      rating: 3,
       description_header: 'Average',
-      description_content: 'Qwerty qwertyuio',
+      description_content: 'Qwerty qwertyuio lorema',
       product: {
         id: 12,
         name: 'Etoposide',
@@ -111,9 +111,9 @@ function PatientReviews({ loggedIn, userType }) {
     },
     {
       id: 7,
-      rating: 2,
+      rating: 5,
       description_header: 'Average',
-      description_content: 'Qwerty qwertyuio',
+      description_content: 'Dolor minima doloribus ad facere doloremque libero in, reiciendis tenetur',
       product: {
         id: 15,
         name: 'Bupropion',
@@ -128,9 +128,9 @@ function PatientReviews({ loggedIn, userType }) {
     },
     {
       id: 8,
-      rating: 1,
+      rating: 5,
       description_header: 'Excellent',
-      description_content: 'Qwerty qwertyuio',
+      description_content: 'inventore quos reiciendis eius vero excepturi totam quia provident enim laboriosam. Vero pariatur velit numquam',
       product: {
         id: 8,
         name: 'Leukeran',
