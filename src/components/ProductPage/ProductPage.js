@@ -32,15 +32,28 @@ function ProductPage({
     console.log(newRating);
   };
 
-  // function handleQuantity(e) {
-  //   e.preventDefault();
-  //   console.log(quantity);
-  // }
-
+  console.log(productID);
   //post product review
   function submitReview(e) {
     e.preventDefault();
     console.log(rating, header, content, productID, userId);
+
+    fetch("https://example.com/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        rating: 4,
+        description_header: "",
+        description_content: "",
+        product_id: productID,
+        user_id: userId,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error("Error:", error));
   }
 
   // Fetches a single product
