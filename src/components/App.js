@@ -54,7 +54,9 @@ function App() {
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
   const [productCategories] = useState([]);
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems") || false) || []
+  )
 
 
   // console.log(loggedIn);
