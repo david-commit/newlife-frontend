@@ -99,62 +99,62 @@ function ProductPage({
   }
   console.log(rating, header);
   return (
-    <div className="product-page-main-container">
-      <div className="product-details-container">
-        <span id="product-page-details">
+    <div className='product-page-main-container'>
+      <div className='product-details-container'>
+        <span id='product-page-details'>
           Product ID: {product.id} | Category: {product.category}
         </span>
-        <h1 id="product-page-title">{product.name}</h1>
+        <h1 id='product-page-title'>{product.name}</h1>
 
-        <span id="product-page-image">
-          <img src={product.image} alt="Product appearance" />
+        <span id='product-page-image'>
+          <img src={product.image} alt='Product appearance' />
         </span>
 
-        <section className="prevRating">
-          <p id="product-rating">
+        <section className='prevRating'>
+          <p id='product-rating'>
             <strong>Rating: </strong> &nbsp;
             {parseFloat(rate.average_rating).toFixed(2)}
           </p>
 
-          <div id="rating-stars">
+          <div id='rating-stars'>
             <ReactStars
               count={5}
-              value={prevRating}
+              value={parseFloat(rate.average_rating).toFixed(2)}
               size={40}
-              color2={"#ffd700"}
-              half={false}
+              color2={'#ffd700'}
+              half={true}
               edit={false}
             />
           </div>
         </section>
 
-        <div id="product-description">
+        <div id='product-description'>
           <h3>Description</h3>
           <p>No description is available for this product at this time.</p>
         </div>
 
-        <div id="product-page-info">
-          <span className="product-price">
+        <div id='product-page-info'>
+          <span className='product-price'>
             Ksh &nbsp;
             <span>{product.price_in_2dp}</span>
           </span>
 
           <button
-            id="product-page-cart-button"
+            id='product-page-cart-button'
             onClick={() => handleAddToCart(product)}
           >
-            <i class="fa-solid fa-cart-plus"></i> &nbsp; Add to Cart
+            <i class='fa-solid fa-cart-plus'></i> &nbsp; Add to Cart
           </button>
         </div>
       </div>
 
-      <section className="product-details-bottom-section">
-        <span className="word-container">
+      <section className='product-details-bottom-section'>
+        <span className='word-container'>
           <h3>Dosage considerations</h3>
           <ul>
             {dosage.map((e) => {
               return (
-                <li key={e.id} className="word-item">
+                <li key={e.id} className='word-item'>
                   {e.consideration}
                 </li>
               );
@@ -162,12 +162,12 @@ function ProductPage({
           </ul>
         </span>
 
-        <span className="word-container">
+        <span className='word-container'>
           <h3>Side Effects</h3>
           <ul>
             {effect.map((e) => {
               return (
-                <li className="word-item" key={e.id}>
+                <li className='word-item' key={e.id}>
                   {e.side_effect}
                 </li>
               );
@@ -175,42 +175,42 @@ function ProductPage({
           </ul>
         </span>
 
-        <span className="word-container">
+        <span className='word-container'>
           <h3>Reviews</h3>
-          <ul id="review-container">
+          <ul id='review-container'>
             {reviews.map((e) => {
-              return <li className="review-item">{e.description_content}</li>;
+              return <li className='review-item'>{e.description_content}</li>;
             })}
           </ul>
         </span>
 
-        <form id="review-form" onSubmit={submitReview}>
+        <form id='review-form' onSubmit={submitReview}>
           <h3>Add Review</h3>
           <Stars
             count={5}
             value={rating}
             onChange={handleChange}
             size={24}
-            color2={"#ffd700"}
+            color2={'#ffd700'}
           />
           {header}
           <textarea
-            id="review-textarea"
-            placeholder="Type review.."
+            id='review-textarea'
+            placeholder='Type review..'
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <span id="review-buttons">
-            <button type="reset" id="reset" onClick={() => setNewRating(0)}>
+          <span id='review-buttons'>
+            <button type='reset' id='reset' onClick={() => setNewRating(0)}>
               Clear
             </button>
-            <button type="submit" id="submit">
+            <button type='submit' id='submit'>
               Submit
             </button>
           </span>
         </form>
       </section>
-      {cartWarning ? <p id="cart-warning">Item is already in cart</p> : ""}
+      {cartWarning ? <p id='cart-warning'>Item is already in cart</p> : ''}
     </div>
   );
 }
