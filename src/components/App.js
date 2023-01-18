@@ -54,6 +54,8 @@ function App() {
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
   const [productCategories] = useState([]);
+  const [cartItems, setCartItems] = useState([])
+
 
   // console.log(loggedIn);
   // Initializing the value of each product with value 1
@@ -187,6 +189,7 @@ function App() {
             setLoggedIn={setLoggedIn}
             userType={userType}
             setUserType={setUserType}
+            setCartItems={setCartItems}
           />
         </Route>
         <Route exact path="/login">
@@ -195,6 +198,7 @@ function App() {
             setLoggedIn={setLoggedIn}
             userType={userType}
             setUserType={setUserType}
+            setCartItems={setCartItems}
           />
         </Route>
         <Route exact path="/reset-password">

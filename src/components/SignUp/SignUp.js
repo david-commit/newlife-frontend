@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './SignUp.css';
 import { Link, useHistory } from 'react-router-dom';
 
-function SignUp({ loggedIn, setLoggedIn, userType, setUserType }) {
+function SignUp({ loggedIn, setLoggedIn, userType, setUserType, setCartItems }) {
   const [errors, setErrors] = useState('');
   const history = useHistory();
   const [formData, setFormData] = useState({
@@ -20,6 +20,22 @@ function SignUp({ loggedIn, setLoggedIn, userType, setUserType }) {
     } else if (userType == 'admin') {
       history.push('/admin/me');
     }
+  }
+
+  function getAndStoreCartData(patientId){
+    fetch(`http://localhost:3000/users/${patientId}/cart`, {
+      headers: {"Accept": "application/json", "Authorization": localStorage.getItem("token")}
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(data => {
+          localStorage.setItem('cartItems', JSON.stringify(data))
+          setCartItems(data)
+        })
+      }else{
+        res.json().then(errors => console.warn(errors))
+      }
+    })
   }
 
   function handleSignupSubmit(e) {
@@ -47,6 +63,7 @@ function SignUp({ loggedIn, setLoggedIn, userType, setUserType }) {
             history.push('/practitioners/me');
           } else {
             localStorage.setItem('person', JSON.stringify(person.user));
+            getAndStoreCartData(person.user.id)
             setLoggedIn(true);
             setUserType('patient');
             history.push('/patients/me');
