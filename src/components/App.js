@@ -142,20 +142,16 @@ function App() {
 
   // Quantity Reduce Button on Product Page
   function handleReduceQty(product) {
-    {
-      productQuantity[product.id] < 2
-        ? alert("Quantity cannot be less than 1")
-        : setProductQuantity((productQuantity) => {
-            if (!productQuantity[product.id]) {
-              return { ...productQuantity, [product.id]: 1 };
-            } else {
-              const newQuantity = productQuantity[product.id] - 1;
-              return { ...productQuantity, [product.id]: newQuantity };
-            }
-          });
+    if (productQuantity[product.id] <= 1) {
+      alert("Quantity cannot be less than 1");
+    } else {
+      setProductQuantity((prevQuantity) => {
+        const newQuantity = prevQuantity[product.id] - 1;
+        return { ...prevQuantity, [product.id]: newQuantity };
+      });
     }
   }
-
+  
   return (
     <div className="App">
       <NavBar
