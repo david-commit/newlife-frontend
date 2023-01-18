@@ -29,9 +29,15 @@ function ProductPage({
     console.log(newRating);
   };
 
-  function handleQuantity(e) {
-    e.preventDefault();
-    console.log(quantity);
+  // function handleQuantity(e) {
+  //   e.preventDefault();
+  //   console.log(quantity);
+  // }
+
+  //post product review
+  function submitReview(e) {
+    e.preventdefault();
+    console.log();
   }
 
   // Fetches a single product
@@ -101,10 +107,8 @@ function ProductPage({
 
         <div id="product-page-info">
           <span className="product-price">
-            Ksh &nbsp;{" "}
-            <span>
-              {parseFloat(product.price_in_2dp).toFixed(2) * quantity}
-            </span>
+            Ksh &nbsp;
+            <span>{product.price_in_2dp}</span>
           </span>
 
           <button
