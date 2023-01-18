@@ -145,7 +145,6 @@ function Cart({
 
   function handleQtyChange(e, product, method){
     const cartId = product.cart_id
-    const productId = product.id
     let newQuantity = null
     
     if(method === "inputValue"){
@@ -157,6 +156,25 @@ function Cart({
     }
 
     updateDatabaseQty(cartId, newQuantity)
+  }
+
+  function handleRemoveFromCart(product){
+    const deletedCartItem = product.cart_id
+
+    fetch(`http://localhost:3000/shopping_carts/${deletedCartItem}`, {
+      method: 'DELETE',
+      headers: {"Authorization": localStorage.getItem("token")}
+    })
+    .then(res => {
+      if(res.ok){
+        
+        const newCartItems = cartItems.filter(item => item.id != deletedCartItem)
+        setCartItems(newCartItems)
+        localStorage.setItem("cartItems", JSON.stringify(newCartItems))
+      }else{
+        res.json().then(errors => console.warn(errors))
+      }
+    })
   }
 
   // console.log(cart);
@@ -208,7 +226,7 @@ function Cart({
                   </section>
                   <i
                     class="fa-regular fa-circle-xmark"
-                    onClick={() => handleRemove(product.id)}
+                    onClick={() => handleRemoveFromCart(product)}
                   ></i>
                 </div>
               );
