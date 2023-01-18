@@ -6,9 +6,12 @@ import loadingGif from "../../img/loading.gif";
 
 function Shop({
   products,
+  cartItems,
+  setCartItems,
+  setCartSuccess,
+  setCartWarming,
   handleSearch,
   loading,
-  handleAddToCart,
   cartWarning,
   cartAddSuccess,
   sortProducts,
@@ -51,6 +54,42 @@ function Shop({
       .then((response) => response.json())
       .then((data) => setResult(data))
       .catch((error) => console.error(error));
+  }
+
+  function handleAddToCart(product){
+    const productId = product.id
+    const orderId = cartItems[0].order_id
+
+    fetch('http://localhost:3000/shopping_carts', {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json',
+        "Accept": 'application/json',
+        "Authorization": localStorage.getItem('token')
+      },
+      body: JSON.stringify({product_id: productId, order_id: orderId, quantity: 1})
+    })
+    .then(res => {
+      if(res.ok){
+        res.json().then(data => {
+          const newCartItems = [...cartItems, data]
+          localStorage.setItem('cartItems', JSON.stringify(newCartItems))
+          setCartItems(newCartItems)
+          setCartSuccess(true)
+          setTimeout(() => {
+            setCartSuccess(false);
+          }, 3500);
+        })
+      }else{
+        res.json().then(errors => {
+          console.warn(errors)
+          setCartWarming(true);
+          setTimeout(() => {
+            setCartWarming(false);
+          }, 3500)
+        })
+      }
+    })
   }
 
   console.log(result);
