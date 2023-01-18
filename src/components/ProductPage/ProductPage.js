@@ -27,12 +27,6 @@ function ProductPage({
   let [header, setHeader] = useState("");
   let [content, setContent] = useState("");
 
-  // Setting new product rating from user
-  const ratingChanged = (newRating) => {
-    setNewRating(newRating);
-    console.log(newRating);
-  };
-
   //post product review
   function submitReview(e) {
     e.preventDefault();
@@ -91,7 +85,7 @@ function ProductPage({
         ? "Excellent"
         : "Select Rate"
     );
-  }, [productID, setDosage, rating, setHeader, header]);
+  }, [productID, setDosage, rating, setHeader, header, newRating]);
 
   // Loading Animationmethod_name
   if (productLoading) {
