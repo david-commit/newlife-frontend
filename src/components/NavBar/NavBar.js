@@ -3,7 +3,7 @@ import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
-function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
+function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
   function handleLogoutClick() {
     setLoggedIn(false)
     const token = localStorage.getItem("token")
@@ -23,7 +23,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
 
     return clearInterval(intervalId)
   }
-// console.log(cartCount)
+  
   return (
     <>
       <div className='top-bar-container'>
@@ -90,7 +90,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartCount}) {
                 <NavLink exact to='/cart'>
                   <div className='cart-icon'>
                     <i class='fa-solid fa-cart-plus'></i>
-                    <span id='cart-length'>{cartCount}</span>
+                    <span id='cart-length'>{cartItems? cartItems.length : 0}</span>
                   </div>
                 </NavLink>
                 <NavLink exact to='/'>

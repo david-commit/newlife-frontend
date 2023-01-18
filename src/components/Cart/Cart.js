@@ -13,6 +13,8 @@ function Cart({
   setCart,
   cartCount,
   productQuantity,
+  cartItems,
+  products,
   setCartCount,
   // handleAddorRemoveQuantity,
   handleReduceQty,
@@ -23,6 +25,10 @@ function Cart({
   const [mpesaError, setMpesaError] = useState([]);
   const [amount, setAmount] = useState(0);
   let [sumTotal, setSumTotal] = useState("");
+  const cartProducts = cartItems?.map(item => {
+    const productDetails = products?.find(product => product.id == item.product_id)
+    return {...productDetails, quantity: item.quantity}
+  })
 
   // Modal Popup Component
   const [openFirst, setOpenFirst] = React.useState(false);
@@ -33,7 +39,6 @@ function Cart({
     let total = 0;
     cart.map((item) => {
       total += item.price_in_2dp * productQuantity;
-      // console.log(item);
     });
     setTotalPrice(total);
   };
@@ -50,7 +55,6 @@ function Cart({
     handlePrice();
   }, [setSumTotal, total]);
 
-  console.log(sumTotal);
 
   // Fiters out Products from Cart
   const handleRemove = (id) => {
@@ -99,7 +103,17 @@ function Cart({
     });
   };
 
+  function getTotalPrice(cartProducts){
+    return cartProducts.reduce((total, curr)=> {return total + curr.price_in_2dp * curr.quantity}, 0)
+  }
+
+  function getTotalItems(cartProducts){
+    return cartProducts.reduce((total, curr)=> {return total + curr.quantity}, 0)
+  }
+
   // console.log(cart);
+
+  // console.log("cart products: ", cartProducts)
 
   return (
     <div className="cart-main-container">
@@ -110,8 +124,8 @@ function Cart({
         <section className="cart-cards">
           {/* --.map is not a function--
           --https://stackoverflow.com/a/70817122/20689462-- */}
-          {Array.isArray(cart) ? (
-            cart.map((product) => {
+          {cartProducts?.length ? (
+            cartProducts.map((product) => {
               return (
                 <div className="cart-card" key={product.id}>
                   <img src={product.image} alt="Product" />
@@ -127,7 +141,7 @@ function Cart({
                       >
                         -
                       </button>
-                      <input value={productQuantity[product.id]} />
+                      <input value={product.quantity} />
                       <button
                         // onClick={() => handleAddorRemoveQuantity(product, +1)}
                         onClick={() => handleAddQty(product)}
@@ -140,7 +154,7 @@ function Cart({
                     <p>
                       Total: Ksh.{" "}
                       {parseFloat(
-                        product.price_in_2dp * productQuantity[product.id]
+                        product.price_in_2dp * product.quantity
                       ).toFixed(2)}
                     </p>
                   </section>
@@ -159,10 +173,10 @@ function Cart({
         <section className="cart-calculation-section">
           <h2>
             Total Price: <br />
-            Ksh. {parseFloat(sumTotal).toFixed(2)}
+            Ksh. {getTotalPrice(cartProducts)}
           </h2>
           <br />
-          <h2>Total Items: {cartCount}</h2>
+          <h2>Total Items: {getTotalItems(cartProducts)}</h2>
           <br />
           <button onClick={() => setOpenFirst(true)} id="pay-button-checkout">
             Pay

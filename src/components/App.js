@@ -54,7 +54,9 @@ function App() {
   const [sortAsc] = useState('');
   const [sortDesc] = useState('price-desc');
   const [productCategories] = useState([]);
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(
+    JSON.parse(localStorage.getItem("cartItems") || false) || []
+  )
 
 
   // console.log(loggedIn);
@@ -92,6 +94,7 @@ function App() {
 
       // Render products based on search
       setSearchQuery(results);
+      localStorage.setItem("products", JSON.stringify(results))
 
       setLoading(false);
     };
@@ -180,7 +183,7 @@ function App() {
         // userPractitioner={userPractitioner}
         // setUserPatient={setUserPatient}
         // setUserPractitioner={setUserPractitioner}
-        cartCount={cartCount}
+        cartItems={cartItems}
       />
       <Switch>
         <Route exact path="/signup">
@@ -295,6 +298,8 @@ function App() {
               cartCount={cartCount}
               setCartCount={setCartCount}
               productQuantity={productQuantity}
+              products={products}
+              cartItems={cartItems}
               handleAddQty={handleAddQty}
               handleReduceQty={handleReduceQty}
               loggedIn={loggedIn}
