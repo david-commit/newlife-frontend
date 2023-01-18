@@ -182,7 +182,7 @@ function App() {
         // userPractitioner={userPractitioner}
         // setUserPatient={setUserPatient}
         // setUserPractitioner={setUserPractitioner}
-        cartCount={cartCount}
+        cartItems={cartItems}
       />
       <Switch>
         <Route exact path="/signup">
