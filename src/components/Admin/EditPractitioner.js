@@ -2,6 +2,7 @@ import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import './EditPractitioner.css';
 
 const EditPractitioner = () => {
   let history = useHistory();
@@ -13,12 +14,12 @@ const EditPractitioner = () => {
     phone: "",
     website: ""
   });
-
+  
   const { name, username, email, phone, website } = user;
   const onInputChange = e => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
-
+  
   useEffect(() => {
     loadUser();
   }, []);
@@ -33,11 +34,12 @@ const EditPractitioner = () => {
     const result = await axios.get(`http://localhost:3000/users/${id}`, user);
     setUser(result.data);
   };
+  
   return (
     <div className="all-practitioners-main-container">
         <AdminSidebar/>
-      <div className='all-practitioners-container'>
-        <h1>Edit A Practitioner</h1>
+      <div className='edit-practitioner-container'>
+        <h1>Edit Practitioner</h1>
         <section className='th'>
         <form onSubmit={e => onSubmit(e)}>
           <div>
