@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import './AddProduct.css';
 
-const AddProduct = () => {
+const AddProduct = ({ uniqueCategoryArray }) => {
   let history = useHistory();
   const [categories] = useState([]);
   const [name, setName] = useState('');
@@ -13,7 +13,7 @@ const AddProduct = () => {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
   const [errors, setErrors] = useState([]);
-  console.log(category);
+  console.log(errors);
 
   // Storing all categories in array
   useEffect(() => {
@@ -24,20 +24,16 @@ const AddProduct = () => {
       });
   }, []);
 
-  // Removes duplicates in array
-  const uniqueCategoryArray = [...new Set(categories)];
-  // console.log(uniqueCategoryArray);
-
   // Get user token
   const token = localStorage.getItem('token');
 
   // Get admin data
   const userData = localStorage.getItem('person');
-  console.log(userData.id)
+  const adminId = JSON.parse(userData).id;
 
   const handleAddProduct = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/admins/1/products`, {
+    fetch(`http://localhost:3000/admins/${adminId}/products`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({
@@ -50,6 +46,11 @@ const AddProduct = () => {
     }).then((response) => {
       if (response.ok) {
         response.json().then(() => alert('Product added successfully!'));
+        setName('');
+        setImage('');
+        setCategory('');
+        setStock(0);
+        setPrice(0);
       } else {
         response.json().then(() => {
           alert('Product not added!');
@@ -84,7 +85,7 @@ const AddProduct = () => {
           <br />
           <select onChange={(e) => setCategory(e.target.value)}>
             <option hidden>Select Product Category</option>
-            {categories ? (
+            {Array.isArray(uniqueCategoryArray) ? (
               uniqueCategoryArray?.map((cat, index) => {
                 return (
                   <option value={cat} key={index}>

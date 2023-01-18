@@ -70,7 +70,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
   // Handle Delete Practitioner
   const handleDeletePractitioner = (deletedPrac) => {
     fetch(
-      `http://localhost:3000/admins/${adminId}/products/${deletedPrac.id}`,
+      `http://localhost:3000/practitioner_profiles/${deletedPrac.id}`,
       {
         method: 'DELETE',
         headers: {
