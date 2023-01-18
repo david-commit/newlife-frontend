@@ -18,10 +18,15 @@ function ProductPage({
   const [productLoading, setProductLoading] = useState(false);
   const [newRating, setNewRating] = useState(0);
   const [prevRating, setPrevRating] = useState(0);
-  const [quantity, setQuantity] = useState(1);
   const [reviews, setReviews] = useState([]);
   let [rate, setRate] = useState("");
   let [effect, setEffect] = useState([]);
+  let [userId, setUserId] = useState("");
+  let [rating, setRating] = useState("");
+  let [header, setHeader] = useState("");
+  let [content, setContent] = useState("");
+
+  setUserId(JSON.parse(localStorage.person).id);
 
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
@@ -37,7 +42,7 @@ function ProductPage({
   //post product review
   function submitReview(e) {
     e.preventdefault();
-    console.log();
+    console.log(rating, header, content, productID);
   }
 
   // Fetches a single product
@@ -165,6 +170,7 @@ function ProductPage({
             color2={"#ffd700"}
             half={true}
           />
+
           {newRating < 2
             ? "Poor"
             : newRating < 3
@@ -176,6 +182,7 @@ function ProductPage({
             : newRating < 6
             ? "Excellent"
             : "Select Rate"}
+
           <textarea id="review-textarea" placeholder="Type review.."></textarea>
           <span id="review-buttons">
             <button type="reset" id="reset" onClick={() => setNewRating(0)}>

@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import { Link, useHistory } from "react-router-dom";
 
-function SignUp({loggedIn, setLoggedIn, userType, setUserType}) {
+function SignUp({ loggedIn, setLoggedIn, userType, setUserType }) {
   const [errors, setErrors] = useState("");
-  const history = useHistory()
+  const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
-    confirmation_password: ""
-  })
+    confirmation_password: "",
+  });
 
   if (loggedIn) {
     if (userType == "patient") {
-      history.push('/patients/me')
+      history.push("/patients/me");
     } else if (userType == "practitioner") {
-      history.push('/practitioners/me')
+      history.push("/practitioners/me");
     } else if (userType == "admin") {
-      history.push('/admin/me')
+      history.push("/admin/me");
     }
   }
 
@@ -33,33 +33,36 @@ function SignUp({loggedIn, setLoggedIn, userType, setUserType}) {
     }).then((response) => {
       if (response.ok) {
         response.json().then((person) => {
-          localStorage.setItem('token', person.jwt);
-          localStorage.setItem('loggedIn', true)
-          localStorage.setItem("userType", formData.prac_checkbox ? "practitioner" : "patient")
+          localStorage.setItem("token", person.jwt);
+          localStorage.setItem("loggedIn", true);
+          localStorage.setItem(
+            "userType",
+            formData.prac_checkbox ? "practitioner" : "patient"
+          );
 
           if (formData.prac_checkbox) {
-            localStorage.setItem('person', JSON.stringify(person.practitioner))
-            setLoggedIn(true)
-            setUserType('practitioner')
-            history.push('/practitioners/me')
+            localStorage.setItem("person", JSON.stringify(person.practitioner));
+            setLoggedIn(true);
+            setUserType("practitioner");
+            history.push("/practitioners/me");
           } else {
-            localStorage.setItem('person', JSON.stringify(person.user))
-            setLoggedIn(true)
-            setUserType('patient')
-            history.push('/patients/me')
+            localStorage.setItem("person", JSON.stringify(person.user));
+            setLoggedIn(true);
+            setUserType("patient");
+            history.push("/patients/me");
           }
         });
       } else {
-        response.json().then(data => {
-          setErrors("Unable to sign you up. An error occurred")
-          console.warn(data)
+        response.json().then((data) => {
+          setErrors("Unable to sign you up. An error occurred");
+          console.warn(data);
         });
       }
     });
   }
 
-  function updateFormData(e){
-    setFormData(formData => ({...formData, [e.target.id]: e.target.value}))
+  function updateFormData(e) {
+    setFormData((formData) => ({ ...formData, [e.target.id]: e.target.value }));
   }
 
   return (
