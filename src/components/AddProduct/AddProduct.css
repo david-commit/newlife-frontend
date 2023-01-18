@@ -24,6 +24,7 @@
   font-size: 14px;
   padding: 6px;
   border: 1px solid lightgray;
+  border-radius: 5px;
 }
 .add-Products-container form > select {
   width: 35%;
@@ -31,6 +32,7 @@
   padding: 6px;
   border: 1px solid lightgray;
   background-color: white;
+  border-radius: 5px;
 }
 .add-Products-container form > label {
   padding-bottom: 10px;
@@ -42,6 +44,7 @@
   background-color: #00a3c8;
   border: 1px solid #00a3c8;
   color: white;
+  border-radius: 5px;
 }
 .button-container:hover {
   cursor: pointer;
