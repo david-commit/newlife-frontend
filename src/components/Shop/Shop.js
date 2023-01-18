@@ -9,6 +9,7 @@ function Shop({
   cartItems,
   setCartItems,
   setCartSuccess,
+  setCartWarming,
   handleSearch,
   loading,
   cartWarning,
@@ -75,11 +76,17 @@ function Shop({
           localStorage.setItem('cartItems', JSON.stringify(newCartItems))
           setCartItems(newCartItems)
           setCartSuccess(true)
+          setTimeout(() => {
+            setCartSuccess(false);
+          }, 3500);
         })
       }else{
         res.json().then(errors => {
-          setCartSuccess(false)
           console.warn(errors)
+          setCartWarming(true);
+          setTimeout(() => {
+            setCartWarming(false);
+          }, 3500)
         })
       }
     })

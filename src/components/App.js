@@ -259,6 +259,7 @@ function App() {
         <Route exact path="/products">
           <Shop
             setCartSuccess={setCartSuccess}
+            setCartWarming={setCartWarming}
             cartItems={cartItems}
             setCartItems={setCartItems}
             products={products}
