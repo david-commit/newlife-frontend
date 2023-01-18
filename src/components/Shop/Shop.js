@@ -20,7 +20,6 @@ function Shop({
 
   let [result, setResult] = useState("");
 
-
   // Get current products for pagination
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -50,9 +49,11 @@ function Shop({
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => setResult(data))
       .catch((error) => console.error(error));
   }
+
+  console.log(result);
 
   const renderedProducts =
     currentProducts &&
@@ -66,10 +67,8 @@ function Shop({
           <div className="shop-card">
             <img src={product.image} alt="Product" />
 
-
             <div className="shop-card-text">
               <section className="shop-card-section1">
-
                 <p>{product.category}</p>
 
                 {parseFloat(product.price_in_2dp) < 1 ? (
@@ -78,7 +77,6 @@ function Shop({
                   ""
                 )}
               </section>
-
 
               <div className="product-title">
                 <p>{product.name}</p>
@@ -96,7 +94,6 @@ function Shop({
                   + Add to Cart
                 </button>
               </section>
-
             </div>
           </div>
         </Link>
@@ -112,7 +109,6 @@ function Shop({
   return (
     <div className="shop-main-container">
       <h1>Shop</h1>
-
 
       <div className="shop-search-filter-container">
         <form id="search-products-form" onSubmit={searchResult}>
@@ -146,7 +142,55 @@ function Shop({
         </select>
       </div>
 
-      <div className="shop-cards">{renderedProducts}</div>
+      <div className="shop-cards">
+        {" "}
+        {result
+          ? result &&
+            result.map((product) => {
+              return (
+                <Link
+                  to={`/products/${product.id}`}
+                  className="shop-card-nav"
+                  key={product.id}
+                >
+                  <div className="shop-card">
+                    <img src={product.image} alt="Product" />
+
+                    <div className="shop-card-text">
+                      <section className="shop-card-section1">
+                        <p>{product.category}</p>
+
+                        {parseFloat(product.price_in_2dp) < 1 ? (
+                          <button id="free-button">Free</button>
+                        ) : (
+                          ""
+                        )}
+                      </section>
+
+                      <div className="product-title">
+                        <p>{product.name}</p>
+                      </div>
+
+                      <section className="card-price-button">
+                        <p>Ksh {parseFloat(product.price_in_2dp).toFixed(2)}</p>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleAddToCart(product);
+                          }}
+                        >
+                          + Add to Cart
+                        </button>
+                      </section>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })
+          : renderedProducts}
+      </div>
+
       <ShopPagination
         productsPerPage={productsPerPage}
         products={products}

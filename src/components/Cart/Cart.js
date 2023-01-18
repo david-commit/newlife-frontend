@@ -82,11 +82,13 @@ function Cart({
     fetch(`https://e5f5-102-215-78-19.in.ngrok.io/stkpush`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ phone, amount }),
+      body: JSON.stringify({ phone, amount: 100 }),
     }).then((response) => {
       if (response.ok) {
         response.json().then(() => {
-          alert(`Payment of Ksh${amount} was successful`);
+          alert(`Paymen
+
+          t of Ksh${amount} was successful`);
           console.log(response);
         });
       } else {
@@ -202,11 +204,7 @@ function Cart({
                 <label>
                   Amount (Ksh)
                   <br />
-                  <input
-                    readOnly
-                    value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
-                  />
+                  <input readOnly value={sumTotal} />
                 </label>
                 <br />
 
