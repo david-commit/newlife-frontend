@@ -26,12 +26,12 @@ const EditPractitioner = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    await axios.put(`http://localhost:3000/users/${id}`, user);
+    await axios.put(`https://newlife-backend-production.up.railway.app/users/${id}`, user);
     history.push("/admin");
   };
 
   const loadUser = async () => {
-    const result = await axios.get(`http://localhost:3000/users/${id}`, user);
+    const result = await axios.get(`https://newlife-backend-production.up.railway.app/users/${id}`, user);
     setUser(result.data);
   };
   

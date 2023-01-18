@@ -22,7 +22,7 @@ function PatientChat({loggedIn, userType}) {
 
   function updateAppointments() {
     const token = localStorage.getItem("token")
-    const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
+    const appointmentsApiEndpoint = `https://newlife-backend-production.up.railway.app/users/${personId}/appointments`
 
     fetch(appointmentsApiEndpoint, {
       headers: {
@@ -67,7 +67,7 @@ function PatientChat({loggedIn, userType}) {
       content: message
     }
 
-    fetch('http://localhost:3000/messages', {
+    fetch('https://newlife-backend-production.up.railway.app/messages', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

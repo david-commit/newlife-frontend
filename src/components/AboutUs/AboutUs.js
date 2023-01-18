@@ -9,7 +9,7 @@ function AboutUs() {
   // console.log(practitioners);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/practitioner_profiles`)
+    fetch(`https://newlife-backend-production.up.railway.app/practitioner_profiles`)
       .then((response) => response.json())
       .then((d) => setPractitioners(d));
   }, []);

@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 function PatientAppointments({loggedIn, userType}) {
   const token = localStorage.getItem("token")
   const personId = JSON.parse(localStorage.getItem("person") || false)?.id
-  const appointmentsApiEndpoint = `http://localhost:3000/users/${personId}/appointments`
+  const appointmentsApiEndpoint = `https://newlife-backend-production.up.railway.app/users/${personId}/appointments`
   const [appointments, setAppointments] = useState(
     JSON.parse(localStorage.getItem("person") ||false)?.appointments || []
   )
@@ -52,7 +52,7 @@ function PatientAppointments({loggedIn, userType}) {
   }, [])
 
   function handleDeleteAppointment(deletedAppointment){
-    fetch(`http://localhost:3000/appointments/${deletedAppointment.id}`, {
+    fetch(`https://newlife-backend-production.up.railway.app/appointments/${deletedAppointment.id}`, {
       method: 'DELETE',
       headers: {
         "Accept": "application/json",

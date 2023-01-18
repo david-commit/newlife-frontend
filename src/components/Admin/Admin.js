@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
 import CovidLineGraph from './Graph';
 import './Admin.css';
@@ -14,9 +13,9 @@ const AllPractitioners = ({ loggedIn, userType }) => {
   // console.log(users)
 
   if (loggedIn) {
-    if (userType == 'practitioner') {
+    if (userType === 'practitioner') {
       history.push('/practitioners/me');
-    } else if (userType == 'patient') {
+    } else if (userType === 'patient') {
       history.push('/patients/me');
     }
   } else {
@@ -24,17 +23,17 @@ const AllPractitioners = ({ loggedIn, userType }) => {
   }
 
   // const loadUser = () => {
-  //   const result = axios.get('http://localhost:3000/practitioner_profiles');
+  //   const result = axios.get('https://newlife-backend-production.up.railway.app/practitioner_profiles');
   //   setUsers(result.data);
   // };
 
   // Fetches all practitioners & Products
   useEffect(() => {
-    fetch(`http://localhost:3000/practitioner_profiles`)
+    fetch(`https://newlife-backend-production.up.railway.app/practitioner_profiles`)
       .then((r) => r.json())
       .then((d) => setPracs(d));
 
-    fetch(`http://localhost:3000/products`)
+    fetch(`https://newlife-backend-production.up.railway.app/products`)
       .then((r) => r.json())
       .then((d) => setProducts(d));
   }, []);
