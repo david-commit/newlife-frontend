@@ -18,236 +18,36 @@ function AddPractitionerProfile() {
   const [errors, setErrors] = useState([]);
   const [practitionerID, setPractitionerID] = useState('');
   const [practitioner, setPractitioner] = useState('');
-  const [practitioners, setPractitioners] = useState([
-    {
-      id: 1,
-      username: 'david',
-      email: 'david@david.com',
-      first_name: 'David',
-      last_name: 'Ondiege',
-      department: {
-        id: 3,
-        name: 'Cancer',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 2,
-      username: 'johnathon',
-      email: 'tracey@brown-rowe.net',
-      first_name: 'Garfield',
-      last_name: 'Kilback',
-      department: {
-        id: 2,
-        name: 'Diabetes',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 3,
-      username: 'johnie',
-      email: 'manual.mueller@green.co',
-      first_name: 'Inger',
-      last_name: 'Dicki',
-      department: {
-        id: 2,
-        name: 'Diabetes',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 4,
-      username: 'marita.graham',
-      email: 'tod_harris@prohaska-metz.net',
-      first_name: 'Parker',
-      last_name: 'Watsica',
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 5,
-      username: 'wynona',
-      email: 'lesia@bashirian-smitham.name',
-      first_name: 'Garfield',
-      last_name: 'Hartmann',
-      department: {
-        id: 3,
-        name: 'Cancer',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 6,
-      username: 'brittney.kling',
-      email: 'claudio.hyatt@baumbach.org',
-      first_name: 'Garth',
-      last_name: 'Anderson',
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 7,
-      username: 'joan_gulgowski',
-      email: 'abram@koch.com',
-      first_name: 'Berry',
-      last_name: 'Cartwright',
-      department: {
-        id: 2,
-        name: 'Diabetes',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 8,
-      username: 'minh.rempel',
-      email: 'herb_bode@kilback-heller.info',
-      first_name: 'Paula',
-      last_name: 'Lubowitz',
-      department: {
-        id: 2,
-        name: 'Diabetes',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 9,
-      username: 'elisa',
-      email: 'minnie@hartmann.org',
-      first_name: 'Coretta',
-      last_name: 'Stamm',
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 10,
-      username: 'shan',
-      email: 'marlana@hilll.info',
-      first_name: 'Isabell',
-      last_name: 'Marks',
-      department: {
-        id: 3,
-        name: 'Cancer',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 11,
-      username: 'khalilah.langworth',
-      email: 'hellen_swift@dickens.biz',
-      first_name: 'Alpha',
-      last_name: 'Vandervort',
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 12,
-      username: 'charlesetta',
-      email: 'marcene_stokes@west-metz.net',
-      first_name: null,
-      last_name: null,
-      department: {
-        id: 3,
-        name: 'Cancer',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 13,
-      username: 'Fridah',
-      email: 'fridah@gmail.com',
-      first_name: null,
-      last_name: null,
-      department: {
-        id: 2,
-        name: 'Diabetes',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 14,
-      username: 'Anna',
-      email: 'anna@gmail.com',
-      first_name: null,
-      last_name: null,
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-    {
-      id: 15,
-      username: 'mary',
-      email: 'mary@gmail.com',
-      first_name: null,
-      last_name: null,
-      department: {
-        id: 1,
-        name: 'Mental Health',
-        description: null,
-      },
-      appointments: [],
-      practitioner_profiles: [],
-    },
-  ]);
-
-  // Fetch selected practitioner's profile
-  useEffect(() => {
-    fetch(`http://localhost:3000/practitioner_profiles/${practitionerID}`)
-      .then((r) => r.json())
-      .then((d) => setPractitioner(d));
-  }, [practitionerID]);
+  const [practitioners, setPractitioners] = useState([])
+  const [addPracProfileSuccess, setAddPracProfileSuccess] = useState(false)
 
   // Get user token
   const token = localStorage.getItem('token');
 
+  // Fetch selected practitioner's profile
+  useEffect(() => {
+    fetch(`http://localhost:3000/practitioners`, {
+      headers: { Authorization: token },
+    })
+      .then((r) => r.json())
+      .then((d) => setPractitioners(d));
+
+    fetch(`http://localhost:3000/practitioners/${practitionerID}`, {
+      headers: { Authorization: token },
+    })
+      .then((r) => r.json())
+      .then((d) => setPractitioner(d.practitioner));
+  }, [practitionerID]);
+
+
   // Handles Practitioner Profile data
-  const handleFillProfileDetails = (data) => {
-    fetch(`http://localhost:3000/patient_profiles`, {
+  const handleFillProfileDetails = (e) => {
+    e.preventDefault()
+    fetch(`http://localhost:3000/practitioner_profiles`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: token },
       body: JSON.stringify({
-        practitioner_id: data.id,
+        practitioner_id: practitioner.id,
         first_name: fName,
         last_name: lName,
         bio,
@@ -263,7 +63,12 @@ function AddPractitionerProfile() {
       }),
     }).then((response) => {
       if (response.ok) {
-        response.json(() => alert('Practitioner added successfully!'));
+        response.json(() => {
+          setAddPracProfileSuccess(true);
+          setTimeout(() => {
+            setAddPracProfileSuccess(false)
+          }, 3500)
+        });
       } else {
         response.json().then((err) => {
           setErrors(err.errors);
@@ -405,11 +210,17 @@ function AddPractitionerProfile() {
           </button>
         </form>
         <br />
+        {/* --ERROR HANDLING-- */}
         {Array.isArray(errors) && errors
           ? errors.map((error) => {
               return <li style={{ color: 'red' }}>{error}</li>;
             })
           : ''}
+        {addPracProfileSuccess ? (
+          <p id='add-prac-success'>Profile created succesfully</p>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

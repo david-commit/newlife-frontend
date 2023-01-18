@@ -8,10 +8,11 @@ const AddPractitioner = () => {
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [cPassword, setCPassword] = useState('');
+  // const [cPassword, setCPassword] = useState('');
   const [department, setDepartment] = useState('');
   const [errors, setErrors] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [addPracSuccess, setAddPracSuccess] = useState(false)
   let history = useHistory();
 
   // Fetch All Departments
@@ -31,14 +32,18 @@ const AddPractitioner = () => {
         username,
         email,
         password,
-        password_confirmation: cPassword,
+        // password_confirmation: cPassword,
         department_id: department,
       }),
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           console.log(data);
-          history.push(`/admin/add-practitioner-profile`);
+          // history.push(`/admin/add-practitioner-profile`);
+          setAddPracSuccess(true)
+          setTimeout(() => {
+            setAddPracSuccess(false);
+          }, 3500)
         });
       } else {
         response.json().then((err) => {
@@ -79,21 +84,24 @@ const AddPractitioner = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-
-          <br />
+          {/* <br />
           <label>Confirm Password</label>
           <input
             type='password'
             placeholder='Confirm Password'
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
-          />
+          /> */}
           <br />
           <label>Select medical department</label>
           <select onChange={(e) => setDepartment(e.target.value)}>
             <option hidden>Select Department</option>
             {departments?.map((dep) => {
-              return <option key={dep.id} value={dep.id}>{dep.name}</option>;
+              return (
+                <option key={dep.id} value={dep.id}>
+                  {dep.name}
+                </option>
+              );
             })}
           </select>
           <br />
@@ -102,11 +110,14 @@ const AddPractitioner = () => {
           </button>
         </form>
         <br />
+        {/* -- ERROR HANDLING -- */}
         {Array.isArray(errors) && errors
           ? errors.map((error) => {
               return <li style={{ color: 'red' }}>{error}</li>;
             })
           : ''}
+        {addPracSuccess ? <p id='add-prac-success'>Practitioner created succesfully</p> : ''}
+
       </div>
     </div>
   );
