@@ -256,7 +256,7 @@ function Cart({
         onClose={() => setOpenFirst(false)}
         center
       >
-        {cartCount > 0 ? (
+        {cartItems.length > 0 ? (
           <>
             <img src={mpesaImg} alt="Mpesa" style={{ width: "100%" }} />
             <div className="checkout-popup-container">
