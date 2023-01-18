@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./ProductPage.css";
 import loadingGif from "../../img/loading.gif";
 import ReactStars from "react-stars";
+import Stars from "react-stars";
 
 function ProductPage({
   handleAddToCart,
@@ -32,21 +33,20 @@ function ProductPage({
     console.log(newRating);
   };
 
-  console.log(productID);
   //post product review
   function submitReview(e) {
     e.preventDefault();
     console.log(rating, header, content, productID, userId);
 
-    fetch("https://example.com/api/users", {
+    fetch("http://localhost:3000/reviews", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         rating: 4,
-        description_header: "",
-        description_content: "",
+        description_header: header,
+        description_content: content,
         product_id: productID,
         user_id: userId,
       }),
@@ -78,7 +78,20 @@ function ProductPage({
       setEffect(results.side_effects);
     };
     fetchProduct();
-  }, [productID, setDosage]);
+    setHeader(
+      rating < 2
+        ? "Poor"
+        : newRating < 3
+        ? "Below Average"
+        : newRating < 4
+        ? "Average"
+        : newRating < 5
+        ? "Above Average"
+        : newRating < 6
+        ? "Excellent"
+        : "Select Rate"
+    );
+  }, [productID, setDosage, rating, setHeader, header]);
 
   // Loading Animationmethod_name
   if (productLoading) {
@@ -87,6 +100,10 @@ function ProductPage({
     );
   }
 
+  function handleChange(value) {
+    setRating(value);
+  }
+  console.log(rating, header);
   return (
     <div className="product-page-main-container">
       <div className="product-details-container">
@@ -175,27 +192,20 @@ function ProductPage({
 
         <form id="review-form" onSubmit={submitReview}>
           <h3>Add Review</h3>
-          <ReactStars
+          <Stars
             count={5}
-            onChange={ratingChanged}
-            size={40}
+            value={rating}
+            onChange={handleChange}
+            size={24}
             color2={"#ffd700"}
-            half={true}
           />
-
-          {newRating < 2
-            ? "Poor"
-            : newRating < 3
-            ? "Below Average"
-            : newRating < 4
-            ? "Average"
-            : newRating < 5
-            ? "Above Average"
-            : newRating < 6
-            ? "Excellent"
-            : "Select Rate"}
-
-          <textarea id="review-textarea" placeholder="Type review.."></textarea>
+          {header}
+          <textarea
+            id="review-textarea"
+            placeholder="Type review.."
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
           <span id="review-buttons">
             <button type="reset" id="reset" onClick={() => setNewRating(0)}>
               Clear
