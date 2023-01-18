@@ -13,7 +13,7 @@ const AddProduct = ({ uniqueCategoryArray }) => {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(0);
   const [errors, setErrors] = useState([]);
-  console.log(errors);
+  const [addProductSuccess, setAddProductSuccess] = useState(false);
 
   // Storing all categories in array
   useEffect(() => {
@@ -45,16 +45,20 @@ const AddProduct = ({ uniqueCategoryArray }) => {
       }),
     }).then((response) => {
       if (response.ok) {
-        response.json().then(() => alert('Product added successfully!'));
+        response.json().then(() => {
+          setAddProductSuccess(true);
+          setTimeout(() => {
+            setAddProductSuccess(false);
+          }, 3500);
+        });
         setName('');
         setImage('');
         setCategory('');
         setStock(0);
         setPrice(0);
       } else {
-        response.json().then(() => {
-          alert('Product not added!');
-          setErrors(response);
+        response.json().then((err) => {
+          setErrors(err.errors);
         });
       }
     });
@@ -119,10 +123,16 @@ const AddProduct = ({ uniqueCategoryArray }) => {
             Add Product
           </button>
         </form>
+        <br />
         {Array.isArray(errors) &&
           errors.map((error) => {
-            return <li>{error}</li>;
+            return <li color='red'>{error}</li>;
           })}
+        {addProductSuccess ? (
+          <p id='add-prac-success'>Product created succesfully</p>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

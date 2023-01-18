@@ -109,3 +109,16 @@
   border: 1px solid #00a3c8;
   color: white;
 }
+#add-prac-success {
+  height: 35px;
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  top: 20%;
+  background-color: #5cb85c;
+  font-size: 1.1rem;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 5px 0 0 5px;
+  z-index: 100;
+}
