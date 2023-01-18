@@ -26,8 +26,6 @@ function ProductPage({
   let [header, setHeader] = useState("");
   let [content, setContent] = useState("");
 
-  setUserId(JSON.parse(localStorage.person).id);
-
   // Setting new product rating from user
   const ratingChanged = (newRating) => {
     setNewRating(newRating);
@@ -41,8 +39,8 @@ function ProductPage({
 
   //post product review
   function submitReview(e) {
-    e.preventdefault();
-    console.log(rating, header, content, productID);
+    e.preventDefault();
+    console.log(rating, header, content, productID, userId);
   }
 
   // Fetches a single product
@@ -57,6 +55,7 @@ function ProductPage({
       );
       let res1 = await res.json();
       const results = await response.json();
+      setUserId(JSON.parse(localStorage.person).id);
       setRate(res1);
       setProduct(results);
       setPrevRating(results.rating);
@@ -161,7 +160,7 @@ function ProductPage({
           </ul>
         </span>
 
-        <form id="review-form">
+        <form id="review-form" onSubmit={submitReview}>
           <h3>Add Review</h3>
           <ReactStars
             count={5}
