@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import AdminSidebar from '../AdminSidebar/AdminSidebar';
@@ -9,22 +9,17 @@ const AddPractitioner = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
-  const [firstErrors, setFirstErrors] = useState([]);
-  const [secondErrors, setSecondErrors] = useState([]);
-  const [fName, setFName] = useState('');
-  const [lName, setLName] = useState('');
-  const [bio, setBio] = useState('');
-  const [dob, setDOB] = useState('');
-  const [location, setLocation] = useState('');
-  const [bloodGroup, setBloodGroup] = useState('');
-  const [weight, setWeight] = useState(0);
-  const [height, setHeight] = useState(0);
-  const [phone, setPhone] = useState('');
-  let [bmi] = useState(0);
-  const [jobTitle, setJobTitle] = useState('');
-  const [image, setImage] = useState('');
+  const [department, setDepartment] = useState('');
+  const [errors, setErrors] = useState([]);
+  const [departments, setDepartments] = useState([]);
   let history = useHistory();
-  // console.log(bmi);
+
+  // Fetch All Departments
+  useEffect(() => {
+    fetch(`http://localhost:3000/departments`)
+      .then((r) => r.json())
+      .then((d) => setDepartments(d));
+  }, []);
 
   // Handles Practitioner Signup
   const handleAddPractitioner = (e) => {
@@ -37,60 +32,28 @@ const AddPractitioner = () => {
         email,
         password,
         password_confirmation: cPassword,
+        department_id: department,
       }),
     }).then((response) => {
       if (response.ok) {
         response.json().then((data) => {
-          handleFillProfileDetails(data);
+          console.log(data);
+          history.push(`/admin/add-practitioner-profile`);
         });
       } else {
         response.json().then((err) => {
-          setFirstErrors(err.errors);
+          setErrors(err.errors);
         });
       }
     });
   };
-
-  // Handles Practitioner Profile data
-  const handleFillProfileDetails = (data) => {
-    fetch(`http://localhost:3000/patient_profiles`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        practitioner_id: data.id,
-        first_name: fName,
-        last_name: lName,
-        bio,
-        dob,
-        location,
-        blood_group: bloodGroup,
-        height,
-        weight,
-        phone_number: phone,
-        bmi,
-        job_title: jobTitle,
-        image,
-      }),
-    }).then((response) => {
-      if (response.ok) {
-        response.json(() => alert('Practitioner added successfully!'));
-      } else {
-        response.json().then((err) => {
-          setSecondErrors(err.errors);
-          alert('Practitioner not added!');
-        });
-      }
-    });
-    history.push(`/admin/all-practitioners`);
-  };
-
-  bmi = (weight / height / height).toFixed(1);
 
   return (
     <div className='all-practitioners-main-container'>
       <AdminSidebar />
       <div className='add-practitioners-container'>
-        <h1>Practitioner Information</h1>
+        {/* <Tab data={data} /> */}
+        <h1>New Practitioner</h1>
         <form onSubmit={handleAddPractitioner}>
           <br />
           <label>Enter Username</label>
@@ -125,136 +88,22 @@ const AddPractitioner = () => {
             value={cPassword}
             onChange={(e) => setCPassword(e.target.value)}
           />
-          {/* =======SECOND REQUEST========== */}
           <br />
-          <label>Enter first name</label>
-          <input
-            type='text'
-            placeholder='First name'
-            value={fName}
-            onChange={(e) => setFName(e.target.value)}
-          />
-          <br />
-          <label>Enter last name</label>
-          <input
-            type='text'
-            placeholder='Last name'
-            value={lName}
-            onChange={(e) => setLName(e.target.value)}
-          />
-          <br />
-          <label>Enter Phone</label>
-          <input
-            type='tel'
-            placeholder='Phone'
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <br />
-          <label>Enter Bio</label>
-          <textarea
-            type='text'
-            placeholder='Provide more information about youself...'
-            value={bio}
-            onChange={(e) => setBio(e.target.value)}
-          />
-          <br />
-          <label>Enter Date of Birth</label>
-          <input
-            type='date'
-            value={dob}
-            onChange={(e) => setDOB(e.target.value)}
-          />
-          <br />
-          <label>Home Location</label>
-          <input
-            type='text'
-            placeholder='Location'
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <br />
-          <label>Enter blood group</label>
-          <input
-            type='text'
-            placeholder='Blood group'
-            value={bloodGroup}
-            onChange={(e) => setBloodGroup(e.target.value)}
-          />
-          <br />
-          <label>Enter physical height (m)</label>
-          <input
-            type='number'
-            placeholder='Height (cm)'
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-          <br />
-          <label>Enter weight (Kg)</label>
-          <input
-            type='number'
-            placeholder='Weight (Kg)'
-            value={weight}
-            onChange={(e) => setWeight(e.target.value)}
-          />
-          <br />
-          <label>BMI (Kg/m2)</label>
-          <input
-            disabled
-            placeholder='0'
-            value={bmi}
-            // onChange={(e) => setBMI(e.target.value)}
-          />
-          {bmi > 0.01 && bmi < 18.5 ? (
-            <p style={{ color: 'red' }}>Under Weight</p>
-          ) : bmi > 18.5 && bmi < 24.9 ? (
-            <p style={{ color: 'green' }}>Healthy</p>
-          ) : bmi > 24.9 && bmi < 30 ? (
-            <p style={{ color: 'orangered' }}>Over Weight</p>
-          ) : bmi >= 30 ? (
-            <p style={{ color: 'red' }}>Obsese</p>
-          ) : (
-            <p>Enter your height & weight</p>
-          )}
-          <br />
-          <label>Enter Job Title</label>
-          <input
-            type='text'
-            placeholder='e.g Clinical officer'
-            value={jobTitle}
-            onChange={(e) => setJobTitle(e.target.value)}
-          />
-          <br />
-          <label>Enter Profile Image URL</label>
-          <input
-            type='url'
-            placeholder='Image URL'
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-
-          {/* <br />
-          <label>Enter Practitioner Department</label>
-          <input
-            type='text'
-            placeholder='Department'
-            name='department'
-            value={department}
-            onChange={(e) => setDepartment(e.target.value)}
-          /> */}
+          <label>Select medical department</label>
+          <select onChange={(e) => setDepartment(e.target.value)}>
+            <option hidden>Select Department</option>
+            {departments?.map((dep) => {
+              return <option key={dep.id} value={dep.id}>{dep.name}</option>;
+            })}
+          </select>
           <br />
           <button className='button-container' type='submit'>
-            Add A practitioner
+            Add practitioner
           </button>
         </form>
         <br />
-        {Array.isArray(firstErrors) && firstErrors
-          ? firstErrors.map((error) => {
-              return <li style={{ color: 'red' }}>{error}</li>;
-            })
-          : ''}
-        {Array.isArray(secondErrors) && secondErrors
-          ? secondErrors.map((error) => {
+        {Array.isArray(errors) && errors
+          ? errors.map((error) => {
               return <li style={{ color: 'red' }}>{error}</li>;
             })
           : ''}

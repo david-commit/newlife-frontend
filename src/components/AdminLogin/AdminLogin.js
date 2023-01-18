@@ -49,7 +49,7 @@ function AdminLogin({ loggedIn, setLoggedIn, userType, setUserType }) {
       }
     });
   }
-  console.log(errors);
+  // console.log(errors);
 
   function updateFormData(e) {
     setFormData((formData) => ({ ...formData, [e.target.id]: e.target.value }));

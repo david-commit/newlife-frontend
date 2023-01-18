@@ -7,11 +7,11 @@ import './Admin.css';
 
 // function Admin () {
 const AllPractitioners = ({ loggedIn, userType }) => {
-  const [users, setUsers] = useState([])
-  const [pracs, setPracs] = useState([])
-  const [products, setProducts] = useState([])
+  // const [users, setUsers] = useState([])
+  const [pracs, setPracs] = useState([]);
+  const [products, setProducts] = useState([]);
   const history = useHistory();
-  console.log(users)
+  // console.log(users)
 
   if (loggedIn) {
     if (userType == 'practitioner') {
@@ -23,20 +23,21 @@ const AllPractitioners = ({ loggedIn, userType }) => {
     history.push('/login');
   }
 
-  const loadUser = () => {
-    const result = axios.get('http://localhost:3000/practitioner_profiles');
-    setUsers(result.data);
-  };
+  // const loadUser = () => {
+  //   const result = axios.get('http://localhost:3000/practitioner_profiles');
+  //   setUsers(result.data);
+  // };
 
+  // Fetches all practitioners & Products
   useEffect(() => {
     fetch(`http://localhost:3000/practitioner_profiles`)
-    .then(r => r.json() )
-    .then(d => setPracs(d))
+      .then((r) => r.json())
+      .then((d) => setPracs(d));
 
     fetch(`http://localhost:3000/products`)
       .then((r) => r.json())
       .then((d) => setProducts(d));
-  }, [])
+  }, []);
 
   return (
     <div className='all-dashboards-main-container'>
