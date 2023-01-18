@@ -3,7 +3,7 @@
 /* LIGHT GREY > #f8f9fb */
 .patient-reviews-main-container {
   width: 85%;
-  height: 70vh;
+  /* height: 70vh; */
   display: flex;
   margin: 0 auto -80px auto;
 }
@@ -16,23 +16,33 @@
   color: #1d3e68;
 }
 .patient-review-section > table {
- border-collapse: collapse;
- width: 100%;
+  border-collapse: collapse;
+  width: 100%;
 }
 .patient-review-section > table > tbody > tr > th {
- border: 1px solid #00a3c8;
- background-color: #00a3c8;
- padding: 6px 0;
- color: white;
+  border: 1px solid #00a3c8;
+  background-color: #00a3c8;
+  padding: 10px;
+  color: white;
 }
 .patient-review-section > table > tbody > tr > td {
- border: 1px solid grey;
- text-align: center;
+  border: 1px solid grey;
+  text-align: center;
 }
 .patient-review-section > table > tbody > tr > td > i {
- color: red;
+  color: red;
+  width: 40px;
 }
 .patient-review-section > table > tbody > tr > td > i:hover {
- cursor: pointer;
- color: #1d3e68;
+  cursor: pointer;
+  color: #1d3e68;
+}
+#review-desc {
+  text-align: left;
+  padding: 0 10px;
+  width: 60%;
+  line-height: 30px;
+}
+#star-cell {
+  width: 150px;
 }
