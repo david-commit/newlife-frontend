@@ -21,9 +21,9 @@ function PractitionerSideBar() {
         {/* <NavLink exact to='/practitioners/me/reviews'>
           <i class='fa-solid fa-star'></i>&nbsp; Reviews
         </NavLink> */}
-        <NavLink exact to='/practitioners/me/calendar'>
+        {/* <NavLink exact to='/practitioners/me/calendar'>
           <i class='fa-regular fa-calendar-check'></i>&nbsp; Calendar
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );

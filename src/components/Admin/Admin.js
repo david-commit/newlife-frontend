@@ -80,7 +80,7 @@ const AllPractitioners = ({ loggedIn, userType }) => {
         <div class='charts'>
           <div>
             <div className='chart-title'>
-              Number of patients joining NewLife Hospital monthly
+              Number of patients joining NewLife Hospital monthly (as of 2022)
             </div>
             <br />
             <CovidLineGraph />

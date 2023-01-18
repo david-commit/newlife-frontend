@@ -11,7 +11,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 1,
       rating: 2,
       description_header: 'Below Average',
-      description_content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit',
+      description_content:
+        'Lorem ipsum dolor sit amet consectetur, adipisicing elit',
       product: {
         id: 2,
         name: 'Lamotrigine',
@@ -28,7 +29,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 2,
       rating: 2,
       description_header: 'Below Average',
-      description_content: 'Came Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi at eligen',
+      description_content:
+        'Came Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi at eligen',
       product: {
         id: 1,
         name: 'Lamictal',
@@ -45,7 +47,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 3,
       rating: 3,
       description_header: 'Average',
-      description_content: 'I like Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque omnis',
+      description_content:
+        'I like Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit cumque omnis',
       product: {
         id: 3,
         name: 'Latuda',
@@ -62,7 +65,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 4,
       rating: 5,
       description_header: 'Excellent',
-      description_content: 'Though Lorem ipsum dolor sit amet, consectetur adipisi',
+      description_content:
+        'Though Lorem ipsum dolor sit amet, consectetur adipisi',
       product: {
         id: 11,
         name: 'Doxorubicin',
@@ -113,7 +117,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 7,
       rating: 5,
       description_header: 'Average',
-      description_content: 'Dolor minima doloribus ad facere doloremque libero in, reiciendis tenetur',
+      description_content:
+        'Dolor minima doloribus ad facere doloremque libero in, reiciendis tenetur',
       product: {
         id: 15,
         name: 'Bupropion',
@@ -130,7 +135,8 @@ function PatientReviews({ loggedIn, userType }) {
       id: 8,
       rating: 5,
       description_header: 'Excellent',
-      description_content: 'inventore quos reiciendis eius vero excepturi totam quia provident enim laboriosam. Vero pariatur velit numquam',
+      description_content:
+        'inventore quos reiciendis eius vero excepturi totam quia provident enim laboriosam. Vero pariatur velit numquam',
       product: {
         id: 8,
         name: 'Leukeran',
@@ -155,11 +161,18 @@ function PatientReviews({ loggedIn, userType }) {
     history.push('/login');
   }
 
-  useEffect(() => {
-    fetch(`/users/1/reviews`)
-      .then((r) => r.json())
-      .then((d) => setUserReviews(d));
-  }, []);
+  // Get user token
+  const token = localStorage.getItem('token');
+
+  // Fetch all reviews
+  // useEffect(() => {
+  //   fetch(`http://localhost:3000/reviews`, {
+  //     headers: { Authorization: token },
+  //   })
+  //     .then((r) => r.json())
+  //     .then((d) => setUserReviews(d));
+  // }, []);
+  // console.log(userReviews);
 
   return (
     <div className='patient-reviews-main-container'>
@@ -179,36 +192,44 @@ function PatientReviews({ loggedIn, userType }) {
               <th>Del</th>
             </tr>
 
-            {userReviews?.map((review, index) => {
-              return (
-                <tr>
-                  <td>{index + 1}</td>
-                  <td>{review.product.name}</td>
-                  <td>{review.description_header}</td>
-                  <td id='star-cell'>
-                    <ReactStars
-                      count={5}
-                      value={review.rating}
-                      size={24}
-                      color2={'#ffd700'}
-                      half={true}
-                      edit={false}
-                    />
-                  </td>
-                  <td>{review.description_content}</td>
-                  <td>
-                    <i
-                      class='fa-solid fa-trash'
-                      onClick={(e) => {
-                        fetch(`/reviews/${review.id}`, {
-                          method: 'DELETE',
-                        });
-                      }}
-                    ></i>
-                  </td>
-                </tr>
-              );
-            })}
+            {Array.isArray(userReviews) ? (
+              userReviews?.map((review, index) => {
+                return (
+                  <tr key={review.id}>
+                    <td>{index + 1}</td>
+                    <td>{review.product.name}</td>
+                    <td>{review.description_header}</td>
+                    <td id='star-cell'>
+                      <ReactStars
+                        count={5}
+                        value={review.rating}
+                        size={24}
+                        color2={'#ffd700'}
+                        half={true}
+                        edit={false}
+                      />
+                    </td>
+                    <td id='review-desc'>{review.description_content}</td>
+                    <td>
+                      <i
+                        class='fa-solid fa-trash'
+                        onClick={(e) => {
+                          fetch(`/reviews/${review.id}`, {
+                            method: 'DELETE',
+                          });
+                        }}
+                      ></i>
+                    </td>
+                  </tr>
+                );
+              })
+            ) : (
+              <tr>
+                <td style={{ padding: '10px 0' }} colSpan={6}>
+                  You dont have any product revires
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
