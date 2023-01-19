@@ -38,10 +38,11 @@ function PatientAppointments({loggedIn, userType}) {
                   departmentName: appointment.practitioner?.department?.name,
                   practitionerLastName: appointment.practitioner?.last_name,
                   time: appointment.time,
+                  date: appointment.date,
                   type: appointment.appointment_type,
                   info: appointment.appointment_info,
-                  id: appointment.id
-                }
+                  id: appointment.id,
+                };
               })
             )
           })
@@ -88,7 +89,7 @@ function PatientAppointments({loggedIn, userType}) {
                   <p>
                     {`(Dr. ${appointment.practitionerLastName}, ${appointment.departmentName} Department))`}
                   </p>
-                  <h4>{`${appointment.time}` }</h4></p>
+                  <h4>{`Date: ${appointment.date} | Time: ${appointment.time}` }</h4></p>
                 {/* <button type='View'>View </button> */}
                 <button type='Delete' onClick={() => handleDeleteAppointment(appointment)}>Delete</button>
                 <hr />

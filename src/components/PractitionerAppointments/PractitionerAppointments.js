@@ -41,6 +41,7 @@ function PractitionerAppointments({loggedIn, userType}) {
                 userLastName: appointment.user?.last_name,
                 email: appointment.user?.email,
                 time: appointment.time,
+                date: appointment.date,
                 type: appointment.appointment_type,
                 info: appointment.appointment_info,
                 id: appointment.id,
@@ -83,6 +84,7 @@ function PractitionerAppointments({loggedIn, userType}) {
 
         {
           appointments.map(appointment => {
+            console.log(appointment)
             return (
               <div className='practitioner-appointments'>
                 <br></br>
@@ -91,7 +93,7 @@ function PractitionerAppointments({loggedIn, userType}) {
                   <p>
                     {`${appointment.userFirstName} ${appointment.userLastName} (${appointment.email})`}
                   </p>
-                  <h4>{`${appointment.time}` }</h4></p>
+                  <h4>{`Date: ${appointment.date} | Time: ${appointment.time}`}</h4></p>
                 {/* <button type='View'>View </button> */}
                 <button type='Delete' onClick={() => handleDeleteAppointment(appointment)}>Delete</button>
                 <hr />
