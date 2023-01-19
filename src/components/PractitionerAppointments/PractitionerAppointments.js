@@ -84,7 +84,6 @@ function PractitionerAppointments({loggedIn, userType}) {
 
         {
           appointments.map(appointment => {
-            console.log(appointment)
             return (
               <div className='practitioner-appointments'>
                 <br></br>

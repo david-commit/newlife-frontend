@@ -3,7 +3,7 @@
 /* LIGHT GREY > #f8f9fb */
 .practitioner-appointments-main-container {
  width: 85%;
- height: 70vh;
+ /* height: 70vh; */
  display: flex;
  margin: 0 auto -80px auto;
 }
