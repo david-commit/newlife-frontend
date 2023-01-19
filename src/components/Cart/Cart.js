@@ -96,11 +96,11 @@ function Cart({
     fetch(`https://2475-102-215-78-19.in.ngrok.io/stkpush`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone, amount: 100 }),
+      body: JSON.stringify({ phoneNumber: phone, amount: 100 }),
     }).then((response) => {
       if (response.ok) {
         response.json().then(() => {
-          alert(`Payment of Ksh${amount} was successful`);
+          alert(`A payment prompt has been sent to your phone`);
           console.log(response);
         });
       } else {
@@ -307,7 +307,7 @@ function Cart({
                 <label>
                   Amount (Ksh)
                   <br />
-                  <input readOnly value={sumTotal} />
+                  <input readOnly value={getTotalPrice(cartProducts).toFixed(0)} />
                 </label>
                 <br />
 
