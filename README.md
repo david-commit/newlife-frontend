@@ -62,7 +62,9 @@ Rails (API) - Backend
 DataBase - PostgreSQL
 Tests - Jest Js, Rspec
 Vercel & Railway - Deployment
-
+<br />
+## YouTube Demo
+Link: https://youtu.be/Pkd1os-KSJQ
 ## Support and Contact Details
 This app represents the first version. In this case, it is still work in progress. In case a user encounters issues or experiences a bug, kindly feel free to reach the developer through david.ondiege@student.moringaschool.com
 ## Copyright & License
