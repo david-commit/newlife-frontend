@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# NewLife Hospital
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### By:
+> David Ondiege, Enock Mokua, Vincent Makoha, Winston Langat, & David Njoroge
 
-## Available Scripts
+NewLife Hospital is a web platform built with React and Ruby on Rails for the front-end and back-end respectfully.It is a platform that assists hospital administration, patients and pactitioners to collaborate through:
+Patients signing up and looking booking different appoitments with their preferred practitioners
+Medical practitioners checking the updates on different appointments
+patients purchasing diffeent medical products of the Hospital shop,
+The admin controlling the Hospital database by performing all the CRUD operations for patients, practitioners and patients.
+Newlife Hospital App is an application that looks to simplify healthcare processes for both practitioners eg doctors, nurses, surgeons, nutritionists, caregivers etc and the patients themselves.
+## Setup Requirements
+A smartphone/tablet or a pic
+A WebBrowser
+Internet Connection
+## Screenshot
 
-In the project directory, you can run:
+## Deployed Work
+Front End:[NewLife Hospital](https://newlife-frontend.vercel.app/)
+Back End: 
+Integrated (Vercel + Railway):
+## MVP
+A user would be able to:
+- A user is able to register as a patient and log in
+- A patient is able to book an appointment with a practitioner of their choice
+- A user is able to see a list of all practitioners and send messages
+- A user is able to view all and single shop products
+- A user can post, show & delete their cart data to the DB
+- A practitioner is able to log in to an existing account (created by Admin)
+- A practitioner can has access to chat messages with his patients
+- A user can log in and out as an admin
+- An admin can CRUD a shop product
+- An Admin can see the hospital's dashboard
+- An Admin can CRUD a practitioner
+ <br />
+ ### Prerequisites
+You need an IDE of your choice (preferably Visual Studio Code).
+You will need a browser (preferably Chrome) to view the webpage.
+You need to have installed npm and JSON-server on your local machine.
+### Install
+## Front End:
+- After a successful clone, move into the project directory and run ``npm install`` to install the required node modules
+- Then run ``npm start`` to start the react app.
 
-### `npm start`
-
+## Back End:
+- Clone from this repo ``https://github.com/david-commit/iCare-backend``
+- Run bundle install to install required dependancies
+### Usage
+- Make sure your rails server is running for the app to work as intended.
+- The project requires an internet connection to work because information is fetched from an external source.
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
 The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This projects frontend server will run on http://localhost:3000
+Visit http://localhost:3000 to view the projects homepage. You will be required to sign up and create an account before you can be granted access to the full application. You are allowed to create account as a patient and as a medical practitioner. For subsequent access, you will be required
+<br />
+## Project Technologies
+Front end react-router-dom: 5.3.4,
+Frontend React - npm Version: 8.19.1
+React JS - Frontend
+Rails (API) - Backend
+DataBase - PostgreSQL
+Tests - Jest Js, Rspec
+Vercel & Railway - Deployment
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Support and Contact Details
+This app represents the first version. In this case, it is still work in progress. In case a user encounters issues or experiences a bug, kindly feel free to reach the developer through david.ondiege@student.moringaschool.com
+## Copyright & License
+Copyright (c) 2022 Moringa School 2022 - Phase 3 - Group 2 Project. Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files , to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
+Moringa School 2022 - Phase 5 - Group Project
