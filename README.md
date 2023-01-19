@@ -43,7 +43,7 @@ You need to have installed npm and JSON-server on your local machine.
 - Then run ``npm start`` to start the react app.
 
 ## Back End:
-- Clone from this repo ``https://github.com/david-commit/iCare-backend``
+- Clone from this repo ``https://github.com/david-commit/newlife-frontend``
 - Run bundle install to install required dependancies
 ### Usage
 - Make sure your rails server is running for the app to work as intended.
