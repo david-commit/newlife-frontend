@@ -96,7 +96,7 @@ function Cart({
     fetch(`https://2475-102-215-78-19.in.ngrok.io/stkpush`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phoneNumber: phone, amount: getTotalPrice(cartProducts) }),
+      body: JSON.stringify({ phoneNumber: phone, amount: 100 }),
     }).then((response) => {
       if (response.ok) {
         response.json().then(() => {
