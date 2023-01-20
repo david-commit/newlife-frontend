@@ -1,19 +1,49 @@
-# NewLife Hospital
+# NewLife Hospital App
 
 #### By:
 > David Ondiege, Enock Mokua, Vincent Makoha, Winston Langat, & David Njoroge
 
-NewLife Hospital is a web platform built with React and Ruby on Rails for the front-end and back-end respectfully.It is a platform that assists hospital administration, patients and pactitioners to collaborate through:
-Patients signing up and looking booking different appoitments with their preferred practitioners
-Medical practitioners checking the updates on different appointments
-patients purchasing diffeent medical products of the Hospital shop,
-The admin controlling the Hospital database by performing all the CRUD operations for patients, practitioners and patients.
-Newlife Hospital App is an application that looks to simplify healthcare processes for both practitioners eg doctors, nurses, surgeons, nutritionists, caregivers etc and the patients themselves.
+## Table of Content
+- Title
+- Description
+
+## Description
+
+NewLife Hospital is a web platform built with React and Ruby on Rails for the front-end and back-end respectively. NewLife App is a platform that assists hospital administration, patients and pactitioners to collaborate.
+
+Patients can sign up and book different appoitments with their preferred practitioners, medical practitioners can check the updates on different appointments, 
+patients purchasing diffeent medical products of the hospital shop,
+an admin controlling the Hospital database by performing all the CRUD operations for patients, practitioners and patients and much more.
+
+Newlife Hospital App is an application that looks to simplify healthcare processes for both practitioners eg doctors, nurses, surgeons, nutritionists, caregivers etc and the patients themselves and in turn improve efficiency and improve time management.
+
+## Built With
+- Frontend: React JS
+- Backend: Ruby on Rails (API)
+- Database: PostgreSQL
+- Designing: Figma
+- Testing: Rspec
+- Deployment: Vercel & Railway
+
+## Features
+1. A user is able to register as a patient and log in
+2. A patient is able to book an appointment with a practitioner of their choice
+3. A user is able to see a list of all practitioners and send messages
+4. A user is able to view all and single shop products
+5. A user can post, show & delete their cart data to the DB
+6. A practitioner is able to log in to an existing account (created by Admin)
+7. A practitioner can has access to chat messages with his patients
+8. A user can log in and out as an admin
+9. An Admin can see the hospital's dashboard
+10. An admin can CRUD a shop product
+11. An Admin can CRUD a practitioner
+
+
 ## Setup Requirements
-A smartphone/tablet or a pic
-A WebBrowser
-Internet Connection
+- A web browser (preferrably Google Chrome)
+
 ## Screenshot
+[![Screenshot-from-2023-01-20-20-19-19.png](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)](https://postimg.cc/QFwKDngj)
 
 ## Deployed Work
 Front End:[NewLife Hospital](https://newlife-frontend.vercel.app/)
