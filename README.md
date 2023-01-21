@@ -102,13 +102,16 @@ A user would be able to:
 - Once the frontend is running, a brower tab will automatically open [http://localhost:4000](http://localhost:4000) to view the appearance on your browser.
 - The page will reload when you make changes.
 - You would be required to sign up and create an account before you can be granted access to the full application. You are allowed to create account as a patient and as a medical practitioner. For subsequent access, you will be required to log in.
-  <br />
+
+## API Documentation
+Get more infomation and guidance on how to consume the API here > [API Documentation](https://github.com/david-commit/newlife-backend/blob/development/README.md)
 
 ## Project Technologies
 
 - React JS - Frontend (Node - v16.17.0)
 - Rails (API) - Backend (Ruby - v2.7.4, Rails - v7.0.4)
 - PostgreSQL - DataBase (v15)
+- Figma - Design
 - Tests - Rspec
 - Deployment - Vercel & Railway
 <br />
@@ -125,6 +128,17 @@ alt="Newlife hospital" border="1" /></a>
 This app represents the first version. In this case, it is still work in progress. In case a user encounters issues or experiences a bug, kindly feel free to reach the developer through davidondiege@gmail.com
 
 You can also create an issue on GitHub of reach out for collaboration.
+
+## Authors
+👤 David Ondiege - [GitHub](https://github.com/david-commit)
+<br />
+👤 Vincent Makokha - [GitHub](https://github.com/VinceXIV)
+<br>
+👤 Enock Mokua - [GitHub](https://github.com/MokuaEnock)
+<br />
+👤 Winston Langat - [GitHub](https://github.com/Winston5691)
+<br />
+👤 David Njoroge - [GitHub](https://github.com/njoroge35)
 
 ## Copyright & License
 
