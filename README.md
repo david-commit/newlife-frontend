@@ -42,13 +42,9 @@ Newlife Hospital App is an application that looks to simplify healthcare process
 10. An admin can CRUD a shop product
 11. An Admin can CRUD a practitioner
 
-## Setup Requirements
-
-- A web browser (preferrably Google Chrome)
-
 ## Screenshot
 
-[![Screenshot-from-2023-01-20-20-19-19.png](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)](https://postimg.cc/QFwKDngj)
+![Newlife Hospital Screenshot](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)
 
 ## Deployed Work
 
@@ -93,38 +89,42 @@ A user would be able to:
 
 ### Back End:
 
-- Clone from this repo `https://github.com/david-commit/newlife-frontend`
-- Run bundle install to install required dependancies
+- Clone the project depending on your local environment
+  - SSH - `git@github.com:david-commit/newlife-backend.git`
+  - HTTPS - `https://github.com/david-commit/newlife-backend.git`
+- Run `bundle install` to install all required dependancies
+- Run `rails server` to start the backend server
 
 ### Usage
 
 - Make sure your rails server is running for the app to work as intended.
-- The project requires an internet connection to work because information is fetched from an external source.
-  Runs the app in the development mode.\
-  Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-  The page will reload when you make changes.\
-  This projects frontend server will run on http://localhost:3000
-  Visit http://localhost:3000 to view the projects homepage. You will be required to sign up and create an account before you can be granted access to the full application. You are allowed to create account as a patient and as a medical practitioner. For subsequent access, you will be required
+- The project requires an internet connection to work because some information is fetched from an external source.
+- Once the frontend is running, a brower tab will automatically open [http://localhost:4000](http://localhost:4000) to view the appearance on your browser.
+- The page will reload when you make changes.
+- You would be required to sign up and create an account before you can be granted access to the full application. You are allowed to create account as a patient and as a medical practitioner. For subsequent access, you will be required to log in.
   <br />
 
 ## Project Technologies
 
-Front end react-router-dom: 5.3.4,
-Frontend React - npm Version: 8.19.1
-React JS - Frontend
-Rails (API) - Backend
-DataBase - PostgreSQL
-Tests - Jest Js, Rspec
-Vercel & Railway - Deployment
+- React JS - Frontend (Node - v16.17.0)
+- Rails (API) - Backend (Ruby - v2.7.4, Rails - v7.0.4)
+- PostgreSQL - DataBase (v15)
+- Tests - Rspec
+- Deployment - Vercel & Railway
 <br />
 
 ## YouTube Demo
 
-Link: https://youtu.be/Pkd1os-KSJQ
+<a href="https://youtu.be/YK-BGHdsS68
+" target="_blank"><img src="https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png" 
+alt="Newlife hospital" border="1" /></a>
 
-## Support and Contact Details
 
-This app represents the first version. In this case, it is still work in progress. In case a user encounters issues or experiences a bug, kindly feel free to reach the developer through david.ondiege@student.moringaschool.com
+## Contribution
+
+This app represents the first version. In this case, it is still work in progress. In case a user encounters issues or experiences a bug, kindly feel free to reach the developer through davidondiege@gmail.com
+
+You can also create an issue on GitHub of reach out for collaboration.
 
 ## Copyright & License
 
