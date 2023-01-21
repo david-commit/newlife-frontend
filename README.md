@@ -44,7 +44,7 @@ Newlife Hospital App is an application that looks to simplify healthcare process
 
 ## Screenshot
 
-![Newlife Hospital Screenshot](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)
+![Newlife Hospital Screenshot](./public/Screenshot-from-2023-01-20-20-19-19.png)
 
 ## Deployed Work
 
@@ -119,12 +119,7 @@ Get more infomation and guidance on how to consume the API here > [API Documenta
 
 ## YouTube Demo
 
-<a href="https://youtu.be/YK-BGHdsS68
-" target="_blank">
-![NewLife Hospital](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)
-</a>
-==
-<a href='https://youtu.be/YK-BGHdsS68' target='_blank'><img src='./public/Screenshot-from-2023-01-20-20-19-19.png' border='0' alt='Screenshot-from-2023-01-20-20-19-19'/></a>
+<a href='https://youtu.be/YK-BGHdsS68' target='_blank'><img src='./public/Screenshot-2.png' border='1' alt='Screenshot-from-2023-01-20-20-19-19'/></a>
 
 ## Contribution
 
