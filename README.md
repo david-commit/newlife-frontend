@@ -104,6 +104,7 @@ A user would be able to:
 - You would be required to sign up and create an account before you can be granted access to the full application. You are allowed to create account as a patient and as a medical practitioner. For subsequent access, you will be required to log in.
 
 ## API Documentation
+
 Get more infomation and guidance on how to consume the API here > [API Documentation](https://github.com/david-commit/newlife-backend/blob/development/README.md)
 
 ## Project Technologies
@@ -114,14 +115,16 @@ Get more infomation and guidance on how to consume the API here > [API Documenta
 - Figma - Design
 - Tests - Rspec
 - Deployment - Vercel & Railway
-<br />
+  <br />
 
 ## YouTube Demo
 
 <a href="https://youtu.be/YK-BGHdsS68
-" target="_blank"><img src="https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png" 
-alt="Newlife hospital" border="1" /></a>
-
+" target="_blank">
+![NewLife Hospital](https://i.postimg.cc/hGPL9kfQ/Screenshot-from-2023-01-20-20-19-19.png)
+</a>
+==
+<a href='https://youtu.be/YK-BGHdsS68' target='_blank'><img src='./public/Screenshot-from-2023-01-20-20-19-19.png' border='0' alt='Screenshot-from-2023-01-20-20-19-19'/></a>
 
 ## Contribution
 
@@ -130,6 +133,7 @@ This app represents the first version. In this case, it is still work in progres
 You can also create an issue on GitHub of reach out for collaboration.
 
 ## Authors
+
 👤 David Ondiege - [GitHub](https://github.com/david-commit)
 <br />
 👤 Vincent Makokha - [GitHub](https://github.com/VinceXIV)
