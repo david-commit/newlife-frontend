@@ -94,7 +94,8 @@ A user is able be able to:
 - Run `bundle install` to install all required dependancies
 - Run `rails server` to start the backend server
 
-### UsageNewLife Hospital is a web platform built with React and Ruby 
+### Usage
+NewLife Hospital is a web platform built with React and Ruby 
 
 - Make sure your rails server is running for the app to work as intended.
 - The project requires an internet connection to work because some information is fetched from an external source.
