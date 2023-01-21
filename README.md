@@ -6,8 +6,14 @@
 
 ## Table of Content
 
-- Title
-- Description
+- [Title](#newLife-hospital-app)
+- [Description](#description)
+- [Technologies](#built-with)
+- [Features](#features)
+- [Screenshot](#screenshot)
+- [Deployed Work](#deployed-work)
+- [Prerequisites](#prerequisites)
+- [YouTube Demo](#youtube-demo)
 
 ## Description
 
@@ -19,6 +25,8 @@ an admin controlling the Hospital database by performing all the CRUD operations
 
 Newlife Hospital App is an application that looks to simplify healthcare processes for both practitioners eg doctors, nurses, surgeons, nutritionists, caregivers etc and the patients themselves and in turn improve efficiency and improve time management.
 
+<a name="built-with"></a>
+
 ## Built With
 
 - Frontend: React JS
@@ -28,33 +36,11 @@ Newlife Hospital App is an application that looks to simplify healthcare process
 - Testing: Rspec
 - Deployment: Vercel & Railway
 
+<a name="features"></a>
+
 ## Features
 
-1. A user is able to register as a patient and log in
-2. A patient is able to book an appointment with a practitioner of their choice
-3. A user is able to see a list of all practitioners and send messages
-4. A user is able to view all and single shop products
-5. A user can post, show & delete their cart data to the DB
-6. A practitioner is able to log in to an existing account (created by Admin)
-7. A practitioner can has access to chat messages with his patients
-8. A user can log in and out as an admin
-9. An Admin can see the hospital's dashboard
-10. An admin can CRUD a shop product
-11. An Admin can CRUD a practitioner
-
-## Screenshot
-
-![Newlife Hospital Screenshot](./public/Screenshot-from-2023-01-20-20-19-19.png)
-
-## Deployed Work
-
-[NewLife Hospital Frontend](https://newlife-frontend.vercel.app/) - Vercel.app
-<br />
-[NewLife Hospital Backend](https://newlife-backend-production.up.railway.app/) - Railway.app
-
-## MVP
-
-A user would be able to:
+A user is able be able to:
 
 - A user is able to register as a patient and log in
 - A patient is able to book an appointment with a practitioner of their choice
@@ -67,8 +53,21 @@ A user would be able to:
 - An admin can CRUD a shop product
 - An Admin can see the hospital's dashboard
 - An Admin can CRUD a practitioner
-  <br />
 
+<a name="screenshot"></a>
+
+## Screenshot
+
+![Newlife Hospital Screenshot](./public/Screenshot-from-2023-01-20-20-19-19.png)
+
+<a name='deployed-work'></a>
+## Deployed Work
+
+[NewLife Hospital Frontend](https://newlife-frontend.vercel.app/) - Vercel.app
+<br />
+[NewLife Hospital Backend](https://newlife-backend-production.up.railway.app/) - Railway.app
+
+<a name="prerequisites"></a>
 ## Prerequisites
 
 - An IDE of your choice (preferably Visual Studio Code)
@@ -95,7 +94,7 @@ A user would be able to:
 - Run `bundle install` to install all required dependancies
 - Run `rails server` to start the backend server
 
-### Usage
+### UsageNewLife Hospital is a web platform built with React and Ruby 
 
 - Make sure your rails server is running for the app to work as intended.
 - The project requires an internet connection to work because some information is fetched from an external source.
