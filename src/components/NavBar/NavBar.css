@@ -120,11 +120,15 @@
   display: none;
 }
 /* == MOBILE FULL SIZE == */
-/* == MEDIA QUERIES == ASPECT RATIO 700 x 1600 == */
+/* == MEDIA QUERIES ==  == */
 @media screen and (max-width: 769px) {
   .mobile-nav-icons i {
     color: #1d3e68;
     display: block;
+    color: #1d3e68;
+    font-size: 50px;
+    padding: 20px;
+    cursor: pointer;
   }
   .top-bar-container {
     max-width: 100%;
@@ -151,12 +155,6 @@
   .logo img {
     width: 100px;
     padding-right: 10px;
-  }
-  .mobile-nav-icons > i {
-    color: #1d3e68;
-    font-size: 50px;
-    padding: 20px;
-    cursor: pointer;
   }
   #menubar-nav {
     display: flex;
