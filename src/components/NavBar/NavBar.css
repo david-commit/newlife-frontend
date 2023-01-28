@@ -54,7 +54,6 @@
 #logo-txt2 {
   font-size: 23.5px;
   font-style: italic;
-  
 }
 .menubar-nav {
   display: flex;
@@ -86,6 +85,16 @@
   color: #00a3c8;
   transition: all 0.35s ease-in-out;
 }
+/* .menubar-nav a:hover::after,
+.menubar-nav a.active::after {
+  content: '';
+  width: 30%;
+  height: 2px;
+  background: #00a3c8;
+  position: absolute;
+  bottom: -4px;
+  left: 24px;
+} */
 #cart-length {
   background-color: red;
   border-radius: 50%;
@@ -105,4 +114,19 @@
   display: flex;
 }
 /* == NAV BAR == */
+/* == MOBILE FULL SIZE == */
+.mobile-nav-icons i {
+  color: #1d3e68;
+  display: none;
+}
+/* == MOBILE FULL SIZE == */
+/* == MEDIA QUERIES == ASPECT RATIO 700 x 1600 == */
+@media screen and (max-width: 769px){
+  .menubar-nav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  }
+}
+/* == MEDIA QUERIES == */
 /* ==NAVBAR COMPONENT== */
