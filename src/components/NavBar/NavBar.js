@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
 function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
+  const [mobileIconToggle, setMobileIconToggle] = useState(false)
+
+  const handleMobileIconToggle = () => {
+    setMobileIconToggle(!mobileIconToggle)
+  }
+
   function handleLogoutClick() {
     setLoggedIn(false)
     const token = localStorage.getItem("token")
@@ -129,6 +135,9 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
                 </NavLink>
               </>
             )}
+            <div className='mobile-nav-icons' onClick={handleMobileIconToggle}>
+              <i className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}></i>
+            </div>
           </nav>
         </div>
       </div>
