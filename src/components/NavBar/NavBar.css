@@ -120,12 +120,27 @@
   display: none;
 }
 /* == MOBILE FULL SIZE == */
-/* == MEDIA QUERIES == ASPECT RATIO 700 x 1600 == */
-@media screen and (max-width: 769px){
+/* == MEDIA QUERIES ==  == */
+@media screen and (max-width: 769px) {
+  .top-bar-container {
+    max-width: 100%;
+  }
+  .topbar {
+    justify-content: center;
+    height: 25px;
+    font-size: 15px;
+  }
+  .topbar1 {
+    display: none;
+  }
   .menubar-nav {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .menubar-main-container {
+    width: 100%;
   }
 }
 /* == MEDIA QUERIES == */
