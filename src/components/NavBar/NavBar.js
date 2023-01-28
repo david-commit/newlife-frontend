@@ -4,11 +4,11 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
 function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
-  const [mobileIconToggle, setMobileIconToggle] = useState(false)
+  const [mobileIconToggle, setMobileIconToggle] = useState(false);
 
   const handleMobileIconToggle = () => {
-    setMobileIconToggle(!mobileIconToggle)
-  }
+    setMobileIconToggle(!mobileIconToggle);
+  };
 
   function handleLogoutClick() {
     setLoggedIn(false)
@@ -70,7 +70,11 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
               </div>
             </div>
           </NavLink>
-          <nav className='menubar-nav'>
+          <div className="mobile-nav-icons" onClick={handleMobileIconToggle}>
+            <i className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}></i>
+          </div>
+           <nav id="menubar-nav"
+            className={ mobileIconToggle ? "#menubar-nav active" : "#menunar-nav" }>
             {/* == Displays User Role is logged in currently */}
             {/* {loggedIn && (userType == "patient" )
               ? 'Logged as Patient!'
