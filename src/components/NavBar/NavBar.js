@@ -74,7 +74,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
             <i className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}></i>
           </div>
            <nav id="menubar-nav"
-            className={ mobileIconToggle ? "#menubar-nav active" : "#menunar-nav" }>
+            className={ mobileIconToggle ? "#menubar-nav active" : "#menubar-nav" }>
             {/* == Displays User Role is logged in currently */}
             {/* {loggedIn && (userType == "patient" )
               ? 'Logged as Patient!'
