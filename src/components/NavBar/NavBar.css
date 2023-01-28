@@ -55,11 +55,11 @@
   font-size: 23.5px;
   font-style: italic;
 }
-.menubar-nav {
+#menubar-nav {
   display: flex;
   align-items: center;
 }
-.menubar-nav button {
+#menubar-nav button {
   color: white;
   width: fit-content;
   height: 55px;
@@ -69,19 +69,19 @@
   font-size: 24px;
   padding: 0 16px;
 }
-.menubar-nav button:hover {
+#menubar-nav button:hover {
   cursor: pointer;
   background-color: white;
   color: #1d3e68;
   transition: all 0.35s ease-in-out;
 }
-.menubar-nav a {
+#menubar-nav a {
   font-size: 22px;
   color: #1d3e68;
   text-decoration: none;
   padding: 0 0 0 24px;
 }
-.menubar-nav a:hover {
+#menubar-nav a:hover {
   color: #00a3c8;
   transition: all 0.35s ease-in-out;
 }
@@ -107,7 +107,7 @@
   position: relative;
   top: -15px;
 }
-.menubar-nav i {
+#menubar-nav i {
   font-size: 30px;
 }
 .cart-icon {
