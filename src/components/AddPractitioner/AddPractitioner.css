@@ -1,0 +1,124 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.add-practitioners-main-container {
+  /* width: 85%; */
+  display: flex;
+  margin: 0 auto -80px auto;
+  height: 70vh;
+}
+.add-practitioners-container {
+  width: 80%;
+  padding: 35px;
+  /* border: 1px dashed red; */
+}
+.add-practitioners-container h1 {
+  color: #1d3e68;
+}
+/* .label {
+  color: #021231;
+} */
+.add-practitioners-container form {
+  display: flex;
+  flex-direction: column;
+}
+.add-practitioners-container form > label {
+  padding-bottom: 10px;
+}
+.add-practitioners-container form > textarea {
+  width: 35%;
+  height: 10vh;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.add-practitioners-container form > input {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.add-practitioners-container form > select {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+}
+.button-container {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+}
+/* =========== ADD PRACTITIONER PROFILE */
+.add-practitioner-profile-main-container {
+  /* width: 85%; */
+  display: flex;
+  margin: 0 auto -80px auto;
+  /* height: 70vh; */
+}
+.add-practitioner-profile-container {
+  width: 80%;
+  padding: 35px;
+  /* border: 1px dashed red; */
+}
+.add-practitioner-profile-container h1 {
+  color: #1d3e68;
+}
+.add-practitioner-profile-container form {
+  display: flex;
+  flex-direction: column;
+}
+.add-practitioner-profile-container form > label {
+  padding-bottom: 10px;
+}
+.add-practitioner-profile-container form > textarea {
+  width: 35%;
+  height: 10vh;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.add-practitioner-profile-container form > input {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.add-practitioner-profile-container form > select {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: white;
+}
+.button-container {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+}
+#add-prac-success {
+  height: 35px;
+  width: fit-content;
+  position: fixed;
+  right: 0;
+  top: 20%;
+  background-color: #5cb85c;
+  font-size: 1.1rem;
+  color: white;
+  padding: 5px 7px;
+  border-radius: 5px 0 0 5px;
+  z-index: 100;
+}

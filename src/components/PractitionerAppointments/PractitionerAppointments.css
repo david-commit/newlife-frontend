@@ -1,0 +1,38 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.practitioner-appointments-main-container {
+  width: 85%;
+  height: auto;
+  display: flex;
+  margin: 0 auto -80px auto;
+}
+.practitioner-existing-appointments {
+  height: fit-content;
+  padding: 40px;
+}
+.practitioner-existing-appointments h1 {
+  color: #1d3e68;
+}
+.practitioner-existing-appointments h4 {
+  color: #00a3c8;
+  font-size: 16px;
+}
+.practitioner-appointments button {
+  width: fit-content;
+  padding: 2px 10px;
+  font-size: 13px;
+  background-color: #1d3e68;
+  color: rgb(255, 255, 255);
+  position: relative;
+  left: 380px;
+  bottom: 40px;
+  margin-left: 3%;
+  border: 1px solid #1d3e68;
+  padding: 4px 8px;
+}
+.practitioner-appointments button:hover {
+  background-color: transparent;
+  color: #1d3e68;
+  cursor: pointer;
+}

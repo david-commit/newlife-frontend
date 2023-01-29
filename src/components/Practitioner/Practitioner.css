@@ -1,0 +1,46 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.practitioner-main-container {
+  width: 85%;
+  display: flex;
+  margin: 0 auto -80px auto;
+  height: 70vh;
+}
+.practitioner-details-dash-section {
+ width: 55%;
+ padding: 35px;
+}
+.practitioner-details-dash-section h1 {
+ color: #1d3e68;
+}
+.practitioner-details-dash-section .practitioner-details-bio {
+width: 80%;
+min-height: 5rem;
+border: 1px solid black;
+padding: 6px;border-radius: 5px;
+}
+.practitioner-details-title {
+margin-bottom: 10px;
+}
+.practitioner-details-title > span {
+ color: #1d3e68;
+ font-weight: 700;
+}
+.practitioner-details-notification-section {
+ width: 24%;
+ height: fit-content;
+ padding: 35px 30px;
+ background-color: #00a3c8;
+ color: white;
+}
+.practitioner-details-notification-section h2 {
+text-align: center;
+padding-bottom: 20px;
+}
+.practitioner-details-notification hr {
+ margin: 10px 0;
+ border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, white, white, rgba(0, 0, 0, 0));
+}

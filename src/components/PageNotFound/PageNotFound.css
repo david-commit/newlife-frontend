@@ -1,0 +1,21 @@
+.page-not-found-container {
+  width: 85%;
+  /* display: flex; */
+  margin: 50px auto;
+}
+.not-found-img {
+  background-image: url('../../img/black_doc.jpg');
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: cover;
+  zoom: 60%;
+  font-size: 50px;
+  color: #1d3e68;
+  font-weight: 700;
+  padding: 100px;
+}
+.not-found-img > a {
+ text-decoration: none;
+ color: #1d3e68;
+}

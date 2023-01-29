@@ -1,0 +1,54 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.admin-login-main-container {
+  width: 85%;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  height: 60vh;
+  justify-content: center;
+}
+#admin-login-form {
+  display: flex;
+  flex-direction: column;
+  width: 60vh;
+  height: 50vh;
+  justify-content: center;
+  background-color: #1d3e68;
+  text-align: center;
+  color: white;
+}
+#admin-login-form > input,
+#admin-login-form > button {
+  width: 60%;
+  border: 1px solid #1d3e68;
+  font-size: 16px;
+  margin: 0 auto;
+  padding: 6px 12px;
+  border-radius: 15px;
+}
+#admin-login-form > button {
+  background-color: #1d3e68;
+  color: white;
+  border: 1px solid white;
+}
+#admin-login-form > button:hover {
+  background-color: white;
+  color: #1d3e68;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
+}
+#admin-login-form a {
+  text-decoration: none;
+  color: #00a3c8;
+}
+.admin-login-error-display {
+  width: 100%;
+  background-color: red;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid red;
+  color: white;
+}

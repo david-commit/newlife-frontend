@@ -1,0 +1,36 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.edit-product-container {
+  width: 70%;
+  padding: 35px;
+  /* border: 1px dashed red; */
+  height: fit-content;
+  margin-bottom: 10vh;
+}
+.edit-product-container h1 {
+  color: #1d3e68;
+}
+.edit-product-container form {
+  display: flex;
+  flex-direction: column;
+}
+.edit-product-container form > div > input {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.edit-product-container form > button {
+ width: 35%;
+ font-size: 14px;
+ padding: 6px;
+ border: 1px solid #00a3c8;
+ border-radius: 5px;
+ background-color: #00a3c8;
+}
+.edit-product-container form > button:hover {
+ cursor: pointer;
+ background-color: #1d3e68;
+}

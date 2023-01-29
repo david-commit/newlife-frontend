@@ -1,0 +1,66 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.patient-main-container {
+  width: 85%;
+  display: flex;
+  margin: 0 auto -80px auto;
+  height: 70vh;
+}
+.patient-details-dash-section {
+ width: 55%;
+ padding: 35px;
+}
+.patient-details-dash-section h1 {
+ color: #1d3e68;
+}
+.patient-details-dash-section textarea {
+width: 80%;
+height: 100px;
+border: 1px solid lightgray;
+padding: 6px;border-radius: 5px;
+}
+.patient-details-title {
+margin-bottom: 10px;
+}
+.patient-details-title > span {
+ color: #1d3e68;
+ font-weight: 700;
+}
+.patient-details-notification-section {
+ width: 24%;
+ height: fit-content;
+ padding: 35px 30px;
+ background-color: #00a3c8;
+ color: white;
+}
+.patient-details-notification-section h2 {
+text-align: center;
+padding-bottom: 20px;
+}
+
+.patient-details-bio {
+  border: solid #1d3e68 0.1rem;
+  border-radius: 0.3rem;
+  padding: 1rem;
+  width: 30vw;
+}
+
+button.edit-personal-details {
+  color: white;
+  width: fit-content;
+  height: 3rem;
+  font-size: 1.2rem;
+  border: 1px solid #1d3e68;
+  border-radius: 5px;
+  background-color: #00a3c8;
+  padding: 0 16px;
+  margin-top: 1rem;
+}
+
+button.edit-personal-details:hover {
+  cursor: pointer;
+  background-color: #1d3e68;
+  color: white;
+  transition: all 0.35s ease-in-out;
+}

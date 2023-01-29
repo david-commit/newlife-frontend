@@ -1,0 +1,53 @@
+/* LIGHT BLUE > #00a3c8 */
+/* DARK BLUE > #1d3e68 */
+/* LIGHT GREY > #f8f9fb */
+.add-Products-main-container {
+  /* width: 85%; */
+  display: flex;
+  margin: 0 auto -80px auto;
+  height: 70vh;
+}
+.add-Products-container {
+  width: 80%;
+  padding: 35px;
+  /* border: 1px dashed red; */
+}
+.add-Products-container h1 {
+  color: #1d3e68;
+}
+.add-Products-container form {
+  display: flex;
+  flex-direction: column;
+}
+.add-Products-container form > input {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+}
+.add-Products-container form > select {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  border: 1px solid lightgray;
+  background-color: white;
+  border-radius: 5px;
+}
+.add-Products-container form > label {
+  padding-bottom: 10px;
+}
+.button-container {
+  width: 35%;
+  font-size: 14px;
+  padding: 6px;
+  background-color: #00a3c8;
+  border: 1px solid #00a3c8;
+  color: white;
+  border-radius: 5px;
+}
+.button-container:hover {
+  cursor: pointer;
+  background-color: #1d3e68;
+  border: 1px solid #1d3e68;
+}
