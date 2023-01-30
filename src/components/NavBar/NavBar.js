@@ -3,7 +3,7 @@ import './NavBar.css';
 import { NavLink } from 'react-router-dom';
 import logo from '../../img/logo.png'; //https://stackoverflow.com/questions/51108438/reactjs-import-3-levels-deep-react
 
-function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
+function NavBar({ loggedIn, setLoggedIn, userType, setUserType, cartItems }) {
   const [mobileIconToggle, setMobileIconToggle] = useState(false);
 
   const handleMobileIconToggle = () => {
@@ -11,25 +11,27 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
   };
 
   function handleLogoutClick() {
-    setLoggedIn(false)
-    const token = localStorage.getItem("token")
-    const intervalId = JSON.parse(localStorage.getItem("intervalId"))
-    localStorage.clear()
-    setUserType("")
+    setLoggedIn(false);
+    const token = localStorage.getItem('token');
+    const intervalId = JSON.parse(localStorage.getItem('intervalId'));
+    localStorage.clear();
+    setUserType('');
 
-    const logoutEndpoint = userType == "patient"?
-      "https://newlife-backend-production.up.railway.app/logout" :
-      userType == "practitioner" ? "https://newlife-backend-production.up.railway.app/practitioner/logout" :
-      "https://newlife-backend-production.up.railway.app/admin/logout"
+    const logoutEndpoint =
+      userType == 'patient'
+        ? 'https://newlife-backend-production.up.railway.app/logout'
+        : userType == 'practitioner'
+        ? 'https://newlife-backend-production.up.railway.app/practitioner/logout'
+        : 'https://newlife-backend-production.up.railway.app/admin/logout';
 
     fetch(logoutEndpoint, {
       method: 'DELETE',
-      headers: {"Accept": "application/json", "Authorization": token}
-     })
+      headers: { Accept: 'application/json', Authorization: token },
+    });
 
-    return clearInterval(intervalId)
+    return clearInterval(intervalId);
   }
-  
+
   return (
     <>
       <div className='top-bar-container'>
@@ -70,11 +72,17 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
               </div>
             </div>
           </NavLink>
-          <div className="mobile-nav-icons" onClick={handleMobileIconToggle}>
-            <i className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}></i>
+          <div className='mobile-nav-icons' onClick={handleMobileIconToggle}>
+            <i
+              className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}
+            ></i>
           </div>
-           <nav id="menubar-nav"
-            className={ mobileIconToggle ? "#menubar-nav active" : "#menubar-nav" }>
+          <nav
+            id='menubar-nav'
+            className={
+              mobileIconToggle ? '#menubar-nav active' : '#menubar-nav'
+            }
+          >
             {/* == Displays User Role is logged in currently */}
             {/* {loggedIn && (userType == "patient" )
               ? 'Logged as Patient!'
@@ -89,7 +97,7 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
             <NavLink exact to='/about'>
               About Us
             </NavLink>
-            {loggedIn && (userType == "patient") ? (
+            {loggedIn && userType == 'patient' ? (
               <>
                 <NavLink exact to='/patients/me'>
                   Dashboard
@@ -100,14 +108,17 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
                 <NavLink exact to='/cart'>
                   <div className='cart-icon'>
                     <i class='fa-solid fa-cart-plus'></i>
-                    <span id='cart-length'>{cartItems? cartItems.length : 0}</span>
+                    <span id='cart-length'>
+                      {cartItems ? cartItems.length : 0}
+                    </span>
                   </div>
                 </NavLink>
                 <NavLink exact to='/'>
                   <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
-            ) : loggedIn && (userType == "practitioner" || userType == "admin") ? (
+            ) : loggedIn &&
+              (userType == 'practitioner' || userType == 'admin') ? (
               <>
                 <NavLink exact to='/practitioners/me'>
                   Dashboard
@@ -119,17 +130,17 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
                   <button onClick={handleLogoutClick}>Logout</button>
                 </NavLink>
               </>
-            ) : loggedIn && (userType == "admin")?(
+            ) : loggedIn && userType == 'admin' ? (
               <>
                 <NavLink exact to='/admin/me'>
                   Dashboard
                 </NavLink>
-            
+
                 <NavLink exact to='/'>
                   <button onClick={handleLogoutClick}>Logout</button>
-                </NavLink>              
+                </NavLink>
               </>
-            ):(
+            ) : (
               <>
                 <NavLink exact to='/login'>
                   <button>Login</button>
@@ -140,7 +151,9 @@ function NavBar({loggedIn, setLoggedIn, userType, setUserType, cartItems}) {
               </>
             )}
             <div className='mobile-nav-icons' onClick={handleMobileIconToggle}>
-              <i className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}></i>
+              <i
+                className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}
+              ></i>
             </div>
           </nav>
         </div>
