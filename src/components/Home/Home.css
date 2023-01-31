@@ -203,7 +203,125 @@
   border-radius: 50%;
 }
 .home-testimonial-card p {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 /* == HOME TESTIMONIALS == */
+@media screen and (max-width: 769px) {
+  /* == HOME BANNER == */
+  .home-banner-container {
+    height: 400px;
+    background-image: url('../../img/banner-img-mobile.jpg');
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .home-banner-container-text {
+    color: white;
+    width: 75%;
+    margin: auto;
+    height: 300px;
+    align-items: center;
+    text-align: center;
+  }
+  .home-banner-container-text h3 {
+    font-size: 20px;
+  }
+  .home-banner-container-text h1 {
+    font-size: 32px;
+  }
+  .home-banner-container-text p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .home-banner-container-text button {
+    font-size: 16px;
+  }
+  /* == HOME BANNER == */
+  /* == HOME WELCOME BANNER == */
+  .home-welcome-banner {
+    flex-direction: column;
+    margin-bottom: -30px;
+  }
+  .home-welcome-banner-text {
+    width: 85%;
+    text-align: center;
+  }
+  .home-welcome-banner-text img {
+    width: 120px;
+    display: flex;
+    margin: auto;
+  }
+  .home-welcome-banner-text h3 {
+    margin-top: 25px;
+  }
+  .home-welcome-banner-text h1 {
+    font-size: 32px;
+  }
+  .home-welcome-banner-text p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  /* == HOME WELCOME BANNER == */
+  /* == HOME SOLUTION == */
+  .home-solution {
+    width: 90%;
+  }
+  .home-solution h1 {
+    font-size: 32px;
+    text-align: center;
+  }
+  .home-solution p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .home-solution-cards {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-gap: 20px;
+    margin: inherit auto;
+  }
+  .home-solution-card {
+    width: 100%;
+    padding: 25px;
+  }
+  .home-solution-card h3 {
+    font-size: 18px;
+  }
+  /* == HOME SOLUTION == */
+  /* == HOME PRACTICES == */
+  .home-practices-container {
+    /* width: 85%;
+  height: 600px;
+  display: flex;
+  margin: 0 auto 100px auto;
+  align-items: center;
+  background-image: url('../../img/black-female-doctor-focused.png');
+  height: 700px;
+  background-repeat: no-repeat;
+  background-position: right;
+  overflow: hidden;
+  background-size: 75%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .home-practices {
+    width: 100%;
+  }
+  .home-practices p {
+    font-size: 16px;
+    line-height: 23px;
+  }
+  .home-practices h1 {
+    font-size: 30px;
+  }
+  .home-practices button {
+    font-size: 16px;
+    display: flex;
+    margin: auto;
+  }
+
+  /* == HOME PRACTICES == */
+}
 /* ==== HOME COMPONENT ==== */

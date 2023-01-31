@@ -17,7 +17,7 @@ function Home() {
           <h1>TAKE CARE OF YOUR HEALTH</h1>
           <br />
           <p>
-            A community in which all people achieve their full potential for
+            Newlife is a community in which all people achieve their full potential for
             health and well-being across the lifespan. We work to be trusted by
             patients, a valued partner in the community, and creators of
             positive change.
