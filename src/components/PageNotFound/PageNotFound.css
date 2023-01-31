@@ -16,6 +16,9 @@
   padding: 100px;
 }
 .not-found-img > a {
- text-decoration: none;
- color: #1d3e68;
+  text-decoration: none;
+  color: #1d3e68;
+}
+.not-found-img > a > i {
+  color: #00a3c8;
 }
