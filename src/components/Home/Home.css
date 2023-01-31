@@ -206,4 +206,43 @@
 margin-bottom: 10px;
 }
 /* == HOME TESTIMONIALS == */
+@media screen and (max-width: 769px) {
+/* == HOME BANNER == */
+.home-banner-container {
+  height: 400px;
+  background-image: url('../../img/banner-img-mobile.jpg');
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.home-banner-container-text {
+  color: white;
+  width: 75%;
+  margin: auto;
+  height: 300px;
+  align-items: center;
+  text-align: center;
+}
+.home-banner-container-text h3 {
+  font-size: 20px;
+}
+.home-banner-container-text h1 {
+  font-size: 32px;
+}
+.home-banner-container-text p {
+  font-size: 14px;
+  line-height: 24px;
+}
+.home-banner-container-text button {
+  background-color: #1d3e68;
+  border: #1d3e68 1px solid;
+  padding: 6px 10px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+}
+
+/* == HOME BANNER == */
+}
 /* ==== HOME COMPONENT ==== */

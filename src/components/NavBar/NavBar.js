@@ -150,11 +150,6 @@ function NavBar({ loggedIn, setLoggedIn, userType, setUserType, cartItems }) {
                 </NavLink>
               </>
             )}
-            <div className='mobile-nav-icons' onClick={handleMobileIconToggle}>
-              <i
-                className={mobileIconToggle ? 'fas fa-times' : 'fas fa-bars'}
-              ></i>
-            </div>
           </nav>
         </div>
       </div>
