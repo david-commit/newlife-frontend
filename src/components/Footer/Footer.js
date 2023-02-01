@@ -16,19 +16,24 @@ function Footer() {
             </p>
           </div>
           <form class='newsletter'>
-            <input id='news-email' placeholder='Enter your email address'></input>
-            <button type='submit' id='sub'>Subscribe</button>
+            <input
+              id='news-email'
+              placeholder='Enter your email address'
+            ></input>
+            <button type='submit' id='sub'>
+              Subscribe
+            </button>
           </form>
         </div>
         <div className='footer-2-container'>
           <div class='footer2'>
             <div id='section1'>
               <NavLink to='/'>
-                <div className='logo'>
+                <div className='logo-footer'>
                   <img src={logo} alt='Logo' />
                   <div className='logo-txt'>
-                    <p id='logo-txt1'>NewLife Hospital</p>
-                    <p id='logo-txt2'>Dedication beyond measure.</p>
+                    <p id='logo-txt1-footer'>NewLife Hospital</p>
+                    <p id='logo-txt2-footer'>Dedication beyond measure.</p>
                   </div>
                 </div>
               </NavLink>
@@ -38,7 +43,8 @@ function Footer() {
                 health and well-being across the lifespan. We work to be trusted
                 by patients, a valued partner in the community, and creators of
                 positive change.
-              </p><br />
+              </p>
+              <br />
               <h3>© NewLife Hospital 2022</h3>
               <br />
               <br />
