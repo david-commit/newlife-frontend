@@ -72,6 +72,9 @@ footer {
   font-style: italic;
   color: #1d3e68;
 }
+#footer-about-paragraph {
+  width: 75%;
+}
 /*  */
 #section1 {
   width: 45%;
@@ -88,7 +91,7 @@ footer {
 }
 #section2 {
   line-height: 30px;
-  width: 20%;
+  width: 45%;
 }
 #section2 h1 {
   margin-bottom: 18px;
@@ -99,3 +102,60 @@ footer {
   color: white;
   padding-top: 8px;
 }
+/* == MEDIA QUERY == */
+@media screen and (max-width: 769px) {
+  .footer1{
+    display: none;
+  }
+.footer2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  padding-top: 50px;
+}
+.logo-footer img {
+  display: none;
+}
+#logo-txt1-footer {
+  font-size: 24px;
+}
+#logo-txt2-footer {
+  font-size: 16px;
+}
+#footer-about-paragraph {
+  width: 100%;
+  font-size: 12px;
+  
+}
+/*  */
+#section1 {
+  width: 45%;
+  border: thin dashed;
+  margin-bottom: 20px;
+}
+#section1 a {
+  text-decoration: none;
+  color: #1d3e68;
+}
+#section1 h1 {
+  color: #1d3e68;
+}
+#section1 h3 {
+  color: #1d3e68;
+}
+#section2 {
+  line-height: 30px;
+  width: 45%;
+  border: thin dashed;
+}
+#section2 h1 {
+  margin-bottom: 18px;
+}
+#section2 p a {
+  line-height: 30px;
+  text-decoration: none;
+  color: white;
+  padding-top: 8px;
+}
+}
+/* == MEDIA QUERY == */

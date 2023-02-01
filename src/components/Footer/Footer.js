@@ -38,7 +38,7 @@ function Footer() {
                 </div>
               </NavLink>
               <br />
-              <p style={{ width: '75%' }}>
+              <p id='footer-about-paragraph'>
                 A community in which all people achieve their full potential for
                 health and well-being across the lifespan. We work to be trusted
                 by patients, a valued partner in the community, and creators of
