@@ -139,6 +139,7 @@
   .topbar1 {
     display: none;
   }
+
   #menubar-nav {
     display: flex;
     align-items: center;
@@ -147,14 +148,19 @@
   .menubar-main-container {
     width: 100%;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-  }
+
   .logo img {
-    width: 100px;
+    width: 70px;
     padding-right: 10px;
   }
+
+  #logo-txt1 {
+    font-size: 26px;
+  }
+  #logo-txt2 {
+    font-size: 17px;
+  }
+
   #menubar-nav {
     display: flex;
     flex-direction: column;

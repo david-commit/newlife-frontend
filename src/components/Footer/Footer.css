@@ -50,24 +50,24 @@ footer {
   padding-top: 50px;
 }
 /*  */
-.logo {
+.logo-footer {
   display: flex;
   align-items: center;
   color: #1d3e68;
 }
-.logo img {
+.logo-footer img {
   width: 100px;
   padding-right: 10px;
 }
 .logo-txt {
   color: #1d3e68;
 }
-#logo-txt1 {
+#logo-txt1-footer {
   color: #1d3e68;
   font-size: 36px;
   font-weight: 600;
 }
-#logo-txt2 {
+#logo-txt2-footer {
   font-size: 23.5px;
   font-style: italic;
   color: #1d3e68;
