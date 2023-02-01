@@ -126,8 +126,7 @@
     color: #1d3e68;
     display: block;
     color: #1d3e68;
-    font-size: 50px;
-    padding: 20px;
+    font-size: 30px;
     cursor: pointer;
   }
   .top-bar-container {
@@ -148,21 +147,21 @@
     width: 100%;
   }
   .logo img {
-    width: 70px;
+    width: 60px;
     padding-right: 10px;
   }
   #logo-txt1 {
-    font-size: 26px;
+    font-size: 21px;
   }
   #logo-txt2 {
-    font-size: 17px;
+    font-size: 14px;
   }
   #menubar-nav {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: fixed;
-    top: 145px;
+    top: 105px;
     right: -350px;
     width: 350px;
     height: 100vh;
