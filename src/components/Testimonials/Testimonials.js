@@ -1,87 +1,81 @@
-import React from 'react'
-import "./Testimonials.css"
+import React from 'react';
+import './Testimonials.css';
+import testImg1 from '../../img/rev-img-1.jpg';
+import testImg2 from '../../img/rev-img-2.jpg';
+import testImg3 from '../../img/rev-img-3.jpg';
 
 const Testimonials = () => {
+  
   return (
-    <section class='testimonial text-center'>
-      <div class='container'>
-        <div class='heading white-heading'>Testimonial</div>
-        <div
-          id='testimonial4'
-          class='carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x'
-          data-ride='carousel'
-          data-pause='hover'
-          data-interval='5000'
-          data-duration='2000'
-        >
-          <div class='carousel-inner' role='listbox'>
-            <div class='carousel-item active'>
-              <div class='testimonial4_slide'>
-                <img
-                  src='https://i.ibb.co/8x9xK4H/team.jpg'
-                  class='img-circle img-responsive'
-                />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.{' '}
-                </p>
-                <h4>Client 1</h4>
+    <div class='testimonials-main-container'>
+      <div class='testimonials-container'>
+        <h1>What Our Patients Say...</h1>
+        <p class='explanation'>
+          Every month, NewLife Hospital receives masses of kind comments,
+          letters and e-mails from patients about the positive experience they
+          have: Below is a selection of these comments:
+        </p>
+        <div class='testimonial-slider'>
+          <ul class='slider'>
+            <li>
+              <div class='testimonial-slider-content'>
+                <q>
+                  {' '}
+                  Kind, friendly staff from the minute we walked in, felt very
+                  safe in their hands as nurses were always on hand and checking
+                  on me.
+                </q>
+                <section>
+                  <img src={testImg1} alt='Test' />
+                  <p class='source'>- KENDRIC MAINA, Photographer</p>
+                </section>
               </div>
-            </div>
-            <div class='carousel-item'>
-              <div class='testimonial4_slide'>
-                <img
-                  src='https://i.ibb.co/8x9xK4H/team.jpg'
-                  class='img-circle img-responsive'
-                />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.{' '}
-                </p>
-                <h4>Client 2</h4>
+            </li>
+            <li>
+              <div class='testimonial-slider-content'>
+                <q>
+                  {' '}
+                  Kind, friendly staff from the minute we walked in, felt very
+                  safe in their hands as nurses were always on hand and checking
+                  on me!
+                </q>
+                <section>
+                  <img src={testImg2} alt='Test' />
+                  <p class='source'>- MARGARET WAKESHO, Graphic Designer</p>
+                </section>
               </div>
-            </div>
-            <div class='carousel-item'>
-              <div class='testimonial4_slide'>
-                <img
-                  src='https://i.ibb.co/8x9xK4H/team.jpg'
-                  class='img-circle img-responsive'
-                />
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book.{' '}
-                </p>
-                <h4>Client 3</h4>
+            </li>
+            <li>
+              <div class='testimonial-slider-content'>
+                <q>
+                  Kind, friendly staff from the minute we walked in, felt very
+                  safe in their hands as nurses were always on hand and checking
+                  on me!
+                </q>
+                <section>
+                  <img src={testImg3} alt='Test' />
+                  <p class='source'>- SHINSKI, AI Expert</p>
+                </section>
               </div>
-            </div>
-          </div>
-          <a
-            class='carousel-control-prev'
-            href='#testimonial4'
-            data-slide='prev'
-          >
-            <span class='carousel-control-prev-icon'></span>
-          </a>
-          <a
-            class='carousel-control-next'
-            href='#testimonial4'
-            data-slide='next'
-          >
-            <span class='carousel-control-next-icon'></span>
-          </a>
+            </li>
+            <li>
+              <div class='testimonial-slider-content'>
+                <q>
+                  Kind, friendly staff from the minute we walked in, felt very
+                  safe in their hands as nurses were always on hand and checking
+                  on me!
+                </q>
+                <section>
+                  <img src={testImg3} alt='Test' />
+                  <p class='source'>- SHINSKI, AI Expert</p>
+                </section>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
 
-export default Testimonials
+export default Testimonials;

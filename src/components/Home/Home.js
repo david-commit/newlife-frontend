@@ -156,7 +156,6 @@ function Home() {
           <h1>What Our Patients Say...</h1>
           <br />
           <hr />
-<Testimonials />
           <hr />
           <br />
           <p>
@@ -198,6 +197,7 @@ function Home() {
           </div>
         </div>
       </div>
+<Testimonials />
     </div>
   );
 }
