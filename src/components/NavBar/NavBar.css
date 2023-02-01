@@ -173,20 +173,19 @@
     right: 0px;
   }
   #menubar-nav a {
-    font-size: 22px;
-    padding: 40px 0 10px 40px;
+    padding: 30px 0 10px 30px;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
   }
   #menubar-nav button {
-    font-weight: 600;
+    font-weight: 500;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     background-color: transparent;
     border: none;
     padding: 0 ;
-    margin-top: -14px;
+    margin-top: -20px;
   }
   #menubar-nav button:hover,
   #menubar-nav a:hover {
