@@ -6,6 +6,7 @@ import signature from '../../img/signature.png';
 import testImg1 from '../../img/rev-img-1.jpg';
 import testImg2 from '../../img/rev-img-2.jpg';
 import testImg3 from '../../img/rev-img-3.jpg';
+import Testimonials from '../Testimonials/Testimonials';
 
 function Home() {
   return (
@@ -117,8 +118,8 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className='home-practices-container'>
         <section className='home-practices-img'></section>
+      <div className='home-practices-container'>
         <div className='home-practices'>
           <h3>BEST PRACTICES</h3>
           <br />
@@ -153,6 +154,10 @@ function Home() {
       <div className='home-testimonials-container'>
         <div className='home-testimonials'>
           <h1>What Our Patients Say...</h1>
+          <br />
+          <hr />
+<Testimonials />
+          <hr />
           <br />
           <p>
             Every month, NewLife Hospital receives masses of kind comments,
