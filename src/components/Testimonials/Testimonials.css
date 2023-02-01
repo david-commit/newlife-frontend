@@ -1,11 +1,13 @@
 .testimonials-main-container {
 width: 100%;
-background-color: #f8f9fb;
+background-color: #ececec;
 display: flex;
 justify-content: center;
+align-items: center;
+
 }
 .testimonials-container {
-  padding: 100px 0;
+  padding: 60px 0;
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -13,16 +15,17 @@ justify-content: center;
   text-align: center;
 }
 
-.testimonials-container p {
-  max-width: 40%;
-  margin: 0 auto 2em;
-}
-
 .testimonial-slider {
   display: block;
   width: 100%;
   height: auto;
   margin-top: 30px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: thin darkgrey;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .testimonial-slider ul.slider {
@@ -35,6 +38,7 @@ justify-content: center;
   height: 350px;
   overflow: hidden;
   margin: 0 auto;
+  justify-content: space-around;
 }
 
 .testimonial-slider ul.slider li {
@@ -65,19 +69,35 @@ justify-content: center;
 
 .testimonial-slider q {
   display: inline-block;
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 500;
   letter-spacing: 0.5pt;
   text-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  max-width: 35ch;
+  max-width: 70%;
 }
 .testimonial-slider-content > section {
-    display: flex;
+  display: flex;
+    justify-content: center;
+    margin: 35px auto 0;
+    width: 80%;
+    align-items: center;
+  }
+  .testimonial-slider-content > section > section {
+    margin: 0 10px;
+  }
+.testimonial-slider-content > section > img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+.testimonial-slider-content > section > section > h4 {
+  padding-top: 6px;
+  color: darkgrey;
 }
 .testimonial-slider .source {
-  margin-top: 25px;
-  color: #d9e0f9;
-  font: italic 400 30px / 1.35 'Raleway', Helvetica, Arial, Verdana, sans-serif;
+  color: #1d3e68;
+  font: italic;
 }
 
 /* KEYFRAME DECLARATIONS */
