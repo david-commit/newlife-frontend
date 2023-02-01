@@ -118,6 +118,7 @@ function Home() {
         </div>
       </div>
       <div className='home-practices-container'>
+        <section className='home-practices-img'></section>
         <div className='home-practices'>
           <h3>BEST PRACTICES</h3>
           <br />

@@ -71,7 +71,7 @@
 /* == HOME SOLUTION == */
 .home-solutions-container {
   width: 100%;
-  background-color: #f8f9fb;
+  background-color: #ececec;
 }
 .home-solution {
   width: 80%;
@@ -106,7 +106,7 @@
   color: #1d3e68;
 }
 .home-solution-card-img {
-  background-color: #f8f9fb;
+  background-color: #ececec;
   width: 100px;
   height: 100px;
   border-radius: 50%;
@@ -121,7 +121,7 @@
 }
 /* == HOME PRACTICES == */
 .home-practices-container {
-  width: 85%;
+  /* width: 85%;
   height: 600px;
   display: flex;
   margin: 0 auto 100px auto;
@@ -132,7 +132,7 @@
   background-repeat: no-repeat;
   background-position: right;
   overflow: hidden;
-  background-size: 75%;
+  background-size: 75%; */
 }
 .home-practices {
   width: 45%;
@@ -242,6 +242,10 @@
   .home-welcome-banner {
     flex-direction: column;
     margin-bottom: -30px;
+    align-items: center;
+  }
+  .home-welcome-banner img {
+    width: 70%;
   }
   .home-welcome-banner-text {
     width: 85%;
@@ -291,20 +295,26 @@
   /* == HOME SOLUTION == */
   /* == HOME PRACTICES == */
   .home-practices-container {
-    /* width: 85%;
-  height: 600px;
-  display: flex;
-  margin: 0 auto 100px auto;
-  align-items: center;
-  background-image: url('../../img/black-female-doctor-focused.png');
-  height: 700px;
-  background-repeat: no-repeat;
-  background-position: right;
-  overflow: hidden;
-  background-size: 75%; */
+    /* 
+    height: 600px;
+    */
+    width: 85%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    margin: 0 auto;
+    
+  }
+  .home-practices-img {
+    background-image: url('../../img/black-female-doctor-focused.png');
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    margin: 0 auto 20px;
+    background-repeat: no-repeat;
+    background-position: right;
+    overflow: hidden;
+    background-size: 100%; 
+    /* border: thin dashed red; */
   }
   .home-practices {
     width: 100%;
@@ -319,9 +329,49 @@
   .home-practices button {
     font-size: 16px;
     display: flex;
-    margin: auto;
+    margin: 10px auto 0;
   }
 
   /* == HOME PRACTICES == */
+  /* == HOME TESTIMONIALS == */
+.home-testimonials-container {
+  background-color: #f8f9fb;
+  padding: 70px 0;
+}
+.home-testimonials {
+  width: 85%;
+  margin-bottom: 50px;
+}
+.home-testimonials h1 {
+  font-size: 26px;
+}
+.home-testimonials p {
+  font-size: 16px;
+  line-height: 26px;
+}
+.home-testimonial-cards {
+  display: flex;
+  width: 85%;
+  justify-content: space-evenly;
+}
+.home-testimonial-card {
+  width: 25%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  padding: 40px 50px;
+  border-radius: 10px;
+}
+.home-testimonial-card img {
+  width: 50%;
+  border-radius: 50%;
+}
+.home-testimonial-card p {
+  margin-bottom: 10px;
+}
+/* == HOME TESTIMONIALS == */
 }
 /* ==== HOME COMPONENT ==== */
