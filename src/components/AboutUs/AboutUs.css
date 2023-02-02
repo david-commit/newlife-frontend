@@ -183,7 +183,7 @@
   width: 100%;
   background-color: #f8f9fb;
   margin: 30px 0 50px;
-  padding: 60px;
+  padding: 40px;
   text-align: center;
   border-radius: 15px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -325,6 +325,39 @@
   margin: 0 auto 20px;
 }
 /* == ABOUT BEST PRACTICES == */
+/* == OUR TEAM == */
+.team-main-container {
+  width: 85%;
+}
+.team-main-container h1 {
+  font-size: 30px;
+}
+.team-container {
+  padding: 10px 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  justify-content: space-between;
+}
+.team-card {
+  width: 100%;
+  margin: 20px 0;
+  padding: 15px;
+}
+.team-card img {
+  height: 18vh;
+  padding-bottom: 10px;
+}
+.team-card h2 {
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.team-card p {
+  font-size: 14px;
+}
+/* == OUR TEAM == */
 }
 /* == MEDIA QUERIES */
 /* ==== ABOUT COMPONENT ==== */
