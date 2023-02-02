@@ -224,14 +224,14 @@
     text-align: center;
   }
   .home-banner-container-text h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
   .home-banner-container-text h1 {
-    font-size: 32px;
+    font-size: 28px;
   }
   .home-banner-container-text p {
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 12px;
+    line-height: 20px;
   }
   .home-banner-container-text button {
     font-size: 16px;
@@ -271,25 +271,35 @@
     width: 90%;
   }
   .home-solution h1 {
-    font-size: 32px;
+    font-size: 28px;
     text-align: center;
   }
   .home-solution p {
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 12px;
+    line-height: 20px;
   }
   .home-solution-cards {
     display: grid;
     grid-template-columns: 45% 45%;
-    grid-gap: 20px;
+    grid-gap: 10px;
     margin: inherit auto;
   }
   .home-solution-card {
     width: 100%;
-    padding: 25px;
+    padding: 15px;
+  }
+  .home-solution-card p {
+    font-size: 12px;
   }
   .home-solution-card h3 {
-    font-size: 18px;
+    font-size: 15px;
+  }
+  .home-solution-card-img {
+    width: 80px;
+    height: 80px;
+  }
+  .home-solution-card-img i {
+    font-size: 35px;
   }
   /* == HOME SOLUTION == */
   /* == HOME PRACTICES == */

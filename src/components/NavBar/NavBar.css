@@ -90,7 +90,7 @@
   content: '';
   width: 30%;
   height: 2px;
-  background: #00a3c8;
+  color: red;
   position: absolute;
   bottom: -4px;
   left: 24px;
@@ -162,8 +162,8 @@
     align-items: flex-start;
     position: fixed;
     top: 105px;
-    right: -350px;
-    width: 350px;
+    right: -250px;
+    width: 250px;
     height: 100vh;
     border-left: thin solid grey;
     background-color: #00a3c8;

@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import './Home.css';
 import welcomeImg from '../../img/dark-female-doctor.png';
 import signature from '../../img/signature.png';
-import testImg1 from '../../img/rev-img-1.jpg';
-import testImg2 from '../../img/rev-img-2.jpg';
-import testImg3 from '../../img/rev-img-3.jpg';
+// import testImg1 from '../../img/rev-img-1.jpg';
+// import testImg2 from '../../img/rev-img-2.jpg';
+// import testImg3 from '../../img/rev-img-3.jpg';
 import Testimonials from '../Testimonials/Testimonials';
 
 function Home() {
