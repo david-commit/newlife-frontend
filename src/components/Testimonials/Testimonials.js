@@ -3,9 +3,9 @@ import './Testimonials.css';
 import testImg1 from '../../img/rev-img-1.jpg';
 import testImg2 from '../../img/rev-img-2.jpg';
 import testImg3 from '../../img/rev-img-3.jpg';
+import nikita from '../../img/nikita-kering-1.jpg';
 
 const Testimonials = () => {
-  
   return (
     <div class='testimonials-main-container'>
       <div class='testimonials-container'>
@@ -27,7 +27,13 @@ const Testimonials = () => {
                 </q>
                 <section>
                   <img src={testImg1} alt='Test' />
-                  <p class='source'>- KENDRIC MAINA, Photographer</p>
+                  <section>
+                    <h3 class='source'>
+                      <span style={{ color: '#1d3e68' }}>&#12299;</span>KENDRIC
+                      MAINA
+                    </h3>
+                    <h4>Photographer - BET</h4>
+                  </section>
                 </section>
               </div>
             </li>
@@ -40,8 +46,34 @@ const Testimonials = () => {
                   on me!
                 </q>
                 <section>
+                  <img src={testImg3} alt='Test' />
+
+                  <section>
+                    <h3 class='source'>
+                      {' '}
+                      <span style={{ color: '#1d3e68' }}>&#12299;</span>MARGARET
+                      WAKESHO
+                    </h3>
+                    <h4>Graphic Designer - ChapaCopy</h4>
+                  </section>
+                </section>
+              </div>
+            </li>
+            <li>
+              <div class='testimonial-slider-content'>
+                <q>
+                  Kind, friendly staff from the minute we walked in, felt very
+                  safe in their hands as nurses were always on hand and checking
+                  on me!
+                </q>
+                <section>
                   <img src={testImg2} alt='Test' />
-                  <p class='source'>- MARGARET WAKESHO, Graphic Designer</p>
+                  <section>
+                    <h3 class='source'>
+                      <span style={{ color: '#1d3e68' }}>&#12299;</span>SHINSKI{' '}
+                    </h3>
+                    <h4>AI Expert - OpenAI</h4>
+                  </section>
                 </section>
               </div>
             </li>
@@ -53,21 +85,14 @@ const Testimonials = () => {
                   on me!
                 </q>
                 <section>
-                  <img src={testImg3} alt='Test' />
-                  <p class='source'>- SHINSKI, AI Expert</p>
-                </section>
-              </div>
-            </li>
-            <li>
-              <div class='testimonial-slider-content'>
-                <q>
-                  Kind, friendly staff from the minute we walked in, felt very
-                  safe in their hands as nurses were always on hand and checking
-                  on me!
-                </q>
-                <section>
-                  <img src={testImg3} alt='Test' />
-                  <p class='source'>- SHINSKI, AI Expert</p>
+                  <img src={nikita} alt='Test' />
+                  <section>
+                    <h3 class='source'>
+                      <span style={{ color: '#1d3e68' }}>&#12299;</span>Cynthia
+                      Njomo
+                    </h3>
+                    <h4>Senior Advocate - Safaricom PLC</h4>
+                  </section>
                 </section>
               </div>
             </li>

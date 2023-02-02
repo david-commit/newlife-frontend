@@ -38,15 +38,13 @@ function Footer() {
                 </div>
               </NavLink>
               <br />
-              <p style={{ width: '75%' }}>
+              <p id='footer-about-paragraph'>
                 A community in which all people achieve their full potential for
                 health and well-being across the lifespan. We work to be trusted
                 by patients, a valued partner in the community, and creators of
                 positive change.
               </p>
-              <br />
-              <h3>© NewLife Hospital 2022</h3>
-              <br />
+
               <br />
             </div>
             <div id='section2'>
@@ -74,6 +72,11 @@ function Footer() {
               <p>Air: +254 733 123 456</p>
             </div>
           </div>
+          <br />
+      <hr style={{width: '85%', display: 'flex', margin: 'auto', color: 'grey', borderBottom: '.5px solid grey'}} />
+      <br />
+      <h3 style={{color: 'white', textAlign: 'center'}}>© NewLife Hospital 2023</h3>
+      <br />
         </div>
       </div>
     </footer>

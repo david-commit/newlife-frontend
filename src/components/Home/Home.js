@@ -18,10 +18,10 @@ function Home() {
           <h1>TAKE CARE OF YOUR HEALTH</h1>
           <br />
           <p>
-            Newlife is a community in which all people achieve their full potential for
-            health and well-being across the lifespan. We work to be trusted by
-            patients, a valued partner in the community, and creators of
-            positive change.
+            Newlife is a community in which all people achieve their full
+            potential for health and well-being across the lifespan. We work to
+            be trusted by patients, a valued partner in the community, and
+            creators of positive change.
           </p>
           <br />
           <Link to='/about'>
@@ -118,7 +118,7 @@ function Home() {
           </div>
         </div>
       </div>
-        <section className='home-practices-img'></section>
+      <section className='home-practices-img'></section>
       <div className='home-practices-container'>
         <div className='home-practices'>
           <h3>BEST PRACTICES</h3>
@@ -151,12 +151,9 @@ function Home() {
           </Link>
         </div>
       </div>
-      <div className='home-testimonials-container'>
+      {/* <div className='home-testimonials-container'>
         <div className='home-testimonials'>
           <h1>What Our Patients Say...</h1>
-          <br />
-          <hr />
-          <hr />
           <br />
           <p>
             Every month, NewLife Hospital receives masses of kind comments,
@@ -196,8 +193,8 @@ function Home() {
             <h5>AI EXPERT</h5>
           </div>
         </div>
-      </div>
-<Testimonials />
+      </div> */}
+      <Testimonials />
     </div>
   );
 }
