@@ -73,10 +73,20 @@ function Footer() {
             </div>
           </div>
           <br />
-      <hr style={{width: '85%', display: 'flex', margin: 'auto', color: 'grey', borderBottom: '.5px solid grey'}} />
-      <br />
-      <h3 style={{color: 'white', textAlign: 'center'}}>© NewLife Hospital 2023</h3>
-      <br />
+          <hr
+            style={{
+              width: '85%',
+              display: 'flex',
+              margin: 'auto',
+              color: 'grey',
+              borderBottom: '.5px solid grey',
+            }}
+          />
+          <br />
+          <h3 style={{ color: 'white', textAlign: 'center' }}>
+            © NewLife Hospital 2023
+          </h3>
+          <br />
         </div>
       </div>
     </footer>

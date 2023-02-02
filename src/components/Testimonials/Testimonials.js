@@ -88,8 +88,7 @@ const Testimonials = () => {
                   <img src={nikita} alt='Test' />
                   <section>
                     <h3 class='source'>
-                      <span style={{ color: '#1d3e68' }}>&#12299;</span>Cynthia
-                      Njomo
+                      <span style={{ color: '#1d3e68' }}>&#12299;</span>CYNTHIA NJOMO
                     </h3>
                     <h4>Senior Advocate - Safaricom PLC</h4>
                   </section>
