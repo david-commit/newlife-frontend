@@ -44,9 +44,7 @@ function Footer() {
                 by patients, a valued partner in the community, and creators of
                 positive change.
               </p>
-              <br />
-              <h3>© NewLife Hospital 2022</h3>
-              <br />
+
               <br />
             </div>
             <div id='section2'>
@@ -74,6 +72,11 @@ function Footer() {
               <p>Air: +254 733 123 456</p>
             </div>
           </div>
+          <br />
+      <hr style={{width: '85%', display: 'flex', margin: 'auto', color: 'grey', borderBottom: '.5px solid grey'}} />
+      <br />
+      <h3 style={{color: 'white', textAlign: 'center'}}>© NewLife Hospital 2023</h3>
+      <br />
         </div>
       </div>
     </footer>

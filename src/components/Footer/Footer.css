@@ -124,13 +124,13 @@ footer {
 }
 #footer-about-paragraph {
   width: 100%;
-  font-size: 12px;
+  font-size: 13px;
   
 }
 /*  */
 #section1 {
   width: 45%;
-  border: thin dashed;
+  /* border: thin dashed; */
   margin-bottom: 20px;
 }
 #section1 a {
@@ -146,10 +146,10 @@ footer {
 #section2 {
   line-height: 30px;
   width: 45%;
-  border: thin dashed;
+  /* border: thin dashed; */
 }
 #section2 h1 {
-  margin-bottom: 18px;
+  font-size: 26px;
 }
 #section2 p a {
   line-height: 30px;
