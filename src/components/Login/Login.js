@@ -99,7 +99,7 @@ function Login({ loggedIn, setLoggedIn, userType, setUserType, setCartItems }) {
           <input
             id="username"
             type="text"
-            placeholder="username"
+            placeholder="Username"
             value={formData.username}
             onChange={updateFormData}
           />

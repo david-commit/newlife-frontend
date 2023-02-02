@@ -94,3 +94,62 @@
   color: #00a3c8;
   text-decoration: none;
 }
+/* == MEDIA QUERIES == */
+@media screen and (max-width: 769px) {
+  .login-main-container {
+    width: 85%;
+    margin: 30px auto;
+    height: 65vh;
+  }
+  .login-form-container {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+  }
+  .login-img {
+    display: none;
+  }
+  .login-form {
+    width: 75%;
+  }
+  .login-form h1 {
+    text-align: center;
+  }
+  .login-form p {
+    text-align: center;
+    font-size: 14px;
+  }
+  .login-form input {
+    border-radius: 130px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  #practitioner-check {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  .login-form button {
+    border-radius: 130px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  .already {
+    width: 75%;
+  }
+  .already p {
+    padding-top: 10px;
+    font-size: 12px;
+  }
+  .already button {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+  .login-error-display {
+    width: 75%;
+  }
+  #reset-text {
+    color: #00a3c8;
+    text-decoration: none;
+  }
+}
