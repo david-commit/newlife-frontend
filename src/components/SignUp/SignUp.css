@@ -67,3 +67,62 @@
   padding: 10px;
   border: 1px solid red;
 }
+/* == MEDIA QUERIES == */
+@media screen and (max-width: 769px) {
+  .signup-main-container {
+    width: 85%;
+    margin: 30px auto;
+    height: 65vh;
+  }
+  .signup-form-container {
+    width: 100%;
+    height: 65vh;
+    display: flex;
+  }
+  .signup-img {
+    display: none;
+  }
+  .signup-form {
+    width: 75%;
+  }
+  .signup-form h1 {
+    text-align: center;
+  }
+  .signup-form p {
+    text-align: center;
+    font-size: 14px;
+  }
+  .signup-form input {
+    border-radius: 130px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  #practitioner-check {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  .signup-form button {
+    border-radius: 130px;
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  .already {
+    width: 75%;
+  }
+  .already p {
+    padding-top: 10px;
+    font-size: 12px;
+  }
+  .already button {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+  .signup-error-display {
+    width: 75%;
+  }
+  #reset-text {
+    color: #00a3c8;
+    text-decoration: none;
+  }
+}
