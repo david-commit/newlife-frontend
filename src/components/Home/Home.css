@@ -205,6 +205,7 @@
   margin-bottom: 10px;
 }
 /* == HOME TESTIMONIALS == */
+/* == MEDIA QUERIES == */
 @media screen and (max-width: 769px) {
   /* == HOME BANNER == */
   .home-banner-container {
@@ -282,7 +283,7 @@
     display: grid;
     grid-template-columns: 45% 45%;
     grid-gap: 10px;
-    margin: inherit auto;
+    margin: inherit auto 10px auto;
   }
   .home-solution-card {
     width: 100%;
