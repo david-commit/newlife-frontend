@@ -381,6 +381,79 @@
   /* == HOME TESTIMONIALS == */
 }
 /* ==== HOME COMPONENT ==== */
-
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  /* == HOME BANNER == */
+  .home-banner-container {
+    height: 95vh;
+    background-position: right center;
+    zoom: 80%;
+  }
+  .home-banner-container-text {
+    width: 38%;
+    margin: auto 0 auto 8%;
+    height: inherit;
+  }
+  .home-banner-container-text h1 {
+    font-size: 2rem;
+  }
+  .home-banner-container-text p {
+    font-size: 1.3rem;
+    line-height: 1.9rem;
+  }
+  .home-banner-container-text button {
+    font-size: 1.2rem;
+  }
+  /* == HOME BANNER == */
+  /* == HOME WELCOME BANNER == */
+  .home-welcome-banner img {
+    width: 50%;
+    height: fit-content;
+  }
+  .home-welcome-banner-text h3 {
+    font-size: 1rem;
+  }
+  .home-welcome-banner-text h1 {
+    font-size: 1.8rem;
+  }
+  .home-welcome-banner-text p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+  .home-welcome-banner-text img {
+    width: 100px;
+  }
+  /* == HOME WELCOME BANNER == */
+  /* == HOME SOLUTION == */
+  .home-solution {
+    width: 100%;
+  }
+  .home-solution h1 {
+    font-size: 2rem;
+  }
+  .home-solution p {
+    margin: auto;
+    width: 85%;
+    font-size: 1em;
+    line-height: 1.5em;
+    font-weight: 500;
+  }
+  .home-solution-cards {
+    display: flex;
+    width: 90%;
+    margin: 60px auto 0 auto;
+  }
+  .home-solution-card {
+    width: 22%;
+    padding: 1rem 0.5rem;
+  }
+  .home-solution-card h3 {
+    font-size: 1rem;
+    align-self: center;
+  }
+  .home-solution-card {
+    font-size: 0.8rem;
+  }
+  
+}
 /* ==== HOME COMPONENT ==== */
 /* ========== END OF MEDIA QUERIES =============== */

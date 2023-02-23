@@ -30,7 +30,7 @@ function Home() {
         </div>
       </div>
       <div className='home-welcome-banner'>
-        <img src={welcomeImg} alt='Welocome' />
+        <img src={welcomeImg} alt='Welcome' />
         <div className='home-welcome-banner-text'>
           <h3>WELCOME TO NEWLIFE HOSPITAL</h3>
           <br />
