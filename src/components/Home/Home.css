@@ -159,52 +159,6 @@
   transition: all 0.35s ease-in-out;
 }
 /* == HOME PRACTICES == */
-/* == HOME TESTIMONIALS == */
-.home-testimonials-container {
-  background-color: #f8f9fb;
-  padding: 100px 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  text-align: center;
-}
-.home-testimonials {
-  width: 75%;
-  margin-bottom: 80px;
-}
-.home-testimonials h1 {
-  font-size: 36px;
-}
-.home-testimonials p {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 400;
-}
-.home-testimonial-cards {
-  display: flex;
-  width: 85%;
-  justify-content: space-evenly;
-}
-.home-testimonial-card {
-  width: 25%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  padding: 40px 50px;
-  border-radius: 10px;
-}
-.home-testimonial-card img {
-  width: 50%;
-  border-radius: 50%;
-}
-.home-testimonial-card p {
-  margin-bottom: 10px;
-}
-/* == HOME TESTIMONIALS == */
 /* == MEDIA QUERIES == */
 @media screen and (max-width: 768px) {
   /* == HOME BANNER == */
@@ -453,7 +407,27 @@
   .home-solution-card {
     font-size: 0.8rem;
   }
-  
+  /* == HOME PRACTICES == */
+  .home-practices-container {
+    background-size: 85%;
+    height: 100vh;
+  }
+  .home-practices {
+    width: 45%;
+  }
+  .home-practices p {
+    font-size: 0.9rem;
+    line-height: 1.6em;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .home-practices h1 {
+    font-size: 1.5rem;
+  }
+  .home-practices button {
+    font-size: 0.9rem;
+  }
+  /* == HOME PRACTICES == */
 }
 /* ==== HOME COMPONENT ==== */
 /* ========== END OF MEDIA QUERIES =============== */
