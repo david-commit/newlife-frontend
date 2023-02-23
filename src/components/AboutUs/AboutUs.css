@@ -292,72 +292,150 @@
   }
   /* == DEPARTMENTS == */
   /* == ABOUT BEST PRACTICES == */
-.about-practices-container {
-  width: 85%;
-  display: flex;
-  flex-direction: column-reverse;
-  margin: 90px auto;
-  justify-content: space-between;
-  height: fit-content;
+  .about-practices-container {
+    width: 85%;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 90px auto;
+    justify-content: space-between;
+    height: fit-content;
+  }
+  .about-practices {
+    width: 100%;
+  }
+  .about-practices p {
+    font-size: 14px;
+    line-height: 24px;
+  }
+  .about-practices h3 {
+    color: #1d3e68;
+  }
+  .about-practices h1 {
+    font-size: 20px;
+    margin: -12px 0;
+  }
+  .about-practices button {
+    font-size: 16px;
+    display: flex;
+    margin: auto;
+  }
+  .about-practices-container img {
+    width: 70%;
+    display: flex;
+    margin: 0 auto 20px;
+  }
+  /* == ABOUT BEST PRACTICES == */
+  /* == OUR TEAM == */
+  .team-main-container {
+    width: 85%;
+  }
+  .team-main-container h1 {
+    font-size: 30px;
+  }
+  .team-container {
+    padding: 10px 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    justify-content: space-between;
+  }
+  .team-card {
+    width: 100%;
+    margin: 20px 0;
+    padding: 15px;
+  }
+  .team-card img {
+    height: 18vh;
+    padding-bottom: 10px;
+  }
+  .team-card h2 {
+    width: 100%;
+    height: 60px;
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+  .team-card p {
+    font-size: 14px;
+  }
+  /* == OUR TEAM == */
 }
-.about-practices {
-  width: 100%;
-}
-.about-practices p {
-  font-size: 14px;
-  line-height: 24px;
-}
-.about-practices h3 {
-  color: #1d3e68;
-}
-.about-practices h1 {
-  font-size: 20px;
-  margin: -12px 0;
-}
-.about-practices button {
-  font-size: 16px;
-  display: flex;
-  margin: auto;
-}
-.about-practices-container img {
-  width: 70%;
-  display: flex;
-  margin: 0 auto 20px;
-}
-/* == ABOUT BEST PRACTICES == */
-/* == OUR TEAM == */
-.team-main-container {
-  width: 85%;
-}
-.team-main-container h1 {
-  font-size: 30px;
-}
-.team-container {
-  padding: 10px 0;
-  width: 100%;
-  display: grid;
-  grid-template-columns: 48% 48%;
-  justify-content: space-between;
-}
-.team-card {
-  width: 100%;
-  margin: 20px 0;
-  padding: 15px;
-}
-.team-card img {
-  height: 18vh;
-  padding-bottom: 10px;
-}
-.team-card h2 {
-  width: 100%;
-  height: 60px;
-  font-size: 20px;
-  padding-bottom: 10px;
-}
-.team-card p {
-  font-size: 14px;
-}
-/* == OUR TEAM == */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  /* == TITLE BANNER == */
+  .about-title-banner {
+    height: 70vh;
+    font-size: 6rem;
+    padding-left: 7.5%;
+  }
+  /* == TITLE BANNER == */
+  /* == FLOATING BANNER == */
+  .about-floating-banner-cell h4 {
+    font-size: 1rem;
+  }
+  .about-floating-banner-cell h2 {
+    font-size: 0.9rem;
+  }
+  .about-floating-banner-cell p {
+    font-size: 0.9rem;
+  }
+  /* == FLOATING BANNER == */
+  /* == DEPARTMENTS == */
+  .about-departments-main-container {
+    width: 85%;
+    align-items: start;
+  }
+  .about-departments-container {
+    width: 70%;
+  }
+  .about-department-card {
+    width: 48%;
+    height: fit-content;
+  }
+  .about-department-card i {
+    zoom: 2;
+  }
+  .about-department-card-txt h3 {
+    font-size: 1rem;
+  }
+  .about-department-card-txt p {
+    font-size: 0.8rem;
+  }
+  .about-working {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  .weekdays {
+    font-weight: 600;
+  }
+  .about-working > p > span {
+    font-weight: 300;
+  }
+  /* == DEPARTMENTS == */
+  .about-practices-container {
+    display: flex;
+    justify-content: space-between;
+    height: 110vh;
+  }
+  .about-practices-container img {
+    width: 40%;
+    margin-right: 0;
+  }
+  .about-practices {
+    width: 55%;
+  }
+  .about-practices p {
+    font-size: 0.9rem;
+    line-height: 1.6em;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .about-practices h1 {
+    font-size: 1.5rem;
+  }
+  .about-practices button {
+    font-size: 0.9rem;
+  }
+  /* == ABOUT BEST PRACTICES == */
+
 }
 /* == MEDIA QUERIES */
 /* ==== ABOUT COMPONENT ==== */
