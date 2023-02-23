@@ -206,7 +206,7 @@
 }
 /* == HOME TESTIMONIALS == */
 /* == MEDIA QUERIES == */
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   /* == HOME BANNER == */
   .home-banner-container {
     height: 400px;
@@ -381,3 +381,6 @@
   /* == HOME TESTIMONIALS == */
 }
 /* ==== HOME COMPONENT ==== */
+
+/* ==== HOME COMPONENT ==== */
+/* ========== END OF MEDIA QUERIES =============== */

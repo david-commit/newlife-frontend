@@ -32,6 +32,7 @@
     "json-server": "json-server --watch db.json",
     "start:dev": "concurrently \"npm start\" \"npm run json-server\"",
     "build": "react-scripts build",
+	"starter": "SET PORT=4000 && react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
