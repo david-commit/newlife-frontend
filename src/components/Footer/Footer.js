@@ -53,7 +53,6 @@ function Footer() {
                 3rd floor, Nextlane Plaza <br /> - Ngong Road Nairobi, <br />{' '}
                 Kenya
               </p>
-              <br />
               <p>
                 Email: <br /> admin@newlife.org
               </p>

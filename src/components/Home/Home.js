@@ -30,7 +30,7 @@ function Home() {
         </div>
       </div>
       <div className='home-welcome-banner'>
-        <img src={welcomeImg} alt='Welocome' />
+        <img src={welcomeImg} alt='Welcome' />
         <div className='home-welcome-banner-text'>
           <h3>WELCOME TO NEWLIFE HOSPITAL</h3>
           <br />
@@ -121,10 +121,9 @@ function Home() {
       <section className='home-practices-img'></section>
       <div className='home-practices-container'>
         <div className='home-practices'>
-          <h3>BEST PRACTICES</h3>
+          <h3 style={{ color: '#1d3e68' }}>BEST PRACTICES</h3>
           <br />
           <h1>Facility with Innovative Approach to Treatment</h1>
-          <br />
           <p>
             NewLife Hospital App simplifies medical processes, but it also holds
             the potential to improve the patient experience significantly.
@@ -151,49 +150,6 @@ function Home() {
           </Link>
         </div>
       </div>
-      {/* <div className='home-testimonials-container'>
-        <div className='home-testimonials'>
-          <h1>What Our Patients Say...</h1>
-          <br />
-          <p>
-            Every month, NewLife Hospital receives masses of kind comments,
-            letters and e-mails from patients about the positive experience they
-            have: Below is a selection of these comments:
-          </p>
-        </div>
-        <div className='home-testimonial-cards'>
-          <div className='home-testimonial-card'>
-            <img src={testImg1} alt='Test' />
-            <br />
-            <p>
-              Kind, friendly staff from the minute we walked in, felt very safe
-              in their hands as nurses were always on hand and checking on me.
-            </p>
-            <h4>KENDRIC MAINA</h4>
-            <h5>PHOTOGRAPHER</h5>
-          </div>
-          <div className='home-testimonial-card'>
-            <img src={testImg3} alt='Test' />
-            <br />
-            <p>
-              Kind, friendly staff from the minute we walked in, felt very safe
-              in their hands as nurses were always on hand and checking on me.
-            </p>
-            <h4>MARGARET WAKESHO</h4>
-            <h5>GRAPHIC DESIGNER</h5>
-          </div>
-          <div className='home-testimonial-card'>
-            <img src={testImg2} alt='Test' />
-            <br />
-            <p>
-              Kind, friendly staff from the minute we walked in, felt very safe
-              in their hands as nurses were always on hand and checking on me.
-            </p>
-            <h4>SHINSKI</h4>
-            <h5>AI EXPERT</h5>
-          </div>
-        </div>
-      </div> */}
       <Testimonials />
     </div>
   );

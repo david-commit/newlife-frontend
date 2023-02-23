@@ -20,6 +20,9 @@ footer {
   color: white;
   margin: auto 0;
 }
+ .newslettertext {
+    width: 60%;
+  }
 #news-email {
   background-color: white;
   padding: 8px 30px;
@@ -149,9 +152,66 @@ footer {
   #section2 h1 {
     font-size: 26px;
   }
-  #section2 p  {
+  #section2 p {
     line-height: 20px;
     padding-top: 8px;
+  }
+}
+@media screen and (min-width: 769px) {
+  .footer1 {
+    height: 120px;
+  }
+  .footer1 p {
+    font-size: 0.8rem;
+  }
+  .newslettertext {
+    width: 60%;
+  }
+  #news-email {
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+  }
+  #sub {
+    font-size: 0.7rem;
+    padding: 0.3rem 1rem;
+  }
+  .footer2 {
+    height: 350px auto;
+    width: 85%;
+    padding-top: 50px;
+  }
+  /*  */
+  .logo-footer img {
+    width: 12vh;
+    padding-right: 10px;
+  }
+  #logo-txt1-footer {
+    font-size: 1.1rem;
+   font-weight: 700;
+  }
+  #logo-txt2-footer {
+    font-size: 12px;
+  }
+  #footer-about-paragraph {
+    width: 95%;
+    font-size: 0.9rem;
+  }
+  /*  */
+  #section1 {
+    width: 60%;
+  }
+  #section2 {
+    line-height: 30px;
+    width: 45%;
+    padding: 0 1rem;
+  }
+  #section2 h1 {
+    font-size: 1.5rem;
+  }
+  #section2 p {
+    line-height: 1.5rem;
+    padding-top: 0.1rem;
+        font-size: 0.9rem;
   }
 }
 /* == MEDIA QUERY == */

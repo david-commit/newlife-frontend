@@ -137,13 +137,13 @@
   width: 45%;
 }
 .home-practices p {
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 500;
   padding-top: 10px;
 }
 .home-practices h1 {
-  font-size: 40px;
+  font-size: 2rem;
 }
 .home-practices button {
   background-color: #1d3e68;
@@ -159,54 +159,8 @@
   transition: all 0.35s ease-in-out;
 }
 /* == HOME PRACTICES == */
-/* == HOME TESTIMONIALS == */
-.home-testimonials-container {
-  background-color: #f8f9fb;
-  padding: 100px 0;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-  text-align: center;
-}
-.home-testimonials {
-  width: 75%;
-  margin-bottom: 80px;
-}
-.home-testimonials h1 {
-  font-size: 36px;
-}
-.home-testimonials p {
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 400;
-}
-.home-testimonial-cards {
-  display: flex;
-  width: 85%;
-  justify-content: space-evenly;
-}
-.home-testimonial-card {
-  width: 25%;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  padding: 40px 50px;
-  border-radius: 10px;
-}
-.home-testimonial-card img {
-  width: 50%;
-  border-radius: 50%;
-}
-.home-testimonial-card p {
-  margin-bottom: 10px;
-}
-/* == HOME TESTIMONIALS == */
 /* == MEDIA QUERIES == */
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
   /* == HOME BANNER == */
   .home-banner-container {
     height: 400px;
@@ -381,3 +335,99 @@
   /* == HOME TESTIMONIALS == */
 }
 /* ==== HOME COMPONENT ==== */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  /* == HOME BANNER == */
+  .home-banner-container {
+    height: 95vh;
+    background-position: right center;
+    zoom: 80%;
+  }
+  .home-banner-container-text {
+    width: 38%;
+    margin: auto 0 auto 8%;
+    height: inherit;
+  }
+  .home-banner-container-text h1 {
+    font-size: 2rem;
+  }
+  .home-banner-container-text p {
+    font-size: 1.3rem;
+    line-height: 1.9rem;
+  }
+  .home-banner-container-text button {
+    font-size: 1.2rem;
+  }
+  /* == HOME BANNER == */
+  /* == HOME WELCOME BANNER == */
+  .home-welcome-banner img {
+    width: 50%;
+    height: fit-content;
+  }
+  .home-welcome-banner-text h3 {
+    font-size: 1rem;
+  }
+  .home-welcome-banner-text h1 {
+    font-size: 1.8rem;
+  }
+  .home-welcome-banner-text p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+  .home-welcome-banner-text img {
+    width: 100px;
+  }
+  /* == HOME WELCOME BANNER == */
+  /* == HOME SOLUTION == */
+  .home-solution {
+    width: 100%;
+  }
+  .home-solution h1 {
+    font-size: 2rem;
+  }
+  .home-solution p {
+    margin: auto;
+    width: 85%;
+    font-size: 1em;
+    line-height: 1.5em;
+    font-weight: 500;
+  }
+  .home-solution-cards {
+    display: flex;
+    width: 90%;
+    margin: 60px auto 0 auto;
+  }
+  .home-solution-card {
+    width: 22%;
+    padding: 1rem 0.5rem;
+  }
+  .home-solution-card h3 {
+    font-size: 1rem;
+    align-self: center;
+  }
+  .home-solution-card {
+    font-size: 0.8rem;
+  }
+  /* == HOME PRACTICES == */
+  .home-practices-container {
+    background-size: 85%;
+    height: 110vh;
+  }
+  .home-practices {
+    width: 45%;
+  }
+  .home-practices p {
+    font-size: 0.9rem;
+    line-height: 1.6em;
+    font-weight: 500;
+    padding-top: 2px;
+  }
+  .home-practices h1 {
+    font-size: 1.5rem;
+  }
+  .home-practices button {
+    font-size: 0.9rem;
+  }
+  /* == HOME PRACTICES == */
+}
+/* ==== HOME COMPONENT ==== */
+/* ========== END OF MEDIA QUERIES =============== */
