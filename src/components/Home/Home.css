@@ -137,13 +137,13 @@
   width: 45%;
 }
 .home-practices p {
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 500;
   padding-top: 10px;
 }
 .home-practices h1 {
-  font-size: 40px;
+  font-size: 2rem;
 }
 .home-practices button {
   background-color: #1d3e68;
@@ -410,7 +410,7 @@
   /* == HOME PRACTICES == */
   .home-practices-container {
     background-size: 85%;
-    height: 100vh;
+    height: 110vh;
   }
   .home-practices {
     width: 45%;

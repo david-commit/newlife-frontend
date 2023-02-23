@@ -122,9 +122,8 @@ function Home() {
       <div className='home-practices-container'>
         <div className='home-practices'>
           <h3 style={{ color: '#1d3e68' }}>BEST PRACTICES</h3>
-          <br style={{ fontSize: '0.2rem' }} />
-          <h1>Facility with Innovative Approach to Treatment</h1>
           <br />
+          <h1>Facility with Innovative Approach to Treatment</h1>
           <p>
             NewLife Hospital App simplifies medical processes, but it also holds
             the potential to improve the patient experience significantly.
