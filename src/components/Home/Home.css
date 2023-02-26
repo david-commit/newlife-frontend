@@ -335,7 +335,7 @@
   /* == HOME TESTIMONIALS == */
 }
 /* ==== HOME COMPONENT ==== */
-@media screen and (min-width: 769px) and (max-width: 992px) {
+@media screen and (min-width: 769px) and (max-width: 1366px) {
   /* == HOME BANNER == */
   .home-banner-container {
     height: 95vh;
