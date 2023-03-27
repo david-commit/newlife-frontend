@@ -1,4 +1,4 @@
-[
+const PractitionerProfileData = [
   {
     id: 1,
     first_name: 'David',
@@ -182,3 +182,5 @@
     },
   },
 ];
+
+export default PractitionerProfileData;
